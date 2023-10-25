@@ -1,0 +1,176 @@
+\documentclass{beamer}
+\usetheme{Berkeley}
+%Information to be included in the title page:
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\title{Quizz d'analyse}
+\author{Students 4 Students}
+\date{}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Suites, fonctions et limites - Q1}
+La suite \(a_k\) est convergente et admet pour limite \(l\), s'il existe un \(\epsilon > 0\) et un \(n_0\) tel que pour tout \(n \ge 0\), on a que \(\abs{a_k-l}\le \epsilon   \)
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+  \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Suites, fonctions et limites - Q2}
+Soit $g(x)$ telle que $\lim \limits_{x\to 2}g(x)=0$. \\ Soit aussi $f(x)$ une fonction positive telle que $f(x)<g(x) \ \forall x \in [1,3]$. Alors $\lim \limits_{x\to 2} f(x)=0$
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+  \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Suites, fonctions et limites - Q3}
+Soit la suite \((x_n)_{n \in \mathbb{N}^*}\) convergente vers 0 et soit la suite \((y_n)>0\) pour tout \(n \in \mathbb{N}^*\). Alors la suite \((x_ny_n)\) converge.
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Suites, fonctions et limites - Bilan}
+Vous voyez, c'était pas si dur !
+\end{frame}
+
+\begin{frame}
+\frametitle{Continuité - Q1}
+La fonction \(f : E \to F\) est continue en le point \(x_0\) si $\forall \epsilon > 0, \exists \delta > 0$ tel que $ \forall x  \in \{x : 0< \abs{x - x_0} \le \delta\}$, on a $ \abs{f(x)-f(x_0)} \le \epsilon$
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Continuité - Q2}
+Soit \(f : E \to \mathbb{R}\) et \(g : E \to \mathbb{R}\) deux fonctions continues en \(x_0\). Alors \(\cfrac{f(x)}{g(x)}\) est continue en \(x_0\).
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Continuité - Q3}
+Soit \(f : [1,2] \to \mathbb{R}\) telle que \(f([1,2])=]1,2[\). Alors la fonction \(f\) n'est pas continue sur \([1,2]\).
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Continuité - Bilan}
+On est déjà à la moitié du programme !
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Séries - Q1}
+Soit la série convergente \(\displaystyle \sum_{k=1}^\infty \abs{\cfrac{(-1)^k}{k^{3\pi k}}}\). \\ Alors la série \(\displaystyle \sum_{k=1}^\infty \cfrac{(-1)^k}{k^{3\pi k}}\) converge.
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Séries - Q2}
+Soit la série \(\displaystyle \sum_{k=0}^\infty a_k\) telle que \(\lim \limits_{k \to \infty} a_k = 0\). \\ Alors la série est convergente.
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Séries - Q3}
+Soit une série \(\displaystyle \sum_{k=1}^\infty a_k\) divergente et soit une suite \((b_k)\) telle que \(\lim \limits_{k \to \infty} b_k = 0\), alors, la série  \(\displaystyle \sum_{k=1}^\infty a_kb_k\) converge.
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Séries - Bilan}
+Il ne reste déjà plus qu'un seul chapitre ?
+\end{frame}
+
+\begin{frame}
+\frametitle{Nombres complexes - Q1}
+Soit \(z = 3\left(\cfrac{1+i \sqrt 3}{2}\right)\). Alors on a aussi que \(z = 3e^{\frac{i \sqrt 3}{2}}\)
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Nombres complexes - Q2}
+Soit \(z = 3(\cos{\frac{\pi}{12}}+i \sin{\frac{\pi}{12}})\). Alors on a que \(z^{24}=3^{24}e^{2\pi}\).
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Nombres complexes - Q3}
+L`équation \(z^{42}=\frac{106}{8\pi}e^{i\arccos{\frac{\sqrt 3}{2}}}\) a 21 solutions.
+\begin{itemize}
+ \item<1-> Vrai
+ \item<1-> Faux
+ \item<1-> Je ne sais pas
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Nombres complexes - Bilan}
+Et voilà, c'en est terminé pour le cours d'analyse !
+
+\end{frame}
+
+
+
+\end{document}
+

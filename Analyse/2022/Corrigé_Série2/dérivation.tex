@@ -1,0 +1,187 @@
+\part{Dérivation}
+\begin{exercice}[Dérivée via la définition] 
+Dériver les fonctions suivantes à l’aide de la définition (et uniquement de la définition) de la dérivée.
+
+\begin{enumerate}
+    \item $f(x) = x^3$
+    
+    D'après la définition la dérivée de $f(x)$ est
+    \begin{align*}
+        f'(x) &= \lim_{h \to 0} \frac{f(x + h) - f(x)}{h} \\
+              &= \lim_{h \to 0} \frac{(x + h)^3 - x^3}{h} \\
+              &= \lim_{h \to 0} \frac{x^3 + 3x^2h + 3xh^2 + h^3 - x^3}{h} \\
+              &= \lim_{h \to 0} \frac{h(3x^2 + 3xh)}{h} \\
+              &= \lim_{h \to 0} 3x^2 + 3xh \\
+              &= 3x^2
+    \end{align*}
+    De plus, la limite existe bien pour tout $x \in \mathbb{R}$ donc la fonction est dérivable sur $\mathbb{R}$.
+
+    \item $f(x) = \frac{1}{x}$
+    
+    De la même manière, on commence par la définition~:
+    \begin{align*}
+        f'(x) &= \lim_{h \to 0} \frac{f(x + h) - \overbrace{f(x)}^{\neq 0}}{h} \\
+              &= \lim_{h \to 0} \frac{\frac{1}{x + h} - \frac{1}{x}}{h} \\
+              &= \lim_{h \to 0} \frac{\frac{x - x - h}{x (x + h)}}{h} \\
+              &= \lim_{h \to 0} - \frac{1}{\underbrace{x^2 + xh}_{\neq 0 \textrm{ si } x \neq 0}} \\
+              &= - \frac{1}{x^2}
+    \end{align*}
+    Notons que pour $x = 0$ la limite ne converge pas, donc elle n'est pas dérivable en $0$. Ainsi le domaine de dérivabilité de $f(x) = \frac{1}{x}$ est $\mathbb{R}^{*}$.
+    
+    \item $f(x) = |x| = \begin{cases} x, & \text{si } x \geq 0 \\ -x, & \text{si } x < 0 \end{cases}$
+    
+    Pour cette fonction, il faut distinguer différents cas selon la valeur de $x$~:
+    \begin{enumerate}
+        \item Cas $x < 0$~:
+        
+        Notez que $x + h < 0$ pour un $h$ suffisamment petit, et ainsi~:
+        \begin{align*}
+            f'(x) &= \lim_{h \to 0} \frac{f(\overbrace{x + h}^{< 0}) - f(\overbrace{x}^{< 0})}{h} \\
+            &= \lim_{h \to 0} \frac{-(x + h) - (-x)}{h} \\
+            &= \lim_{h \to 0} \frac{-h}{h} \\
+            &= -1
+        \end{align*}
+        
+        \item Cas $x > 0$~:
+        
+        Par le même raisonnement, pour $h$ suffisamment petit, $x + h > 0$ et donc~:
+        \begin{align*}
+            f'(x) &= \lim_{h \to 0} \frac{f(\overbrace{x + h}^{> 0}) - f(\overbrace{x}^{> 0})}{h} \\
+            &= \lim_{h \to 0} \frac{(x + h) - x}{h} \\
+            &= \lim_{h \to 0} \frac{h}{h} \\
+            &= 1
+        \end{align*}
+        
+        \item Cas $x = 0$~:
+
+        Ce cas est très particulier car selon que l'on considère la limite par la gauche ($h < 0$) ou la limite par la droite ($h > 0$) le résultat est $-1$ ou $1$, respectivement. Ainsi la limite ne converge pas à un résultat unique donc la dérivée n'est pas définie en $x = 0$.
+    \end{enumerate}
+    
+    On a ainsi que $f(x)$ est dérivable sur $\mathbb{R}^*$ et que sa dérivée est
+    \[
+    f'(x) = \begin{cases} 
+        -1 & \text{si } x < 0 \\
+        1 & \text{si } x > 0
+    \end{cases}
+    \]
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Dérivée via les propriétés]
+Dériver les fonctions suivantes à l'aide de vos connaissances et des propriétés des dérivées. Pour chacune des fonctions, trouver le plus grand ensemble telle qu'elle soit dérivable sur cet ensemble.
+
+\begin{enumerate}
+    \item $f(x) = x^4 + \cos(x^2)$
+    
+    On utilise le fait que $(x^n)' = n x^{n-1}$, donc en particulier $(x^4)' = 4x^3$ et $(x^2)' = 2x$, et on a aussi que $(\cos(x))' = - \sin(x)$, une dérivée essentielle à connaître par c\oe{}ur.
+    
+    Ainsi 
+    \begin{align*}
+        f'(x) &= \left( x^4 + \cos(x^2) \right)' & \\
+              &= \left( x^4 \right)' + \left( \cos(x^2) \right)' &\text{en utilisant } (f(x) + g(x))' = f'(x) + g'(x) \\
+              &= 4 x^3 - \left( x^2 \right)' \sin(x^2) &\text{en utilisant } (f(g(x)))' = g'(x) f'(g(x)) \\
+              &= 4 x^3 - 2x\sin(x^2) &
+    \end{align*}
+    La fonction est dérivable sur $\mathbb{R}$.
+    
+    \item $f(x) = \tan(x) = \frac{\sin(x)}{\cos(x)}$
+    
+    En utilisant la dérivée d'un quotient $\left(\frac{f(x)}{g(x)}\right)' = \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$ et les dérivées des fonctions trigonométriques, on obtient~:
+    \begin{align*}
+        f'(x) &= \left( \frac{\sin(x)}{\cos(x)} \right)' \\
+              &= \frac{(\sin(x))' \cos(x) - \sin(x) (\cos(x))'}{\cos(x)^2} \\
+              &= \frac{\cos(x)^2 + \sin(x)^2}{\cos(x)^2} \\
+              &= \frac{1}{\cos(x)^2}
+    \end{align*}
+    où l'on a utilisé pour la dernière égalité l'identité trigonométrique fondamentale $\sin^2(x) + \cos^2(x) = 1$.
+
+    La fonction $\tan(x)$ est dérivable pour tout $x$ de son domaine de définition, c'est-à-dire $x \neq k\pi + \frac{\pi}{2}$ pour $k \in \mathbb{Z}$.
+    
+    \item $f(x) = \exp(4 (\cos(x))^2)$
+    
+    Par la propriété de dérivation d'une fonction composée~:
+    \begin{align*}
+        f'(x) &= \left( \exp(4 (\cos(x))^2) \right)' \\
+        &= \left( 4 \cos(x)^2 \right)' \exp(4 (\cos(x))^2) \\
+        &= - 8 \cos(x) \sin(x) \exp(4 \cos(x)^2)
+    \end{align*}
+    
+    La fonction est dérivable sur tout son ensemble de définition, i.e. sur $\mathbb{R}$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Extremum]
+Trouver les maximums/minimums des fonctions suivantes~:
+\begin{enumerate}
+    \item $f(x) = x^2$
+    
+    Pour trouver le(s) maximum(s)/minimum(s) d'une fonction, on étudie le signe de sa dérivée. On sait que $f'(x) = 2x$ et que $f$ est dérivable sur $\mathbb{R}$. Un extremum est caractérisé par la propriété que $f'(x) = 0$ et que sa dérivée change de signe en $x$. Le fait que $f'(x) = 0$ \emph{n'est pas suffisant} seul pour qu'il s'agisse d'un extremum.
+    
+    On a donc
+    \[
+    f'(x) = 0 \iff x = 0
+    \]
+    Ainsi le seul extremum potentiel est en $x=0$. Pour savoir s'il s'agit en effet d'un extremum il faut étudier le signe de la dérivée avant et après $x = 0$. Dans ce cas, on obtient facilement que $f'(x) < 0$ pour $x < 0$ et $f'(x) > 0$ pour $x > 0$, donc $0$ est un minimum de $f$.
+    
+    \medskip
+    \textbf{Pour aller plus loin\textellipsis}
+    
+    Notez que le changement de signe de la dérivée peut être étudié en\textellipsis dérivant la fonction dérivée, c'est-à-dire en étudiant la dérivée seconde. En effet, un changement de signe implique une croissance ou décroissance de la fonction dérivée, et donc il nous suffit d'obtenir la valeur de la dérivée seconde (si elle existe) pour pouvoir conclure plus facilement.
+    
+    En d'autre termes :
+    \begin{itemize}
+        \item Si $f'(x) = 0$ et $f''(x) > 0$ (i.e. $f'$ croissante) alors $f$ admet un minimum en $x$.
+        \item Si $f'(x) = 0$ et $f''(x) < 0$ (i.e. $f'$ décroissante) alors $f$ admet un maximum en $x$.
+        \item Si $f'(x) = f''(x) = 0$, alors on ne peut rien conclure. Prenez par exemple les fonctions $f(x) = x^4$ et $f(x) = -x^4$ autour de $0$~: elles admettent toutes deux une dérivée seconde nulle en $0$, alors que $0$ est un minimum dans le premier cas, et un maximum dans le second.
+    \end{itemize}
+    \medskip
+    
+    \item $f(x) = \exp \left(-\left( \frac{1}{2}x - 5 \right)^2 \right)$
+    
+    On calcule en premier lieu la dérivée de notre fonction~:
+    \begin{align*}
+    f'(x) & = -\left[\left(\frac{1}{2} x - 5 \right)^2\right]' \exp{\left(- \left(\frac{1}{2}x - 5 \right)^2 \right)} \\
+          & = - 2 \left(\frac{1}{2}x - 5 \right) \cdot \underbrace{\left(\frac{1}{2}x - 5 \right)'}_{=\frac{1}{2}} \exp{\left(- \left(\frac{1}{2}x - 5 \right)^2 \right)} \\
+          & = - \left(\frac{1}{2}x - 5 \right) \exp{\left(- \left(\frac{1}{2}x - 5 \right)^2 \right)}
+    \end{align*}
+    Ainsi les zéros de la dérivée sont
+    \begin{align*}
+    f'(x) = 0 & \iff  - \left(\frac{1}{2} x - 5 \right) \underbrace{\exp{\left( - \left( -\frac{1}{2}x - 5 \right)^2 \right)}}_{> 0} = 0 \\
+        &\iff \frac{1}{2} x - 5 = 0 \\
+        &\iff x = 10
+    \end{align*}
+    Pour savoir s'il s'agit d'un maximum ou d'un minimum, il nous faut étudier plus en détail le signe de la dérivée. En particulier, remarquons que puisque $\exp(x) > 0$ pour tout $x \in \mathbb{R}$,
+    \[
+    f'(x) \geq 0 \iff -\frac{1}{2}x + 5 \geq 0 \iff x \leq 10
+    \]
+    Ainsi, la dérivée passe d'un signe positif à négatif, donc $x = 10$ est un maximum (on monte puis on descend).
+    
+    \item $f(x) = x^4 + \cos(x^2)$
+    
+    On commence par déterminer les points tels que $f'(x) = 0$, en utilisant par l'Exercice précédent que $f'(x) = 4 x^3 - 2 x \sin(x^2)$~:
+    \begin{align*}
+    f'(x) = 0 & \iff 4 x^3 - 2 x \sin(x^2) = 0 \\
+              & \iff 2x \sin(x^2) = 4 x^3 \\
+              & \iff x \sin(x^2) = 2 x^3
+    \end{align*}
+    $x = 0$ est une solution triviale de l'équation. Pour $x \neq 0$, l'équation est équivalente à
+    \begin{align*}
+    \sin(x^2) = 2x^2
+    \end{align*}
+    Or $\sin(x^2) < x^2 < 2x^2$ pour $x^2 > 0 \iff x \neq 0$, et ainsi $f'(x) \neq 0$ pour tout $x \neq 0$. 
+    
+    % On peux démontrer que $\sin(y) < 2y$ de la façons suivante : \\
+    % On a que $\sin(0) = 0$ et $\sin'(x) = \cos(x) \leq 1$, tandis que $(2x)' = 2$. Ainsi $\forall x > 0 \ : \ (2x)' > \sin'(x)$ donc $2x$ restera \emph{en dessus} de $\sin(x)$.
+    
+    De plus, 
+    \begin{align*}
+    f'(x) = 4 x^3 - 2 x \sin(x^2) < 0 & \iff x \left(4x^2 - 2\sin(x^2) \right) < 0 \\
+    &\iff 2x \underbrace{\left(2x^2 - \sin(x^2) \right)}_{> 0} < 0 \\
+    &\iff 2x < 0
+    \end{align*}
+    où l'inégalité de la seconde équivalence vient de l'inégalité $\sin(x^2) < 2x^2$ pour $x \neq 0$.
+  
+    Ainsi, la dérivée change d'un signe négatif à positif de part et d'autre de $0$, donc $x = 0$ est un minimum de $f$.
+\end{enumerate}
+
+\end{exercice}

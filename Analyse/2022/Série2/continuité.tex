@@ -1,0 +1,52 @@
+\part{Fonctions et continuité}
+
+\begin{exercice}[Limite à droite, limite à gauche]\label{ex:limits}
+Pour chacune des fonctions suivantes, calculer la limite à droite et à gauche au point donné. Quelles fonctions sont continues en ces points ?
+\begin{enumerate}
+    \item $f(x) = \frac{\tan(x)}{x}$ en $x = 0$
+    \item $g(x) = \frac{x - 1}{x - 2}$ en $x = 2$
+    \item $h(x) = \frac{x^3}{3} + 3x^2$ en $x = 0$
+    \item $i(x) = x \sin\left(\frac{1}{x}\right)$ en $x = 0$
+    \item $j(x) = \frac{e^{x - 3} - 1}{x - 3}$ en $x = 3$ \newline
+    \emph{Hint~: Prendre le changement de variable $h = x-3$}
+    
+    \item $k(x) = \begin{cases}
+    \sqrt{|x|} & \textrm{si } x \neq 0 \\
+    1   & \textrm{si } x = 0
+    \end{cases}$ en $x = 0$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Continuité]\label{ex:weird_function}
+En quels points la fonction $u : \mathbb{R} \to \mathbb{R}$ définie par
+\[
+u(x) = \begin{cases}
+\frac{1}{\ln(|x|)} & \textrm{si } x \not\in \{-1, 0, 1\} \\
+0 & \textrm{sinon}
+\end{cases}
+\]
+est-elle continue ?
+\end{exercice}
+
+\begin{exercice}[Prolongement par continuité]
+Pour chacune des fonctions des fonctions de l'Exercice \ref{ex:limits}, déterminer si la fonction admet un prolongement par continuité. Si c'est le cas, le définir.
+\end{exercice}
+
+\smallskip
+\begin{exercice}[Théorème des valeurs intermédiaires]
+Calculer l'image des fonctions suivantes~:
+\begin{enumerate}
+    \item $l(x) = x^3 - 3x^2 + 3x - 1$ sur $[0, 3]$
+    \item $m(x) = \frac{1}{x}$ sur $[-1, 1]$
+    \item $n(x) = \tan(x) = \frac{\sin(x)}{\cos(x)}$ sur $[-\frac{\pi}{4}, \frac{\pi}{3}]$ \newline
+    \emph{Hint~: vous pouvez utiliser (sans preuve) le fait que $n'(x) = \frac{1}{\cos(x)^2}$}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Fonctions continues et nombre de solutions]\label{ex:equation_solutions}
+Prouver qu'il existe (au moins) 3 solutions à l'équation :
+\[
+x^3 - 2x - 1 = \sin(x)
+\]
+pour $x \in [-\pi, \pi]$.
+\end{exercice}

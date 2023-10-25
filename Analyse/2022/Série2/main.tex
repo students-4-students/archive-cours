@@ -1,0 +1,93 @@
+\documentclass[11.5pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{15pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Custom commands
+\DeclareMathOperator{\sign}{sign}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+% Graphics
+\usepackage{graphicx}
+
+% Enumerate labels
+\usepackage{enumitem}
+
+% Paragraph spacing
+\usepackage{parskip}
+
+\pretitle{\begin{center} \LARGE \bfseries}
+\title{Analyse -- Série 2}
+\posttitle{\par \end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+% Post date
+\renewcommand{\maketitlehookd}{
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=0.8\textwidth]
+Cette série d'exercices teste votre compréhension des 2 dernières heures du cours d'Analyse que vous avez suivi à S4S. Pour rappel, il n'est toujours \textbf{pas attendu} de vous que vous finissiez tous les exercices dans les 2 heures qui sont allouées, au contraire. Profitez des 2 heures d'exercices pour poser vos questions aux assistants, qu'il s'agisse d'une question sur les exercices, la matière du cours ou autre.
+
+Les Exercices 9, 10 et 11 sont facultatifs et s'adressent aux plus motivés d'entre vous.
+\end{tcolorbox}
+\end{center}
+}
+
+\begin{document}
+
+\maketitle
+
+{
+\let\clearpage\relax % Avoid include page break
+\include{continuité}
+\include{dérivation}
+\include{pour_aller_plus_loin}
+}
+
+\end{document}

@@ -1,0 +1,117 @@
+\chapter{Rappels et fondamentaux}
+% - Rappels sur les ensembles, introduction des ensembles N et R et notation $x \in A$
+% - Rappels sur la valeur absolue, distance et inégalité triangulaire
+
+Dans cette section, on introduit quelques notions fondamentales nous seront utiles pour les chapitres suivants.
+
+\section{Ensembles}
+
+\begin{boxdef}[Ensemble]
+Un \emph{ensemble} $A$ est une collection non ordonnée d'éléments uniques. On note
+\begin{equation}
+A = \{x_1, x_2, \ldots, x_n\}
+\end{equation}
+pour l'ensemble contenant exactement les éléments $x_1$ jusqu'à $x_n$.
+\end{boxdef}
+Pour le cours, nous n'aurons pas besoin de définir plus rigoureusement ce qu'est un ensemble que la définition ci-dessus. Notez cependant qu'une majeure partie de la théorie mathématique se base sur cette notion fondamentale, et que vous la rencontrerez de manière plus formelle assez rapidement dans votre cursus.
+
+On note $x \in A$ pour l'appartenance de $x$ à l'ensemble $A$. Naturellement, il nous suffit de barrer le symbole, i.e. $x \not\in A$, pour signifier que $x$ n'est pas un élément de $A$.
+
+On définit la notion de \emph{sous-ensemble} de la même manière qu'on définirait une sous-collection~:
+\begin{boxdef}[Sous-ensemble]
+Un \emph{sous-ensemble} $B$ d'un ensemble $A$ est un ensemble tel que tous les éléments de $B$ sont des éléments de $A$. Symboliquement~:
+\begin{equation}
+\forall x \in B, x \in A
+\end{equation}
+On note $B \subseteq A$ pour signifier que B est un sous-ensemble de A.
+\end{boxdef}
+
+\subsection{Ensembles usuels}
+Certains ensembles seront utilisés fréquemment par la suite, et ils sont tellement utiles en mathématiques qu'ils méritent une notation spéciale à eux seuls.
+
+\begin{greybox}
+\textbf{Ensembles usuels.}
+\begin{enumerate}
+    \item \emph{L'ensemble vide}, i.e. qui ne contient aucun élément, est noté $\emptyset$.
+    \item L'ensemble des \emph{entiers non-négatifs} est l'ensemble des nombres positifs auquel on ajoute le nombre $0$\footnote{En mathématiques, on distingue la notion de \emph{nombre positif}, qui ne contient pas $0$, de celle de nombre \emph{non-négatif}, qui elle accepte $0$. Par convention, 0 n'est donc ni négatif, ni positif.}. On le note
+    \begin{equation}
+    \mathbb{N} = \{0, 1, 2, \ldots\}
+    \end{equation}
+    
+    \item L'ensemble des \emph{entiers relatifs} est l'ensemble des nombres positifs, négatifs ou nuls. On le note
+    \begin{equation}
+    \mathbb{Z} = \{\ldots, -2, -1, 0, 1, 2, \ldots\}
+    \end{equation}
+    
+    \item L'ensemble des \emph{nombres rationnels} est l'ensemble des fractions, de la forme $\frac{p}{q}$, où $p, q$ sont des entiers relatifs, $q \neq 0$. On le note $\mathbb{Q}$.
+    
+    \item L'ensemble des \emph{nombres réels} contient l'ensemble des nombres rationnels, ainsi que tous les nombres \emph{irrationels} (c'est-à-dire ne pouvant pas s'écrire comme une fraction rationnelle), tels que $\pi$, $e$, $\sqrt{2}$, etc. On le note $\mathbb{R}$.
+    
+    \item L'ensemble des \emph{nombres complexes} est l'ensemble des nombres de la forme $a + ib$, où $a, b$ sont des nombres réels, et $i$ est défini par $i = \sqrt{-1}$. On le note $\mathbb{C}$.
+\end{enumerate}
+\end{greybox}
+
+Notons que rien ne nous a empêché de définir un ensemble infini comme une collection infinie, et qu'on a abusé des points de suspension pour pouvoir définir ces ensembles de manière plus aisée.
+
+\subsection{Intervalles réels}
+Les intervalles réels sont des sous-ensembles spéciaux de $\mathbb{R}$, qui sont définies par deux bornes. Ils contiennent tous les nombres entre ces deux bornes, ainsi que potentiellement les bornes elles-mêmes. On note ainsi
+\begin{greybox}
+\textbf{Notations des intervalles}.
+Soit $a < b$ deux nombres réels.
+\begin{enumerate}
+    \item $[a, b]$ est l'ensemble des nombres réels $x$ tels que $a \leq x \leq b$
+    \item $[a, b[$ est l'ensemble des nombres réels $x$ tels que $a \leq x < b$
+    \item $]a, b]$ est l'ensemble des nombres réels $x$ tels que $a < x \leq b$
+    \item $]a, b[$ est l'ensemble des nombres réels $x$ tels que $a < x < b$
+\end{enumerate}
+Si l'une des deux bornes est $\pm \infty$, on note alors
+\begin{enumerate}
+    \item $]\!-\!\infty, b]$ pour l'ensemble des nombres réels $x$ tels que $x \leq b$
+    \item $]\!-\!\infty, b[$ pour l'ensemble des nombres réels $x$ tels que $x < b$
+    \item $[a, \infty[$ pour l'ensemble des nombres réels $x$ tels que $a \leq x$
+    \item $]a, \infty[$ pour l'ensemble des nombres réels $x$ tels que $a < x$
+\end{enumerate}
+\end{greybox}
+Certains intervalles réels ont des notations particulières~:
+\begin{greybox}
+\begin{enumerate}
+    \item $\mathbb{R}^+ = [0, \infty[$ est l'ensemble des nombre réels non-négatifs.
+    \item $\mathbb{R}^- = \,]\!-\!\infty, 0]$ est l'ensemble des nombres réels non-positifs.
+    \item $\mathbb{R}^* = \,]\!-\!\infty, 0[ \cup ]0, \infty[$  est l'ensemble des nombres réels non-nuls.
+\end{enumerate}
+\end{greybox}
+et similairement $\mathbb{R}^{*+} = \,]0, \infty[$ pour l'ensemble des nombres réels positifs, $\mathbb{R}^{*-} = \,]\!-\!\infty, 0[$ pour l'ensemble des nombres réels négatifs.
+
+\section{Valeur absolue, inégalité triangulaire}
+Pour n'importe quel nombre réel $x \in \mathbb{R}$, on définit sa \emph{valeur absolue} comme la valeur non-négative qui est obtenue en enlevant le signe $+$ ou $-$ de son écriture décimale~:
+\begin{boxdef}[Valeur absolue]
+La \emph{valeur absolue} de $x \in \mathbb{R}$ est la valeur non-négative notée $|x|$ et définie par~:
+\begin{equation}
+|x| = \begin{cases}
+x & \textrm{si } x \geq 0 \\
+-x & \textrm{si } x < 0
+\end{cases}
+\end{equation}
+\end{boxdef}
+Vue sous un autre angle, la valeur absolue d'un nombre est sa \emph{distance} à 0, si on place le point sur la droite réelle~:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \draw[->] (-2, 0) to (5, 0) node[right] {$\mathbb{R}$};
+    \node[circle,fill,inner sep=1pt,label={$0$},draw] (a) at (0,0){};
+    \node[circle,fill,inner sep=1pt,label={$x$}, draw] (b) at (3, 0){};
+    \draw[decorate, decoration = {calligraphic brace,raise=2pt,amplitude=3pt}] (b.center) -- (a.center) node[pos=0.5,below]{$|x|$};
+    \end{tikzpicture}
+    \caption{Droite réelle et valeur absolue}
+    \label{fig:abs_real_axis}
+\end{figure}
+Cette notion de distance à 0 est importante, car elle permet de définir la distance \emph{entre deux nombres réels} quelconques $x, y \in \mathbb{R}$ par $d(x, y) = |x - y|$. Puisque $|x-y|$ est la distance de $x - y$ à 0, si $|x-y| = d$ alors $x - y = \pm d$, i.e. $x = y \pm d$, et ainsi $d$ est la distance entre $x$ et $y$.
+
+Une inégalité fondamentale est \emph{l'inégalité triangulaire}~:
+\begin{boxdef}[Inégalité triangulaire]
+Pour tout $x, y \in \mathbb{R}$~:
+\begin{equation}
+|x + y| \leq |x| + |y|
+\end{equation}
+\end{boxdef}
+Autrement dit, si l'on additionne deux nombres réels $x, y$, alors la distance à 0 de leur somme ne peut être plus grande que la somme des distances à 0 de $x$ et $y$, prises séparément. On peut se convaincre de la validité de l'inégalité triangulaire en utilisant un graphique similaire à la Figure \ref{fig:abs_real_axis} (essayez par vous-même pour vous convaincre).

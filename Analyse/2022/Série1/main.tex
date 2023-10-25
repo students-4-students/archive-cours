@@ -1,0 +1,229 @@
+\documentclass[11.5pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{15pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Custom commands
+\newcommand{\enumeratelinefix}{\leavevmode \vspace{-\baselineskip}} % Start enumerate on next line (see amsthm documentation > break theorem style)
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+
+
+
+
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{S4S Analyse - Série 1}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\includegraphics[width=2cm]{assets/imgs/sticker-intbee18.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{septembre 2022}
+
+% Post date
+\renewcommand{\maketitlehookd}{
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=0.8\textwidth]
+Cette série d'exercices teste votre compréhension des 2 premières heures du cours d'Analyse que vous avez suivi à S4S. Il n'est \textbf{pas attendu} de vous que vous finissiez tous les exercices dans les 2 heures qui sont allouées. Profitez des 2 heures d'exercices pour poser vos questions aux assistants, qu'il s'agisse d'une question sur les exercices, la matière du cours ou autre.
+
+Les Exercices 7 et 12 sont facultatifs et s'adressent aux plus motivé·e·s d'entre vous.
+\end{tcolorbox}
+\end{center}
+}
+
+
+
+
+
+\begin{document}
+\part{Suites numériques}
+\begin{exercice}[Calcul de limites]
+Calculer la limite des suites convergentes suivantes. Le point 8. est plus difficile et facultatif.
+
+\begin{enumerate}
+\item $\displaystyle a_n = \frac{1}{\sqrt{n + 2}}$
+\item $\displaystyle b_n = \frac{2n^4 - 5n^3 + 101n + 40}{7n^4 - 23n^2 + 83}$
+\item $\displaystyle c_n = \frac{\sin(n)^2 - 3}{n + 1}$
+\item $\displaystyle d_n = \frac{(-1)^n \cdot n^3 + 2n^2 - 501}{n^4 + 34n + 107}$
+\item $\displaystyle e_n = \frac{3n^2(n-4)}{(2n-1)(n^2+5)}$
+\item $\displaystyle f_n = \frac{f_{n-1}}{n}$ pour $n \geq 2$ et $f_1 = 1$
+\item $\displaystyle g_n = \sqrt{n + 1} - \sqrt{n}$ \newline
+\emph{Hint~: Multiplier la suite par $\displaystyle \frac{\sqrt{n+1} + \sqrt{n}}{\sqrt{n+1} + \sqrt{n}}$}
+\item[8.*] $\displaystyle h_n = \sqrt[3]{n+5} - \sqrt[3]{n}$ \newline
+\emph{Hint~: Comme pour le point 7., multiplier la suite par quelque chose permettant de faire apparaître $(n+5) - n$ au numérateur.}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Propriétés élémentaires des limites]
+Considérer les suites $\displaystyle b_n = \frac{2n^4 - 5n^3 + 101n + 40}{7n^4 - 23n^2 + 83}$ et $\displaystyle e_n = \frac{3n^2(n-4)}{(2n-1)(n^2+5)}$ de l'Exercice 1 et calculer
+\begin{enumerate}
+    \item $\displaystyle \lim \limits_{n \to +\infty} \frac{b_n}{e_n}$
+    \item $\displaystyle \lim \limits_{n \to +\infty}  b_n^2$
+    \item $\displaystyle \lim \limits_{n \to +\infty}  (7b_n + 2e_n)$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Convergence et divergence]
+Déterminer si les suites suivantes convergent, divergent vers $\pm \infty$ ou divergent autrement.
+\begin{enumerate}
+    \item $\displaystyle a_n = \frac{-3n^8 + 45n^6 - n^3 - 1}{101n^5 - 46n^3 + 2n^2 + 29}$
+    \item $\displaystyle b_n = \cos \left( \frac{n \pi}{2} \right)$
+    \item $\displaystyle c_n = \frac{3n^2 + 102n + 2}{(n+47)^2}$
+    \item $\displaystyle d_n =  \sqrt{2n + 1} - \sqrt{n}$
+    \item $\displaystyle e_n =  \frac{(-1)^n \cdot n^2 + 1}{n + 2}$
+    \item $\displaystyle f_n =  2f_{n-1}$ pour $n \geq 2$ et $f_1 = 1$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Vrai/Faux]
+Déterminer si les affirmations suivantes sont vraies ou fausses. Essayer de justifier si l'affirmation est vraie ou donner un contre-exemple dans le cas contraire.
+\begin{enumerate}
+    \item Si $(x_n)$ est bornée, alors $(x_n)$ converge.
+    \item Si $x_n \leq y_n$ pour tout $n$ et la suite $(y_n)$ converge, alors $(x_n)$ converge aussi.
+    \item Si $(x_n)$ converge, alors la suite $(x_n^2+1)$ converge aussi.
+    \item Si $\lim \limits_{n \to +\infty} x_n = +\infty$, alors $(x_n)$ converge.
+    \item Si $\lim \limits_{n \to +\infty} x_n = 0$, alors $\lim \limits_{n \to +\infty} (x_n \sin(n)) = 0$.
+    \item Si $\lim \limits_{n \to +\infty} x_n = 0$, alors la suite $\displaystyle \left(\frac{1}{x_n} \right)$ converge aussi.
+    \item S'il existe un indice $i \in \mathbb N$ tel que $x_{i+1} \geq x_i$, alors $(x_n)$ est croissante.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Suites monotones et/ou bornées]
+Étudier la monotonie des suites suivantes. Déterminer également si elles sont bornées ou non. Le point 7. est plus difficile et facultatif.
+
+\begin{enumerate}
+    \item $\displaystyle a_n = 1$ pour tout $n \in \mathbb N$
+    \item $\displaystyle b_n = n^2 + 2n + 10$
+    \item $\displaystyle c_n = \frac{n+3}{n+4}$
+    \item $\displaystyle d_n = \sin(n)$
+    \item $\displaystyle e_n = \frac{3^n}{2^{n+5}}$
+    \item $\displaystyle f_n =  \cos \left( \frac{n \pi}{2} \right) \cdot n^2$
+    \item[7.*] $\displaystyle g_n =  \frac{g_{n-1}^2 + 1}{2}$ pour $n \geq 2$ et $g_1 = 2022$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Encore une suite]
+Soit $(x_n)_{n \geq 1}$ une suite telle que $x_1 \geq 1$ et 
+\begin{equation}
+    x_n = 2 - \frac{1}{x_{n-1}} \quad \forall n \geq 2
+    \label{eq:suite_rec}
+\end{equation}
+\begin{enumerate}
+    \item Vérifier que $1 \leq x_2 \leq 2$.
+    \item En supposant $1 \leq x_{n-1} \leq 2$, prouver que $1 \leq x_n \leq 2$ également. \newline
+    \emph{Remarque~:} Vous venez de prouver \emph{par récurrence} que $1 \leq x_n \leq 2$ pour tout $n \geq 2$ ! 
+    \item Etudier la monotonicité de la suite. Est-ce que la suite converge ?
+    \item En admettant que la suite $(x_n)$ converge, déterminer la limite de la suite. \newline
+    \emph{Hint~: Si la suite $(x_n)_{n \geq 2}$ converge vers $l \in \mathbb R$, alors la suite "décalée" $(y_n)_{n \geq 2} = (x_{n-1})_{n \geq 2}$ converge vers la même limite. En utilisant les propriétés élémentaires des limites et la relation de récurrence (\ref{eq:suite_rec}), pouvez-vous déduire une équation pour la limite $l$ ?}
+\end{enumerate}
+
+\end{exercice}
+\begin{exercice}[(Facultatif) Divergence vers $\pm \infty$ des suites monotones, non-bornées]
+Soit $(x_n)$ une suite positive, croissante et non-bornée. Prouver que $(x_n)$ diverge vers $+\infty$, c'est-à-dire que pour tout nombre $B > 0$ aussi grand que l'on veut, après avoir ignoré suffisamment de termes initiaux $x_1$, ..., $x_{n_0}$, on a que $x_n > 0$ et $x_n > B$ pour tout $n > n_0$.
+
+\emph{Note~: L'hypothèse que $(x_n)$ est une suite positive n'est en fait pas nécessaire, mais la preuve est alors plus compliquée et ne sera pas abordée dans cette série.}
+\end{exercice}
+
+\part{Séries numériques}
+\begin{exercice}[Séries géométriques]
+\enumeratelinefix
+\begin{enumerate}
+    \item Démontrer par récurrence la formule des sommes partielles pour la série géométrique (avec $r \neq 1$)~:
+    \[
+    S_n = \sum_{k = 0}^{n} r^k = \frac{1 - r^{n+1}}{1 - r}
+    \]
+    \item En déduire la valeur de la série géométrique $\displaystyle\sum_{k = 0}^{\infty} r^k$ et son domaine de convergence (c'est-à-dire l'ensemble des valeurs pour lesquelles la série converge).
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Convergence]
+Pour chacune des séries suivante, déterminer leur convergence ou divergence, ainsi que leur valeur si possible. Mentionner tous les théorèmes utilisés.
+\begin{enumerate}
+    \item $\displaystyle\sum_{n=1}^\infty \frac{1}{5^n}$
+    \item $\displaystyle\sum_{n=1}^\infty \frac{n^3 + 4}{n^3 + 2}$
+    \item $\displaystyle\sum_{n=1}^\infty \frac{n \cdot 4^{n-2}}{5^{n-3}\cdot e^{\ln(n)}}$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Critère de comparaison]
+En utilisant le critère de comparaison, déterminer la convergence ou divergence des séries suivantes~:
+\begin{enumerate}
+    \item $\displaystyle\sum_{n=1}^\infty \frac{1}{n^2 + 1}$
+    \item $\displaystyle\sum_{n=1}^\infty \frac{1}{\sqrt{n + 2}}$
+    \item $\displaystyle\sum_{n=3}^\infty \frac{2}{\ln(n - 1)}$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Vrai/Faux]
+Déterminer si les affirmations suivantes sont vraies ou fausses. Essayer de justifier votre réponse si l'affirmation est vraie ou bien donner un contre-exemple dans le cas contraire~:
+\begin{enumerate}
+    \item Si $(a_n)$ est une suite décroissante, alors la série $\displaystyle\sum_{n=0}^\infty (-1)^n a_n$ converge.
+    \item Soient $(a_n)$ une suite telle que $\displaystyle \lim_{n \to \infty} a_n = 1$, alors la série $\displaystyle\sum_{k = 0}^{n} (a_n - 1)$ converge 
+    \item Soient $(a_n)$ et $(b_n)$ deux suites telles que $a_n \leq b_n$ pour tout $n \in \mathbb{N}$. Si $\displaystyle\sum_{n = 0}^{\infty} b_n$ converge, alors $\displaystyle\sum_{n = 0}^{\infty} a_n$ converge.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Pour aller plus loin..]
+\enumeratelinefix
+\begin{enumerate}
+    \item Calculer la valeur de la série convergente $\displaystyle\sum_{n=1}^\infty \frac{1}{n(n+5)}$ à l'aide des sommes partielles. \newline
+    \emph{Hint~: Trouver $A, B \in \mathbb{R}^*$ tels que $\frac{1}{n(n+5)} = \frac{A}{n} + \frac{B}{n+5}$}
+    
+    \item Montrer que la série $\displaystyle\sum_{n=1}^\infty ne^{\frac{1}{n}} - n$ diverge en sachant que l'exponentielle peut être définie comme la série suivante~:
+    \[
+    e^a = \displaystyle\sum_{k=0}^\infty \frac{a^k}{k!}
+    \]
+\end{enumerate}
+\end{exercice}
+
+\end{document}

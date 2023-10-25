@@ -1,0 +1,225 @@
+\chapter{Séries numériques}
+\section{Introduction}
+Lorsque l'on additionne plusieurs nombres, on les écrit usuellement avec des symboles "+" entre eux. Cela ne pose pas de problèmes tant que la liste des nombres que l'on ajoute est courte. Cependant, si l'on additionne par exemple les nombres pairs de $2$ à $100$, ou même les nombres de $1$ à $10000$, on devrait en toute logique écrire
+\[
+S = 2 + 4 + \ldots + 98 + 100
+\] sans oublier un seul terme (on a omis la majorité des termes pour éviter de déborder de la feuille). Pour simplifier cette écriture souvent longue, on utilisera une écriture alternative, en utilisant la lettre grecque \textsc{sigma majuscule} $\Sigma$. L'idée est la suivante~:
+\begin{enumerate}
+    \item On numérote les nombres que l'on veut additionner~: $a_1 = 2, a_2 = 4, \ldots, a_{50} = 100$.
+    \item On introduit un \emph{indice de sommation} $k$, qui prend les valeurs $1, 2, \ldots$ jusqu'à $50$
+    \item On somme alors les $a_k$ pour toutes les valeurs de $k$.
+\end{enumerate}
+Ainsi, pour noter la somme des nombres pairs de 2 à 100, on écrit
+\[
+S = \sum_{k = 1}^{50} a_k = \sum_{k = 1}^{50} 2k
+\] où $k$ prend les valeurs de $1$ à $50$, comme indiqué en dessous et au dessus de la somme.
+
+Ce procédé reste valide pour n'importe quelle suite $(a_n)$, en sommant les $n$ premiers termes d'intérêt. Si on prend la suite $(a_n)_{n \geq 1}$ définie par $a_k = 2k$ et qu'on vous demande d'additionner les $50$ premiers termes de la suite, alors on obtient effectivement la somme $S$ comme dans le paragraphe au dessus. De manière générale, tout somme présentée sous la forme $\Sigma$ peut être réécrite comme la somme des $n$ premiers termes d'une suite bien choisie. On appelle ainsi cette somme des $n$ premiers termes d'une suite $(a_n)$ une \emph{somme partielle}.
+
+\section{Série numérique}
+\begin{greybox}
+Mais pourquoi une somme "partielle" ?
+\end{greybox}
+Car en effet on somme qu'une partie des termes d'une suite. Or, il existe par construction une infinité de nombres dans une suite, et donc une somme "totale" devrait donc comprendre tous les termes de la suite, c'est-à-dire sommer un nombre infini de termes. Pour ce faire, il nous suffit d'augmenter le nombre de termes de la somme partielle et le faire tendre vers l'infini, en utilisant le concept de \emph{limite}. C'est ainsi que l'on définit une somme infinie, ou \emph{série}, comme la limite de la suite des sommes partielles~:
+\begin{boxdef}[Série numérique]
+Une série numérique \emph{de terme général $(a_n)$} est un couple de 2 suites~:
+\begin{itemize}
+    \item La suite $(a_n)_{n \in \mathbb{N}}$ qui est sommée, et
+    \item La suite des \emph{sommes partielles} $(S_n)_{n \in \mathbb{N}}$, définie par
+    \begin{equation}
+    S_n = \sum_{k = 0}^{n} a_k
+    \end{equation}
+    i.e. $S_n$ est la somme des $n+1$ premiers termes de la suite $(a_n)$.
+\end{itemize}
+On note alors la \emph{valeur} de la série numérique 
+\begin{equation}
+\sum_{k=0}^{\infty} a_k \stackrel{\textrm{déf.}}{=} \lim_{n \to \infty} S_n
+\end{equation}
+quand la limite existe.
+\end{boxdef}
+Remarquons que l'écriture $\displaystyle\sum_{k = 0}^{\infty} a_k$ possède un sens uniquement si $\displaystyle\lim_{n \to \infty} S_n$ existe, c'est-à-dire si la suite des sommes partielles \emph{converge}.
+
+Cette notion de convergence est très importante car sans elle, il n'y aurait aucun sens à écrire une somme infinie. Pour comprendre plus en détail pourquoi cette notion de convergence est primordiale, prenons l'exemple de la suite $(a_n)_{n \in \mathbb{N}}$ définie par $a_n = (-1)^n$. On a donc
+\begin{equation}
+S_n = \sum_{k=0}^{n} (-1)^k = \begin{cases}
+1 & \textrm{si } n \textrm{ est pair} \\
+0 & \textrm{si } n \textrm{ est impair}
+\end{cases}
+\end{equation}
+Or la série numérique de terme général $(a_n)$ a pour valeur
+\[
+S = \lim_{n \to \infty} S_n \quad \textrm{qui n'existe pas}
+\] et donc la somme infinie diverge ; en toute rigueur, l'écriture $\displaystyle\sum_{k = 0}^{\infty} (-1)^k$ n'a pas de valeur définie puisque la limite n'existe pas.
+
+% Avant de passer à la suite, voici quelques définitions qui seront utiles: les séries géométriques ainsi que les séries absolument convergentes.
+
+% \begin{boxdef}[Série géométrique]
+% Une \emph{série géométrique} est une série de la forme $\sum_{k=0}^{\infty} ar^k$ avec $a,r \in \mathbb{R}$, où $r$ s'appelle la \textit{raison} de la série. La caractéristique principale qui nous intéresse est sa valeur~:
+% \begin{equation}
+% \sum_{k=0}^{\infty} a r^k = \left\{
+%     \begin{array}{ll}
+%         a\frac{1}{1 - r} & \textrm{si } |r| < 1 \\
+%         \infty & \textrm{si } r \geq 1 \\
+%         \textrm{n'existe pas} & \textrm{sinon}
+%     \end{array}
+% \right.
+% \end{equation}
+% \end{boxdef}
+
+% \begin{boxdef}[Série absolument convergente]
+% On dit qu'une série de terme général $(a_n)$ est absolument convergente si la série $\displaystyle\sum_{k=0}^{\infty} |a_k|$ converge. Si une série est absolument convergente, alors elle est convergente. 
+% \end{boxdef}
+
+\section{Convergence, divergence}
+Dans cette section, nous allons introduire plus formellement la notion de convergence des séries numériques, ainsi que les critères de convergence qui nous permettent de trancher plus facilement. Notons que dans la majorité des cas, le calcul explicite de la valeur d'une série est \emph{très complexe}, et ainsi on se contentera dans ce cours de déterminer la convergence ou la divergence de la série.
+
+\begin{boxdef}[Convergence d'une série numérique]
+On dit qu'une série numérique $\displaystyle\sum_{k=0}^{\infty} a_k$ converge si et seulement si la suite des sommes partielles $(S_n)$ converge. Si $(S_n)$ est divergente, on dit alors que la série \emph{diverge}.
+\end{boxdef}
+Cette convergence/divergence d'une série nous apprend des choses en particulier sur le terme général $(a_n)$ de la série. En effet, l'un des théorèmes principaux est que la convergence d'une série implique que la limite du terme général tend vers 0~:
+\begin{boxthm}[Condition nécessaire de convergence]\label{thm:condition_necessaire}
+Soit $\displaystyle\sum_{k=0}^{\infty} a_k$ la série de terme général $(a_n)_{n \in \mathbb{N}}$. Si la série converge, alors $\displaystyle\lim_{n \to \infty} a_n = 0$.
+\end{boxthm}
+Ce résultat est notre premier \emph{critère de divergence}~: si $\displaystyle\lim_{n \to \infty} a_n \neq 0$ ou n'existe pas, alors la série diverge.
+
+En voici la démonstration 
+On note $s_n = \sum_{k=1}^{n} a_k$ et $\lim\limits_{n \rightarrow + \infty} s_n = S, S \in \mathbb{R}$
+
+Comme $s_n - s_{n-1} = a_n$, on a :
+
+$$\lim\limits_{n \rightarrow + \infty} a_n = \lim\limits_{n \rightarrow + \infty} s_n - s_{n-1} = \lim\limits_{n \rightarrow + \infty} s_n - \lim\limits_{n \rightarrow + \infty} s_{n-1} = S -S = 0$$
+
+Ce qui est bien ce qu'on voulait prouver; la suite converge bien vers $0$.  Néanmoins, on ne peut pas l'utiliser comme critère de convergence, c'est-à-dire que $\displaystyle\lim_{n \to \infty} a_n = 0$ n'est pas suffisant pour que la série numérique correspondante converge.
+
+
+\subsection{Critère de comparaison}
+Le critère de comparaison est un critère fondamental de convergence des séries, sur lequel de nombreux autres critères sont basés. Il met en oeuvre votre intuition sur la relation d'ordre entre les termes généraux des séries, en utilisant la convergence ou divergence de séries connues.
+
+\begin{boxdef}[Critère de comparaison]
+Soient $(a_n), (b_n)$ deux suites numériques, $n_0 \in \mathbb{N}$ tels que~:
+\begin{equation}
+0 \leq a_n \leq b_n, \quad \forall n \geq n_0
+\end{equation}
+Alors~:
+\begin{itemize}
+    \item Si $\displaystyle\sum_{k=0}^{\infty} b_k$ converge, $\displaystyle\sum_{k=0}^{\infty} a_k$ converge.
+    \item Si $\displaystyle\sum_{k=0}^{\infty} a_k$ diverge vers $+\infty$, $\displaystyle\sum_{k=0}^{\infty} b_k$ diverge (vers $+\infty$).
+\end{itemize}
+\end{boxdef}
+Notons que la condition que les deux suites soient non-négatives à partir d'un certain rang $n_0$ est primordiale pour que ce résultat soit applicable. En effet, cela implique que la suite des sommes partielles est monotone croissante à partir du rang $n_0$, et puisque la série de terme général $(b_n)$ converge, elle est aussi bornée (par $\displaystyle\sum_{k = 0}^{\infty} b_k$). De manière formelle, on a :
+
+Si la série $\sum_{k = 0}^{n} b_n$ est convergente et que pour tout $n$ dans $\mathbb{N}$, on a :
+
+$$ a_n \leq b_n $$
+
+Comme la série $\sum_{k = 0}^{n} b_n$ est convergente, notons $S = \sum_{n=1}^{+\infty} b_n$, on a par suite en sommant les termes de la suites par rapport à $n$:
+
+$$0 < \sum_{k = 0}^{\infty} a_n \leq \sum_{k = 0}^{\infty} b_n \leq S $$
+
+
+Et donc
+
+$$0 < \sum_{k = 0}^{\infty} a_n \leq  S $$
+Alors, la série $\sum_{k = 0}^{n} a_n$ est croissante et majorée, donc par le théorème des suites croissantes et majorées, la série converge vers sa borne supérieure.
+
+Pour la divergence, notons qu'il se déduit très directement du Théorème d'un gendarme (cf. Théorème \ref{thm:un_gendarme}).
+
+% Imaginez une série dont les sommes partielles sont croissantes mais qui converge éventuellement. Si une autre série a également des sommes partielles croissantes et est \emph{toujours} plus petite que la première série à partir d'un certain rang, alors cette dernière doit forcément converger, sinon elle dépasserait à un moment la première série !
+
+% L'idée derrière la divergence est globalement la même. Considérez ce graphique~:
+% \begin{center}
+% \begin{tikzpicture}
+% \begin{axis}
+%     \addplot[blue,only marks] coordinates {
+%         (0,0)
+%         (1,1)
+%         (2,1.9)
+%         (3,2.4)
+%         (4,3.1)
+%         (5,3.6)
+%         (6,3.7)
+%         (7,3.76)
+%         (8,3.764)
+%         (9,3.766)
+%         (10,3.767) 
+%         (11,3.767) 
+%         (12,3.767)
+%         (13,3.85) 
+%         (14,3.85)
+%         (15,3.9)
+%     };
+    
+%     \addplot[red,only marks] coordinates {
+%         (0,0) 
+%         (1,0.6)
+%         (2,1.2)
+%         (3,1.8) 
+%         (4,2.6) 
+%         (5,3) 
+%         (6,3.2) 
+%         (7,3.5) 
+%         (8,3.8) 
+%         (9,4.2) 
+%         (10,4.25) 
+%         (11,4.255) 
+%         (12,4.255) 
+%         (13,4.257) 
+%         (14,4.257)
+%         (15,4.257)
+%     };
+% \end{axis}
+% \end{tikzpicture}
+% \end{center}
+% Représentez-vous ce graphique comme 2 séries, bleue et rouge. L'axe $x$ représente le nombre d'éléments parcourus, et l'axe $y$ représente la somme des $x$ premiers termes. On voit qu'à partir de $x = 10$, la série rouge reste supérieur à la bleu~; en assumant qu'on sache que la série rouge converge et que la série bleu ne dépassera jamais après $x = 10$ la série rouge, on peut affirmer que la série bleue \emph{doit} aussi converger ! A contrario, si on sait que la série bleu diverge vers $+\infty$, alors forcément la série rouge va diverger de même, puisqu'elle se trouve au-dessus de la série rouge.
+
+\section{Exemples de séries usuelles}\label{sec:series_exemples}
+Dans cette section, on introduit des séries usuelles qui vous seront utiles pour pouvoir appliquer le critère de comparaison.
+
+\begin{boxdef}[Série géométrique]
+Une \emph{série géométrique} est une série $S$ de terme général $a_n = a_0 \cdot r^n$, $n \in \mathbb{N}$ et $a_0, r \in \mathbb{R}$~:
+\begin{equation}
+S = \sum_{n = 0}^{\infty} a_0 \cdot r^n
+\end{equation}
+$r$ est appelé la \emph{raison} de la série. La série converge si et seulement si $|r| < 1$, auquel cas elle a pour valeur~:
+\begin{equation}
+\sum_{n = 0}^{\infty} a_0 \cdot r^n = \frac{a_0}{1-r}, \quad |r| < 1
+\end{equation}
+% Je pense que ce serait un bon exercice de leur faire prouver la formule de la somme partielle, comme l'année dernière
+% Si on donne le polycopié à la fin y'a pas de souci à garder le paragraphe, mais ils l'auront probablement avant donc ça donnerait la solution
+%
+% Notez également que cette équation vient plus généralement du fait que
+% \begin{equation}
+% \sum_{k=0}^{p} r^n = \frac{1 - r^{p+1}}{1 - r}, \quad |r| < 1    
+% \end{equation}
+% ce qui fait que si $ p \to \infty $ alors $ r^{p+1} \to 0$ et on retombe sur l'équation du milieu.
+\end{boxdef}
+Les séries géométriques sont des séries omniprésentes dans tous les domaines mathématiques, qui restent faciles à utiliser. Voici la démonstration du théorème :
+
+La série géométrique peut se réécrire de la manière suivante :
+
+$$s_n = a_0\frac{1-r^{n+1}}{1-r}$$
+
+Si $\lvert r \rvert \ge 1$, alors $\lim\limits_{n \rightarrow +\infty}r^n$ diverge, sinon, elle converge.
+Donc, en prenant la limite, on obtient :
+$$\sum_{n=1}^{+\infty}a_0r^n =\lim\limits_{n \rightarrow +\infty}a_0 \frac{1-r^{n+1}}{1-r} = \frac{a_0}{1-r}$$
+ce qui est bien ce qu'on voulait.
+
+
+\begin{boxdef}[Série harmonique]
+La \emph{série harmonique} est la série $S$ de terme général $a_n = \frac{1}{n}$, $n \geq 1$~:
+\begin{equation}
+S = \sum_{n = 1}^{\infty} \frac{1}{n}
+\end{equation}
+La série harmonique \emph{diverge}, bien que le terme général converge vers $0$.
+\end{boxdef}
+La série harmonique illustre donc bien pourquoi le Théorème \ref{thm:condition_necessaire} ne marche pas dans le sens inverse, c'est-à-dire pourquoi $\displaystyle\lim_{n \to \infty} a_n = 0$ n'implique pas la convergence de la série numérique associée.
+
+Une généralisation de la série harmonique est faite en changeant la puissance de $n$ dans la fraction, et on obtient alors les \emph{séries de Riemann}~:
+\begin{boxdef}[Série de Riemann]
+Une \emph{série de Riemann} est une série $\zeta(s)$ de terme général $a_n = \frac{1}{n^s}$, $n \geq 1$ et $s \in \mathbb{R}$~:
+\begin{equation}
+\zeta(s) = \sum_{n = 1}^{\infty} \frac{1}{n^s}
+\end{equation}
+La série de Riemann converge si et seulement si $s > 1$. La série harmonique est le cas $s = 1$.
+\end{boxdef}
+Les séries de Riemann sont primordiales dans l'analyse moderne, et la fonction zêta de Riemann est même l'objet d'un des \href{https://fr.wikipedia.org/wiki/Probl\%C3\%A8mes_du_prix_du_mill\%C3\%A9naire}{7 Problèmes du prix du millénaire} de l'institut Clay. Vous aurez donc l'occasion de les manipuler plus en détail durant le semestre.

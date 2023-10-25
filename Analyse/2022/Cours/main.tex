@@ -1,0 +1,130 @@
+\documentclass[oneside,12pt,french,table]{book}
+\usepackage[french]{babel}
+
+%
+% === S4S Theme ===
+%
+
+% Page format
+\usepackage[margin=1in]{geometry}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Colors
+\usepackage{xcolor}
+\definecolor{S4S-light}{HTML}{50527F}
+\definecolor{S4S-accent}{HTML}{2C2C5C}
+
+% Title customization
+\usepackage{titling}
+
+% Fancy chapters
+\usepackage[Bjornstrup]{fncychap}
+\ChTitleVar{\Large\flushright\bfseries}
+
+% Theorem styling and environments
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[chapter]
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Théorème}
+\newtheorem{corollaire}[definition]{Corollaire}
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remarque}
+
+% Boxed theorems
+\usepackage{tcolorbox}
+\newenvironment{greybox}{%
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+}{\end{tcolorbox}}
+
+\newenvironment{boxdef}{%
+    \begin{greybox}
+    \begin{definition}
+}{
+    \end{definition}
+    \end{greybox}
+}
+
+\newenvironment{boxthm}{%
+    \begin{greybox}
+    \begin{theorem}
+}{
+    \end{theorem}
+    \end{greybox}
+}
+
+\newenvironment{boxcorollary}{
+    \begin{greybox}
+    \begin{corollaire}
+}{
+    \end{corollaire}
+    \end{greybox}
+}
+
+% Paragraph spacing
+\usepackage{parskip}
+
+%
+% === Math packages ===
+%
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Custom commands
+\newcommand{\eqdef}{\stackrel{\textrm{déf.}}{=}}
+
+% Graphics
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,calligraphy} % curly braces
+\usepackage{float} % for float positioning, in particular the H modifier
+\usepackage{subcaption} % for subfigures and subcaptions
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\pgfplotsset{%
+  every tick label/.append style = {font=\tiny},
+  every axis label/.append style = {font=\scriptsize}
+}
+\usetikzlibrary{plotmarks}
+
+\usepackage{tkz-tab} % sign tables
+
+% Clickable links
+% (hyperref should stay the last import in most cases)
+\usepackage[colorlinks,allcolors=S4S-light,linktocpage]{hyperref}
+
+\title{Cours d'Analyse}
+\renewcommand{\maketitlehookb}{
+    \begin{center}
+    \includegraphics[scale=0.5]{assets/imgs/logo-round.png}
+    \end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\include{content/introduction}
+\include{content/rappels}
+\include{content/suites}
+\include{content/séries-numériques}
+\include{content/fonctions-continuité}
+\include{content/calcul-différentiel}
+
+\end{document}

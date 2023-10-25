@@ -1,0 +1,477 @@
+\documentclass[11.5pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{15pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Custom commands
+\newcommand{\enumeratelinefix}{\leavevmode \vspace{-\baselineskip}} % Start enumerate on next line (see amsthm documentation > break theorem style)
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+% Graphics
+\usepackage{graphicx}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Analyse -- Corrigé 1}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\begin{document}
+
+\maketitle
+
+\part{Suites numériques}
+
+\begin{exercice}[Calcul de limites]
+Ici, il faut se référer aux sections 2.3 et 2.4 du cours sur les suites. On utilisera notamment l'argument informel pour la limite de quotients de polynômes et également le théorème des deux gendarmes.
+
+\begin{enumerate}
+\item $\displaystyle \frac{1}{\sqrt{n + 2}} \approx 0$ quand $n$ est grand. On déduit  $\displaystyle \lim \limits_{n \to +\infty} a_n = 0$.
+
+\item $\displaystyle \frac{2n^4 - 5n^3 + 101n + 40}{7n^4 - 23n^2 + 83} \approx \frac{2n^4}{7n^4} = \frac{2}{7}$ quand $n$ est grand. On déduit  $\displaystyle \lim \limits_{n \to +\infty} b_n = \frac{2}{7}$.
+
+\item Comme $0 \leq \sin(n)^2 \leq 1$ pour tout $n$, on a $$\frac{-3}{n+1} \leq \frac{\sin(n)^2 - 3}{n + 1} \leq \frac{-2}{n+1}$$
+et on conclut par le théorème des deux gendarmes que  $\displaystyle \lim \limits_{n \to +\infty} c_n = 0$.
+
+\item $\displaystyle \frac{(-1)^n \cdot n^3 + 2n^2 - 501}{n^4 + 34n + 107} \approx \frac{(-1)^n}{n} \approx 0$ quand $n$ est grand.  On déduit  $\displaystyle \lim \limits_{n \to +\infty} d_n = 0$.
+
+\item $\displaystyle \frac{3n^2(n-4)}{(2n-1)(n^2+5)} \approx \frac{3n^3}{2n^3} = \frac{3}{2}$ quand $n$ est grand. On déduit $\displaystyle \lim \limits_{n \to +\infty} e_n = \frac{3}{2}$.
+
+\item Soit $\displaystyle f_n = \frac{f_{n-1}}{n}$ pour $n \geq 2$ et $f_1 = 1$. On remarque en calculant les premiers termes que 
+$$f_1 = 1, \ f_2 = \frac{1}{2}, \ f_3 = \frac{1}{2 \cdot 3}, \ f_4 = \frac{1}{2 \cdot 3 \cdot 4}, \ \cdots, f_n = \frac{1}{n!}$$
+où $n! = 1 \cdot 2 \cdot \ldots \cdot n$ est la \emph{factorielle} de $n$.
+
+Il est facile de voir que $\displaystyle 0 \leq \frac{1}{n!} = \frac{1}{n \cdot (n-1)!} \leq \frac{1}{n}$ pour tout $n \geq 1$, et ainsi on conclut par le théorème des deux gendarmes que  $\displaystyle \lim \limits_{n \to +\infty} f_n = 0$.
+
+\item L'idée principale ici est d'utiliser l'identité remarquable $(a-b)(a+b) = a^2 - b^2$, ce qui nous permet de simplifier le numérateur. Ainsi
+$$ \sqrt{n + 1} - \sqrt{n} = \frac{(\sqrt{n + 1} - \sqrt{n})(\sqrt{n + 1} + \sqrt{n})}{\sqrt{n + 1} + \sqrt{n}} = \frac{(\sqrt{n+1})^2 - (\sqrt{n})^2}{\sqrt{n + 1} + \sqrt{n}} = \frac{1}{\sqrt{n + 1} + \sqrt{n}} \approx 0$$ 
+quand $n$ est grand. On déduit  $\displaystyle \lim \limits_{n \to +\infty} g_n = 0$.
+
+\item[8.*] Similairement au point précédant, il nous faut utiliser l'identité (moins connue) $(a-b)(a^2 + ab + b^2) = a^3 - b^3$ pour pouvoir simplifier nos racines cubiques. Ainsi, on calcule
+\begin{align*}
+    \sqrt[3]{n+5} - \sqrt[3]{n} &= \frac{\left[\sqrt[3]{n+5} - \sqrt[3]{n} \right]  \cdot \left[(\sqrt[3]{n+5})^2 + \sqrt[3]{n+5} \cdot \sqrt[3]{n} + (\sqrt[3]{n})^2 \right]}{(\sqrt[3]{n+5})^2 + \sqrt[3]{n+5} \cdot \sqrt[3]{n} + (\sqrt[3]{n})^2} \\
+    &= \frac{(\sqrt[3]{n+5})^3 - (\sqrt[3]{n})^3}{(\sqrt[3]{n+5})^2 + \sqrt[3]{n+5} \cdot \sqrt[3]{n} + (\sqrt[3]{n})^2} \\
+    &= \frac{5}{(\sqrt[3]{n+5})^2 + \sqrt[3]{n+5} \cdot \sqrt[3]{n} + (\sqrt[3]{n})^2} \approx 0
+\end{align*}
+quand $n$ est grand. On déduit  $\displaystyle \lim \limits_{n \to +\infty} h_n = 0$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Propriétés élémentaires des limites]
+Par l'exercice 1, $\displaystyle \lim \limits_{n \to +\infty} b_n = \frac{2}{7}$ et $\displaystyle \lim \limits_{n \to +\infty} e_n = \frac{3}{2}$. En utilisant les règles de linéarité, produit, quotient de limites de la section 2.3 du cours sur les suites, on déduit
+
+\begin{enumerate}
+    \item $\displaystyle \lim \limits_{n \to +\infty} \frac{b_n}{e_n} = \frac{(2/7)}{(3/2)} = \frac{4}{21}$
+    \item $\displaystyle \lim \limits_{n \to +\infty}  b_n^2 =\lim \limits_{n \to +\infty}  b_n \cdot b_n =  \frac{2}{7} \cdot \frac{2}{7} = \frac{4}{49}$
+    \item $\displaystyle \lim \limits_{n \to +\infty}  (7b_n + 2e_n) = 7 \cdot \frac{2}{7} + 2 \cdot \frac{3}{2} = 2 + 3 = 5$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Convergence et divergence]
+\enumeratelinefix
+\begin{enumerate}
+    \item $\displaystyle \frac{-3n^8 + 45n^6 - n^3 - 1}{101n^5 - 46n^3 + 2n^2 + 29} \approx \frac{-3n^8}{101n^5} \approx -\frac{3n^3}{101}$ quand $n$ est grand. On déduit $a_n$ diverge vers $-\infty$.
+    
+    \item En calculant les premiers termes, on remarque que 
+    $$b_1 = 0, b_2 = -1, b_3 = 0, b_4 = 1, b_5 = 0, b_6 = -1, b_7 = 0, b_8 = 1, ...$$ 
+    i.e. la suite alterne entre les valeurs $-1,0,1$ sans jamais se stabiliser sur l'une d'entre elles. On déduit que la suite diverge. De plus, la suite est bornée, donc elle ne diverge pas vers $\pm \infty$.
+    
+    \item $\displaystyle \frac{3n^2 + 102n + 2}{(n+47)^2} \approx \frac{3n^2}{n^2} \approx 3$ quand $n$ est grand. On déduit  $\displaystyle \lim \limits_{n \to +\infty} c_n = 3$.
+    
+    \item Ici, on utilise la même idée qu'au point 7. de l'exercice 1.
+     \begin{align*}
+     \sqrt{2n + 1} - \sqrt{n} &= \frac{(\sqrt{2n + 1} - \sqrt{n})(\sqrt{2n + 1} + \sqrt{n})}{\sqrt{2n + 1} + \sqrt{n}} \\ 
+     &= \frac{(\sqrt{2n+1})^2 - (\sqrt{n})^2}{\sqrt{2n + 1} + \sqrt{n}} \\
+     &= \frac{n+1}{\sqrt{2n + 1} + \sqrt{n}} \\
+     &\geq \frac{n}{\sqrt{4n} + \sqrt{4n}} = \frac{\sqrt{n}}{4}
+     \end{align*}
+     On déduit que $d_n$ diverge vers $+\infty$ par le théorème d'un gendarme.
+     
+    \item $\displaystyle \frac{(-1)^n \cdot n^2 + 1}{n + 2} \approx \frac{(-1)^n \cdot n^2}{n} \approx (-1)^n \cdot n$ quand $n$ est grand. Cette suite est non-bornée, donc elle diverge. De plus, elle alterne entre valeurs négatives et positives sans jamais se stabiliser, donc elle ne diverge pas vers $\pm \infty$.
+    
+    \item $\displaystyle f_n =  2f_{n-1}$ pour $n \geq 2$ et $f_1 = 1$. On remarque en calculant les premiers termes que 
+$$f_1 = 1, \ f_2 = 2, \ f_3 = 2 \cdot 2, \ f_4 = 2 \cdot 2 \cdot 2, \ \cdots, f_n = 2^{n-1}$$
+On a donc $f_n = \frac{1}{2} \cdot 2^n$ qui va diverger de manière "exponentielle" vers $+\infty$ de manière analogue à la suite géométrique $x_n = 2^n$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Vrai/Faux]
+\enumeratelinefix
+\begin{enumerate}
+    \item Faux. Il suffit de considérer $x_n = (-1)^n$ qui est bornée, mais alterne entre les valeurs $-1$ et $1$ sans jamais se stabiliser
+    \item Faux. Il suffit de prendre $(x_n)$ une suite bornée qui ne converge pas et $(y_n)$ une suite constante qui borne $(x_n)$. Par exemple, $x_n = (-1)^n$ et $y_n = 2$ pour tout $n$. Dans cet énoncé, le théorème des deux gendarmes ne s'applique pas, car il manque une suite $(z_n)$ qui borne inférieurement $(x_n)$, i.e. $z_n \leq x_n \leq y_n$ pour tout $n \geq 1$, et qui convergerait vers la même limite que $(y_n)$.
+    \item Vrai. Il suffit d'appliquer la règle de linéarité et de produit de limites.
+    \item Faux. Par définition, $\lim \limits_{n \to +\infty} x_n = +\infty$ signifie que la suite $(x_n)$ diverge vers $+\infty$, malgré la notation.
+    \item Vrai. On se souvient que $-1 \leq \sin(n) \leq 1$ pour tout $n$. Alors
+    $$- x_n \leq x_n \sin(n) \leq x_n$$
+    pour tout $n$. Les suites $(x_n)$ et $(-x_n)$ convergeant toutes deux vers $0$ (par hypothèse pour $(x_n)$ et par linéarité de limites pour $(-x_n)$), le théorème des deux gendarmes s'applique.
+    \item Faux. Il suffit de prendre $x_n = \frac{1}{n}$. La suite de termes $\frac{1}{x_n} = n$ diverge.
+    \item Faux. Pour qu'une suite soit croissante. il faut que $x_{i+1} \geq x_i$ pour tous les indices $i \in \mathbb N$. Par exemple, la suite $(x_n) = (-1)^n$ n'est pas croissante, mais pour $i = 1$, on a bien $x_2 = 1 \geq -1 = x_1$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Suites monotones et/ou bornées]
+On rappelle qu'une suite $(x_n)$ est croissante (respectivement décroissante) si $x_{n+1} \geq x_n$ pour tout $n \geq 1$ (respectivement $x_{n+1} \leq x_n$ pour tout $n \geq 1$) et que la suite est bornée s'il existe $B > 0$ tel que $- B < x_n < B$ pour tout $n \geq 1$.
+\begin{enumerate}
+    \item La suite est à la fois croissante et décroissante, car $a_{n+1} = a_n$ pour tout $n$. Elle est également bornée : $-2 < a_n = 1 < 2$ pour tout $n$.
+    
+    \item La suite est croissante, car $$b_{n+1}-b_n = (n+1)^2 + 2(n+1) + 10 - n^2 - 2n - 10 = 2n + 3 \geq 0 \quad \forall n \geq 1$$
+    Elle est non-bornée, car $b_n \geq n^2$ pour tout $n \geq 1$. Si on se donne n'importe quel $B > 0$, il suffit de prendre un indice $n > B+1$ pour obtenir $b_n \geq n^2 > (B+1)^2 > B$, i.e. la suite ne peut pas être encadrée par une borne $B$ fixe.
+    
+    \item La suite est croissante, car
+    \begin{align*}
+        c_{n+1}-c_n &= \frac{(n+1)+3}{(n+1)+4} - \frac{n+3}{n+4} \\
+        &= \frac{(n+4)(n+4) - (n+3)(n+5)}{(n+4)(n+5)} \\
+        &= \frac{n^2 + 8n + 16 - n^2 - 8n - 15}{(n+4)(n+5)} \\
+        &= \frac{1}{(n+4)(n+5)} \geq 0 \quad \forall n \geq 1
+    \end{align*}
+    De plus, la suite est bornée, car $\displaystyle 0 < c_n \leq \frac{n+4}{n+4} = 1$ pour tout $n \geq 1$.
+    
+    \item La suite n'est ni croissante, ni décroissante. En effet, on a 
+    $$\sin(x) \geq 0 \text{ si } x \in [2k \pi, (2k + 1)\pi], \quad k \in \mathbb{Z}$$
+    et 
+    $$\sin(x) \leq 0 \text{ si } x \in [(2k+1) \pi, (2k+2)\pi], \quad k \in \mathbb{Z}$$
+    On déduit par exemple que $\sin(1) > 0$, $\sin(4) < 0$, $\sin(7) > 0$ et donc la suite ne peut pas être croissante ou décroissante.
+    
+    Cependant, elle est bornée, car $-1 \leq \sin(n) \leq 1$ pour tout $n \geq 1$.
+    
+    \item La suite se réécrit comme 
+    $$e_n = \frac{3^n}{2^{n+5}} = \frac{1}{2^5} \cdot \left( \frac{3}{2} \right)^n$$
+    La suite est alors croissante, car
+    $$\frac{e_{n+1}}{e_n} = \frac{3}{2} > 1 \quad \forall n \geq 1$$
+    De plus, de manière analogue à la suite géométrique $\displaystyle x_n = \left( \frac{3}{2} \right)^n$, la suite $e_n$ est non-bornée et diverge vers $+\infty$
+    
+    \item La suite n'est ni croissante, ni décroissante. En effet, on a $$f_1 = 0, f_2 < 0, f_3 = 0, f_4 > 0, f_5 = 0, ...$$
+    
+    Elle est non-bornée, car $|f_n| = n^2$ pour tout indice $n$ pair.
+    
+    \item[7.*] La suite est croissante, car 
+    $$g_{n} - g_{n-1} =  \frac{g_{n-1}^2 + 1}{2} - g_{n-1} = \frac{g_{n-1} - 2g_{n-1} + 1}{2} = \frac{(g_{n-1}-1)^2}{2} \geq 0 \quad \forall n \geq 2$$
+ 
+    En particulier, $g_n \geq g_1 \geq 2022$ pour tout $n \geq 1$. Ainsi, on déduit également que
+    $$g_{n} \geq \frac{g_{n-1} \cdot g_{n-1}}{2} \geq \frac{2022 g_{n-1}}{2} \geq 1011 g_{n-1} \quad \forall n \geq 2$$
+    En itérant, on obtient
+    $$g_n \geq 1011 g_{n-1} \geq 1011^2 g_{n-2} \geq ... \geq 1011^{n-1}g_1 = 2\cdot 1011^n$$
+    donc la suite est non-bornée et diverge vers $+\infty$ de manière analogue à la suite géométrique $x_n = 1011^n$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Encore une suite]
+\enumeratelinefix
+\begin{enumerate}
+    \item Comme $x_1 \geq 1$, on a $\displaystyle 0 < \frac{1}{x_1} \leq 1$. On déduit donc
+    $$1 = 2 - 1 \leq x_2 = 2 - \frac{1}{x_1} \leq 2 - 0 = 2$$ 
+    \item Comme $1 \leq x_{n-1} \leq 2$, on a $\displaystyle \frac{1}{2} \leq \frac{1}{x_{n-1}} \leq 1$. On déduit donc
+    $$1 = 2 - 1 \leq x_n = 2 - \frac{1}{x_{n-1}} \leq 2 - \frac{1}{2} \leq 2$$ 
+    \item Pour avoir une idée de la monotonicité de la suite, on peut observer que si on prend $x_1 > 2$, alors $x_2 < 2$ et donc la suite ne pourra pas être croissante. En fait, la suite est décroissante peu importe $x_1 \geq 1$. Pour prouver cela, on étudie la différence $x_{n} - x_{n-1}$ pour $n \geq 2$. On a
+    \begin{alignat*}{3}
+        &\phantom{\iff} &&x_n - x_{n-1} &&\overset{?}{\leq} 0 \\
+        &\iff &&2 - \frac{1}{x_{n-1}} - x_{n-1} && \overset{?}{\leq} 0 \\
+        &\underset{x_{n-1} > 0}{\iff}  &&2x_{n-1} -1 - x_{n-1}^2 && \overset{?}{\leq} 0 \\
+        &\iff &&-(x_{n-1}-1)^2 && \overset{?}{\leq} 0
+    \end{alignat*}
+    La dernière inégalité est toujours vraie ! Ainsi, la suite est décroissante.
+    
+    Une autre manière, très similaire, de prouver la décroissance est d'observer directement que
+    $$x_n - x_{n-1} = 2 - \frac{1}{x_{n-1}} - x_{n-1} = -\frac{1}{x_{n-1}}(x_{n-1}^2 - 2x_{n-1} + 1) = -\frac{1}{x_{n-1}}(x_{n-1}- 1)^2 \leq 0$$
+    
+    \item La relation de récurrence peut se réécrire comme
+    $$x_n - 2 + \frac{1}{x_{n-1}} = 0 \quad \forall n \geq 2$$
+    Le côté droit de l'égalité est une suite constante qui converge donc vers $0$. Pour le côté gauche, on utilise les propriétés de linéarité et quotient de limites : si $\displaystyle \lim \limits_{n \to +\infty} x_n = \lim \limits_{n \to +\infty} x_{n-1} = l$, alors la suite $$x_n - 2 + \frac{1}{x_{n-1}}$$
+    doit converger vers $\displaystyle l - 2 + \frac{1}{l}$. On déduit
+    $$l - 2 + \frac{1}{l} = 0$$
+    ce qui est équivalent à $l^2 - 2l + 1 = (l - 1)^2 = 0$, c'est-à-dire $l = 1$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[(Facultatif) Divergence vers $\pm \infty$ des suites monotones, non-bornées]
+Soit $(x_n)_{n \geq 1}$ une suite positive, croissante et non-bornée.
+Comme $(x_n)_{n \geq 1}$ est non-bornée, pour tout $B > 0$ aussi grand que l'on veut, il existe un indice $n_0 \in \mathbb N$ tel que $|x_{n_0}| > B$.
+Comme $(x_n)$ est une suite positive, on a en fait $x_{n_0} > B > 0$.
+Finalement, on déduit $x_{n} \geq x_{n_0} > B > 0$ pour tout $n \geq n_0$ étant donné que la suite est croissante, ce qui conclut la preuve.
+\end{exercice}
+
+\part{Séries numériques}
+\begin{exercice}[Série géométrique]
+\enumeratelinefix
+\begin{enumerate}
+    \item Il suffit de montrer le cas $n = 0$ et l'étape d'induction~:
+    \begin{itemize}
+        \item \underline{Initialisation :} Pour $n = 0$, l'égalité est vérifiée puisque
+        \[
+        \sum_{k = 0}^{0} r^k = r^0 = 1 \quad \textrm{ et } \quad \frac{1 - r^1}{1 - r} = 1
+        \]
+        \item \underline{Induction :} Supposons que 
+        \[
+        \sum_{k = 0}^{n} r^k = \frac{1 - r^{n+1}}{1 - r}
+        \]
+        Alors on a~:
+        \[
+        \sum_{k = 0}^{n+1} r^k = \sum_{k = 0}^{n} r^k + r^{n+1} \stackrel{(*)}{=} \frac{1 - r^{n+1}}{1-x} + r^{n+1}
+        \]
+        où l'on a utilisé en $(*)$ l'hypothèse de récurrence. Ainsi, l'équation se réduit à~:
+        \[
+        \frac{1-r^{n+1} + (1-r)r^{n+1}}{1-r} = \frac{1 - r^{n+2}}{1-r}
+        \]
+        Ce qui est bien ce que l'on cherche. Donc l'égalité est vraie pour tout $n \in \mathbb{N}$.
+    \end{itemize}
+    
+    \item Par définition des séries numériques, on obtient grâce au point ci-dessus~:
+    \[
+    \sum_{k = 0}^{\infty} r^k = \lim_{n \to \infty} \sum_{k = 0}^{n} r^k = \begin{cases}
+    \displaystyle\lim_{n \to \infty} \frac{1 - r^{n+1}}{1-r} & \textrm{si } r \neq 1 \\
+    \displaystyle\lim_{n \to \infty} n + 1 & \textrm{si } r = 1
+    \end{cases}
+    \]
+    On distingue alors 4 cas~:
+    \begin{itemize}
+        \item Si $r = 1$ alors la série diverge trivialement puisque $\displaystyle\lim_{n \to \infty} n + 1 = \infty$.
+        \item Si $r = -1$ alors la série diverge de même puisque $\displaystyle\lim_{n \to \infty} (-1)^{n+1}$ n'existe pas.
+        \item Si $|r| > 1$ alors $\displaystyle\lim_{n \to \infty} r^{n+1}$ est infinie si $r > 0$ ou n'existe pas si $r < 0$. Ainsi \emph{la série diverge}.
+        \item Si $|r| < 1$ alors $\displaystyle\lim_{n \to \infty} r^{n+1} = 0$, et donc la série converge~:
+        \[
+        \sum_{k = 0}^{\infty} r^k = \frac{1}{1-r}
+        \]
+    \end{itemize}
+    Le domaine de convergence de la série est donc l'ensemble $D = \left ] -1, 1 \right [$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Convergence]
+\enumeratelinefix
+\begin{enumerate}
+    \item On reconnait ici une série géométrique de raison $\frac{1}{5}$ car $\frac{1}{5^n} = (\frac{1}{5})^n$ et donc d'après ce qu'on a vu en cours cette série converge car $\left|\frac{1}{5}\right| < 1$.
+    \\
+    Il faut cependant faire attention car la série commence à 1 et non 0 et donc il faut pas oublier de soustraire la valeur quand $n=0$ pour appliquer la formule (c'est une erreur subtile mais très fréquente). On a donc
+    \[
+    \sum_{n=1}^\infty \frac{1}{5^n} = \frac{1}{1 - \frac{1}{5}} - 1 = \frac{1}{4}
+    \]
+    
+    \item Pour cette série il fallait se rendre compte que la limite du terme général $a_n$ n'est pas 0, et ainsi on trouve la réponse à notre question en utilisant la condition nécessaire de convergence.
+    \\
+    \\
+    Vous avez lu dans le cours que le théorème peut être tourné de cette manière~: si la limite en l'infini de $a_n$ n'est pas 0, alors la série diverge. Mais pourquoi mathématiquement ? Le théorème est une simple implication $P \implies Q$ où $P$ et $Q$ sont les propositions "la série de terme général $(a_n)$ converge" et "la suite $(a_n)$ converge vers 0". Comme vous le verrez en AICC, une proposition est une expression qui peut être \emph{vraie} (V) ou \emph{fausse} (F). On peut alors analyser quelle valeur prend cette implication en fonction des valeurs de vérité de $P$ et $Q$, à l'aide d'une \emph{table de vérité}~:
+    \[
+    \begin{array}{|c|c|c|} \hline % <-- steps b, c; optional c, d
+    P & Q & P \implies Q\\ \hline
+    V & V & V\\
+    V & F & F\\
+    F & V & V\\
+    F & F & V\\
+    \hline
+    \end{array} % <-- step e
+    \]
+    Vous remarquerez qu'une implication est fausse seulement dans le deuxième cas, où $P$ est vraie et $Q$ est fausse. Ceci est dû au fait qu'une implication reste vraie si le postulat de départ est faux (on peut impliquer ce qu'on veut si au départ la proposition est fausse\footnote{C'est ce qu'on appelle en logique le \emph{principe d'explosion}~: \url{https://fr.wikipedia.org/wiki/Principe_d\%27explosion}}), et si les 2 propositions sont vraies, ce qui semble logique à priori. Analysons de même la table de vérité de $\neg Q \implies \neg P$, i.e. la \emph{contraposée} de $P \implies Q$~:
+    
+    \[
+    \begin{array}{|c|c|c|} \hline % <-- steps b, c; optional c, d
+    \neg P & \neg Q & \neg Q \implies \neg P\\ \hline
+    F & F & V\\
+    F & V & F\\
+    V & F & V\\
+    V & V & V\\
+    \hline
+    \end{array} % <-- step e
+    \]
+    On remarque que les colonnes de droite des 2 tableaux sont les mêmes. On dit alors que les expressions sont \emph{équivalentes}, car elles ont les mêmes valeurs de vérité. Ainsi, on peut reformuler notre implication en termes de la contraposée, en restant mathématiquement valable.
+
+    Maintenant qu'on a prouvé ça, on peut aller au concret. La limite $\displaystyle\lim_{n \to \infty} \frac{n^3 + 4}{n^3 + 2}$ peut être déduite par la proposition sur les limites des quotients de polynômes. En effet, étant donné que les 2 polynômes en haut et en bas sont du même degré, la limite s'obtient avec le quotient des coefficients devant les termes ayant le plus haut degré, donc ici $\frac{1}{1} = 1$. Puisque la limite du terme général n'est pas 0, la série diverge donc.
+    
+    \item Cette série n'a rien de très spécial~; cependant, elle vous montre que les séries peuvent des fois être amenées à être écrites d'une manière farfelue mais qu'en manipulant un peu l'expression algébrique, beaucoup peut être simplifié. Premièrement, puisque l'exponentielle et le logarithme sont des fonctions réciproques, $e^{\ln(n)} = n$. On obtient alors
+    \[
+    \frac{n\cdot 4^{n-2}}{n\cdot 5^{n-3}} = \frac{4^{n-2}}{5^{n-3}} = \frac{4^{-2}}{5^{-3}}\left(\frac{4}{5}\right)^n = \frac{125}{16} \left(\frac{4}{5}\right)^n
+    \]
+    qui n'est rien d'autre qu'une série géométrique de raison $\frac{4}{5}$ et donc la valeur de la série vaut
+    \[
+    \frac{125}{16}\left(\frac{1}{1 - \frac{4}{5}} - 1\right) = \frac{125}{4}
+    \]
+    car on oublie pas de soustraire 1 vu que la série commence à 1 et non 0.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\enumeratelinefix
+\begin{enumerate}
+    \item Pour cette première série regardons les premiers termes de la somme partielle de terme général $(a_n = \frac{1}{n^2 + 1})$~:
+    \[
+    S_n = \sum_{k = 0}^{n} \frac{1}{k^2 + 1} = \frac{1}{2} + \frac{1}{5} + \frac{1}{10} + \frac{1}{17} + ... 
+    \]
+    Regardons désormais les premiers termes de la somme partielle de terme général $(b_n = \frac{1}{n^2})$~:
+    \[
+    T_n = \sum_{k = 0}^{n} \frac{1}{k^2} = 1 + \frac{1}{4} + \frac{1}{9} + \frac{1}{16} + ... 
+    \]
+    On remarque que pour n'importe quel $n \geq 1$, $S_n \leq T_n$, et que $(S_n)$ est une suite croissante, puisqu'on ajoute des termes positifs. Étant donné que l'on sait que la série $\displaystyle\sum_{n = 1}^{\infty} b_n = \sum_{n=1}^\infty \frac{1}{n^2}$ converge, alors on peut conclure par le critère de comparaison que la série $\displaystyle\sum_{n=1}^\infty \frac{1}{n^2 + 1}$ converge également.
+ 
+    Vous remarquerez peut être, mais le raisonnement n'est pas passé par les suites $(a_n)$ et $(b_n)$, mais plutôt par les suites de sommes partielles $(S_n)$ et $(T_n)$, pour pouvoir visualiser plus facilement le critère de comparaison. Une autre manière de faire, peut-être plus directe, aurait été de remarquer que
+    \[
+    \forall n \geq 1, \quad n^2 + 1 \geq n^2 \implies 0 \leq \frac{1}{n^2 + 1} \leq \frac{1}{n^2}
+    \]
+    Et ainsi on peut appliquer mot pour mot le critère de comparaison pour trouver que $\displaystyle\sum_{n = 1}^{\infty} \frac{1}{n^2 + 1}$ converge. Dans les deux cas, vous pouvez utiliser la méthode qui vous convient le mieux.
+    
+    \item On utilise le même raisonnement que pour le point 1. Ici on veut soit chercher une série qui converge avec un terme général $b_n$ qui est toujours plus grand que le terme général $a_n$ de l'exercice pour un certain $n_0 \in \mathbb{N}$, soit une série qui diverge avec un terme général $b_n$ qui est toujours plus petit que le terme général $a_n$ de l'exercice pour un certain $n_0 \in \mathbb{N}$.
+    \\
+    \\
+    Voici les premiers termes de la série terme général $(a_n)$~:
+    \[
+    \sum_{n = 1}^{\infty} \frac{1}{\sqrt{n + 2}} = \frac{1}{\sqrt{3}} + \frac{1}{\sqrt{5}} + \frac{1}{\sqrt{7}} + ... 
+    \]
+    Observons maintenant les termes de la série de terme général $(b_n = \frac{1}{\sqrt{n}})$~:
+    \[
+    \sum_{n = 1}^{\infty} \frac{1}{\sqrt{n}} = 1 + \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{3}} + ... 
+    \]
+    Est-ce qu'on observe la même chose qu'avant ? En effet, si l'on dénote les suite de sommes partielles $S_n = \sum_{k=1}^n \frac{1}{\sqrt{k + 2}}$ et $T_n = \sum_{k=1}^n \frac{1}{\sqrt{k}}$, alors
+    \[
+    \forall n \geq 1, S_n \leq T_n 
+    \]
+    Est-ce vous voyez peut être le problème ce qu'on vient de faire ? La série $\displaystyle\sum_{n=1}^\infty \frac{1}{\sqrt{n}}$ diverge car
+    \[
+    \sum_{n = 1}^{\infty} \frac{1}{\sqrt{n}} = \sum_{n = 1}^{\infty} \frac{1}{n^{\frac{1}{2}}}
+    \]
+    est une série de Riemann, de paramètre $s = \frac{1}{2} < 1$~; on ne peut donc pas conclure de cette inégalité la convergence ou divergence de notre série. La bonne hypothèse à avoir est que la série est divergente. Essayons maintenant de trouver une suite $(b_n)$ qui est toujours plus petite que $(a_n = \frac{1}{\sqrt{n + 2}})$, et dont la série diverge aussi. Testons une suite qu'on connait bien~: $b_n = \frac{1}{n}$.
+    
+    On peut remarquer que pour tout $n \geq 2$,
+    \[
+    \sqrt{n + 2} \leq n \implies \frac{1}{\sqrt{n + 2}} \geq \frac{1}{n}
+    \]
+    Vu qu'on sait que la série harmonique diverge, on peut conclure avec le critère de comparaison que la série de terme général $(a_n)$ diverge également.
+    
+    \item Pour cette série il fallait également se rendre compte que vu que la fonction $\ln(n) \leq n$, $\forall n \in \mathbb{N}^{*} $, alors
+    \[
+    \frac{1}{\ln(n)} \geq \frac{1}{n} \geq 0, \quad \forall n \geq 2
+    \]
+    et donc avec un peut de manipulation algèbrique on arrive à la conclusion aussi que
+    \[
+    \frac{1}{\ln(n - 1)} = \frac{1}{\ln(n)} \underbrace{\frac{\ln(n)}{\ln(n-1)}}_{\geq 1} \geq \frac{1}{n} \geq 0, \quad \forall n \geq 3
+    \]
+    Ainsi, vu que la série harmonique diverge, on peut conclure par le critère de comparaison que la série $\displaystyle\sum_{n=3}^\infty \frac{2}{\ln(n - 1)}$ diverge.
+    \end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}[Vrai/Faux]
+\enumeratelinefix
+\begin{enumerate}
+    \item Faux. Considérons la suite définie par $a_n = 1 + \frac{1}{n}$ pour $n \geq 1$, qui est décroissante et même convergente de limite $1$. Cependant, la suite $(-1)^n a_n$ ne converge pas, elle alterne entre des valeurs supérieures à $1$ et des valeurs inférieures à $-1$.
+    
+    Or par la condition nécessaire de convergence, si $\displaystyle\sum_{n=0}^\infty (-1)^n a_n$ converge, il faut que $(-1)a_n$ converge vers 0, ce qui n'est pas le cas ici.
+    
+    \item Faux. On peut poser $a_n = 1 + \frac{1}{n}$, on a bien que $\displaystyle\lim_{n \to \infty} a_n = 1$ mais
+    \[
+    \sum_{n = 0}^{\infty} (a_n - 1) = \sum_{n=0}^{\infty} \frac{1}{n} \quad \textrm{diverge}
+    \]
+    
+    Dans un cas plus général, $\displaystyle \lim_{n\to \infty} a_n = 0$ \emph{n'implique pas} la convergence de $\displaystyle \sum_{n=0}^{\infty} a_n$.
+    
+    \item Faux. L'énoncé ressemble fortement au critère de comparaison, à cela près que \emph{la suite $(a_n)$ n'est pas non-négative}. Notre critère ne marche donc pas~: par exemple, si l'on considère $b_n = \frac{1}{n^2}$ et $a_n = -n$, alors on sait par le cours que $\displaystyle\sum_{n = 1}^{\infty} b_n$ converge et que $a_n \leq b_n$ pour tout $n$, mais il est évident que $\displaystyle\sum_{n = 1}^{\infty} a_n$ diverge puisque $\displaystyle\lim_{n \to \infty} a_n = -\infty \neq 0$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Pour aller plus loin]
+\enumeratelinefix
+\begin{enumerate}
+
+    \item C'est un type de série qui tombe régulièrement en exercice car elles permettent d'entrainer pas mal de manipulations algébriques qui sont souvent mal comprises. \emph{Le principe est de décomposer cette série en 2 séries dont les sommes partielles vont s'annuler} (on peut ensuite généraliser avec plus que 2 séries bien sûr) grâce à des changements d'indices dans les sommes.
+    
+    On va utiliser ce qu'on appelle la décomposition en éléments simples. On a la fraction $\frac{1}{n(n+5)}$ mais on voudrait l'avoir sous la forme
+    \[
+         \frac{A}{n} + \frac{B}{n+5}, \quad A,B \in \mathbb{R}^{*}
+    \]
+    C'est équivalent à dire que
+    \[
+        \frac{A}{n} + \frac{B}{n+5} = \frac{A(n+5) + Bn}{n(n+5)} = \frac{(A + B) + 5A}{n(n+5)} = \frac{1}{n(n+5)}
+    \]
+    Par identification, on en déduit le système suivant
+    \[
+       \frac{(A + B)n + 5A}{n(n+5)} = \frac{0 \cdot n + 1}{n(n+5)} \implies \begin{cases}
+       A + B & = 0 \\
+       5A & = 1
+       \end{cases}
+    \]
+    Après avoir résolu ce système, on trouve finalement $A = \frac{1}{5}$ et $B = -\frac{1}{5}$.
+    
+    Maintenant que l'on possède cette fraction décomposée, on peut réécrire notre somme partielle~:
+    \[
+    S_n = \sum_{k = 1}^{n} \frac{1}{k(k+5)} = \sum_{k = 1}^{n} \frac{1}{5k} - \frac{1}{5(k+5)} = \frac{1}{5}\left(\sum_{k = 1}^{n} \frac{1}{k} - \sum_{k = 1}^{n} \frac{1}{k+5}\right)
+    \]
+    Notre objectif est de simplifier les 2 sommes que l'on a créé. Si l'on étend les termes de nos deux sommes, on obtient~:
+    \begin{align*}
+    \sum_{k = 1}^{n} \frac{1}{k} & = 1 + \frac{1}{2} + \frac{1}{3} + ... + \frac{1}{n} \\
+    \sum_{k = 1}^{n} \frac{1}{k + 5} & = \frac{1}{6} + \frac{1}{7} + \frac{1}{8} + ... + \frac{1}{n} + \frac{1}{n + 1} + \ldots + \frac{1}{n + 5}
+    \end{align*}
+    Les termes de $\frac{1}{6}$ à $\frac{1}{n}$ sont en commun aux deux sommes, donc ils se simplifient lors de la soustraction. Ainsi, il nous reste uniquement les termes $1$, $\frac{1}{2}$, jusqu'à $\frac{1}{5}$, ainsi que les termes $\frac{1}{n+1}$ jusqu'à $\frac{1}{n+5}$ qui sont soustraits~:
+    \begin{align*}
+    S_n & = \frac{1}{5} \left(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} - \frac{1}{n + 1} - \frac{1}{n + 2} - \frac{1}{n + 3} - \frac{1}{n + 4} - \frac{1}{n + 5}\right) \\
+    & = \frac{137}{300} - \frac{1}{5}\left(\frac{1}{n + 1} + \frac{1}{n + 2} + \frac{1}{n + 3} + \frac{1}{n + 4} + \frac{1}{n + 5}\right)
+    \end{align*}
+    Puisque les derniers termes tendent vers $0$ lorsque l'on prend la limite à l'infini, la valeur de la série est finalement
+    \[
+    \sum_{n=1}^\infty \frac{1}{n(n+5)} = \lim_{n \to \infty} S_n = \frac{137}{300}
+    \]
+    
+    \item Pour se donner une idée si cette série peut converger, on calcule la limite du terme général en utilisant le hint~:
+    \[
+    \lim_{n \to \infty} ne^{\frac{1}{n}} - n = \lim_{n \to \infty} n\left(\sum_{k=0}^\infty \frac{(\frac{1}{n})^k}{k!} - 1\right)
+    \]
+    Cette série semble complexe mais tentons d'écrire les premiers termes~:
+    \[
+    \lim_{n \to \infty} n\left(\sum_{k=0}^\infty \frac{1}{k! \cdot n^k} - 1\right) = \lim_{n \to \infty} n\left(1 + \frac{1}{n} + \frac{1}{2n^2} + \frac{1}{6n^3} + \ldots - 1\right)
+    \]
+    Les 1 s'annulent, et on peut distribuer le facteur $n$ pour simplifier~:
+    \[
+    \lim_{n \to \infty} n\left(\frac{1}{n} + \frac{1}{2n^2} + \frac{1}{6n^3} + \ldots\right) = \lim_{n \to \infty} 1 + \frac{1}{2n} + \frac{1}{6n^2} + \ldots
+    \]
+    Seul le premier terme constant ne tend pas vers $0$ lorsque $n$ tend vers l'infini, donc la limite vaut $1$. La limite du terme général étant différente de 0, la série diverge.
+\end{enumerate}
+\end{exercice}
+\end{document}
