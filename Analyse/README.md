@@ -4,12 +4,12 @@
 
 #### 2023
 - Cours :heavy_check_mark:
-- Série 1 :X:
-- Série 2 :X:
-- Corrigé Série 1 :X:
-- Corrigé Série 2 :X:
-- Slides 1 :X:
-- Slides 2 :X:
+- Série 1 :x:
+- Série 2 :x:
+- Corrigé Série 1 :x:
+- Corrigé Série 2 :x:
+- Slides 1 :x:
+- Slides 2 :x:
 
 #### 2022
 - Cours :heavy_check_mark:
