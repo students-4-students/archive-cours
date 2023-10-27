@@ -3,8 +3,8 @@
 ### Suivi du Contenu
 
 #### 2023
-- Cours & Exos :x:
+:x:
 
 #### 2022
-- Cours & Exos :heavy_check_mark:
+:heavy_check_mark:
 
