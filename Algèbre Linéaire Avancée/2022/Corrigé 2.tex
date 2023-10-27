@@ -1,0 +1,199 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+\newtheoremstyle{corrigé}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{corrigé}
+\newtheorem{corrigé}{Corrigé Exercice}
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Algèbre Linéaire Avancée I - Corrigé II}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\begin{document}
+
+\maketitle
+\vspace{1em}
+\begin{corrigé}
+\,
+\begin{enumerate}
+\item Supossons que $z*x=z*y$. Alors, on peut multiplier cette égalité à gauche par $z^{-1} \in G $ pour obtenir
+$$z^{-1} * (z * x) = z^{-1} * (z * y).$$
+En utilisant la propriété d'associativité de $G$, on en déduit
+¨$$(z^{-1} * z) * x = (z^{-1} * z) * y.$$
+Enfin, en sachant que $z^{-1} * z = e_G$, on obtient
+$$e_G * x = e_G * y \text{ et donc } x = y.$$
+\item  Le raisonnement est identique à gauche.
+\item Par la définition de l'inverse dans $G$, on sait que $x*x^{-1}=x^{-1}*x=e_G$ pour tout $x \in G$. \\
+On remarque que, en inversant les rôles, $x$ vérifie bien la définition de l'inverse de $x^{-1}$: $x = \left( x^{-1} \right) ^{-1}$.
+\item Pour vérifier que $z = y^{-1} * x^{-1}$ est l'inverse de $x * y$, il suffit de vérifier les égalités $(x * y) * z = z * (x * y) = e_G$. \\
+On a $$(x * y) * (y^{-1} * x^{-1}) = x * (y * y^{-1}) * x^{-1} = x * e_G * x^{-1} = x * x^{-1} = e_G,$$
+et de la même manière pour $(y^{-1} * x^{-1}) * (x * y) = e_G$. \\ \\
+L'inverse d'un produit s'écrit donc dans le "bon sens" seulement lorsque le groupe est abélien! \\
+\end{enumerate}
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+$G \times H$ sera abélien à condition que (et même si et seulement si) $(G,\star)$ et $(H,*)$ sont tous deux abéliens. \\
+Soient $g_1,g_2 \in G$ et $h_1,h_2 \in H$. \\
+\\
+$\bullet$ Si $G$ et  $H$ sont tous deux abéliens, on a:
+$$(g_1,h_1) \cdot (g_2,h_2) = (g_1 \star g_2, h_1 * h_2) = (g_2 \star g_1, h_2 * h_1) = (g_2,h_2) \cdot (g_1,h_1)$$
+et donc $G \times H$ est abélien. \\
+\\
+$\bullet$ Si $G \times H$ est abélien, on fait le raisonnement dans l'autre sens:
+$$(g_1,h_1) \cdot (g_2,h_2) = (g_2,h_2) \cdot (g_1,h_1) \implies (g_1 \star g_2,h_1 * h_2) = (g_2 \star g_1, h_2 * h_1),$$
+donc $g_1 \star g_2 = g_2 \star g_1$ et $h_1 * h_2 = h_2 * h_1$. Ainsi, $G$ et $H$ sont également abéliens.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+1) $\mathbb{N}$ n'est pas un sous-groupe de $\mathbb{Z}$ car la propriété d'élément inverse n'est pas vérifiée: pour $n \geq 1$, $-n \notin \mathbb{N}$. \\ \\
+2) $H$ est un sous-groupe. En effet, il vérifie le critère de sous-groupe:
+$$\text{Pour tous } x,y >0, \text{ on a } \dfrac{x}{y} > 0.$$
+3) Ce sous-ensemble est un sous-groupe. Pour $(g,e_2)$ et $(g',e_2) \in G \times \{e_2\}$, on a (vérifiez le!) que $(g',e_2)^{-1} = (g'^{-1},e_2)$. \\
+Ainsi:
+$$(g,e_2) \cdot (g',e_2)^{-1} = (g,e_2) \cdot (g'^{-1},e_2) = (g \star_1 g'^{-1},e_2 \star_2 e_2) \in G \times {e_2},$$
+car $g \star_1 g'^{-1} \in G$ (parce que $G$ est un groupe) et $e_2 \star_2 e_2 = e_2$. \\
+Le critère de sous-groupe est vérifié.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+Soient $(G, \star)$, $(H,*)$ et $(F, \diamond )$ trois groupes. \\
+Soient $\varphi: G \longrightarrow H$ et $\psi : H \longrightarrow F$ deux morphismes de groupes, c.à.d. que $$\varphi( g \star g') = \varphi(g) * \varphi(g') \; \text{ et } \; \psi(h * h') = \psi(h) \diamond \psi(h').$$
+Alors: 
+$$\psi \big( \varphi(g \star g') \big) = \psi \big( \varphi(g) * \varphi(g') \big) = \psi \big( \varphi(g) \big) \diamond \psi \big( \varphi(g') \big),$$
+et donc $\psi \circ \varphi : G \longrightarrow F$ est un morphisme de groupes.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+Il s'agit de montrer le critère de sous-groupe. \\
+Soient $a,b \in H \cap K$. Montrons que $a \star b^{-1} \in H \cap K$. \pagebreak \\
+$\bullet$ Comme $a,b \in H$, et que $H$ est un sous-groupe, on sait que $a \star b^{-1} \in H$ (par le critère de sous-groupe). \\
+$\bullet$ Comme $a,b \in K$, et que $K$ est un sous-groupe, on sait que $a \star b^{-1} \in K$ (idem). \\ 
+\\
+Ainsi, on a montré que $a \star b \in H \cap K$, et donc le critère de sous-groupe est vérifié. \\
+\\
+L'énoncé ne ferait pas de sens sans l'existence du groupe $G$. En effet, même si l'intersection $H \cap K$ n'était pas vide, il se pourrait que les lois internes et donc les structures de $H$ et $K$ ne soient pas du tout les mêmes. Dans ce cas, comment choisir celle du sous-groupe $H \cap K$?
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+1) Rappelons que $$\ker(\phi) = \{ g \in G : \phi(g)=e_H \}.$$
+On veut montrer le critère de sous-groupe: pour tous $a,b \in \ker(\phi)$, on veut montrer que $a \star b^{-1} \in \ker(\phi)$. \\ \\
+Si $a$ et $b$ sont des éléments du noyau, par définition $\phi(a)=\phi(b) = e_H$. \\
+Par la proposition vue en cours, $\phi(b^{-1}) = \phi(b)^{-1}$. Ici, $\phi(b)=e_H$, et l'inverse de $e_H$ reste $e_H$. \\
+Ainsi, $\phi(b^{-1}) = e_H$. \\
+Enfin, comme $\phi(a \star b^{-1}) = \phi(a) * \phi(b^{-1})=e_H * e_H = e_H$, on obtient que $$\phi(a \star b^{-1}) = e_H.$$ 
+Cela veut dire, par définition, que $a \star b^{-1} \in \ker(\phi)$, et donc on a démontré le critère de sous-groupe. \\
+\\
+2) On applique ici aussi le critère de sous-groupe. \\
+Si $h$ et $h'$ sont des éléments de $\text{Im}(\phi)$, alors ils peuvent s'écrire respectivement $\phi(g) = h$ et $\phi(g') = h'.$ \\
+On sait, en particulier, que $h'^{-1} = \phi(g')^{-1} = \phi(g'^{-1})$. \\
+Ainsi:
+$$h * h'^{-1} = \phi(g) * \phi(g'^{-1}) = \phi(g \star g'^{-1}).$$
+Comme $G$ est un groupe, $g \star g'^{-1}$ reste bien un élément de $G$. Donc, il existe un $g'' = g \star g'^{-1}$ tel que $\phi(g \star g'^{-1}) = h * h'^{-1}$, c'est-à-dire que $h * h'^{-1} \in \text{Im}(\phi)$. \\
+Cela montre le critère de sous-groupe.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+On veut montrer que $H$ est abélien, c'est-à-dire $h * h' = h' * h$ pour tous $h,h' \in H$. \\
+\\
+Soient donc $h,h' \in H$. Par hypothèse, $\phi : G \longrightarrow H$ est surjectif, et donc tout élément de $h$ est atteint par l'image de $\phi$. Il existe forcément $g, g' \in G$ tels que $$\phi(g) = h \; \text{ et } \; \phi(g') = h'.$$
+Comme $\phi$ est un morphisme de groupes, on a $$\phi(g + g') = \phi(g) * \phi(g') = h * h' \; \text{ et } \; \phi(g'+g) = h' * h.$$
+Enfin, comme $G$ est abélien, $g+g'=g'+g$ et donc $\phi(g+g')=\phi(g'+g)$. On en déduit $h * h' = h' * h$, et donc $H$ est abélien.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}[Anneaux et Morphismes*]
+1) On sait que $0_A +_A a = a$ pour tout $a \in A$. \\
+Ainsi: $$\varphi(a + 0_A) = \varphi(a) + \varphi(0_A) = \varphi(a),$$
+dont on conclut que $\varphi(0_A)$ doit être l'élément neutre pour $+_B$, c'est-à-dire $0_B$. \\
+Si $\varphi$ n'est pas le morphisme nul, il existe un $a \in A$ tel que $\varphi(a) \neq 0_B$. Alors, comme $a = a * 1_A$:
+$$\varphi(a * 1_A) = \varphi(a) \star \varphi(1_A) = \varphi(a),$$
+dont on déduit à nouveau que $\varphi(1_A)$ doit être l'élément neutre pour $\star$ dans $B$, c'est-à-dire $1_B$. \\ \\
+2) Soient $x, y \in \ker(\varphi)$. On sait que $\varphi(x) = \varphi(y) = 0_B$. \\
+$\varphi(x + y) = \varphi(x) + \varphi(y) = 0_B + 0_B=0_B$, et $\varphi(x*y) = \varphi(x) * \varphi(y) = 0_B * 0_B = 0_B$. \\
+$x+y$ et $x * y$ sont donc bien dans $\ker(\varphi)$. \\
+\\
+Pour pouvoir dire que $\ker(\varphi)$ est un sous-anneau de $A$, il faudrait $1_A \in \ker(\varphi)$. Ici, si $\varphi$ n'est pas le morphisme nul, on a $\varphi(1_A) = 1_B$, et donc $1_A \notin \ker(\varphi)$. \\
+\\
+En fait, énoncer un critère de sous-anneau de la forme ``$D \subseteq A$ est un sous-anneau $\iff \text{ Pour tous } a,b,c \in D, \, a \star b - c \in D$'' ne marche pas: si $D$ ne contient aucun élément inversible dans $A$, on ne peut pas utiliser le critère avec $b=a^{-1}$ et $c=0_A$ pour retrouver $1_A \in D$. \\
+\\
+Cependant, on a abouti à un résultat qui est utilisé dans la question 3): si il existe un élément inversible dans $\ker(\varphi)$, alors $1_A \in \ker(\varphi)$ et donc $\varphi$ est le morphisme nul. \\ \\
+3)a) On utilise le résultat ci-dessus. On sait que $\varphi$ n'est pas nul. Si il y avait un élément inversible dans $\ker(\varphi)$, il y aurait une contradiction. \\
+Or, comme $A$ est un corps, les éléments inversibles sont tous les éléments non-nuls! \\
+On en déduit que $\ker(\varphi) = \{0_A\}$, et donc par le critère d'injectivité que $\varphi$ est injectif. \\
+\\
+b) Soit $x \in A \setminus \{0_A\}$. On sait que $x$ est inversible dans $A$. Comme $\varphi$ est un morphisme (non-nul),
+$$1_B = \varphi(x * x^{-1}) = \varphi(x) \star \varphi(x^{-1}),$$
+et de la même manière $$1_B = \varphi(x^{-1} * x) = \varphi(x^{-1}) \star \varphi(x).$$
+On en déduit, comme pour les groupes, que $\varphi(x)^{-1} = \varphi(x^{-1}) \in \varphi(A)$, et donc que $\varphi(A)$ est un anneau inversible. \\
+\\
+Notons que cela implique le résultat suivant: si $\varphi: A \longrightarrow B$ est un morphisme d'anneaux surjectif, avec $A$ un corps, alors $B$ est un corps.
+\end{corrigé}
+\vspace{2em}
+
+
+
+\end{document}

@@ -1,0 +1,98 @@
+\textbf{\ul{Corrigé 1}:} \vskip 1em
+
+\vskip 3em
+
+\textbf{\ul{Corrigé 2}:} \vskip 1em
+
+\vskip 3em
+
+\textbf{\ul{Corrigé 3}:} \vskip 1em
+
+a) Unions: \newline
+$$A \cup B = \{ 1,3,5,6,7 \}, \quad A \cup C = \{ 1,2,3,5,7 \}, \quad B \cup C = \{ 2,3,5,6,7 \}$$ $$A \cup B \cup C = \{ 1,2,3,5,6,7 \}.$$ Intersections: \newline
+$$A \cap B = \{ 5,7 \}, \quad A \cap C = \{ 3 \}, \quad B \cap C = \emptyset, \quad A \cap B \cap C = \emptyset.$$
+\vspace{1em}
+b) $A \setminus B = \{ 1,3 \}, \; A \setminus C = \{ 1,5,7 \}, \; B \setminus C = B, \; B \setminus A = \{ 6 \}, \; C \setminus A = \{ 2 \}, \; C \setminus B = C$.
+c) $$\mathcal{P}(B) = \Big\{ \emptyset, \{5\},\{6\},\{7\},\{5,6\},\{5,7\},\{6,7\},B \Big\}.$$
+\vskip 3em
+
+\textbf{\ul{Corrigé 4}:} \vskip 1em
+1) Comme vu en cours, cette application n'est ni injective ni surjective. \newline \newline
+L'application n'est pas injective car $f(-1) = f(1)$, et plus généralement $f(-x) = x$. Une application est dite injective lorsque deux éléments distincts n'ont jamais la même image: ici $-1$ et $1$ sont des éléments distincts dont l'image est la même. \newline \newline
+Elle n'est pas surjective parce que certains éléments de l'ensemble d'arrivée $\mathbb{R}$ ne sont pas atteints: c'est le cas de $-1$. \newline
+L'équation $x^2=-1$ n'a pas de solution dans $\mathbb{R}$: il n'existe aucun élément $x \in \mathbb{R}$ tel que $f(x) = -1$. \newline \newline
+Comme vu en cours, en restreignant l'ensemble de départ à $\mathbb{R}_+$, on règle le premier problème et on obtient une injection. En restreignant l'ensemble d'arrivée à $\mathbb{R}_+$, on règle le second problème et on obtient une surjection. \newline
+\newline
+\newline
+2) Cette application n'est pas injective mais est surjective. \newline
+\newline
+L'application n'est pas injective car certains éléments ont plus d'un antécédent. Par exemple, $(0,2)$ et $(2,0)$ donnent la même image $f(0,2) = f(2,0) = 2$. \newline
+\newline
+Elle est surjective parce que, pour tout $x \in \mathbb{R}$, l'antécédent $(x,0)$ vérifie $f(x,0) = x$. \newline
+On peut trouver un antécédent à tout élément de l'ensemble d'arrivée, et donc $f$ est surjective. \newline
+\newline
+\newline
+3) L'application est bijective. \newline
+\newline
+L'application est injective car $$f(x_1,x_2) = f(y_1,y_2) \implies \left\{ \begin{array}{rcl}
+x_1+x_2 &=& y_1+y_2 \newline
+x_1-x_2 &=& y_1-y_2
+\end{array} \right.
+$$
+En résolvant ce système, on aboutit aux conclusions $x_1 = x_2$ et $y_1 = y_2$. On a montré:
+$$f(x_1,x_2) = f(y_1,y_2) \implies (x_1,x_2)=(y_1,y_2),$$
+qui est la définition d'injectivité. \newline
+\newline
+Elle est surjective car $$f(x,y) = (a,b) \iff (x,y) = \Big( \dfrac{a-b}{2}, \dfrac{a+b}{2} \Big),$$
+et donc tout élément $(a,b) \in \mathbb{R}^2$ admet une préimage. \newline
+La manière de le prouver est la résolution du système
+$$f(x,y) = (a,b) \iff
+\left\{ \begin{array}{rcl}
+     x+y &=& a \newline
+     x-y &=& b
+\end{array} \right.$$
+\hspace{1em} \newline
+4) Cette application est surjective mais n'est pas injective. \newline
+\newline
+L'application est surjective par définition de l'ensemble $\mathbb{Q}$: tout élément $x \in \mathbb{Q}$, par définition, peut s'écrire comme $x = \frac{p}{q}$ avec $p \in \mathbb{Z}$  et $q \in \mathbb{Z}^*$. \newline
+Cependant, cette écriture n'est pas unique: $\frac{2}{4} = \frac{1}{2}$, et donc $f(1,2) = f(2,4)$ alors que $(1,2) \neq (2,4)$. \newline
+C'est ce manque d'unicité qui empêche l'application d'être injective, et donc (comme vu en cours) de la définir dans l'autre sens. \newline
+\newline
+\newline
+5) Cette application est une bijection. \newline
+En fait, au lieu de passer par les preuves de l'injectivité et de la surjectivité, on peut raisonner ainsi: si on trouve une application inverse $f^{-1}$, alors $f$ est une bijection. \newline
+\newline
+$f$ est définie comme une application qui envoie tout sous-ensemble $A \subseteq \mathbb{N}$ vers $\mathbb{N} \setminus A$, son \textit{complémentaire dans $\mathbb{N}$} (notons que $f$ envoie bien des \textit{ensembles} vers d'autres \textit{ensembles}). \newline \newline
+En fait, on se rend compte que $f$ est sa propre inverse. C'est ce qu'on appelle l'\textit{involutivité du complémentaire}: $$\mathbb{N} \setminus \big( \mathbb{N} \setminus A \big) = A.$$
+\vskip 3em
+
+\textbf{\ul{Corrigé 5}:} \vskip 1em
+L'union $A \cup B$ regroupe tous les éléments qui sont dans $A$, dans $B$ ou dans les deux. Ici, tous les éléments de $A$ sont déjà dans $B$ (par $A \subseteq B$) et donc $$A \cup B = B.$$ L'ensemble $A$, parce qu'il est compris dans $B$, est "redondant" pour l'opération d'union. \\
+\\
+L'intersection $A \cap B$ regroupe tous les éléments qui sont \textit{à la fois} dans $A$ et dans $B$. Ici, les éléments de $A$ sont aussi des éléments de $B$. Les autres éléments de $B$ ne sont par définition pas dans $A$: on a donc $$A \cap B = A.$$
+\vspace{1em}
+Enfin, la différence $A \setminus B$ regroupe les éléments qui sont dans $A$ \textit{sans} être dans $B$. Or, ici tous les éléments qui sont dans $A$ sont forcément aussi dans $B$: il n'y a aucun élément qui soit dans $A$ sans être dans $B$.
+$$A \setminus B = \emptyset.$$
+\vskip 3em
+
+\textbf{\ul{Corrigé 6}:} \vskip 1em
+a) On veut montrer une égalité entre les ensembles $A$ et $B$: on procède par double inclusion. \newline
+\newline
+\underline{$A \subseteq B$}. \newline
+Soit $a \in A$. On sait que, par définiton, $a \in A \cup B$. Comme $A \cup B = A \cap B$ par hypothèse, on sait que $a \in A \cap B$. \newline
+En particulier, on conclut que $a \in B$. Cela prouve la première inclusion. \newline
+\newline
+\underline{$B \subseteq A$}. \newline
+Le raisonnement est exactement le même: soit $b \in B$. Alors:
+$$b \in A \cup B \implies b \in A \cap B \implies b \in A.$$
+Cela prouve la seconde inclusion. \newline \newline \newline
+b) À partir des hypothèses, on aimerait montrer que $A \subseteq B$, c'est-à-dire que
+$$\text{Pour tout } b \in A, \; b \in C.$$
+Soit donc un $b \in B$ quelconque. On distingue deux cas: soit $b \in A$, soit $b \notin A$. \newline \newline
+Dans le premier cas, comme $b \in A$ et $b \in B$, on sait que $b \in A \cap B$. Par la seconde hypothèse, $A \cap B \subseteq A \cap C$ et donc $b \in A \cap C$. \newline
+En particulier, cela veut dire que $b \in C$. \newline
+Dans le second cas, $b \notin A$. On sait cependant que $b \in A \cup B$, et par la première hypothèse, $A \cup B \subseteq A \cup C$: ainsi $b \in A \cup C$ : soit $b$ est dans $A$, soit il est dans $C$. \newline
+On a supposé ici que $b \notin A$: on a donc forcément $b \in C$. \newline
+\newline
+Dans tous les cas, $b \in C$. \newline
+On a montré que $b \in B \implies b \in C$, et donc $B \subseteq C$.

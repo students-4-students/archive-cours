@@ -1,0 +1,184 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+\newtheoremstyle{corrigé}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{corrigé}
+\newtheorem{corrigé}{Corrigé Exercice}
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Algèbre Linéaire Avancée I - Corrigé III}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\begin{document}
+
+\maketitle
+\vspace{1em}
+\begin{corrigé}
+1) Une droite quelconque n'est pas forcément un sous-espace vectoriel du plan. Si elle ne passe pas par l'origine, elle ne contient pas le vecteur nul. \\
+Il faut se souvenir que, pour une approche géométrique, les vecteurs sont représentés comme \textit{partant de l'origine}. Vous pouvez vous convaincre, en faisant un schéma, que si $v$ et $w$ partent de l'origine et arrivent sur une droite \textit{qui ne passe pas par l'origine}, alors $v+w$ n'arrive \textit{pas} sur cette droite. \\
+Le critère de SEV n'est donc pas vérifié.
+\\
+\\
+2) Comme vu ci-dessus et discuté en cours, une droite qui passe par l'origine est un SEV. On peut s'en convaincre géométriquement, ou algébriquement. \\
+Algébriquement, une droite passant par l'origine est un sous-ensemble de $\mathbb{R}^2$ qui s'écrit
+$$D = \{  \lambda \cdot (a, b) : \lambda \in \mathbb{R} \}, \text{ pour un vecteur directeur } v= (a,b).$$
+Faire une combinaison linéaire de $v_1 = \lambda_1 \cdot (a, b)$ et $v_2 = \lambda_2 \cdot (a,b)$ dans $D$ donne:
+$$\mu_1 v_1 + \mu_2 v_2 = \big( (\mu_1 \lambda_1 + \mu_2\lambda_2) a, (\mu_1 \lambda_1 + \mu_2\lambda_2) b \big) = (\mu_1 \lambda_1 + \mu_2\lambda_2) \cdot (a,b) \in D,$$
+et donc le critère de sous-espace vectoriel est vérifié. \\
+\\
+3) $W$ est un sous-espace vectoriel. À nouveau, on applique le critère de sous-espace vectoriel. \\
+Si $v=(x_1,...,x_n)$ et $w=(y_1,...,y_n)$ sont dans $W$, alors
+$$x_1 + \cdots + x_n = 0 = y_1 + \cdots + y_n.$$
+Or,
+$$v+w = (x_1 + y_1,...,x_n+y_n),$$
+et donc la somme des coordonnées de $v+w$ donne bien 
+$$x_1 + y_1 + \cdots + x_n + y_n = (x_1 + \cdots + x_n) + (y_1 + \cdots + y_n) = 0 + 0 = 0,$$
+c'est-à-dire que $v+w \in W$. Le critère de SEV est vérifié.
+\end{corrigé}
+\begin{corrigé}
+1) Montrons que $W_1+W_2$ est un sous-espace vectoriel de $V$. Pour cela, on montre que $W_1+W_2$ est stable par combinaison linéaire dans $K$. \\ \\ 
+Soient $\lambda$ et $\mu \in K$ et $w,w' \in W_1+W_2$. Comme $w,w' \in W_1+W_2$, il existe $w_1,w_1' \in W_1$ et $w_2, w_2' \in W_2$ tels que $w=w_1+w_2$ et $w'=w_1'+w_2'$. Alors: \\
+$$\lambda w + \mu w' = \lambda(w_1+w_2) + \mu(w_1'+w_2') = (\lambda w_1 + \mu w_1') + (\lambda w_2 + \mu w_2').$$
+Or, comme $W_1$ est un SEV, on sait que $\lambda w_1 + \mu w_1' \in W_1$. Comme $W_2$ est un SEV, on sait que $\lambda w_2 + \mu w_2' \in W_2$. \\
+\\
+Ainsi, $\lambda w + \mu w'$ s'écrit bien comme la somme d'un élément de $W_1$ et d'un élément de $W_2$. On conclut bien que $$\lambda w + \mu w'\in W_1 + W_2,$$
+et donc le critère de sous-espace vectoriel est vérifié. \\ \\
+2) De la même manière, on utilise le critère de sous-espace vectoriel. Soient $\lambda, \mu \in K$ et $v,w \in W_1 \cap W_2$. Il suffit de montrer que 
+\[
+\lambda v+ \mu w \in W_1 \cap W_2, \; \text{ c.à.d. } \; \lambda v+ \mu w \in W_1 \; \text{et} \; \lambda v+ \mu w \in W_2
+\]
+En fait, la preuve est la même que pour les sous-groupes (série 2). Comme $W_1$ et $W_2$ sont individuellement des sous-espaces vectoriels, $\lambda v+ \mu w \in W_1$ et $\lambda v+ \mu w \in W_2$ sont vérifiés, et donc $$\lambda v+ \mu w \in W_1 \cap W_2.$$
+
+%3) On regarde dans quels cas il est possible que $\text{Vec}(W_1 \cup  W_2)=W_1 \cup W_2$. Remarquez que l'inclusion $W_1 \cup W_2 \subseteq \text{Vec}(W_1 \cup W_2)$ est immédiate car pour chaque élément $w \in W_1 \cup W_2$ il suffit de considérer $\{w\}\subseteq W_1 \cup W_2$ et $\lambda=1_K \in K$ (donc $1_K \cdot w \in\text{Vec} (W_1\cup W_2)$)
+
+%On étudie maintenant l'autre inclusion. Soit $w \in \text{Vec} (W_1 \cup W_2)$. Par définition il existent $\{w_1,..,w_n\} \subseteq W_1 \cup W_2$ et $\lambda_1,..,\lambda_n \in K$ tels que $w=\lambda_1 w_1+..+\lambda_n w_n$. On aimerait maintenant voir dans quels cas $w \in W_1 \cup W_2$ (i.e $w$ appartient à $W_1$ \textit{ou} $w$ appartient à $W_2$). On remarque que pour que $w$ soit dans $W_1$, il suffit que $W_2 \subseteq W_1$ (pour le cas où $w$ soit dans $W_2$ il suffit de considérer $W_1 \subseteq W_2$). Alors, si $W_2 \subseteq W_1$, comme $W_1$ et $W_2$ sans les sous espaces vectoriels, on a clairement $w \in W_1 \subseteq W_1\cup W_2$.
+
+%Le cas $w \in W_2$ peut être traité exactement de même manière.
+
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+1) \\
+a) L'application $g$ est linéaire. \\
+Pour $(v_1,w_1)$ et $(v_2,w_2)\in V \times W$, et $\lambda, \mu \in K$, on a 
+\begin{align*}
+	g \big( \lambda(v_1,w_1)+ \mu(v_2,w_2) \big) &=g(\lambda v_1+ \mu v_2, \lambda w_1+ \mu w_2)\\ 
+				     &=\lambda v_1+ \mu v_2 + \lambda w_1+ \mu w_2\\ 
+				     &=\lambda v_1+ \lambda w_1 + \mu v_2+ \mu w_2 \\
+&=\lambda (v_1+w_1)+ \mu(v_2+w_2) \\
+&=\lambda g(v_1,w_1)+ \mu g(v_2,w_2),
+\end{align*}
+et donc on a bien $g \big( \lambda(v_1,w_1)+ \mu(v_2,w_2) \big) = \lambda g(v_1,w_1)+ \mu g(v_2,w_2)$, c'est-à-dire que $g$ est linéaire. \\
+\\
+b) $\pi_i$ est linéaire. Pour $\lambda, \mu \in K$ et $(a_1,..,a_n),(b_1,..,b_n) \in K^n$, on a 
+\begin{align*}
+	\pi_i \big( \lambda(a_1,..,a_n)+\mu(b_1,..,b_n) \big) &=\pi_i(\lambda a_1+\mu b_1,..,\lambda a_n+ \mu b_n)\\ 
+					      &=\lambda a_i+ \mu b_i=\lambda \pi_i(a_1,..,a_n)+ \mu \pi_i(b_1,..,b_n),
+\end{align*}
+et donc $\pi_i$ est linéaire. \\
+\\
+c) L'application $f$ n'est pas linéaire. En effet pour les scalaires $\lambda, \mu \in K$ et les vecteurs $x = (x_1,x_2)$ et $y= (y_1,y_2) \in K^2$,
+$$f( \lambda x + \mu y) = f (\lambda x_1 + \mu y_1, \lambda x_2 + \mu y_2) = (\lambda x_1 + \mu y_1) \cdot (\lambda x_2 + \mu y_2).$$
+D'un autre côté, on a 
+$$\lambda f(x) + \mu f(y) = \lambda \cdot x_1 \cdot y_1 + \mu \cdot x_2 \cdot y_2.$$
+Pour montrer que ces deux expressions ne sont pas égales, considérons un cas qui simplifie les calculs: $x_1 = 0$  et $y_2 = 0$. Alors:
+$$f( \lambda x + \mu y) = (\lambda x_1 + \mu y_1) \cdot (\lambda x_2 + \mu y_2) = \mu \cdot y_1 \cdot \lambda \cdot x_2 \text{ et}$$
+$$\lambda \cdot x_1 \cdot y_1 + \mu \cdot x_2 \cdot y_2 = 0 + 0 = 0.$$
+En choisissant $\mu$, $y_1$, $\lambda$ et $x_2$ non-nuls, par intégrité (on travaille dans un corps) on a $\mu \cdot y_1 \cdot \lambda \cdot x_2 \neq 0$. Les deux expressions ne sont pas égales pour ce cas spécifique, donc elles ne peuvent pas être égales en général. \\
+\\
+2) Supposons que $f(X)$ est libre dans $W$ est montrons que $X$ est libre dans $V$. \\
+Pour $\lambda_1,...,\lambda_n \in K$ on a 
+\begin{align*}
+	\lambda_1 x_1+..+\lambda_k x_k&=0\\ 
+	\iff f(\lambda_1x_1+..\lambda_kx_k)&=f(0)=0\\
+	\iff \lambda_1f(x_1)+..+\lambda_kf(x_k)&=0
+\end{align*}
+Or, comme $f(X) = \{ f(x_1),...,f(x_n) \}$ est libre, on a que forcément $\lambda_1= \cdots =\lambda_k=0$. \\
+Ainsi, $\lambda_1 v_1 + \cdots + \lambda_n v_n = 0$, et donc on a obtenu l'implication:
+$$\lambda_1 x_1 + \cdot + \lambda_k x_k = 0 \implies \lambda_1 = \cdots = \lambda_k = 0,$$
+ce qui veut dire que $X$ est libre. \\
+\\
+3) Soit $y \in f(V)$. Il existe $v \in V$ tel que $f(v)=y$. De plus, comme $X$ génère $V$, il existe $\lambda_1,...,\lambda_k \in K$ tels que $v=\lambda_1 x_1+ \cdots +\lambda_k x_k$. Ainsi,
+\begin{align*}
+f(v)=f(\lambda_1 x_1+..+\lambda_k x_k)=\lambda_1 f(x_1)+..+\lambda_k f(x_k)=y.
+\end{align*}
+$y$ s'écrit donc comme combinaison linéaire d'éléments de $f(X) = \{f(x_1,...,f(x_k) \}$. Comme $y$ était arbitrairement choisi dans $f(V)$, on conclut que $f(X)$ engendre $f(V)$.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+Soient $V,W$ deux $K$ espaces vectoriels de dimension finie. On montre l'énoncé par double implication. \\
+\\
+\underline{$"\implies"$}: Si $V$ et $W$ sont isomorphes, alors il existe un isomorphisme $\varphi: V \longrightarrow W$. Par le rappel, il envoie toute base de $V$ sur une base de $W$. Comme tout élément dans $W$ est atteint exactement une fois ($\varphi$ est une bijection), alors une base $B \subseteq V$ contenant $n$ éléments est envoyée vers un ensemble contenant $n$ éléments. Par le rappel, cet ensemble est une base. Donc les bases de $W$ ont la même taille que les bases de $V$, et $\dim(V) = \dim(W)$.
+\\
+\\
+\underline{$"\impliedby"$}: Supposons maintenant que $V$ et $W$ sont de la même dimension (disons $n \in \mathbb{N}$) et  considérons leur bases respectives $\mathcal{B}_V=\{v_1,..,v_n\}$ et $\mathcal{B}_W=\{w_1,..,w_n\}$. Il suffit de considérer l'application $\phi:V\mapsto W$ caractérisée par
+\[
+\phi(v_i)=w_i, \; \forall i \leq n.
+\]
+Comme cette application envoie une base de $V$ sur une base de $W$, on conclut par le rappel que $\phi$ est un isomorphisme, et donc que $V$ et $W$ sont isomorphes.
+\end{corrigé}
+\end{document}

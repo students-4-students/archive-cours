@@ -1,0 +1,139 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Algèbre Linéaire Avancée I - Série II}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\renewcommand{\maketitlehookd}{
+}
+
+\begin{document}
+
+\maketitle
+\vspace{1em}
+\begin{exercice}
+Soit $(G,*)$ un groupe pour lequel l'élément neutre est noté $e$ et l'inverse de $x \in G$ est notée $x^{-1}$. \\
+À partir des 3 propriétés qui définissent les groupes, montrer les propriétés suivantes, pour tous $x,y,z \in G$: \\
+\\
+1) $z * x = z * y \implies x = y$ (simplification à gauche). \\
+2) $x*z =y*z \implies x = y$ (simplification à droite). \\
+3) $\left( x^{-1} \right) ^{-1} = x$ (involutivité de l'inverse). \\
+4) $(x * y) ^{-1} = y^{-1} * x^{-1}$ (anti-commutativité de l'inverse).
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Pour $(G,\star)$ et $(H,*)$ deux groupes, leur produit cartésien $G \times H$ reste un groupe pour la loi de groupe ``coordonnée par coordonnée''. À quelle condition ce groupe est-il abélien?
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Pour le groupe $G$ et le sous-ensemble $H \subseteq G$, est-ce que $H$ est un sous-groupe de $G$? Justifier. \\ \\
+1) $G = (\Z,+)$ et $H = \N$. \\
+2) $G = (\R^*, \ \cdot \ )$ et $H = \R_+^*$. \\
+3) Pour $(G_1,\star_1)$ et $(G_2,\star_2)$ deux groupes, $G = G_1 \times G_2$ et $H = G_1 \times \{e_2\}$, où $e_2$ est l'élément neutre de $G_2$.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Montrer que la composée de deux morphismes de groupes reste un morphisme de groupes. \\
+Si $(G,\star)$, $(H,*)$ et $(F,\diamond)$ sont des groupes et $\varphi : G \longrightarrow H$ et $\psi : H \longrightarrow F$ sont deux morphismes de groupes, montrer que $\psi \circ \varphi : G \longrightarrow F$ est un morphisme de groupes.
+\end{exercice}
+\vspace{2em}    
+\begin{exercice}
+Soient $H,K \subseteq G$ deux sous-groupes de $(G,\star)$. Montrer que $H \cap K$ est un sous groupe de $H$ et de $K$ (et a fortiori de $G$). \\
+Est-ce que l'énoncé ferait du sens sans l'existence du groupe $G$?
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Soient $G(\star)$ et $(H,*)$ deux groupes, et $\phi : G \longrightarrow H$ un morphisme de groupes. \\
+1) Montrer que $\ker(\phi)$ est un sous-groupe de $G$. \\
+2) Montrer que $\text{Im}(\phi)$ est un sous-groupe de $H$.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Soit $(G,+)$ un groupe abélien et $(H,*)$ un autre groupe. \\
+S'il existe un morphisme de groupes $\phi : G \longrightarrow H$ surjectif, montrer que $H$ est abélien.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}[Anneaux et morphismes*]
+Soient $(A,+,*)$ et $(B,+,\star)$ deux anneaux et $\varphi : A \longrightarrow B$ un morphisme d'anneaux (non-trivial), c'est-à-dire que $$\varphi(a * b + c) = \varphi(a) \star \varphi(b) + \varphi(c) \; \text{ pour tous } \; a,b,c \in A.$$
+1) Montrer que $\varphi(0_A) = 0_B$ et $\varphi(1_A) = 1_B$. \\
+\\
+2) Montrer que si $x,y \in \ker(\varphi)$, alors $x + y \in \ker(\varphi)$ et $x * y \in \ker(\varphi)$. \\
+Malgré ces propriétés, on ne considère généralement pas $\ker(\varphi)$ comme un sous-anneau de $A$. Sauriez-vous dire pourquoi? \\
+\\
+3) Supposons que $A$ est un corps et que $\varphi$ n'est pas le morphisme nul. \\
+Montrer que \\
+\indent a) $\varphi$ est injectif. \\
+\indent b) $\varphi(A)$ est inversible: pour tout $x \in A \setminus \{0_A\}$, il existe $y \in B$ tel que $$y \star \varphi(x) = \varphi(x) \star y = 1_B.$$
+\textit{Indication: le critère d'injectivité vu pour les groupes est également valable pour les anneaux (et les corps).}
+\end{exercice}
+
+
+
+
+
+
+\end{document}

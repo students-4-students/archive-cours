@@ -1,0 +1,1075 @@
+
+\documentclass[oneside,12pt,french,table]{book}
+\usepackage[french]{babel}
+\usepackage[margin=1in]{geometry}
+
+\ProvidesPackage{preamble}
+
+\usepackage{parskip}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\usepackage{graphicx}
+
+
+%  http://math.univ-lyon1.fr/irem/IMG/pdf/LatexPourLeProfDeMaths.pdf
+
+%$\begin{array}{ccccc}
+%f & : & E & \to & F \\
+% & & x & \mapsto & f(x) \\
+%\end{array}$
+\usepackage{lmodern}
+\usepackage{soul}
+\usepackage{wrapfig}
+% scinder en deux parties triangulaires de même aire une cellule initialement rectangulaire 
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tikz,tkz-tab}
+\usepackage{lipsum} 
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+%\usepackage{setspace}
+ % pour insérer des images 
+% Voici les commandes importants pour cadrer ton image ( ici mon image s'appelle Capture.jpeg j'ai déconné dans le nom mdr  
+%   \includegraphics[scale=0.5]{Capture.jpg.jpeg} l'image est réduite de moitié                               \includegraphics[width=10cm]{Capture.jpg.jpeg} l'image est retaillée pour avoir une largeur de 10cm \includegraphics[height=10cm]{Capture.jpg.jpeg} l'image est retaillée pour avoir une hauteur de 10cm \includegraphics[angle=0]{Capture.jpg.jpeg} l'image est tournée de 0°
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{multirow} % pour fusionner lignes tableaux
+\usepackage{url} % pour les url lol
+\usepackage{wrapfig}% pour countourner image 
+% pour écrire des maths: 
+%  “amsmath” “amssymb” et “mathrsfs”
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{amsfonts}
+
+
+
+\usepackage{pgfplots}
+\usepackage{pstricks}
+
+\usepackage{enumerate}
+
+\usepackage{hyperref}
+\usepackage{pst-all}
+\usepackage{pst-plot}
+\usepackage{pstricks-add}
+
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{xlop}
+
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Span}{Vec}
+
+%Commandes
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\usepackage{amsthm}
+\newtheorem{theorem}{Théorème}[section]
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem*{props}{Propriétés}
+
+\newtheorem{df}{Définition}[section]
+\theoremstyle{definition}
+
+\newtheorem*{proposition}{Proposition}
+\theoremstyle{definition}
+
+\newtheorem*{example}{Exemple}
+\newtheorem*{examples}{Exemples}
+% \newtheoremstyle{def}% name of the style to be used
+% {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+% {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+% {}% name of font to use in the body of the theorem
+% {0pt}% measure of space to indent
+% {\bfseries}% name of head font
+% { }% punctuation between head and body
+% { }% space after theorem head; " " = normal interword space
+% {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+
+% \theoremstyle{def}
+% \newtheorem{definition}{Définition}[section]
+
+
+
+% Lorem ipsum paragraphs
+\usepackage{lipsum}
+
+% Paragraph spacing
+\usepackage{parskip}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Fancy chapters
+\usepackage[Bjornstrup]{fncychap}
+\ChTitleVar{\Large\flushright\bfseries}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Theorem styling and environments
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[chapter]
+
+\newtheorem*{remark}{Remarque}
+
+% Boxed theorems
+\usepackage{tcolorbox}
+\newenvironment{boxdef}{
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+    \begin{definition}
+}{
+    \end{definition}
+    \end{tcolorbox}
+}
+
+\newenvironment{boxthm}{
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+    \begin{theorem}
+}{
+    \end{theorem}
+    \end{tcolorbox}
+}
+
+% Graphics
+\usepackage{tikz}
+\usepackage{float} % for float positioning, in particular the H modifier
+\usepackage{subcaption} % for subfigures and subcaptions
+\usepackage{pgfplots}
+\pgfplotsset{%
+  every tick label/.append style = {font=\tiny},
+  every axis label/.append style = {font=\scriptsize}
+}
+
+% Clickable links
+\usepackage{xcolor} % table for colored tables
+\definecolor{S4S-light}{HTML}{50527F}
+\definecolor{S4S-accent}{HTML}{2C2C5C}
+\usepackage[colorlinks,allcolors=S4S-light,linktocpage]{hyperref}
+
+\title{
+    Algèbre Linéaire Avancée I \\ \vspace{0.5cm}
+    \includegraphics[scale=0.5]{assets/imgs/S4S_logo.png}
+}
+\author{Students 4 Students \\
+Notes inspirées de l'ouvrage du professeur Marc Troyanov.}
+\date{Septembre 2022}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Notions sur les  ensembles}
+\section{Introduction}
+Une grande majorité des mathématiques modernes repose sur la Théorie des Ensembles. C'est pour son lien étroit avec la Logique Mathématique, et son importance en Algèbre Linéaire, que nous la rappelons ici. \\
+\\
+En Théorie des Ensembles, on n'étudie plus les \textit{objets} mathématiques un seul à la fois (\textit{un} nombre entier ou \textit{un} segment d'une droite) mais les regroupements de ces objets, appelés \textit{ensembles} (l'ensemble des nombres entiers, l'ensemble des segments d'une droite, ...), que l'on considère eux-mêmes comme objets. Ainsi, on dira que le chiffre 3 \textit{appartient} à l'ensemble des nombres entiers positifs (que l'on note $\mathbb{N}$). \\
+Cela s'écrit $$3 \in \mathbb{N},$$
+où ``$\in$'' est le symbole qui signifie ``appartient à''. \\
+\\
+Un ensemble peut en contenir un autre. L'ensemble des nombres entiers positifs, par exemple, est compris dans l'ensemble des nombres entiers, parce que chaque nombre entier positif est un nombre entier. On parle d'\textit{inclusion}: $\mathbb{N}$ est inclus dans l'ensemble des nombres entiers, $\mathbb{Z}$. On le note
+$$\mathbb{N} \subseteq \mathbb{Z}.$$
+On dit, de manière équivalente, que $\mathbb{Z}$ contient $\mathbb{N}$ et que $\mathbb{N}$ est un \textit{sous-ensemble} de $\mathbb{Z}$.\\ La proposition ``$\mathbb{N} \subseteq \mathbb{Z}$'' peut se détailler comme ``si l'élément $n$ appartient à $\mathbb{N}$, alors il appartient à $\mathbb{Z}$'', c'est-à-dire $$n \in \mathbb{N} \implies n \in \mathbb{Z}.$$
+Cette analogie entre inclusion et implication révèle que ensembles et propositions logiques sont deux faces d'une même pièce. \\
+Par \textit{proposition logique}, on entend un énoncé qui, appliqué à chaque élément dans un ensemble de départ $X$, peut être vrai ou faux. \\ \\
+On peut donc comprendre une proposition comme l'ensemble des éléments de $X$ pour laquelle elle est vraie. De la même manière, un ensemble peut être assimilé à la proposition qui régit quels objets lui appartiennent. C'est du fait de cette analogie que le langage des ensembles est aujourd'hui si central en mathématiques. \\ \\
+Lorsque deux propriétés $P$ et $Q$ sont équivalentes (symbole ``$\iff$''), c'est qu'elles sont vraies pour exactement les mêmes objets: leurs ensembles associés sont égaux. L'équivalence étant une double implication, elle est analogue à une double inclusion entre les ensembles associés. Cela prouve le premier résultat important de ce cours.
+\begin{prop}[Règle de double-inclusion]
+Deux ensembles $A$ et $B$ sont égaux si et seulement si $A \subseteq B$ et $B \subseteq A$.
+\end{prop}
+\noindent
+Cette proposition est facile à prouver de manière purement ensembliste (ce sera un exercice). Cependant, comprendre l'analogie entre ensembles et propositions logiques est essentiel pour étudier la plupart des domaines mathématiques modernes. 
+\begin{remark}
+Le fait qu'il existe des propositions vraies pour aucun élément d'un ensemble (par exemple ``$x^2 < 0$'' dans l'ensemble $\mathbb{Z}$) motive la définition d'un (unique) ensemble ne contenant aucun élément: c'est l'ensemble vide, noté $\emptyset$. On considère que tout ensemble $E$ admet $\emptyset$ comme sous-ensemble. \\
+Son existence est centrale à la Théorie des Ensembles, tout comme le chiffre $0$ est essentiel à l'arithmétique.
+\end{remark}
+\noindent
+Dans la suite de ce polycopié, la Théorie des Ensembles sera non seulement utilisée comme point de départ pour introduire les structures plus complexes de l'Algèbre Linéaire, mais aussi omniprésente dans les raisonnements nécessaires. Il est important d'y accorder temps et patience avant d'étudier les objets et domaines qui en découlent. \\
+\\
+Notons enfin que cette introduction à la Théorie des Ensembles est au mieux naïve: une définition entièrement rigoureuse des ensembles mathématiques serait plus complexe et n'aurait à ce stade aucun intérêt didactique. Une compréhension intuitive des notions présentées vous suffira dans le contexte de ce cours, et même durant vos premières années d'études.
+
+\section{Opérations}
+\noindent La notion d'ensembles nous porte naturellement à définir certaines opérations sur ceux-ci. En suivant seront données leur définition dans le langage ensembliste, et leur analogie avec les propositions logiques. \\
+Dans tout ce qui suit, $A$, $B$ et $C$ désignent des ensembles quelconques, tous compris dans un ensemble de départ $X$. $\mathcal{A},$ $\mathcal{B}$ et $\mathcal{C}$ désignent leurs propositions associées respectives.
+\newpage
+\begin{definition}[Union]
+On désigne par l'\textit{union} de $A$ et $B$ l'ensemble $A \cup B$ des éléments appartenant soit à $A$, soit à $B$ (soit aux deux). Ainsi:
+$$A \cup B = \{ a \in X : x \in A \text{ ou } x \in B \}.$$
+\end{definition}
+\noindent $A \cup B$ est donc l'ensemble associé à la proposition ``$\mathcal{A} \vee \mathcal{B}$'' (``$\vee$'' est le symbole signifiant le ``ou'' inclusif).
+\begin{definition}[Intersection]
+On désigne par l'\textit{intersection} de $A$ et $B$ l'ensemble $A \cap B$ des éléments appartenant à la fois à $A$ et à $B$. Ainsi:
+$$A \cap B = \{ a \in X : x \in A \text{ et } x \in B \}$$
+\end{definition}
+\noindent $A \cap B$ est donc l'ensemble associé à la proposition ``$\mathcal{A} \wedge \mathcal{B}$'' (``$\wedge$'' signifie ``et''). \\
+On dira que deux ensembles sont \textit{disjoints} si leur intersection est l'ensemble vide.
+\begin{remark}
+Ces opérations peuvent être itérées autant de fois que l'on veut (et même à l'infini). Si $A_1, A_2, A_3$ etc. sont des ensembles, il y a un sens mathématique à définir: $$\bigcup_i A_i = \{ a \in X : a \text{ appartient à au moins un des } A_i \}$$ $$\text{et } \bigcap_i A_i = \{ a \in X : a \text{ appartient à tous les } A_i \}.$$
+\end{remark}
+\begin{definition}[Différence]
+On désigne par la \textit{différence} ``$A$ moins $B$'' l'ensemble $A \setminus B$ des éléments appartenant à $A$ mais pas à $B$. Ainsi:
+$$A \setminus B = \{ a \in X : x \in A \text{ et } x \notin B \}$$
+\end{definition}
+\noindent $A \setminus B$ est donc l'ensemble associé à la proposition ``$\mathcal{A} \wedge \neg \mathcal{B}$'' (``$\neg$'' est le symbole signifiant ``pas''. Notons que l'ensemble associé à la proposition $\neg \mathcal{A}$ est $X \setminus A$, que l'on appelle le \textit{complémentaire de $A$ dans $X$}).
+\begin{remark}
+Contrairement à l'union et l'intersection, la différence d'ensembles n'est pas commutative: on a
+$$A \setminus B \neq B \setminus A \text{ sauf si } A = B.$$
+Par exemple, $\mathbb{N} \setminus \mathbb{Z} = \emptyset$ mais $\mathbb{Z} \setminus \mathbb{N}$ est l'ensemble des nombres entiers strictement négatifs.
+\end{remark}
+\begin{definition}[Différence Symétrique]
+À partir des opérations précédentes, on peut définir la \textit{différence symétrique} de $A$ et $B$, $A \triangle B$, comme l'ensemble des éléments appartenant soit à $A$, soit à $B$, mais pas aux deux. Ainsi $$A \triangle B = (A \cup B) \setminus (A \cap B)$$
+\end{definition}
+\noindent $A \triangle B$ est donc l'ensemble associé à la proposition ``$(\mathcal{A} \vee \mathcal{B}) \wedge \neg (\mathcal{A} \wedge \mathcal{B})$''. \\
+\begin{prop}
+Pour $A$ et $B$ deux ensembles, $A \triangle B = (A \setminus B) \cup (B \setminus A)$.
+\begin{proof}
+On prouve l'égalité par double inclusion. \\
+\underline{$A \triangle B \subseteq (A \setminus B) \cup (B \setminus A)$}: Soit $a \in A \triangle B$. \\
+Par définition, $a$ est soit dans $A$ sans être dans $B$ (et donc dans $A \setminus B$), soit dans $B$ sans être dans $A$ (et donc dans $B \setminus A$). Ainsi $a$ appartient à l'union de ces deux ensembles: on a $A \triangle B \subseteq (A \setminus B) \cup (B \setminus A)$. \\ \\
+\underline{$(A \setminus B) \cup (B \setminus A) \subseteq A \triangle B$}: Soit $a \in (A \setminus B) \cup (B \setminus A)$. \\
+Si $a \in A \setminus B$, il est dans $A$ sans être dans $B$, donc par définition il est dans $A \triangle B$. Sinon, $a$ est forcément dans $B \setminus A$ : il est dans $B$ sans être dans $A$, donc par définition il est dans $A \triangle B$. On a bien $(A \setminus B) \cup (B \setminus A) \subseteq A \triangle B$. \\ \\
+Par double inclusion, les deux ensembles sont égaux.
+\end{proof}
+\end{prop}
+\subsection*{Produit Cartésien}
+\noindent
+Une opération importante mais moins naturelle que les précédentes est le produit d'ensembles, communément appelé Produit Cartésien.
+\begin{definition}[Produit d'ensembles]
+On définit le produit de $A$ et $B$ comme
+\[
+	A \times B=\{(a,b): a \in A, b\in B\}.
+\]
+C'est l'ensemble des paires avec comme première coordonnée un élément de $A$ et comme deuxième un élément de $B$ (et donc les éléments sont ordonnés).
+\end{definition}
+\noindent
+C'est plus qu'une notation: tout comme un ensemble d'objets est un objet à part entière, une paire ordonnée d'objets est un objet à part entière et possède des propriétés supplémentaires.
+\begin{remark}
+Le produit cartésien n'est pas commutatif: on a 
+\[
+A\times B\neq B\times A \ \text{sauf si} \ A=B.
+\]
+Par exemple, si $A=\{1,2\}$ et $B=\{3,4\}$, alors 
+\begin{align*}
+	A\times B=\{(1,3),(1,4), (2,3), (2,4)\}\neq\{(3,1),(3,2),(4,1),(4,2)\} =B\times A.
+\end{align*}
+\end{remark}
+
+
+%
+\section{Relations d'équivalence}
+La notion de relation binaire sur un ensemble est très importante. Elle peut paraître intuitive, mais sa formalisation en langage mathématique ne l'est pas forcément. \\ \\
+Considérons l'ensemble $\N$ des nombres entiers positifs. On a défini sur cet ensemble une "relation d'ordre partiel", que l'on note "$\leq$". Formellement, cette relation est une \textit{proposition logique}. C'est pourquoi on préfère l'exprimer dans le langage des ensembles. \\ \\
+Ainsi, la relation d'ordre "$\leq$" est définie comme un sous-ensemble $R \subseteq \N \times \N$ (souvent noté $\N^2$), de la manière suivante:
+$$(a,b) \in R \iff a \leq b, \text{ où } a,b \in \N.$$
+L'ensemble $R$ est donc l'ensemble des paires d'entiers (ordonnés) vérifiant la propriété ci-dessus. \\
+Dans ce paragraphe, nous allons généraliser cette notion pour parler des relations les plus simples à étudier: les relations d'équivalence. \\ \\
+Soit $A$ un ensemble quelconque (non-vide).
+\begin{definition}[Relation d'équivalence sur un ensemble]
+On dit que $R \subseteq A\times A$ est une \textit{relation d'équivalence} sur $A$ si elle vérifie les propriétés suivantes:
+\begin{itemize}
+\item \textbf{Réflexivité}: Pour tout $x \in A$, on a $(x,x) \in R$.
+\item \textbf{Symétrie}: Pour tous $x,y\in A$, si $(x,y)\in R$ alors $(y,x) \in R$.
+\item \textbf{Transitivité}: Pour tous $x,y,z \in A$, si $(x,y)$ et $(y,z)\in R$, alors $(x,z)\in R.$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Classe d'équivalence]
+Soient $R \subseteq A\times A$ une relation d'équivalence et soit $a \in A$. La classe d'équivalence de $a$ est l'ensemble 
+\[
+	R_a=\{b \in A: (a,b)\in R\}.
+\]
+C'est l'ensemble des éléments qui sont équivalents à $a$.
+\end{definition}
+
+\begin{examples}[Relations et classes d'équivalence] \hspace{1em} \\
+\begin{itemize}
+\item Soit $X$ l'ensemble de quatre types d'objets 3D colorés: cubes rouges, sphères rouges, pyramides rouges et pyramides vertes. On définit $R$ sur $X$ de manière suivante: pour $a,b \in X$, $(a,b)\in R \iff \text{"}a \ \text{et} \ b \ \text{sont de la même couleur"}$. Il y a alors que 2 classes d'équivalence: objets verts et objets rouges. \\
+On peut également définir la relation $R'$ par $(a,b) \in R \iff$ "$a$ et $b$ ont la même forme". Il y aura alors 3 classes d'équivalence: les cubes, les sphères et les pyramides. \\
+\item Soit $\mathbb{S}$ l'ensemble des étudiants inscrits à S4S. Alors, $R \subseteq \mathbb{S} \times \mathbb{S}$ telle que $(x,y)\in R \iff x \text{ et } y \text{ ont la même date d'anniversaire}$ est une relation d'équivalence sur $\mathbb{S}$. \\
+\item En fait, pour $X$ et $Y$ deux ensembles non-vides et $f: X \longrightarrow Y$ une fonction quelconque, la relation $(a,b) \in R \subseteq X \times X \iff f(a) = f(b)$ est une relation d'équivalence. \\
+\item La relation d'ordre "$\leq$" sur $\N$ (et sur $\Z$, $\Q$ et $\R$) n'est \textit{pas} une relation d'équivalence. Elle est réflexive et transitive, mais n'est pas symétrique.
+\end{itemize}
+\end{examples}
+
+\begin{definition}[Ensemble quotient]
+Pour  une relation d'équivalence $R\subseteq A\times A$ on définit l'ensemble quotient $A/R$ de manière suivante
+\[
+	A/R=\{R_a\subseteq A: a\in A\}.
+\]
+
+i.e c'est l'ensemble de toutes les classes d'équivalences déterminées par $R$.
+\end{definition}
+
+
+\begin{prop}
+On a les équivalences suivantes pour $R\subseteq A\times A$ une relation d'équivalence sur $A$:
+$$\textnormal{(1) } (a,b)\in R \iff \textnormal{(2) } R_a=R_b \iff \textnormal{(3) } R_a \cap R_b\neq \emptyset.$$
+\end{prop}
+\begin{proof} Lorsqu'il s'agit de montrer plusieurs équivalences, il suffit de prouver chacune des implications successives pour les prouver toutes. Ici, il suffit de montrer que (1) $\implies$ (2), (2) $\implies$ (3) et (3) $\implies$ (1) (pour vous en convaincre, souvenez vous que l'implication est transitive!) \\ \\
+(1) $\implies$ (2) : Soient $(a,b) \in R$. On raisonne par double inclusion.\\
+\underline{$R_a \subseteq R_b$}: Si $c \in R_a$, par définition $(c,a) \in R$. Par transitivité, on a $(c,b) \in R$ et donc $c \in R_b$. Il suit que $R_a \subseteq R_b$. \\
+\underline{$R_b \subseteq R_a$}: La preuve est identique: si $c \in R_b$, on a $(b,c) \in R$ et donc par transitivité $(a,c) \in R$, d'où $c \in R_b$. Ainsi $R_b \subseteq R_a$.
+\\ \\
+(2) $\implies$ (3) : Par réflexivité, $a \in R_a$, donc $R_a = R_b \neq \emptyset$. Ainsi $R_a \cap R_b \neq \emptyset$.
+\\ \\
+(3) $\implies$ (1) : Si $c \in R_a \cap R_b$, alors par définition $(c,a) \in R$ et $(c,b) \in R$. Par symétrie et transitivité, on obtient $(a,b) \in R$.
+\end{proof}
+Cette proposition montre que deux classes d'équivalence sont soit égales, soit disjointes. Comme l'union de toutes les classes d'équivalence est égale à $A$ (par réflexivité tout élément de $a$ appartient à sa propre classe d'équivalence), on dit que les classes d'équivalence forment une \textit{partition} de $A$.
+\section{Applications}
+\begin{definition}[Application entre deux ensembles]
+Une application entre deux ensembles $A$ et $B$ est la donnée d'une expression $f:A\mapsto B$ telle que chaque élément de $A$ (domaine) est associé à exactement un élément dans $B$ (codomaine)
+\end{definition}
+%
+\begin{examples}[Applications] Soient $A$ et $B$ deux ensembles. Les expressions suivantes sont des applications:
+\begin{itemize}
+	\item Application identité d'un ensemble $A$:
+		\begin{align*}
+			\id_A: A &\longrightarrow A \\
+			a &\longmapsto a
+		.\end{align*}
+	\item Application réstriction: Pour $U \subseteq A$ et $f:A\mapsto B$ une application, l'application restriction de $f$ sur $U$ est donnée par
+		\begin{align*}
+			f_{|U}: U &\longrightarrow  B\\
+			 x&\longmapsto f_{|U}(x):=f(x)
+		.\end{align*}
+	\item Applications constante pour $b_0 \in B$ fixe: 
+		\begin{align*}
+			c:  A&\longrightarrow  B\\
+			a &\longmapsto b_0
+		.\end{align*}
+\end{itemize}
+\end{examples}
+\begin{example}[Non-exemple]
+	On définit l'ensemble des nombres rationnels comme $\mathbb{Q} =\{\frac{a}{b}:(a,b)\in \mathbb{Z} \times \mathbb{Z} ^*\}$. L'expression
+\begin{align*}
+	q: \mathbb{Q}  &\longrightarrow \mathbb{Z} \times \mathbb{Z} ^* \\
+	\frac{a}{b} &\longmapsto (a,b)
+\end{align*}
+n'est pas une application car pour $a=\frac{2}{4}=\frac{1}{2}$ on a que $q(\frac{1}{2})=(1,2)$  et $q(\frac{1}{2})=(2,4)$. Ainsi l'image n'est pas unique et l'application serait mal définie. \\
+Dans l'autre sens, cependant, l'application aurait été bien définie.
+\end{example}
+
+\begin{definition}[Image et préimage d'une application]
+Soient $A,B$ deux ensembles et $f:A\longrightarrow B$ une application.
+\begin{itemize}
+\item L'image de $f$, notée $\im (f)$ ou $f(A)$, est
+	\[
+		f(A)=\{f(a): a \in A\} \subseteq B.
+	\]
+C'est donc l'ensemble des valeurs atteintes par $f$. \\
+Pour $C \subseteq A$, l'image de $C$ est $f(C) = \{f(a): a \in C\} = \im(f_{|C}) \subseteq f(A)$ (l'ensemble des valeurs atteintes en partant de $C$ seulement). \\
+\item Si $D \subseteq B$, la préimage de $D$ notée $f^{-1}(D)$ est
+	\[
+		f^{-1} (D)=\{a \in A : f(a) \in D\}\subseteq A.
+	\]
+C'est l'ensemble des valeurs dans $A$ qui atteignent $D$. On a donc $f^{-1}(B) = A$. \\
+\end{itemize}
+\end{definition}
+\noindent Notons que l'on peut \textit{composer} deux applications l'une après l'autre pour en créer une troisième, à condition que les ensembles qui interviennent coïncident. \\
+Si on a $f: A \longrightarrow B$ et $g: B \longrightarrow C$, où $A$,$B$ et $C$ sont des ensembles non-vides, on peut définir $h: A \longrightarrow C$ comme $$h(a) = g \big( (f(a) \big).$$
+$h$ est appelée la composée de $f$ et $g$. On note cela $h = g \circ f$. \\
+Attention à l'ordre de l'opération: on applique d'abord l'application à \textit{droite}, puis celle à \textit{gauche}. La fonction $f \circ g$ serait mal définie, sauf si $C = A$. Dans ce cas, $f \circ g$ serait une application de $B$ vers $B$ et $g \circ f$ une application de $A$ vers $A$. \\
+Même lorsque $A = B$, les deux applications composées ne sont pas forcément les mêmes, comme le montre l'exemple suivant.
+\begin{example}
+Soient $f(z) = z+1$ et $g(z)=2z$ des applications de $\Z$ vers $\Z$. On a :
+$$f \Big( g(z) \Big) = 2z + 1 \neq 2z + 2 = g \Big( f(z) \Big)$$
+On dit que $f$ et $g$ \textit{ne commutent pas}.
+\end{example}
+\section{Injectivité, Surjectivité et Bijectivité}
+Soient $A$ et $B$ deux ensembles et $f : A \longrightarrow B$ une application. On introduit dans ce paragraphe les notations logiques ``$\forall$'' qui signifie ``pour tout'' et ``$\exists$'' qui signifie ``il existe''. ``$\exists!$'' signifie ``il existe un unique''.
+\begin{definition}
+$f$ est injective si pour tout $y\in B$ il existe au maximum un $x\in A$ tel que $f(x)=y$. Ceci est équivalent à l'implication suivante: $$f(x)=f(y) \implies x=y.$$
+\end{definition} 
+\noindent Une application injective est une application dont les images ne se répètent pas.
+\begin{definition}
+$f$ est surjective si pour tout $y\in B$ il existe au minimum un $x\in A$ tel que $f(x)=y$. Ceci est équivalent à:
+$$\forall \ y \in B, \; \exists \ x \in A : \; f(x)=y.$$
+\end{definition}
+\noindent Une application surjective est une application qui ``atteint'' toutes les valeurs de l'ensemble d'arrivée: $f(A) = B$.
+\begin{definition}
+$f$ est bijective si elle est injective et surjective. Ceci est équivalent à:
+$$\forall \ y \in B, \; \exists! \ x \in A : \; f(x)=y.$$
+\end{definition}
+\noindent Une application bijective est une application qui définit une correspondance ``une-à-une'' entre les deux ensembles. \\
+La notion de bijection est fondamentale car elle permet d'inverser la donnée de l'application. Pour une application quelconque, la préimage d'un élément dans l'ensemble d'arrivée peut prendre toutes les formes. Elle peut être vide (pour une application non surjective), ou contenir plusieurs éléments (pour une application non injective).
+\begin{example}
+Considérons $f : \Z \longrightarrow \Z$ donnée par $f(z) = z^2$. Cette fonction est ni injective, ni surjective. En effet:
+$$f^{-1}(\{1\}) = \{-1,1\} \text{ et } f^{-1}( \{-1\}) = \emptyset.$$
+La fonction $g: \Z \longrightarrow \Z$ donnée par $g(z)=z+2$, cependant, est bijective. Pour tout $y \in \Z$, on a $$f^{-1}(\{y\})= \{ y-2 \}.$$
+La préimage d'un élément $a$ se note $f^{-1}(\{a\})$: la préimage $f^{-1}$ doit prendre des \textit{sous-ensembles} de l'ensemble d'arrivée comme argument.
+\end{example}
+Lorsque $f: X \longrightarrow Y$ est une bijection, c'est-à-dire que la préimage de chaque \textit{singleton} (sous-ensemble contenant un seul élément) est un singleton, on peut définir l'\textit{application réciproque} de $f$ (notée $f^{-1}$) à partir de sa préimage.
+$$\text{ Pour } y \in Y, \; f^{-1}(y) := x \in X \text{ tel que } f^{-1}(\{y\})=\{x\},$$
+où le symbole ``$:=$'' signifie que l'on définit la quantité à gauche par celle à droite. \\
+$f^{-1}$, qui est une fonction de $Y$ vers $X$, peut seulement être bien définie si $f$ est une bijection. Dans ce cas, $f^{-1}$ est aussi une bijection (ce sera un exercice de le montrer). \\
+Naturellement, pour $y \in Y$, si on applique $f$ à la valeur de $f^{-1}(y)$ on obtient $$f \Big( f^{-1}(y) \Big) = y.$$
+De la même manière:
+$$\forall x \in X, \; f^{-1} \Big( f(x) \Big) = x.$$
+C'est ce qu'on entend par \textit{application réciproque}: les processus s'annulent. On a donc:
+$$f \circ f^{-1} = \id_X \text{ et } f^{-1} \circ f = \id_Y.$$
+\section{Cardinal d'un ensemble}
+\subsection*{Ensembles Finis}
+\noindent
+La notion d'ensemble fini est assez intuitive: un ensemble fini possède un nombre fini d'éléments. Pour formaliser cette intuition, on a recours à la notion de bijection vue précédemment.
+\begin{definition}
+On dit qu'un ensemble $X$ est fini s'il est vide ou s'il existe un $n \in \mathbb{N}^*$ et une bijection entre $\{1, 2, ..., n\}$ (qu'on notera $[n]$) et $X$. \\
+Plus généralement, on dira que deux ensembles ont le même cardinal (``nombre d'éléments'') s'il existe une bijection entre eux.
+\end{definition}
+\noindent
+Le cardinal d'un ensemble $A$ est noté $\vert A \vert$. Si $A$ est fini, son cardinal est un nombre entier. Le cardinal de l'ensemble vide est $0$ par convention.
+\begin{example}
+L'ensemble $\{1,\pi, 4, e\}$ est de cardinal $4$.
+\end{example}
+\noindent On a défini l'égalité $\vert A \vert = \vert B \vert$ comme l'existence d'une bijection $f: A \longrightarrow B$.
+De la même manière, on peut se convaincre que s'il existe une injection $g: A \longrightarrow B$, alors $\vert A \vert \leq \vert B \vert$ (et $\vert A \vert \geq \vert B \vert$ s'il existe une surjection $h: A \longrightarrow B$). Cela vaut même pour des ensembles infinis.
+\subsection*{Ensembles Infinis}
+\begin{definition}
+Un ensemble $X$ est dit \textit{infini dénombrable} s'il a le même cardinal que $\mathbb{N}$, c'est-à-dire s'il existe une bijection entre $X$ et $\mathbb{N}$.
+\end{definition}
+\noindent C'est une notion fondamentale et facilement trompeuse de la Théorie des Ensembles: on peut par exemple montrer que $\Z$ et $\Q$ sont dénombrables, alors qu'ils paraissent nettement ``plus grands'' que $\N$.
+\\
+Cependant, certains ensembles sont \textit{indénombrables}. C'est le cas de l'ensemble des réels $\R$ abordé en Analyse Avancée: il n'existe pas de bijection entre $\N$ et $\R$.
+\begin{example}$\mathbb{Z}$ est dénombrable. On pourrait penser que $\mathbb{Z}$ est presque ``deux fois plus grand'' que $\mathbb{N}$. \\
+Cependant, l'application $f:\mathbb{N} \longrightarrow \mathbb{Z}$ définie par:
+$$f(n)=
+\begin{cases}
+\frac{n}{2} \text{ si } $n$ \text{ est pair} \\
+- \frac{(n+1)}{2} \text{ si } n \text{ est impair}
+\end{cases}$$
+est une bijection entre $\N$ et $\Z$ : malgré que $\N$ soit strictement compris dans $\Z$, ils ont le même nombre d'éléments!
+\end{example}
+\begin{theorem}[Cantor-Berstein-Schröder]
+Soient $X$, $Y$ deux ensembles tels qu'il existe deux applications injectives $f:X\mapsto Y$ et $g:Y\mapsto X$. Alors il existe une bijection entre $X$ et $Y$. \\
+L'énoncé du Théorème est en fait que le cardinal, même infini, respecte la propriété:
+$$ (\vert X \vert = \vert Y \vert) \iff (\vert X \vert \leq \vert Y \vert \text{ et } \vert Y \vert \leq \vert X \vert)$$
+\end{theorem}
+\begin{remark}
+Ce théorème nous dit qu'il suffit de trouver deux injections, pour prouver l'égalité des cardinaux de deux ensembles. Ceci est très utile dans le sens où il est souvent beaucoup plus simple de procéder ainsi, plutôt que de trouver une bijection directement. Sa démonstration, cependant, dépasse les objectifs de cette introduction et même ceux du BA1.
+\end{remark}
+\chapter{Groupes, Corps et Anneaux}
+\section{La notion  de groupe}
+La notion de groupe est fondamentale en algèbre abstraite. Elle permet d'étudier les concepts de stabilité et de symétrie avec le langage des ensembles. \\ \\
+Considérons l'ensemble $\Z$ des nombres entiers. Sa définition est étroitement liée à celle de l'opération ``$+$'', qui permet de définir 2 comme ``$1+1$'', 3 comme ``$2+1$'', etc. On a muni l'ensemble d'une opération \textbf{stable} et universelle: en sommant n'importe quels entiers $a$ et $b$, on obtient à nouveau un entier. \\
+Puis, on a défini le nombre $0$, quantité \textbf{neutre} par rapport à l'addition: ajouter $0$ revient à ne rien changer. \\
+Enfin, on a voulu introduire des nombres négatifs, qui ``compensent'' les nombres existants par rapport à l'addition. Chaque entier admet une quantité \textbf{opposée} qui le neutralise par rapport à l'addition: $n + -n = 0$. \\ \\
+Soit un ensemble $X$ non-vide. Considérons l'ensemble $\Bij(X)$ des bijections de $X$ vers $X$. \\
+On a défini précédemment l'opération de compositions d'applications, et on sait que la composée de deux bijections reste une bijection. \\
+On a vu que l'application identité $\id_X$ est neutre: composer une fonction avec $\id_X$ revient à ne rien faire. \\
+De plus, chaque bijection $f$ de $X$ vers $X$ admet une application inverse $f^{-1}$, qui est également une bijection de $X$ vers $X$. Cette réciproque neutralise $f$, c'est-à-dire que $f \circ f^{-1} = \id_X$. \\ \\
+Les deux ensembles et leurs opérations, bien que n'ayant rien à voir, semblent respecter des principes communs. C'est à partir de ceux-ci que l'on définit la notion abstraite de groupe.
+
+\subsection{Définitions et premiers exemples}
+\begin{definition}
+Un groupe (G,$*_G$) est la donnée d'un ensemble $G$ (non-vide) et d'une loi de composition interne $*_G$ vérifiant:
+\begin{itemize}
+    \item \textbf{stabilité} : $*_G$ est une application bien définie de $G \times G$ dans $G$, c'est-à-dire que pour tous $g$ et $g'$ dans $G$, leur produit $g *_G g'$ reste dans $G$.
+    \item \textbf{associativité} : Pour tous $x,y,z \in G$, on a \ $(x*_Gy)*_Gz = x*_G(y*_Gz)$ 
+    \item \textbf{élément neutre} : Il existe dans $G$ un élément $e_G$ (appelé élément neutre de $G$), vérifiant: \\ $\forall x \in G : e_G *_G x = x *_G e_G = x$
+    \item \textbf{élément inverse} : Tout élément $x \in G$ admet un inverse $y \in G$ vérifiant: \\ $x *_G y = y *_G x = e_G$.
+\end{itemize}
+\vspace{0.5em}
+On dit qu'un groupe est \textbf{commutatif} (ou \textbf{abélien}) s'il vérifie : $\forall x,y \in G : x *_G y = y *_G x$
+\end{definition}
+\noindent
+$\Z$ est donc un groupe abélien muni de la loi d'addition ``$+$''.
+\begin{remark}
+La plupart du temps, on abandonne les notations $*_G, e_G,...$ pour utiliser $*, e,...$ et on note $G$ ou ($G$,$*$) pour le groupe $(G, *_G)$. De plus, on verra que l'élément inverse de $x$ est unique et peut être noté $x^{-1}$.
+\end{remark}
+
+\begin{examples}
+\hspace{1em}
+\begin{itemize}
+    \item ($\mathbb{Z}$, +), ($\mathbb{R}$, +), ($\mathbb{R}^*$, $\cdot$) sont des groupes abéliens.
+    \item Le groupe trivial $G = \{e\}$ est un groupe (abélien).
+    \item Un groupe à deux éléments doit forcément admettre un élément neutre $e$ et le deuxième élément $a$ doit être son propre inverse : $G = \{e,a\}$ avec $a*a = e$. \\
+    La construction d'un groupe à 3 éléments se fait de la même manière et est laissée en exercices.
+\end{itemize}
+\end{examples}
+\begin{prop}
+Pour un groupe $G$, l'élément neutre est unique. L'inverse de chaque élément est également unique (l'unicité de l'inverse nous a permise de le noter $x^{-1}$).
+\end{prop}
+\noindent
+Ce type d'énoncé où il faut prouver l'unicité revient très souvent en algèbre linéaire. Dans la majorité des cas, on procède par l'absurde en supposant qu'il existe deux éléments vérifiant les conditions données et on essaye d'aboutir à une contradiction. La preuve ci-dessous étant l'une des premières que vous rencontrez, on essayera de bien détailler toutes les étapes.
+\begin{proof}
+Prouvons d'abord que l'élément neutre est unique. Supposons donc qu'il existe deux éléments neutres \underline{distincts} que l'on notera $e$ et $e'$. \\
+Sachant que ces éléments sont tous deux neutres, on peut appliquer la propriété de neutralité pour $e$ : on a $e * e' = e'$. \\
+Cependant, on peut appliquer le même procédé pour l'élément neutre $e'$ : on a $e * e' = e$. On obtient donc : 
+\[e = e * e' = e'.\]
+Les deux éléments sont égaux: ils ne sont pas distincts, ce qui est une contradiction. \\
+Ainsi l'élément neutre d'un groupe est bien unique. \\ \\
+Un raisonnement similaire donne le résultat pour l'inverse : par l'absurde supposons que $a$ et $b$ soient deux inverses distincts d'un même élément $x \in G$. On applique alors la définition de groupe pour obtenir :
+\[a = a * e = a * (x * b) = (a * x) * b = e * b = b\]
+Et l'énoncé est prouvé par le même raisonnement.
+\end{proof}
+\begin{prop}
+Soit G un groupe. \\
+    $\bullet$ L'inverse est involutive : $\forall x \in G : (x^{-1})^{-1} = x$. \\
+    $\bullet$ $\forall x,y \in G, \; (x * y)^{-1} = y^{-1} * x^{-1}$.
+\end{prop}
+\noindent
+La démonstration de cette proposition est laissée comme exercice.
+\subsection{Sous-groupes}
+\noindent La notion de sous-ensemble s'étend à celle de sous-groupe, avec une condition supplémentaire de stabilité.
+\begin{definition}
+Un sous ensemble $H$ $\subseteq$ $G$ est un sous-groupe s'il est un groupe pour la loi de composition de G. On note cette relation $H \leq G$.
+\end{definition}
+\noindent
+Cette définition n'est pas très efficace pour vérifier si un sous-ensemble donné est bien un sous-groupe. Les deux caractérisations équivalentes qui suivent sont plus pratiques à vérifier. 
+\begin{definition}
+Un sous ensemble $H \subseteq G$ est un sous-groupe s'il vérifie les propriétés suivantes:
+\begin{itemize}
+     \item $e_G \in H$.
+     \item $\forall (x,y) \in H \times H$, on a $x*y \in H$ (stabilité par composition).
+     \item $\forall x \in H$, on a $x^{-1} \in H$ (stabilité par inversion, notons que $x^{-1}$ désigne l'inverse de $x$ dans $G$).
+\end{itemize}
+\end{definition}
+\begin{prop}[Critère de sous-groupe]
+Soit $(G, *)$ un groupe et $H \subseteq G$ non-vide. $H$ est un sous-groupe de $G$ si et seulement si : 
+$$\forall x,y \in H, \; x * y^{-1} \in H.$$
+\end{prop}
+\begin{proof}
+Si $H$ est un sous-groupe de $(G, *)$, c'est un groupe pour la loi $*$ et donc le critère est respecté en combinant la propriété de \textbf{stabilité} et celle de l'\textbf{élément neutre}. \\
+\\
+Si $H$ vérifie le critère, il s'agit de montrer les propriétés qui en font un groupe.
+\begin{itemize}
+    \item L'\textbf{associativité} est une propriété de la loi propre à $G$, déjà vérifiée parce que $G$ est un groupe.
+    \item \textbf{Élément neutre}: comme $H$ est supposé non-vide, il existe $h \in H$. Le critère précédent, en remplaçant $x=h$ et $y=h$, donne $h * h^{-1} \in H$, et donc par déinition $e_G \in H$.
+    \item \textbf{Élément Inverse}: soit $h \in H$. On a prouvé que $e_G \in H$. Ainsi, avec $x = e_G$ et $y = h$, le critère assure que $h^{-1} \in H$.
+    \item \textbf{Stabilité}: Soient $h$ et $h'$ dans $H$. Par le point précédent, $h'^{-1} \in H$. En appliquant le critère pour $x=h$ et $y = h'^{-1}$, on a $h * h' \in H$.
+\end{itemize}
+\end{proof}
+\begin{examples} \hspace{1em}
+\begin{itemize}
+    \item $(\mathbb{Z}, +)$ et $(\mathbb{Q}, +)$ sont des sous-groupes de $(\mathbb{R}, +)$.
+    \item Le sous-ensemble $\{e_G\}$ et $G$ lui-même sont toujours des sous-groupes de $G$.
+    \item pour $n \in \mathbb{Z}$, l'ensemble $n \cdot \Z$ des multiples de $n$ est un sous-groupe de $(\mathbb{Z}, +)$.
+    \item $\{-1, 1\}$ est un sous-groupe de $(\mathbb{R}^*,*)$.
+    \item $\mathbb{N}$ n'est pas un sous-groupe de $(\mathbb{Z}, +)$.
+\end{itemize}
+\end{examples}
+
+\subsection{Sous-groupes engendrés}
+On peut se demander, à partir d'un sous-ensemble $E$ d'un groupe $G$, quel sous-groupe de $G$ est \textit{engendré} par $E$: si on multiplie les éléments de $E$ entre eux de toutes les manières possibles, en rajoutant à $E$ les éléments obtenus à chaque étape, à quel sous-groupe de $G$ aboutit-on? De manière équivalente: quels éléments de $G$ peuvent s'écrire comme le résultat de multiplications des éléments de $E$? \\ \\
+Il sera vu en exercices que le sous-groupe engendré par $E$, noté $\langle E \rangle$, est le \textit{plus petit sous-groupe contenant} $E$ - et est effectivement un sous-groupe! \\
+Cette notion d'engendrement est aussi importante en théorie des groupes qu'en algèbre linéaire. Elle sera développée en plus de détails dans le \textbf{chapitre 3}.
+\section{Morphismes de Groupes}
+\subsection{Définitions et exemples}
+La notion d'applications entre ensembles s'étend à celle d'applications entre groupes. Les plus intéressantes sont celles qui conservent les structures de groupes: on les appelles des morphismes de groupes. 
+\begin{definition}
+Soient $(G,*)$ et $(H, \cdot)$ deux groupes. Une application $f : G \longrightarrow H$ est un \textit{morphisme de groupes} si cette application vérifie la propriété :
+\[\forall x,y \in G, \ f(x * y) = f(x) \cdot f(y).\]
+Un morphisme bijectif est appelé un \textit{isomorphisme} de groupes.
+\end{definition}
+\begin{remark}
+Si f est un isomorphisme de groupes alors l'application inverse $f^{-1}$ vue au chapitre 1 est également un isomorphisme de groupes. De plus, la composition de deux morphismes de groupes reste un morphisme de groupes (la preuve sera un exercice).
+\end{remark}
+\begin{example}
+ $f(x)=e^x$ est un morphisme de $(\mathbb{R}, +)$ vers $(\mathbb{R}^*, \times)$. En effet,
+ $$\forall x,y \in \mathbb{R} \;\;\; e^{x+y}=e^x\times
+ e^y.$$
+ De plus si on restreint l'ensemble d'arrivé à $]0,+\infty[$ on obtient un isomorphisme.
+\end{example}
+\noindent
+Des résultats importants découlent de cette définition.
+\begin{prop}
+Soient $(G,*)$ et $(H, \cdot)$ deux groupes et $\phi : G \longrightarrow H$ un morphisme de groupes. Alors : 
+\begin{itemize}
+    \item $\phi(e_G) = e_H$.
+    \item $\forall x \in G, \ \phi(x^{-1}) = \phi(x)^{-1}$.
+\end{itemize}
+\end{prop}
+\begin{proof} \hspace{1em}
+\begin{itemize}
+    \item On souhaite montrer que $\phi(e_G) = e_H$, En utilisant les définitions de morphisme de groupes et d'élément neutre, pour tout $x \in G$, 
+    \[\phi(x) = \phi(x * e_G) = \phi(x) \cdot \phi(e_G), \]
+    où on a utilisé successivement la définition de $e_G$ la définition de morphisme de groupes. \\
+    Ainsi $\phi(x) =  \phi(x) \cdot \phi(e_G)$. Mais $\phi(x)$ est un élément de H qui doit admettre un inverse dans $H$. En multipliant l'égalité précédente par cet inverse, on a:
+    \[\phi(x)^{-1} \cdot \phi(x) = \phi(x)^{-1} \cdot \phi(x) \cdot \phi(e_G) \implies e_H = \phi(e_G). \]
+    \item Soit $x \in G$ : 
+    \[\phi(x) \cdot \phi(x)^{-1} = e_H = \phi(e_G) = \phi(x * x^{-1}) = \phi(x) \cdot \phi(x^{-1}).\]
+    Ici on a appliqué successivement (de gauche à droite) la propriété d'inverse dans $H$, la propriété ci-dessus, la propriété d'inverse dans $G$ et enfin que $\phi$ est un morphisme de groupes. En multipliant à gauche par l'inverse de $\phi(x)$ on obtient à nouveau le résultat désiré.
+\end{itemize}
+\end{proof}
+\begin{remark}
+Il est également possible de prouver les deux premiers points en utilisant la propriété d'unicité. En effet si l'on arrive à montrer que $f(e_G)$ vérifie la définition d'un élément neutre de \textbf{Definition 1.1.1} (resp $f(x^{-1})$ vérifie la définition d'inverse de $f(x)^{-1}$ i.e que leur produit par la loi de composition donne l'élément neutre), alors par le fait que l'élément neutre est unique (resp. que l'inverse est unique) on aurait directement l'égalité. 
+\end{remark}
+\subsection{Image et Noyau}
+\begin{definition}
+ Soient ($G$,$*$) et ($H$, $\cdot$) deux groupes et un morphisme de groupes $\phi : G \mapsto H$. \\
+ On définit le \textit{noyau} (ou \textit{kernel}) de $\phi$ par $\ker(\phi) = \{x \in G : f(x) = e_H \} \subseteq G$. \\
+ C'est en fait un sous-groupe de $G$ (de la même manière, $\phi(G)= \im(\phi)$ est un sous-groupe de $H$).
+\end{definition}
+\noindent
+La proposition suivante est l'un des plus importants résultats d'Algèbre Linéaire. 
+\begin{prop}[Critère d'injectivité]
+Soient $(G,*)$ et $(H, \cdot)$ deux groupes et $\phi : G \mapsto H$ un morphisme de groupes. \\
+$\phi$ est injectif si et seulement si son noyau est trivial, c'est-à-dire $\ker(\phi) = \{e_G\}$.
+\end{prop}
+\noindent
+Cette preuve est un peu technique pour une introduction à l'algèbre linéaire. On essayera donc de détailler au maximum les étapes.
+\begin{proof}
+L'énoncé est une équivalence. La marche à suivre est donc de montrer une implication puis l'autre. 
+\begin{itemize}
+    \item ``$\implies$''. Supposons donc que $\phi$ est injectif, i.e $$\text{pour tous } x,y \in G, \; f(x) = f(y) \implies x = y.$$ 
+    Pour montrer l'égalité $\ker(\phi) = \{ e_G \}$, on procède par double inclusion : \\
+    \underline{$ \{e_G\} \subseteq \ker(\phi)$} : il faut donc montrer que l'élément neutre de G est bien dans le noyau de $\phi$, c'est-à-dire que $\phi(e_G) = e_H$. C'est exactement l'énoncé de la \textbf{Proposition 2.2.1}, qui est déjà prouvée. \\
+    \underline{$\ker(\phi) \subseteq  \{e_G\}$} : pour montrer cette seconde inclusion, prenons un élément quelconque $x$ dans le noyau et montrons que forcément $x = e_G$. \\
+    Soit donc $x \in \ker(\phi)$. Par définition, $\phi(x) =  e_H$. \\
+    Or, $\phi(e_G) = e_H = \phi(x)$. L'hypothèse d'injectivité (ci-dessus) nous permet de conclure que $x = e_G$. \\
+    La double inclusion est démontrée, ainsi les deux ensembles sont égaux et on a prouvé la première implication.
+    \item ``$\impliedby$''. Supposons que $\ker(\phi) = \{e_G\}$, et montrons que $\phi$ est injectif: pour $x,y \in G$ tels que $\phi(x) = \phi(y)$, montrons que $x = y$. \\
+    Soient donc $x$ et $y$ tels que $\phi(x)=\phi(y)$. Alors,
+    \[\phi(x) \cdot \phi(y) ^{-1} = e_H.\]
+    $\phi$ étant un morphisme de groupes, on obtient par les résultats précédents 
+    \[e_H = \phi(x) \cdot \phi(y) ^{-1}  = \phi(x) \cdot \phi(y^{-1}) = \phi(x * y^{-1}),\]
+    c'est-à-dire que $x * y^{-1} \in \ker(\phi)$. Or, par hypothèse $\ker(\phi) = \{e_G\}$. On a donc forcément $x * y^{-1} = e_G$, d'où $x = y$. Cela démontre que $\phi$ est injectif.
+\end{itemize}
+\end{proof}
+
+\section*{Les permutations et le groupe symétrique}
+\begin{definition}
+Soit $X$ un ensemble. On appelle \textit{groupe symétrique} l'ensemble $($Bij$(X),\circ)$ muni de la composition d'applications. On a vu que cette ensemble est en effet un groupe, dont l'élément neutre est l'application $\id_X$.
+\end{definition}
+\begin{remark}
+Ce groupe est très important: on peut notamment montrer que tout groupe $G$ est isomorphe à un sous-groupe de $\Bij(G)$.
+\end{remark}
+Dans le cas ou $X$ est fini (il existe une bijection entre $X$ et une partie bornée de $\mathbb{N}$), ou peut numéroter les éléments de $X$ de $1$ à $n$ avec $\vert X \vert=:n$. \\ Alors, on conclut que l'étude de ce groupe revient à l'étude du groupe symétrique de  $X=\{1,2, \dots, n\}$ qu'on va noter $S_n$ ou parfois $\mathfrak{S}_n$ (le $S$ en écriture gothique). On appelle \textit{permutations} les éléments de $\mathfrak{S}_n$. \\
+Les groupes symétriques sont l'exemple le plus simple de groupe non-abélien. Leur étude est centrale à la théorie des groupes.
+
+\section{Corps et Anneaux}
+Les propriétés qui définissent la notion de groupe sont facilitantes: c'est en les exploitant que se prouvent des résultats importants, souvent applicables bien au-delà du contexte des groupes eux-mêmes. \\ \\
+Les propriétés supplémentaires qui définissent les \textit{corps} suivent la même logique. Les corps, bien moins divers en structure, en deviennent d'autant plus facile à étudier.
+\begin{definition}
+Un corps $(K, +, \, \cdot \,)$ est un groupe commutatif $(K,+,0_K,-)$ muni d'une \textit{seconde} opération, souvent notée $\cdot$, vérifiant les propriétés ci-dessous. \\ 
+\begin{itemize}
+    \item $(K \setminus \{0_K\}, \, \cdot \,, 1_K, \, \bullet^{-1})$ est un groupe abélien. Ainsi, \, $\cdot$ \, doit être stable dans $K$ et associative. $K$ doit admettre un élément neutre (noté $1_K$) et des inverses (notées avec $\bullet^{-1}$) pour la loi \, $\cdot$ \,.
+    \item \textbf{Distributivité} : $\forall x,y,z \in K$, on a $$x \cdot (y + z) = x \cdot y + x \cdot z.$$
+    \item \textbf{Intégrité} : Si $x, y \in K$ et $x \cdot y = 0_K$, alors soit $x = 0_K$, soit $y = 0_K$ (soit les deux).
+\end{itemize}
+\end{definition}
+À partir de la condition de distributivité, il est facile de montrer que $0_K$ est \textit{absorbant} pour la multiplication: $0_K \cdot k = 0_K$ pour tout $k \in K$. On ne peut pas trouver d'élément $0_K^{-1}$: c'est pourquoi la structure de groupe pour \, $\cdot$ \, ne s'applique que à $K \setminus \{0_K\}$. \\ \\
+Ces conditions sont très restrictives. En fait, tous les corps finis doivent vérifier $\vert K \vert = p^k$, où $p$ est un nombre premier et $k$ un entier. Il n'existe donc pas de corps de taille 6, 10 ou 15!
+\begin{example}
+Les ensembles $\Q$, $\R$ et $\C$ sont les exemples les plus simples de corps, pour l'addition et la multiplication usuelles. \\
+D'autres exemples incluent les corps notés $\mathbb{F}_p$: pour $p$ un nombre premier, ce sont les ensembles $[p]$ munis des opérations $+$ et \, $\cdot$ \, usuelles mais ``modulo $p$''. En particulier, $\mathbb{F}_2 = \{0_K,1_K\}$ est le corps le plus simple, avec $1_K + 1_K = 0_K$.
+\end{example}
+\noindent
+Notons que beaucoup de groupes admettent une seconde opération qui ne vérifie pas toutes les conditions précédentes mais qui en fait tout de même une structure intéressante. \\
+C'est le cas de $\Z$, dont la loi de multiplication est distributive, associative, commutative, stable et intègre. Mais elle n'est pas inversible: seuls 1 et $-1$ admettent des inverses multiplicatifs dans $\Z$.
+\begin{definition}
+Soit $(A,+)$ un groupe abélien. Si $A$ vérifie les propriétés de \textbf{stabilité}, d'\textbf{associativité}, d'\textbf{élément unitaire} $1_A$ et de \textbf{distributivité} pour la seconde opération, on dit que $A$ est un \textit{anneau}.
+\end{definition}
+Les théories des anneaux et des corps sont nécessaires à une compréhension complète des notions d'algèbre linéaire: elles seront étudiées plus en détail pendant les deux premiers semestres d'Algèbre Linéaire Avancée.
+\begin{remark}
+Dans un anneau comme dans un corps, la première loi de composition sera notée avec $(+,0,-)$ et la seconde avec $(\, \cdot \, , 1$ et éventuellement $\bullet^{-1})$.
+\end{remark}
+Un anneau sera dit commutatif (respectivement inversible, intègre) si la loi de composition \, $\cdot$ \, est commutative (resp. inversible, intègre).
+\begin{examples} \hspace{1em} \\
+\begin{itemize}
+    \item L'anneau nul \{0\} est un anneau mais pas un corps. Tous les ensembles $[n]$ sont des anneaux, mais sont des corps seulement pour $n$ premier (on considère ici les opérations de multiplication et addition modulaires).
+    \item Si $A$ est un anneau, tout ensemble $A^n$ est un anneau pour les opérations définies coordonnée par coordonnée. Si $K$ et $L$ sont des corps, $K \times L$ est un anneau \textit{mais pas} un corps (voyez-vous pourquoi?)
+    \item Si $X$ est un groupe abélien, $\Bij(X)$ muni de la loi $(f + g)(x) = f(x) + g(x)$ (comme première loi, avec $\circ$ comme multiplication) est un anneau inversible et intègre. Cependant, il n'est pas forcément commutatif: ce n'est donc généralement pas un corps.
+\end{itemize}
+\end{examples}
+
+\chapter{Éléments d'Algèbre Linéaire} 
+\section{Espaces vectoriels}
+\subsection{Intuition et motivation}
+    Les structures algébriques introduites jusqu'ici sont très importantes, mais elles ne permettent de décrire que de manière insatisfaisante certains objets. C'est notamment le cas de l'ensemble des vecteurs (au sens physique du terme) de notre espace 3D.
+    \\ \\
+    Vu que cet espace est stable par rapport à l'addition vectorielle (la somme de deux vecteurs en reste un), qu'il existe un élément neutre (le vecteur nul), et que chaque élément admet un inverse (pour le vecteur $\vec v$ c'est simplement $-\vec{v}$), on s'attend à pouvoir décrire cet espace à l'aide des notions vues jusqu'à présent. 
+    \\ \\
+    L'espace muni d'une opération d'addition de vecteurs, comme nous la comprenons au sens géométrique, est effectivement bien décrit par la structure d'un groupe abélien. En fait, l'ensemble des vecteurs 3D peut être considéré comme un groupe abélien. Mais le manque d'une seconde opération sur les vecteurs complique la définition des notions qui vont suivre. \\ \\
+    Supposons que l'on commence avec un ensemble contenant un seul vecteur $v$. On aimerait, à partir de $v$ et des opérations définies pour celui-ci, engendrer (au sens des groupes engendrés vus précédemment) le reste des vecteurs lui étant parallèles. \\
+    En utilisant seulement la structure du groupe contenant $v$, on pourra définir les multiples entiers de $v$ comme:
+    $$ k \cdot v = \underbrace{v + v + ... + v}_{k \text{ fois}} \text{ si } k \in \N \; \text{ et } \;  \underbrace{(-v) + (-v) + ... + (-v)}_{-k \text{ fois}} \text{ si } k \in \Z \setminus \N.$$
+    Cependant, le vecteur parallèle à $v$ qui est $1/2$, ou $\pi$, ou $12.63$ fois plus long ne peut pas être généré. Il faudrait que ces trois vecteurs - et une infinité d'autres - existent déjà dans l'ensemble en question pour pouvoir le compléter. On préfère alors construire l'ensemble des vecteurs parallèles à $v$ par le biais d'une opération $\lambda\cdot v$ valide pour tout $\lambda\in\mathbb R$, plutôt que devoir inclure dans l'ensemble de départ une infinité de vecteurs de même direction.
+    \\ \\
+    La distinction peut paraître insignifiante, mais des notions essentielles d'Algèbre Linéaire vont reposer sur celle-ci. On définit donc l'espace 3D comme un groupe abélien auquel on ajoute une opération de multiplication par des réels. \\ \\
+    Notons que la multiplication est ici \textit{externe}: on ne multiplie jamais deux vecteurs entre eux mais bien un vecteur par un réel. On a donc une structure nouvelle qui dépasse les notions de groupes et anneaux vus précédemment. \\
+    La notion abstraite d'\textit{espace vectoriel} formalise cette structure et permet de définir de manière générale ce qu'est un ``vecteur'' en mathématiques.
+    
+\subsection{Définitions et premiers  exemples}
+    \begin{definition}
+        Soit $K$ un corps. Un \textit{espace vectoriel} sur le corps $K$ (on dit aussi un $K$-espace vectoriel) est un groupe abélien $(V,+)$ muni d'une loi de composition externe notée multiplicativement:
+        $$\bullet * \bullet \; : \; \begin{array}{rcl}
+             K \times V &\longrightarrow& \; \, V  \\
+             (\lambda, v) \; \; &\longmapsto& \lambda * v
+        \end{array}
+        $$
+        admettant les propriétés suivantes pour tous $v, w \in V$ et tous $\lambda, \mu \in K$.
+        \begin{center}
+        \begin{minipage}{0.35\textwidth}
+        \begin{enumerate}[(i.) \quad]
+            \item $(\lambda+\mu) * v=\lambda * v+\mu * v$
+            \item $\lambda * (v+w)=\lambda * v+\lambda * w$
+            \item $\lambda * (\mu * v)=(\lambda \cdot \mu) * v$
+            \item $1_K * v=v \quad$
+        \end{enumerate}
+        \end{minipage}
+        \end{center}
+    \end{definition}
+    \begin{remark}
+        Les éléments de l'espace vectoriel $V$ sont appelés vecteurs et les éléments du corps $K$ sont appelés scalaires. Il faut se souvenir qu'il y a deux éléments nuls : l'élément neutre du groupe $(V,+)$ et l'élément neutre du groupe $(K,+)$. Si on souhaite éviter un risque de confusion, on note $0_{K} \in K$ le zero scalaire et $0_{V} \in V$ (ou $\vec{0}$) le zero vectoriel.
+    \end{remark}
+    \begin{prop}
+    Les conditions \textnormal{(i.)} à \textnormal{(iv.)}. sont suffisantes pour montrer que, pour tout $v \in V$ et $\lambda \in K$, 
+    \begin{align*}
+    \textnormal{(v.)}& \quad 0_K * v = \lambda * 0_V = 0_V   \\
+    \textnormal{(vi.)}& \quad (-1_K) * v = -v
+    \end{align*}
+    \end{prop}
+La notation ``$*$'' pour la multiplication externe a été utilisée pour éviter la confusion avec la multiplication interne ``$\, \cdot \,$'' du corps $K$. Dans ce qui suit, on les notera toutes deux par ``$\, \cdot \,$''. Les différences de notations entre vecteurs et scalaires permettront d'éviter les confusions.
+\begin{examples} \hspace{1em}
+        \begin{enumerate}[(i.)]
+            \item Le plus simple espace vectoriel ne possède qu'un élément : $V=\left\{0_{V}\right\}$, on l'appelle l'espace vectoriel nul ou l'espace vectoriel trivial.
+            \item Tout corps $K$ est un espace vectoriel sur lui-même. Notez que ici la seule différence entre les scalaires et les vecteurs est le label qu'on leur associe. Par exemple si on prend l'espace vectoriel des réels sur lui-même, par $5\cdot 5$ on entend le \textit{vecteur} obtenu en sommant 5 copies du vecteur 5, c'est-à-dire le vecteur 25.
+            \item L'ensemble de $n$-tuples d'éléments du corps, i.e. l'ensemble
+                $$
+                K^{n}=\left\{\left(x_{1}, x_{2}, \ldots, x_{n}\right) \mid x_{j} \in K\right\},
+                $$
+                est un espace vectoriel si l'on définit l'addition interne et la multiplication par un scalaire terme à terme :
+                $$
+                \left(x_{1}, x_{2}, \ldots, x_{n}\right)+\left(y_{1}, y_{2}, \ldots, y_{n}\right)=\left(x_{1}+y_{1}, x_{2}+y_{2}, \ldots, x_{n}+y_{n}\right),
+                $$
+                et
+                $$
+                \lambda \cdot\left(x_{1}, x_{2}, \ldots, x_{n}\right)=\left(\lambda \cdot x_{1}, \lambda \cdot x_{2}, \ldots, \lambda \cdot x_{n}\right).
+                $$
+                Remarquons que notre espace à 3 dimensions est un cas spécifique de ce type d'espaces (avec $K=\R$ et $n=3$).
+            \item Si $V_{1}$ et $V_{2}$ sont deux espaces vectoriels, alors le produit cartésien $V_{1} \times V_{2}$ admet aussi une structure naturelle d'espace vectoriel si l'on définit l'addition et la multiplication comme
+            $$
+                (x_1,y_2) + (x_2,y_2) = (x_1+_1y_1,x_2+_2y_2)\quad \text{ et } \quad \lambda(x,y)=(\lambda\cdot x,\lambda\cdot y).
+            $$
+            \item Si $I$ est un ensemble et $K$ un corps, l'ensemble des fonctions $f: I \rightarrow K$ forme un espace vectoriel sur le corps $K$ pour les opérations d'addition de deux fonction et de multiplication par un scalaire. On le note $F(I, K)$ (dans cet exemple, les vecteurs sont bien des fonctions $f: X \rightarrow K$).
+            \item L'ensemble des polynômes de la forme
+            $$
+            P(t)=a_{0}+a_{1} t+a_{2} t^{2}+\cdots a_{m} t^{m},
+            $$
+            avec les coefficients $a_j\in K$ est un $K$-espace vectoriel (pour les mêmes opérations que dans l'exemple précédent), on le note $K_m[t]$.
+        \end{enumerate}
+\end{examples}
+\subsection{Sous-espaces vectoriels}
+    \begin{definition}
+        Soit $V$ est un espace vectoriel sur le corps $K$ et $W \subseteq V$. On dit que $W$ est un \textit{sous-espace vectoriel} (abrégé SEV) si $W$ est un espace vectoriel pour les mêmes opérations que $V$.
+    \end{definition}
+    \begin{prop}[Critère de SEV]
+        Un sous-ensemble $W$ d'un $K$-espace vectoriel $V$ est un sous-espace vectoriel si et seulement si $W \neq \emptyset$ et pour tous $\lambda \in K$ et $v, w \in W$, on a
+        $$
+        \lambda \cdot v + w \in W .
+        $$
+    \end{prop}
+    \noindent La preuve de cette proposition est très similaire à l'analogue pour les groupes.
+    \begin{definition}
+        On dit qu'une expression du type
+        $$
+        \lambda \cdot v+\mu \cdot w,
+        $$
+        où $\lambda, \mu \in K$ et $v, w \in V$ est une \textit{combinaison linéaire} de $v$ et $w$.
+    \end{definition}
+    \noindent On peut généraliser la condition précédente à des combinaisons linéaires de plus de deux vecteurs. On a donc en particulier que $W$ est un SEV de $V$ si :
+    $$
+    \lambda_1,...,\lambda_k \in K \text { et } v_1,...,v_k \in W \; \implies \; \sum_{i=1}^{k} \lambda_{i} v_{i} \in W.
+    $$
+    % Remarquez que souvent les SEV ont une interprétation simple géométriquement et qu'il est en conséquence souvent possible de se poser la question ´´est-ce que $W$ est un SEV de $V$ ?'' avant de procéder par la démonstration formelle. 
+    % On peut alors reformuler la proposition précédente en disant que $W \subseteq V$ est un sous-espace vectoriel si et seulement si $W$ est non vide et est stable pour les combinaisons linéaires :
+    % $$
+    % (v, w \in W \quad \text { et } \quad \lambda, \mu \in K) \quad \Longrightarrow \quad(\lambda \cdot v+\mu \cdot w) \in W .
+    % $$
+    
+    \noindent\textbf{Exemples de sous espaces vectoriels}
+        \begin{enumerate}[(i)]
+            \item Tout espace vectoriel $V$ admet l'espace vectoriel trivial $\{0_V\}$ comme SEV.
+            \item L'ensemble des vecteurs dans le plan $xy$ forment un SEV de l'espace vectoriel $\mathbb{R}^3$.
+            \item L'ensemble des polynômes dont chaque terme est d'ordre pair ($P(t)=a_0+a_2t^2 + ...$) forment un SEV de $K_m[t]$.
+            %\item Si $W_{1}$ et $W_{2}$ sont deux SEVs de $V$, alors $W_{1} \cap W_{2}$ est un SEV de $V$.
+            \item Si $W_{1}$ et $W_{2}$ sont deux sous-espaces vectoriels de $V$, alors l'ensemble
+            $$
+            \left\{w_{1}+w_{2} \mid w_{1} \in W_{1}, w_{2} \in W_{2}\right\} \subseteq V,
+            $$
+            est un SEV de $V$. On le note $W_{1}+W_{2}$ et on l'appelle la somme vectorielle de $W_{1}$ et $W_{2}$.
+            \item Si $W_1$ et $W_2$ sont deux SEV d'un espace vectoriel $V$, alors leur intersection $W_1 \cap W_2$ est un SEV de $W_1$ et de $W_2$, et donc aussi de $V$).
+        \end{enumerate}
+        Pour se convaincre que ces exemples sont bien corrects nous invitons les élèves à le vérifier grâce à la proposition précédente.
+
+\section {Applications linéaires}
+\noindent De la même manière que les morphismes de groupes sont des applications qui préservent la structure de groupe, les \textit{applications linéaires} (plutôt que ``morphismes d'espaces vectoriels'') sont des applications qui préservent la structure d'espace vectoriel.
+\begin{definition}
+Soient $V$ et $W$ deux espaces vectoriels sur le même corps $K$, dont la multiplication externe est notée ``$\cdot$''. \\
+Une \textit{application linéaire} (pour le corps $K$) est une application $\varphi : V \longrightarrow W$ telle que:
+\begin{align*}
+    \forall v,v' \in V, \: \forall \lambda \in K : \; \varphi(\lambda \cdot v +_V v') = \lambda \cdot \varphi(v) +_W \varphi(v').
+\end{align*}
+La distinction entre $+_V$ et $+_W$ alourdit les notations: elle sera omise dans la plupart des cas.
+
+\noindent
+Comme pour les morphismes de groupes, cette définition entraîne de nombreuses propriétés importantes.
+\end{definition}
+\noindent\textbf{Exemples d'applications linéaires}
+        \begin{enumerate}[(i)]
+            \item Pour $V$ un $K$-espace vectoriel, toute application $f:V \longrightarrow V$ de la forme $f(v) = \lambda \cdot v$ (où $\lambda \in K$) est linéaire.
+            \item Dans les espaces $\R^2$ et $\R^3$, toute rotation autour de l'origine est linéaire. 
+            \item Dans l'espace des fonctions réelles infiniment dérivables, noté $C^\infty(\R)$, l'application $\bullet' : C^\infty(\R) \longrightarrow C^\infty(\R)$ qui à chaque fonction associe sa dérivée est linéaire.
+            \item Pour tous $a_1,...,a_n \in K$, l'application
+            f: $$\begin{array}{rcl}
+                K^n &\longrightarrow& K \\
+                 (x_1,...,x_n) &\longmapsto& \sum_{i=1}^n a_i \cdot x_i 
+            \end{array}$$ est linéaire. Notons qu'ici le corps $K$ est considéré comme espace vectoriel.
+        \end{enumerate}
+\begin{prop}
+Si $\varphi : V \longrightarrow W$ est une application linéaire, alors $\varphi(0_V) = 0_W$.
+\begin{proof}
+ La preuve est exactement la même que pour les morphismes de groupes. En fait, une application linéaire est toujours un morphisme de groupes abéliens, donc le critère est déjà prouvé.
+\end{proof}
+\end{prop}
+\begin{prop}
+Si $\varphi : V \longrightarrow W$ est une application linéaire, alors $\varphi(V)$ est un SEV de $W$.
+\begin{proof}
+Il s'agit de montrer la condition suffisante de la proposition \textbf{3.1.2}: pour tous $\lambda \in K$, $w, w' \in \varphi(V)$, il faut montrer que $\lambda \cdot w + w' \in \varphi(V)$. \\
+Si $w$ et $w'$ sont dans $\varphi(V)$, par définition il existe $v$ et $v'$ dans $V$ tels que $\varphi(v) = w$ et $\varphi(v')=w'$. \\
+Comme $\varphi$ est linéaire $$\lambda \cdot w + w' = \lambda \cdot \varphi(v) + \varphi(v') = \varphi(\lambda \cdot v + v').$$
+Comme $V$ est un espace vectoriel, $\lambda \cdot v + v'$ reste dans $V$. On a donc trouvé un élément de $V$ dont l'image par $\varphi$ est $\lambda \cdot w + w'$: il suit que $\lambda \cdot w + w' \in \varphi(V)$. \\
+Comme $\lambda, w$ et $w'$ étaient choisis arbitrairement, on a prouvé que $\varphi(V)$ est un SEV de $W$.
+\end{proof}
+\end{prop}
+\begin{prop}
+Si $\varphi : V \longrightarrow W$ est une application linéaire, alors $\ker(\varphi)$ est un SEV de $V$.
+\begin{proof}
+On utilise à nouveau le critère de SEV. \\
+Soient $v$, $v'$ dans $\ker(\varphi)$ et $\lambda \in K$. Par définition, $\varphi(v) = \varphi(v') = 0_W$. \\
+Comme $\varphi$ est linéaire, $$\varphi(\lambda \cdot v + v')=\lambda \cdot \varphi(v) + \varphi(v') = 0_W.$$
+Ainsi, par définition $\lambda \cdot v + v' \in \ker(\varphi)$. \\
+Comme $\lambda$, $w$ et $w'$ étaient choisis arbitrairement, on a prouvé que $\ker(\varphi)$ est un SEV de $V$.
+\end{proof}
+\end{prop}
+\begin{remark}
+    La composition de deux applications linéaires est une application linéaire (exercice).
+\end{remark}
+\begin{definition}
+    Les applications linéaires bijectives seront également appelées \textit{isomorphismes}. Le contexte permettra de distinguer entre isomorphismes de groupes, d'anneaux, de corps ou d'espaces vectoriels.
+\end{definition}    
+\begin{prop}[Critère d'injectivité]
+Le critère démontré pour les groupes s'applique également aux espaces vectoriels: une application linéaire $\varphi$ est injective si et seulement si $\ker(\varphi)= \{0_V\}$. \\
+La preuve est essentiellement identique.
+\end{prop}
+\section{Indépendance linéaire et espaces engendrés}
+\subsection{Définitions }
+    \begin{definition}
+        En algèbre linéaire, on entend par \textit{famille de vecteurs} un sous-ensemble d'un espace vectoriel $V$. Une famille de vecteurs peut être finie ou infinie.
+    \end{definition}
+    \begin{definition}
+        Si $E \subseteq V$ est une famille de vecteurs du $K$-espace vectoriel $V$, alors on dit qu'un vecteur $v \in V$ est \textit{combinaison linéaire} d'éléments de $E$ si on peut écrire
+        $$
+        v=\lambda_{1} w_{1}+\lambda_{2} w_{2}+\cdots+\lambda_{m} w_{m},
+        $$
+        où $\left\{w_{1}, w_{2}, \ldots, w_{m}\right\} \subseteq E$ et $\left\{\lambda_{1}, \lambda_{2}, \ldots, \lambda_{m}\right\} \subseteq K$. La combinaison linéaire est dite triviale si chaque $\lambda_{i}=0$ (dans ce cas on a $v=0$). \\
+        Si tout $v \in V$ peut s'écrire sous cette forme, on dit que $E$ \textit{engendre} $V$. C'est une notion analogue à celle vue pour les groupes.
+        \end{definition}
+    \begin{definition}
+        Soient $V$ un $K$-espace vectoriel et $E \subseteq V$ une famille non vide.  On note $\Span(E)$ l'ensemble des vecteurs engendrés par $E$, ainsi $w \in \operatorname{Vec}(E)$ si et seulement s'il existe $\left\{v_{1}, v_{2}, \ldots, v_{m}\right\} \subseteq E$ et $\left\{\lambda_{1}, \lambda_{2}, \ldots, \lambda_{m}\right\} \subseteq K$ tels que
+        $$
+        w=\lambda_{1} v_{1}+\lambda_{2} v_{2}+\cdots+\lambda_{m} v_{m} .
+        $$
+        Par convention, $\operatorname{Vec}(\emptyset)=\left\{0_{V}\right\}$.
+        Notez qu'en anglais $\Span(E)$ est appelé Span$(E)$ (``étendue de $E$''). Les deux notations sont courantes.
+    \end{definition}
+
+\begin{prop} Soit $E \subseteq V$ un sous-ensemble d'un espace vectoriel $V$. Alors $\Span(E)$ est un sous-espace vectoriel de $V$ et c'est le plus petit sous-espace vectoriel qui contient $E$.
+\end{prop}
+\begin{definition}
+Si $V = \Span(E)$, on dit que $E$ est une \textit{famille génératrice} de $V$.
+\end{definition}
+\par
+On a la caractérisation suivante d'une famille génératrice: soit $\varphi : V \longrightarrow W$ une application linéaire et $E = \{e_1,...,e_n\} \subseteq V$ une famille génératrice. Si on connaît la valeur de $\varphi$ sur chaque élément de $E$, alors on connaît la valeur de $\phi$ sur $V$ entier. En effet, soit $v \in V$. On sait qu'il existe des $\lambda_i$ scalaires tels que $$v = \sum_{i=1}^{n} \lambda_i e_i.$$
+Comme $\phi$ est linéaire, on a:
+$$\phi(v)= \phi \Bigg( \sum_{i=1}^{n} \lambda_i e_i \Bigg) =  \sum_{i=1}^{n} \phi(\lambda_i e_i) = \sum_{i=1}^{n} \lambda_i \phi(e_i).$$
+Cette notion est très importante: une application linéaire est entièrement déterminée par son action sur une famille génératrice. \\ \\
+Notons qu'une famille génératrice peut avoir des éléments redondants. Par exemple, si $E = \{ v, w, 2v+w \}$, alors l'élément $2v+w$ n'est pas nécessaire: $\Span(E) = \Span( \{ v,w \} )$. \\
+Cela vient du fait que $2v+w \in \Span( \{v,w\})$: un des éléments peut déjà s'écrire comme combinaison linéaire des autres. L'avantage numérique ne joue aucun rôle pour l'opération $\Span$ qui liste toutes les combinaisons linéaires possibles.
+\par
+On aimerait considérer des familles génératrices optimales, sans redondance. Il faut donc qu'aucun des éléments puisse s'écrire comme combinaison linéaire des autres. Ceci est fait grâce à la définition qui suit.
+\begin{definition}
+Une famille $E \subseteq V$ est dite \textit{linéairement indépendante}, ou \textit{libre}, si toute combinaison linéaire d'éléments de $E$ qui donne le vecteur nul est triviale:
+$$\lambda_{1} v_{1}+\lambda_{2} v_{2}+\cdots+\lambda_{m} v_{m}=0_{V} \quad \implies \quad \lambda_{1}=\lambda_{2}=\ldots=\lambda_{m}=0_K.$$
+Notons qu'une famille d'un seul élément est forcément libre. \\
+Une famille $E = \{v_1,...,v_n \} \subseteq V$ qui n'est pas libre est dite \textit{liée}. La condition devient:
+$$\exists \lambda_1,...,\lambda_n \in K \quad\text{non tous nuls tels que}\quad \lambda_1 v_1 + \cdots + \lambda_n v_n = 0_V.$$
+\end{definition}
+\par
+    Cette définition nous permettent effectivement de séparer les familles génératrices ``optimales'' des autres. Selon ces définition, les familles génératrices ``optimales'' sont justement des familles libres, alors que les autres deviennent des familles liées.
+    
+    Pour une famille $E = \{ v_1,...,v_n \}$ ``non-optimale'' il existe $v_k\in E \setminus \{0_v\}$ tel que
+    $$
+       v_k = \lambda_1v_1 + \dots + \lambda_{k-1}v_{k-1}+  \lambda_{k+1}v_{k+1}+\dots+\lambda_nv_n,
+    $$
+    qui peut être rephrasé de manière équivalente comme
+    $$
+        0_V=\lambda_1v_1 + \dots + \lambda_{k-1}v_{k-1} - v_k +  \lambda_{k+1}v_{k+1}+\dots+\lambda_nv_n,
+    $$ où certains des $\lambda_i$ ne sont pas nuls.
+\subsection{Bases et dimension}
+    \begin{definition}
+        On dit qu'un espace vectoriel $V$ est \textit{finiment engendré} s'il existe une famille $E \subseteq V$ qui engendre $V$ et qui est composée d'un nombre fini de vecteurs . Dans le cas contraire, on dit que $V$ est \textit{infiniment engendré}.
+    \end{definition}
+    \begin{definition}
+        La famille $B \subseteq V$ est une \textit{base} de l'espace vectoriel $V$ si $B$ est une famille libre et génératrice. Si $B$ est un ensemble fini, on appelle $\vert B \vert$ (le cardinal de $B$) la \textit{dimension} de $V$, notée $\dim(V)$.
+    \end{definition}
+\noindent
+Le théorème suivant, qui sera prouvé pendant le semestre, justifie la définition de dimension.
+\begin{theorem}
+    Toutes les bases finies d'un espace vectoriel $V$ sont de même cardinal. En d'autres termes, la dimension d'un espace vectoriel est unique.
+\end{theorem}
+\begin{example} La famille $E=\{(2,1),(1,0),(5,1)\}$ est une famille liée dans l'espace vectoriel $\mathbb{R}^{2}$ car on peut trouver $\lambda, \mu, \nu \in \mathbb{R}$ tels que
+$$
+\lambda(2,1)+\mu(1,0)+\nu(5,1)=(0,0),
+$$
+On peut par exemple choisir $\lambda=1, \mu=3$ et $\nu=-1$. \\ En fait, $\R^2$ est de dimension 2 car $\{ (1,0),(0,1) \}$ en est une base. La famille $E$ est plus grande que la base, et donc trop grande pour être linéairement indépendante. \\
+En revanche, on peut vérifier que les trois sous-familles $\{(2,1),(1,0)\},\{(2,1),(5,1)\}$ et $\{(1,0),(5,1)\}$ sont également des bases de $\mathbb{R}^{2}$.
+\end{example}
+\noindent
+Cet exemple illustre le théorème suivant, suffisant pour montrer le \textbf{Théorème 3.3.1}.
+\begin{theorem}
+    Soit $V$ un espace vectoriel, $L \subseteq V$ une famille libre et $G \subseteq V$ une famille génératrice. Alors:
+    $$\vert L \vert \leq \dim(V) \leq \vert G \vert$$
+    De plus, en cas d'égalité à gauche (respectivement droite), $L$ (resp. $G$) est une base de $V$.
+\end{theorem}
+\begin{theorem}
+    Soit $B = \{ b_1,...,b_n \}$ une base d'un espace vectoriel $V$. Alors, tout $v \in V$ peut s'écrire de manière \textbf{unique} sous la forme
+    $$v = \lambda_1 b_1 + ... + \lambda_n b_n,$$
+    où les $\lambda_i$ sont des scalaires dans le corps de départ $K$.
+    \begin{proof} \hspace{1em}
+    \begin{itemize}
+        \item \underline{Existence}: comme $B$ est génératrice, par définition tout $v \in V$ peut s'écrire comme combinaison linéaire de $B$ à coefficients dans $K$.
+        \item \underline{Unicité}: supposons que $$v = \lambda_1 b_1 + \cdots + \lambda_n b_n = \mu_1 b_1 + ... + \mu_n b_n$$
+        Alors, $$ (\lambda_1 - \mu_1) b_1 + \cdots + (\lambda_n - \mu_n) b_n = 0_V$$
+        $B$ étant libre, par définition cela implique que $(\lambda_1 - \mu_1) = ... = (\lambda_n - \mu_n) = 0$, et donc $\lambda_i = \mu_i$ pour tout $i \in [n]$.
+        L'écriture de $v$ sous forme de combinaison linéaire de $B$ est bien unique.
+    \end{itemize}
+    \end{proof}
+\end{theorem}
+\noindent Ce théorème justifie la définition suivante.
+    \begin{definition}
+        Si $B=\left\{b_{1}, b_{2}, \ldots, b_{n}\right\}$ est une base du $K$-espace vectoriel $V$, et que le vecteur $v \in V$ s'écrit
+        $$
+        v=x_{1} b_{1}+x_{2} b_{2}+\cdots+x_{n} b_{n},
+        $$
+        on dit que les scalaires $x_{1}, x_{2}, \ldots, x_{n} \in K$ sont les \textit{composantes} du vecteur $v$ par rapport à la base $B$. \\ \\
+        Notons que les coordonnées d'un vecteur sont définies en fonction d'une base. Il n'y a aucun sens à parler de coordonnées absolues d'un vecteur. Si on calcule les coordonnées du même vecteur dans une autre base, le résultat sera (généralement) complètement différent.
+    \end{definition}
+\par
+Enfin, il est important de connaître le résultat suivant.
+\begin{theorem}
+    Soit $K$ un corps et $V,W$ deux $K$-espaces vectoriels de dimension finie. $V$ et $W$ sont isomorphes si et seulement si ils sont de même dimension.    En particulier, tous les $K$-EV de dimension $n \in \N$ sont isomorphes entre eux.
+\end{theorem}
+\par
+Il suit du théorème que tout $K$-EV de dimension $n$ est isomorphe à l'espace $K^n$. C'est pourquoi les résultats d'Algèbre Linéaire sont souvent démontrés sur les espaces de la forme $K^n$: par isomorphisme, ceux-ci restent valables pour tout $K$-EV de dimension finie.
+\par
+Sa démonstration repose sur le théorème suivant que nous sommes capables de prouver.
+\begin{theorem}
+Soit $\varphi: V \longrightarrow W$ une application linéaire. $\varphi$ est un isomorphisme si et seulement si il envoie toute base de $V$ sur une base de $W$.
+\begin{proof}
+\underline{``$\implies$'':} supposons que $\varphi$ est un isomorphisme. Soit $E= \{e_1,...,e_n\}$ une base de $V$ et $\varphi(E)=\{\varphi(e_1),...,\varphi(e_n)\}$. \\ \\
+$\bullet$ Montrons que $\phi(E)$ est libre. Supposons que, pour des scalaires $\{\lambda_i\}$,
+$$\sum_{i=1}^{n} \lambda_i \varphi(e_i) = 0_V.$$
+Par linéarité de $\varphi$, on a $$\varphi \Bigg(\sum_{i=1}^{n} \lambda_i e_i \Bigg) = 0_V.$$
+Par injéctivité de $\varphi$, $\ker(\varphi)= \{0_V\}$. On en conclut que $$\sum_{i=1}^{n} \lambda_i e_i = 0_V.$$
+Comme $E = \{e_1,...,e_n\}$ est une base, elle est libre et donc $$\lambda_1 = ... = \lambda_n = 0.$$
+On a prouvé l'implication $$\sum_{i=1}^{n} \lambda_i \varphi(e_i) = 0_V \implies \lambda_1 = ... = \lambda_n = 0,$$
+et donc que $\varphi(E)$ est libre. \\ \\
+$\bullet$ Montrons que $\varphi(E)$ est génératrice. Comme $\varphi$ est un isomorphisme, elle est surjective et donc $$\forall w \in W, \, \exists v \in V \text{ tel que } \varphi(v)=w.$$
+On sait que $v$ peut s'écrire sous la forme $$v = \sum_{i=1}^n \alpha_i e_i,$$
+pour des $\alpha_i$ scalaires. Ainsi:
+$$w = \varphi \Bigg( \sum_{i=1}^n \alpha_i e_i \Bigg) = \sum_{i=1}^n \alpha_i \varphi(e_i).$$
+On a prouvé que tout $w \in W$ peut s'écrire comme combinaison linéaire des éléments de $\varphi(E)$: c'est une famille génératrice et donc une base. \\
+\\
+\underline{``$\impliedby$'':} supposons que, si $B \subseteq V$ est une base de $V$, alors $\varphi(B)$ est une base de $W$. \\ \\
+$\bullet$ Montrons que $\varphi$ est injective. \\
+Soit $v\in V$ tel que $\varphi(v) = 0_V$ et soit $E = \{e_1,...,e_n\}$ une base de $V$, dans laquelle $v = \alpha_1 e_1 + \cdots + \alpha_n e_n$. Alors, $\varphi(v) = \alpha_1 \varphi(e_1) + \cdots + \alpha_n \varphi(e_n) = 0_V$. Par hypothèse, $\varphi(E)$ est une base: elle est donc libre. On en déduit que
+$$\alpha_1 = ... = \alpha_n = 0,$$
+c'est-à-dire que $v=0_V$. On a prouvé que $$\varphi(v) = 0_V \implies v=0_V,$$
+et donc que $\ker(\varphi) = \{ 0_V \}$. Par le critère d'injectivité, $\varphi$ est injective. \\
+\\
+$\bullet$ Montrons que $\varphi$ est surjective.\\
+On sait que $\varphi(E)$ est une base de $W$: elle est donc génératrice. Si $w \in W$, il existe en conséquence des scalaires $\beta_1,...,\beta_n$ tels que
+$$w = \sum_{i=1}^n \beta_i \varphi(e_i), \text{ et donc } w = \varphi \Bigg( \sum_{i=1}^n \beta_i e_i \Bigg).$$
+Pour tout $w \in W$, on a trouvé $v := \sum \beta_i e_i$ tel que $\varphi(v)=w$. On en conclut que $\varphi$ est surjective et donc un isomorphisme.
+\end{proof}
+\end{theorem}
+Cette démonstration illustre bien le lien étroit entre les notions de familles libres et génératrices et les notions d'injectivité/surjectivité d'une application linéaire.
+\subsection{Pour aller plus loin: la somme directe}
+\begin{definition}
+    Soit $V$ un $K$-EV et $W,W' \subseteq V$ des SEV. Si tout $v \in V$ peut s'écrire de la forme $$v= w + w', \; w \in W, \ w' \in W',$$
+    on dit que $V$ est la \textit{somme} de $W$ et $W'$. Cela se note $V = W + W' = \{ w + w' : w \in W, \ w' \in W'\}$. \\ \\
+    Si de plus $W \cap W' = \{ 0_V \}$, on dit que $V$ est la \textit{somme directe} de $W$ et $W'$. On le note $V = W \oplus W'$.
+\end{definition}
+\begin{prop}
+Si $V = W \oplus W'$, l'écriture $v = w + w'$ (avec $w \in W$, $w' \in W'$) est unique. \\
+La preuve est laissée en exercices.
+\end{prop}
+\noindent 
+La notion de somme directe s'inscrit dans la continuité de celles vues précédemment. Par exemple, si $B = \{b_1,...,b_n\}$ est une base de $V$, alors $$V = \Span(\{ b_1 \}) \oplus \cdots \oplus \Span(\{ b_n \}).$$
+En fait, on a le résultat suivant.
+\begin{prop}
+Soient $V$ un $K$-EV et $V_1,...,V_k \subseteq V$ des SEV, de bases $B_1,...,B_k$ respectivement. \\
+Si $V = V_1 \oplus \cdots \oplus V_k$, alors $B := B_1 \cup \cdots \cup B_k$ est une base de $V$ et $\dim(V) = \dim(V_1) + \cdots + \dim(V_k)$.
+\begin{proof} On prouve l'énoncé dans le cas $k=2$ pour simplifier les notations. Tous les autres cas s'en déduisent alors en itérant le résultat. \par
+\underline{Montrons que $B_1$ et $B_2$ sont disjointes:}
+\par
+Comme $V = V_1 \oplus V_2$, on a par définition $V_1 \cap V_2 = \{ 0_V \}$. \\
+Explicitons $B_1$ et $B_2$ comme suit $B_1 =: \{ b_1,...,b_n \}$ et $B_2 =: \{ \beta_1,...,\beta_m \}$. 
+Comme $B_1 \subseteq V_1$ et $B_2 \subseteq V_2$, on a $B_1 \cap B_2 \subseteq V_1 \cap V_2 = \{ 0_V \}$. Mais une base ne peut pas contenir $0_V$ (sinon elle ne serait pas libre). Il suit que $B_1 \cap B_2 = \emptyset$. \\
+Comme $B_1$ et $B_2$ sont disjointes, on a $$B = B_1 \cup B_2 = \{ b_1,...,b_n,\beta_1,...,\beta_m \}.$$
+\par
+\underline{Montrons que $B$ est libre}. 
+\par 
+Supposons donc que $$\lambda_1 b_1 + \cdots + \lambda_n b_n + \lambda_{n+1} \beta_1 + \cdots + \lambda_{n+m} \beta_m = 0_V.$$
+Alors, $$\lambda_1 b_1 + \cdots + \lambda_n b_n = -( \lambda_{n+1} \beta_1 + \cdots + \lambda_{n+m} \beta_m).$$
+La somme à gauche est une combinaison linéaire d'éléments dans $V_1$ et donc reste dans $V_1$. La somme à droite est une combinaison linéaire d'éléments dans $V_2$ et donc reste dans $V_2$. \\Les deux expressions sont égales, donc elles sont
+dans $V_1 \cap V_2$. Comme $V_1 \cap V_2 = \{ 0_V \}$, on a
+$$\lambda_1 b_1 + \cdots + \lambda_n b_n = -( \lambda_{n+1} \beta_1 + \cdots + \lambda_{n+m} \beta_m) = 0_V.$$
+L'expression à gauche est une combinaison linéaire d'éléments de la base $B_1$. Une base étant libre, si la combinaison linéaire est nulle, tous les scalaires sont nuls. On a donc:
+$$\lambda_1 = ... = \lambda_n = 0.$$
+Le même raisonnement s'applique pour l'expression à droite, et donc
+$$\lambda_{n+1} = ... = \lambda_{n+m} = 0.$$
+On a montré que, si une combinaison linéaire d'éléments dans $B$ est nulle, tous les coefficients sont nuls. Cela prouve que $B$ est libre. \\ \\
+\underline{Montrons que $B$ est génératrice:}
+\par Comme $V = V_1 \oplus V_2$, tout $v \in V$ peut s'écrire sous la forme
+$$v= v_1 + v_2, \; v_1 \in V_1, \ v_2 \in V_2.$$
+Or, comme $B_1$ est génératrice de $V_1$, on peut trouver $\lambda_1,...,\lambda_n \in K$ tels que $$v_1 = \lambda_1 b_1 + \cdots + \lambda_n b_n.$$
+De la même manière, il existe $\lambda_{n+1},...,\lambda_{n+m} \in K$ tels que $$v_2 = \lambda_{n+1} \beta_1 + \cdots + \lambda_{n+m} \beta_n.$$
+En combinant ces expressions:
+$$v = \lambda_1 b_1 + \cdots + \lambda_n b_n + \lambda_{n+1} \beta_1 + \cdots + \lambda_{n+m} \beta_m,$$
+et donc tout $v \in V$ peut s'écrire comme combinaison linéaire des éléments de $B$: cela prouve que $B$ est génératrice. \par
+Enfin, comme $\vert B \vert = \vert B_1 \vert + \vert B_2 \vert$, on a bien $\dim(V) = \dim(V_1) + \dim(V_2)$.
+\end{proof}
+\end{prop}
+\begin{definition}
+Il sera vu pendant le semestre que pour tout sous-espace $W \subseteq V$, il existe un sous-espace $W' \subseteq V$ tel que $$V = W \oplus W'.$$
+On dit que $W'$ est le \textit{supplémentaire} de $W$ dans $V$.
+\end{definition}
+
+
+
+
+
+\end{document}

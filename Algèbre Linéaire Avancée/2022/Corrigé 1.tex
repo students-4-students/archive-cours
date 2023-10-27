@@ -1,0 +1,254 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+\newtheoremstyle{corrigé}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{corrigé}
+\newtheorem{corrigé}{Corrigé Exercice}
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Algèbre Linéaire Avancée I - Corrigé I}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\begin{document}
+
+\maketitle
+\vspace{1em}
+\begin{corrigé}
+a) Unions: \\
+$$A \cup B = \{ 1,3,5,6,7 \}, \quad A \cup C = \{ 1,2,3,5,7 \}, \quad B \cup C = \{ 2,3,5,6,7 \}$$ $$A \cup B \cup C = \{ 1,2,3,5,6,7 \}.$$ Intersections: \\
+$$A \cap B = \{ 5,7 \}, \quad A \cap C = \{ 3 \}, \quad B \cap C = \emptyset, \quad A \cap B \cap C = \emptyset.$$
+\vspace{1em}
+b) $A \setminus B = \{ 1,3 \}, \; A \setminus C = \{ 1,5,7 \}, \; B \setminus C = B, \; B \setminus A = \{ 6 \}, \; C \setminus A = \{ 2 \}, \; C \setminus B = C$.
+c) $$\mathcal{P}(B) = \Big\{ \emptyset, \{5\},\{6\},\{7\},\{5,6\},\{5,7\},\{6,7\},B \Big\}.$$
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+On souhaite prouver une équivalence, c'est-à-dire une double implication. \\
+\\
+\underline{``$\implies$''}: On suppose que $A \subseteq B$, et on veut montrer que $(X \setminus B) \subseteq (X \setminus A)$. \\
+Pour montrer cette inclusion, on choisit un élément quelconque de $X \setminus B$, et on montre qu'il appartient forcément à $X \setminus A$. \\
+\\
+Soit donc $x \in X \setminus B$: $x$ est dans $X$ sans être dans $B$. \\
+Supposons par l'absurde que $x$ est dans $A$: comme $A \subseteq B$, on aurait $x \in B$, ce qui serait une contradiction avec ``$x \in X \setminus B$''. \\
+On conclut que $x$ ne peut pas être $A$: il est dans $X$ mais pas dans $A$, et donc $x \in X \setminus A$. \\
+\\
+\underline{``$\impliedby$''} On suppose que $(X \setminus B) \subseteq (X \setminus A)$, et on veut montrer que $A \subseteq B$. On procède comme ci-dessus. \\
+\\
+Soit $x \in A$. Supposons par l'absurde que $x$ n'appartient pas à $B$: alors, $x \in X \setminus B$, et donc par hypothèse $x \in X \setminus A$. \\
+De nouveau, on a une contradiction avec ``$x \in A$": on conclut que $x$ ne peut pas ``ne pas être dans $B$'', et donc $x \in B$.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+L'union $A \cup B$ regroupe tous les éléments qui sont dans $A$, dans $B$ ou dans les deux. Ici, tous les éléments de $A$ sont déjà dans $B$ (par $A \subseteq B$) et donc $$A \cup B = B.$$ L'ensemble $A$, parce qu'il est compris dans $B$, est "redondant" pour l'opération d'union. \\
+\\
+L'intersection $A \cap B$ regroupe tous les éléments qui sont \textit{à la fois} dans $A$ et dans $B$. Ici, les éléments de $A$ sont aussi des éléments de $B$. Les autres éléments de $B$ ne sont par définition pas dans $A$: on a donc $$A \cap B = A.$$
+\vspace{1em}
+Enfin, la différence $A \setminus B$ regroupe les éléments qui sont dans $A$ \textit{sans} être dans $B$. Or, ici tous les éléments qui sont dans $A$ sont forcément aussi dans $B$: il n'y a aucun élément qui soit dans $A$ sans être dans $B$.
+$$A \setminus B = \emptyset.$$
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+a) À partir des hypothèses, on aimerait montrer que $A \subseteq B$, c'est-à-dire que
+$$\text{Pour tout } b \in A, \; b \in C.$$
+Soit donc un $b \in B$ quelconque. On distingue deux cas: soit $b \in A$, soit $b \notin A$. \\ \\
+Dans le premier cas, comme $b \in A$ et $b \in B$, on sait que $b \in A \cap B$. Par la seconde hypothèse, $A \cap B \subseteq A \cap C$ et donc $b \in A \cap C$. \\
+En particulier, cela veut dire que $b \in C$. \\
+Dans le second cas, $b \notin A$. On sait cependant que $b \in A \cup B$, et par la première hypothèse, $A \cup B \subseteq A \cup C$: ainsi $b \in A \cup C$ : soit $b$ est dans $A$, soit il est dans $C$. \\
+On a supposé ici que $b \notin A$: on a donc forcément $b \in C$. \\
+\\
+Dans tous les cas, $b \in C$. \\
+On a montré que $b \in B \implies b \in C$, et donc $B \subseteq C$. \\ \\ \\
+b) On veut montrer une égalité entre les ensembles $A$ et $B$: on procède par double inclusion. \\
+\\
+\underline{$A \subseteq B$}. \\
+Soit $a \in A$. On sait que, par définiton, $a \in A \cup B$. Comme $A \cup B = A \cap B$ par hypothèse, on sait que $a \in A \cap B$. \\
+En particulier, on conclut que $a \in B$. Cela prouve la première inclusion. \\
+\\
+\underline{$B \subseteq A$}. \\
+Le raisonnement est exactement le même: soit $b \in B$. Alors:
+$$b \in A \cup B \implies b \in A \cap B \implies b \in A.$$
+Cela prouve la seconde inclusion.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+On souhaite montrer qu'une application est bijective: il faut montrer qu'elle est injective, puis qu'elle est surjective. \\
+La définition de l'application réciproque est $$f^{-1}(b) = a \text{ tel que } f^{-1}(\{b\}) = \{a\}.$$
+\underline{$f^{-1}$ est injective.} On veut montrer que $$f^{-1}(b_1) = f^{-1}(b_2) \implies b_1 = b_2.$$
+Soient donc $b_1,b_2 \in B$ tels que $f^{-1}(b_1) = f^{-1}(b_2)$. \\
+Cela veut dire que $$b_1 = f \Big( f^{-1}(b_1) \Big) = f \Big( f^{-1}(b_2) \Big) = b_2,$$
+et donc on a prouvé l'injectivité.
+\\
+\\
+\underline{$f^{-1}$ est surjective}. On veut montrer que tout élément $x \in X$ est "atteint" par $f^{-1}$. \\
+Soit donc $x \in X$. On veut montrer qu'il existe un $y \in Y$ tel que $f^{-1}(y) = x$. \\ \\
+On peut deviner que cet élément $y$ est $f(x)$. En effet:
+$$f^{-1} \Big( f(x) \Big) = x.$$
+Ainsi, pour tout élément $x \in X$, il existe un élément $y=f(x)$ dans $Y$ tel que $f^{-1}(y)=x$. On a donc prouvé la surjectivité. \\
+\\
+L'application $f^{-1}$ est injective et surjective: elle est bijective.
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}
+1) Comme vu en cours, cette application n'est ni injective ni surjective. \\ \\
+L'application n'est pas injective car $f(-1) = f(1)$, et plus généralement $f(-x) = x$. Une application est dite injective lorsque deux éléments distincts n'ont jamais la même image: ici $-1$ et $1$ sont des éléments distincts dont l'image est la même. \\ \\
+Elle n'est pas surjective parce que certains éléments de l'ensemble d'arrivée $\mathbb{R}$ ne sont pas atteints: c'est le cas de $-1$. \\
+L'équation $x^2=-1$ n'a pas de solution dans $\mathbb{R}$: il n'existe aucun élément $x \in \mathbb{R}$ tel que $f(x) = -1$. \\ \\
+Comme vu en cours, en restreignant l'ensemble de départ à $\mathbb{R}_+$, on règle le premier problème et on obtient une injection. En restreignant l'ensemble d'arrivée à $\mathbb{R}_+$, on règle le second problème et on obtient une surjection. \\
+\\
+\\
+2) Cette application n'est pas injective mais est surjective. \\
+\\
+L'application n'est pas injective car certains éléments ont plus d'un antécédent. Par exemple, $(0,2)$ et $(2,0)$ donnent la même image $f(0,2) = f(2,0) = 2$. \\
+\\
+Elle est surjective parce que, pour tout $x \in \mathbb{R}$, l'antécédent $(x,0)$ vérifie $f(x,0) = x$. \\
+On peut trouver un antécédent à tout élément de l'ensemble d'arrivée, et donc $f$ est surjective. \\
+\\
+\\
+3) L'application est bijective. \\
+\\
+L'application est injective car $$f(x_1,x_2) = f(y_1,y_2) \implies \left\{ \begin{array}{rcl}
+x_1+x_2 &=& y_1+y_2 \\
+x_1-x_2 &=& y_1-y_2
+\end{array} \right.
+$$
+En résolvant ce système, on aboutit aux conclusions $x_1 = x_2$ et $y_1 = y_2$. On a montré:
+$$f(x_1,x_2) = f(y_1,y_2) \implies (x_1,x_2)=(y_1,y_2),$$
+qui est la définition d'injectivité. \\
+\\
+Elle est surjective car $$f(x,y) = (a,b) \iff (x,y) = \Big( \dfrac{a-b}{2}, \dfrac{a+b}{2} \Big),$$
+et donc tout élément $(a,b) \in \mathbb{R}^2$ admet une préimage. \\
+La manière de le prouver est la résolution du système
+$$f(x,y) = (a,b) \iff
+\left\{ \begin{array}{rcl}
+     x+y &=& a \\
+     x-y &=& b
+\end{array} \right.$$
+\hspace{1em} \\
+4) Cette application est surjective mais n'est pas injective. \\
+\\
+L'application est surjective par définition de l'ensemble $\mathbb{Q}$: tout élément $x \in \mathbb{Q}$, par définition, peut s'écrire comme $x = \frac{p}{q}$ avec $p \in \mathbb{Z}$  et $q \in \mathbb{Z}^*$. \\
+Cependant, cette écriture n'est pas unique: $\frac{2}{4} = \frac{1}{2}$, et donc $f(1,2) = f(2,4)$ alors que $(1,2) \neq (2,4)$. \\
+C'est ce manque d'unicité qui empêche l'application d'être injective, et donc (comme vu en cours) de la définir dans l'autre sens. \\
+\\
+\\
+5) Cette application est une bijection. \\
+En fait, au lieu de passer par les preuves de l'injectivité et de la surjectivité, on peut raisonner ainsi: si on trouve une application inverse $f^{-1}$, alors $f$ est une bijection. \\
+\\
+$f$ est définie comme une application qui envoie tout sous-ensemble $A \subseteq \mathbb{N}$ vers $\mathbb{N} \setminus A$, son \textit{complémentaire dans $\mathbb{N}$} (notons que $f$ envoie bien des \textit{ensembles} vers d'autres \textit{ensembles}). \\ \\
+En fait, on se rend compte que $f$ est sa propre inverse. C'est ce qu'on appelle l'\textit{involutivité du complémentaire}: $$\mathbb{N} \setminus \big( \mathbb{N} \setminus A \big) = A.$$
+
+\end{corrigé}
+\vspace{2em}
+\begin{corrigé}[Relations d'équivalence*]
+1)
+    a) C'est une relation d'équivalence. \\
+    \textbf{Réflexivité} : clairement, tout élément $a \in \Z$ a la même parité que lui-même. Alors $(a,a)\in R$.\\
+    \textbf{Symétrie} Si $a$ a la meme parité que $b$, forcément $b$ a la même parité que $a$ et donc $(a,b) \in R \iff (b,a)$.\\
+    \textbf{Transitivité}: si $a$ et $b$ ont la même parité, et $b$ et $c$ ont la même parité, alors soit $a$ et $b$ sont pairs et donc $c$ est pair, soit ils sont impairs et donc $c$ est impair. Ils ont tous les trois la même parité, donc en particulier $(a,b) \in R$ et $(b,c) \in R \implies (a,c) \in R$. \\
+    $R$ possède 2 classes d'équivalence: l'ensemble des entiers pairs, et l'ensemble des entiers impairs. \\
+    \\
+    b) Cette relation n'est pas symétrique: par exemple pour $a=4$ et $b=2$, on a que $a$ est divisible par $b$ (donc $(a,b) \in R$) mais $b$ n'est pas divisible par $a$ (donc $(b,a) \notin R$). \\
+    $R$ n'est donc pas une relation d'équivalence. \\ \\
+    c) C'est une relation d'équivalence (c'est le cas général de l'exemple a) où on avait $m = 2$). \\
+    \textbf{Réflexivité}: Pour tout $a \in A$, $a-a = 0$ et par définition $m$ divise 0 (car on peut écrire $0=mk$, avec $k=0$). Ainsi $(a,a) \in R$. \\
+    \textbf{Symétrie}: Si $m$ divise $a-b$, il existe un $k \in \mathbb{Z}$ tel que $km=a-b$. On conclut qu'il existe $-k \in \mathbb{Z}$ tel que $-km=b-a$, et donc $m$ divise $b-a$. On a donc $(a,b) \in R \iff (b,a) \in R$. \\
+    \textbf{Transitivité}: on suppose que $m$ divise $a-b$ et $b-c$, c'est-à-dire $k_1m=a-b$ et $k_2m=b-c$ pour des $k_1,k_2 \in \mathbb{Z}$. On en déduit que $k_1m+k_2m= (a-b)+(b-c)=a-c$. On a donc trouvé $k=k_1+k_2$ tel que $km=a-c$, c'est-à-dire que $m$ divise $a-c$. \\
+    On a bien que si $(a,b)$ et $(b,c) \in R$, alors $(a,c) \in R$. \\
+    $R$ possède $m$ classes d'équivalence: l'ensemble des entiers divisibles par $m$, l'ensemble des entiers dont le reste est 1 pour la division euclidienne par $m$, l'ensemble des entiers dont le reste est 2 pour la division euclidienne par $m$,..., etc. jusqu'à l'ensemble des entiers dont le reste est $m-1$ pour la division euclidienne par $m$.
+    \\ \\
+    d) C'est une relation d'équivalence: c'est en fait celle qui permet de définir rigoureusement l'ensemble $\mathbb{Q}$. \\ \\
+    \textbf{Réflexivité}: pour tout $(a,b) \in (\mathbb{Z}^*)^2$, on a $ab = ab$, et donc $\big((a,b),(a,b)\big) \in R$. \\
+    \textbf{Symétrie}: si $\big((a,b),(c,d)\big) \in R$, c'est que $ad=bc$, donc $bc=ad$ et $\big((c,d),(a,b)\big) \in R$. \\
+    Ainsi, $\big((a,b),(c,d)\big) \in R \iff \big((c,d),(a,b)\big) \in R$. \\
+   \textbf{Transitivité}: si $\big((a,b),(c,d)\big)$ et $\big((c,d),(e,f)\big) \in R$, alors $$\textnormal{(1) } ad=bc \text{ et (2) } cf=de.$$
+    En multipliant (2) par $b$, on obtient $bcf=bde$. En utilisant (1), cela revient à $adf=bde$. \\
+    Par hypothèse, tous les rééls considérés sont non-nuls et donc on peut simplifier par $d$ pour obtenir $af=be$, c'est-à-dire $\big((a,b),(e,f)\big) \in R$. \\
+    \\
+    Notons que si l'ensemble considéré était $\mathbb{Z}^2$ au lieu de $\mathbb{Z}^*^2$, la transitivité ne serait pas vérifiée. \\
+    En effet, on aurait $1 \cdot 0 = 2 \cdot 0$, et $0 \cdot 3 = 1 \cdot 0$, mais pas $1 \cdot 3 = 2 \cdot 1$, soit
+    $\big((1,2),(0,0)\big)$ et $\big((0,0),(1,3)\big) \in R$, mais pas $\big((1,2),(1,3)\big) \in R$. \\
+    Chaque classe d'équivalence de $R$ est de la forme $$\{ (a,b) \in \mathbb{Z}^2 : \dfrac{a}{b} = x\}.$$
+    L'ensemble des classes d'équivalence est donc en bijection avec $\mathbb{Q}$. \\
+    \\
+    e) Cette relation n'est pas réflexive: $2$ et $2$ ne sont pas premiers entre eux, parce qu'ils admettent $2$ comme diviseur commun non trivial. \\
+    Ce n'est donc pas une relation d'équivalence. \\ \\
+    f) Cette relation n'est pas transitive: $2$ et $6$ ont $2$ comme diviseur commun, $6$ et $3$ ont $3$ comme diviseur commun, mais $2$ et $3$ n'ont pas de diviseurs en commun. \\
+    Ce n'est pas une relation d'équivalence. \\
+    \\ \\
+    2) a) Le maximum est$\vert A^2 \vert = \vert A \vert ^2$, parce que $R$ doit être un sous-ensemble de $A^2$. Il est atteint par la relation ``totale'': la relation $R$ pour laquelle tous les éléments de $A \times A$ sont dans $R$. \\
+    Par exemple, pour $A = \mathbb{N}$, la relation d'équivalence $(a,b) \in R \iff a+b \in \mathbb{N}$ est totale: $R = \mathbb{N}^2$. \\ \\
+    b) Le minimum est $\vert A \vert$. \\
+    En effet, la relation doit être réflexive, et donc on sait que pour tout $a \in A$, $(a,a) \in R$. On a $\vert R \vert \geq \vert A \vert$. \\
+    Il est atteint par la relation d'égalité $(a,b) \in R \iff a=b$.
+    \end{corrigé}
+
+
+
+
+
+
+\end{document} 

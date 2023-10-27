@@ -1,0 +1,132 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Algèbre Linéaire Avancée I - Série I}
+\posttitle{\par
+\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\renewcommand{\maketitlehookd}{
+}
+
+\begin{document}
+
+\maketitle
+\begin{exercice}
+On considère les ensembles $A= \{ 1,3,5,7 \}$, $B = \{5,6,7\}$ et $C = \{2,3\}$. \\ \\
+a) Déterminer les toutes les unions et intersections possibles de ces ensembles. \\ \\
+b) Déterminer toutes les différences (deux-à-deux) de ces ensembles. \\ \\
+c) Pour un ensemble $X$, notons $\mathcal{P}(X)$ l'ensemble de ses sous-ensembles (les éléments de $\mathcal{P}(X)$ sont donc bien des \textit{ensembles}). Expliciter $\mathcal{P}(B)$.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Soient $A$ et $B$ deux sous-ensembles de $X$. \\
+Démontrer soigneusement l'équivalence suivante: $$A \subseteq B \iff (X \setminus B) \subseteq (X \setminus A).$$
+\textit{Note:} si on traduit cette énoncé dans le langage des propositions logiques, c'est la règle de la \textit{contraposée}. Elle exprime le fait que ``$P$ est vraie $\implies$ $Q$ est vraie'' est équivalent à ``$Q$ est fausse $\implies$ $P$ est fausse''.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Soient $A$ et $B$ deux ensembles tels que $A \subseteq B$. Expliciter $A \cup B$, $A \cap B$ et $A \setminus B$.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Soient $A$, $B$ et $C$ trois ensembles. \\
+\\
+a) Supposons que $A \cup B \subseteq A \cup C$ et $A \cap B \subseteq A \cap C$. Montrer que $B \subseteq C$. \\ \\
+b) Démontrer soigneusement l'implication suivante:
+$$A \cup B = A \cap B \implies A = B.$$
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Soient $A$ et $B$ deux ensembles, et $f: A \longrightarrow B$ une bijection. \\
+Montrer que son application réciproque $f^{-1} : B \longrightarrow A$ est également une bijection.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Dans chacun des cas suivants, dire si l'application $f : E \longrightarrow F$ est injective, surjective et/ou bijective. Lorsqu'elle est bijective, donner la formule de son inverse. 
+\begin{align*}
+\textnormal{1)}& \quad E = \R, F=\R, \hspace{3em} f(x) = x^2. \\
+\textnormal{2)}& \quad E = \R^2, F= \R, \hspace{2.6em} f(x,y) = x + y. \\
+\textnormal{3)}& \quad E = \R^2, F= \R^2, \hspace{2.3em} f(x,y) = (x + y,x-y). \\
+\textnormal{4)}& \quad E = \Z \times \Z^*,F= \Q, \hspace{0.8em} f(x,y) =  \dfrac{x}{y}. \\
+\textnormal{5)}& \quad E = F= \mathcal{P}(\N), \hspace{2.7em} f(A) = \N \setminus A.
+\end{align*}
+\end{exercice}
+\vspace{2em}
+\begin{exercice}[Relations d'équivalence*]
+1) Décider, dans chacun des cas, si $R$ est une relation d'équivalence sur $E \times E$. Si oui, lister ses classes d'équivalence. \\ \\
+\indent a) $E = \Z$, $(a,b) \in R \iff a$ et $b$ sont de même parité. \\
+\\
+\indent b) $E = \N$, $(a,b) \in R \iff a$ est divisible par $b$. \\ \\
+\indent c) $E = \Z$, $m \in \Z^*$, $(a,b) \in R \iff m$ divise $a-b$. \\ \\
+\indent d) $E = (\Z^*)^2$, $\big( (a,b),(c,d) \big) \in R \iff ad = bc$. \\ \\
+\indent e) $E = \Z^*$, $(a,b) \in R \iff a$ et $b$ sont premiers entre eux. \\ \\
+\indent f) $E = \Z$, $(a,b) \in R \iff a$ et $b$ ont au moins un diviseur $d > 1$ en commun. \\ \\ \\
+2) Soit $A$ un ensemble fini non vide. \\ \\
+\indent a) Pour $R \subseteq A \times A$ une relation d'équivalence, quel est le maximum de $\vert R \vert$? Quelle \indent est la relation d'équivalence qui atteint ce maximum? \\ \\
+\indent b) Même question pour le minimum.
+\end{exercice}
+\end{document}

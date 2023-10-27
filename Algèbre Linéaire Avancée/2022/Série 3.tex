@@ -1,0 +1,124 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\DeclareMathOperator{\Vect}{Vec}
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Algèbre Linéaire Avancée I - Série III}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\renewcommand{\maketitlehookd}{
+}
+
+\begin{document}
+
+\maketitle
+\vspace{1em}
+\begin{exercice}
+Pour le corps $K$, le $K$-espace vectoriel $V$ et le sous-ensemble $W \subseteq V$, dire si $W$ est un sous-espace vectoriel de $V$. \\
+\\
+1) $K = \R$, $V = \R^2$, et $W$ une droite quelconque du plan. \\ \\
+2) $K = \R$, $V = \R^2$, et $W$ une droite du plan passant par l'origine. \\ \\
+3) $K$ un corps quelconque, $V = K^n$ et $$W = \{ (x_1,...,x_n) \in K^n : x_1 + \cdots + x_n = 0_K \}.$$
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Soient $V$ un $K$-espace vectoriel et $W_1, W_2 \subseteq V$ des sous-espaces. \\ \\
+\textnormal{1)} On définit $W_1 + W_2 = \{ w_1 + w_2 \in V : w_1 \in W_1, \, w_2 \in W_2 \} \subseteq V$. Montrer que c'est un sous-espace vectoriel. \\ \\
+\textnormal{2)} Montrer que $W_1 \cap W_2$ est un sous-espace vectoriel.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}
+Soient $K$ un corps et $V,W$ deux $K$-espaces vectoriels. \\ \\
+1) Déterminez si les applications suivantes sont linéaires en justifiant votre réponse.
+\\ \\
+\indent a) Pour $V+W$ l'espace vectoriel comme vu dans l'\textbf{Exercice 2},
+\begin{align*}
+	g: V\times W &\longrightarrow V+W \\
+	(v,w) &\longmapsto v+w
+.\end{align*}
+\indent b) Pour $i \leq n$,
+\begin{align*}
+	\pi_i: K^n &\longrightarrow K \\
+	(a_1,..,a_n) &\longmapsto a_i.
+\end{align*}
+\indent c) Le produit scalaire,
+\begin{align*}
+	f : K^2 &\longrightarrow  K\\
+	(x,y) &\longmapsto x \cdot y.
+\end{align*} \\
+2) Soit $X=\{x_1,..,x_k\} \subseteq V$ et $f:V \longrightarrow W$ une application linéaire. Si l'ensemble $f(X) = \{f(x_1),...,f(x_n) \}$ est libre, montrer que $X$ est libre. \\
+\\
+3) Supposons que $X$ du point précédent engendre $V$. Montrer que $f(X)$ engendre $f(V) = \text{Im}(f)$.
+\end{exercice}
+\vspace{2em}
+\begin{exercice}[Théorème de cours*]
+Soient $V$ et $W$ deux espaces vectoriels sur un corps $K$. \\
+À partir du résultat suivant: $$\varphi : V \longrightarrow W \text{ est un isomorphisme si et seulement si il envoie toute base de } V \text{ sur une base de } W,$$
+prouvez formellement le \textbf{Théorème 3.3.4}:
+$$ V \text{ et } W \text{ sont isomorphes si et seulement si ils sont de même dimension.}$$
+\end{exercice}
+\vspace{2em}
+\end{document}

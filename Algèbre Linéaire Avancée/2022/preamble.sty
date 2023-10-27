@@ -1,0 +1,108 @@
+\ProvidesPackage{preamble}
+
+\usepackage{parskip}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\usepackage{graphicx}
+
+
+%  http://math.univ-lyon1.fr/irem/IMG/pdf/LatexPourLeProfDeMaths.pdf
+
+%$\begin{array}{ccccc}
+%f & : & E & \to & F \\
+% & & x & \mapsto & f(x) \\
+%\end{array}$
+\usepackage{lmodern}
+\usepackage{soul}
+\usepackage{wrapfig}
+% scinder en deux parties triangulaires de même aire une cellule initialement rectangulaire 
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tikz,tkz-tab}
+\usepackage{lipsum} 
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{setspace}
+ % pour insérer des images 
+% Voici les commandes importants pour cadrer ton image ( ici mon image s'appelle Capture.jpeg j'ai déconné dans le nom mdr  
+%   \includegraphics[scale=0.5]{Capture.jpg.jpeg} l'image est réduite de moitié                               \includegraphics[width=10cm]{Capture.jpg.jpeg} l'image est retaillée pour avoir une largeur de 10cm \includegraphics[height=10cm]{Capture.jpg.jpeg} l'image est retaillée pour avoir une hauteur de 10cm \includegraphics[angle=0]{Capture.jpg.jpeg} l'image est tournée de 0°
+
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{multirow} % pour fusionner lignes tableaux
+\usepackage{url} % pour les url lol
+\usepackage{wrapfig}% pour countourner image 
+% pour écrire des maths: 
+%  “amsmath” “amssymb” et “mathrsfs”
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{amsfonts}
+
+
+
+\usepackage{pgfplots}
+\usepackage{pstricks}
+
+\usepackage{enumerate}
+
+\usepackage{hyperref}
+\usepackage{pst-all}
+\usepackage{pst-plot}
+\usepackage{pstricks-add}
+
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{xlop}
+
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Span}{Vec}
+
+%Commandes
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\usepackage{amsthm}
+\newtheorem{theorem}{Théorème}[section]
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem*{props}{Propriétés}
+
+\newtheorem{df}{Définition}[section]
+\theoremstyle{definition}
+\newtheorem*{definition}{Définition}
+
+\theoremstyle{definition}
+\newtheorem*{remark}{Remarque}
+
+\newtheorem*{proposition}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem*{example}{Exemple}
+
+% \newtheoremstyle{def}% name of the style to be used
+% {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+% {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+% {}% name of font to use in the body of the theorem
+% {0pt}% measure of space to indent
+% {\bfseries}% name of head font
+% { }% punctuation between head and body
+% { }% space after theorem head; " " = normal interword space
+% {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+
+% \theoremstyle{def}
+% \newtheorem{definition}{Définition}[section]
+
+
+\title{S4S Algèbre Linéaire Avancée}
+\author{Inspiré de l'Ouvrage du Professeur Marc Troyanov }
+\date{ Printemps 2022}
+\makeindex
