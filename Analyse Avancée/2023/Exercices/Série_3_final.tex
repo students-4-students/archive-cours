@@ -1,0 +1,152 @@
+\documentclass{article}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[cyr]{aeguill}
+\usepackage[francais]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{enumitem,amssymb}
+\newlist{checks}{itemize}{2}
+\setlist[checks]{label=$\square$}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{calc}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{pst-func}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{mdframed}
+\usepackage[boxed,vlined]{algorithm2e}
+\usepackage{cleveref}
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{1}{$\displaystyle \lim_{#1}\;$}}}
+\usepackage{float}
+%\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm, showframe]{geometry}
+\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\w}{\omega}
+\newcommand{\p}{\partial}
+\newcommand{\cross}{\times}
+\newcommand{\Col}{\text{Col}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Cc}{{\mathbb{C}}}
+\newcommand{\Ct}{\Cc^\times}
+\newcommand{\Hh}{{\mathbb{H}}}
+\newcommand{\Nn}{{\mathbb{N}}}
+\newcommand{\Zz}{{\mathbb{Z}}}
+\newcommand{\Zzn}{\Zz/n\Zz}
+\newcommand{\ZzNt}{(\Zz/N\Zz)^\times}%quotient 
+\newcommand{\Rr}{{\mathbb{R}}}
+\newcommand{\Rt}{{\Rr^\times}}
+\newcommand{\Qt}{{\Qq^\times}}
+\newcommand{\Qq}{{\mathbb{Q}}}
+\newcommand{\bigzero}{\makebox(0,0){\text{\huge0}}}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Vect}{Vect}
+\usepackage{mathtools, stmaryrd}
+\usepackage{xparse} \DeclarePairedDelimiterX{\Iintv}[1]{\llbracket}{\rrbracket}{\iintvargs{#1}}
+\NewDocumentCommand{\iintvargs}{>{\SplitArgument{1}{,}}m}
+{\iintvargsaux#1} %
+\NewDocumentCommand{\iintvargsaux}{mm} {#1\mkern1.5mu..\mkern1.5mu#2}
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+\title{\textbf{Analyse Avancée -- Série 3}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{Cours/assets/imgs/logo-round.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+
+\begin{document}
+
+% Header
+\pagestyle{fancy}
+\fancyhead[L]{Students 4 Students}
+\fancyhead[C]{\textit{Analyse avancée - Série 1}}
+\fancyhead[R]{Septembre 2022}
+
+\maketitle
+
+
+\begin{exercice}[Convergence de séries]
+    
+Étudier la convergence des séries $\sum_n u_n $ avec : 
+
+\begin{enumerate}
+    \begin{multicols}{2}
+    \item $u_n= \dfrac{n}{n^3+1}$
+    \item $u_n=\dfrac{1}{\sqrt{n}}$
+    \item $u_n=\dfrac{x^n}{n!}$, $x\in \Rr$
+    \item $u_n=(-1)^n \dfrac{x^{2n}}{(2n)!}$ avec $n!=n\cdot (n-1)\cdot \cdot \cdot 3\cdot 2\cdot 1$
+    \item $u_n=\left (\dfrac{n-1}{2n+1}\right )^n$
+    \end{multicols}
+\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}[Preuve]
+    Montrer la remarque suivante:\\
+
+Pour deux ensemble $B,A$ tel que $B\subset A $ on a $\underset{x\in B}{\sup}f(x)\leq \underset{x\in A}{\sup}f(x)$, $f$ une fonction définie sur $A$.
+\end{exercice}
+
+
+\begin{exercice}[Etude de fonctions]
+    Donner le domaine de définition, l'infimum, le suprémum, le maximum et le minimum s'ils existent de chaque fonction suivante:
+
+\begin{enumerate}
+    \begin{multicols}{2}
+        \item $f(x)=x$
+        \item $f(x)=x^2$
+        \item $f(x)=\dfrac{1}{x}$
+        \item $e^x$
+        \item $\dfrac{1}{x\cdot(x-1)\cdot(x-2)\cdot\cdot\cdot (x-n)}$, $n\in \Nn$ fixé. 
+    \end{multicols} 
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[Création de fonctions]
+    
+Donner un exemple de fonction bornée sur $[0,1]$ qui n'atteint ni son infimum ni son supremum.
+\end{exercice}
+
+\begin{exercice}[Exercice avancé ]
+ Soient $a, b \in \Rr, a < b$, et considérons une fonction continue $f : [a, b] \to [a, b]$. Prouver qu’il existe $c \in[a, b]$ tel que $f(c)=c$. 
+    
+\end{exercice}
+
+\end{document}

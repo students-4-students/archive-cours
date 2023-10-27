@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[cyr]{aeguill}
+\usepackage[francais]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{enumitem,amssymb}
+\newlist{checks}{itemize}{2}
+\setlist[checks]{label=$\square$}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{calc}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{pst-func}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{mdframed}
+\usepackage[boxed,vlined]{algorithm2e}
+\usepackage{cleveref}
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{1}{$\displaystyle \lim_{#1}\;$}}}
+\usepackage{float}
+%\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm, showframe]{geometry}
+\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\w}{\omega}
+\newcommand{\p}{\partial}
+\newcommand{\cross}{\times}
+\newcommand{\Col}{\text{Col}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\bigzero}{\makebox(0,0){\text{\huge0}}}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Vect}{Vect}
+\usepackage{mathtools, stmaryrd}
+\usepackage{xparse} \DeclarePairedDelimiterX{\Iintv}[1]{\llbracket}{\rrbracket}{\iintvargs{#1}}
+\NewDocumentCommand{\iintvargs}{>{\SplitArgument{1}{,}}m}
+{\iintvargsaux#1} %
+\NewDocumentCommand{\iintvargsaux}{mm} {#1\mkern1.5mu..\mkern1.5mu#2}
+\newcommand{\Cc}{{\mathbb{C}}}
+\newcommand{\Ct}{\Cc^\times}
+\newcommand{\Hh}{{\mathbb{H}}}
+\newcommand{\Nn}{{\mathbb{N}}}
+\newcommand{\Zz}{{\mathbb{Z}}}
+\newcommand{\Zzn}{\Zz/n\Zz}
+\newcommand{\ZzNt}{(\Zz/N\Zz)^\times}%quotient 
+\newcommand{\Rr}{{\mathbb{R}}}
+\newcommand{\Rt}{{\Rr^\times}}
+\newcommand{\Qt}{{\Qq^\times}}
+\newcommand{\Qq}{{\mathbb{Q}}}
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+\title{\textbf{Analyse Avancée -- Corrigé ExoSup 1}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{Cours/assets/imgs/logo-round.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+
+\begin{document}
+
+% Header
+\pagestyle{fancy}
+\fancyhead[L]{Students 4 Students}
+\fancyhead[C]{\textit{Analyse avancée - Corrigé 1}}
+\fancyhead[R]{Septembre 2022}
+
+\maketitle
+
+\begin{exercice}
+    Montrez que le supremum d'un ensemble est unique.\\
+
+    Raisonnons par l'absurde. Supposons qu'il existe deux réels $s,s' \in \Rr $ tels que $s \ne s'$ et $s = \sup(\mathcal{A} )$ et $s' = \sup (\mathcal{A})$. C'est à dire que les deux réels satisfont que : $$ \forall \varepsilon > 0, \exists a \in \mathcal{A}  \textrm{ tel que } s-\varepsilon < a < s .$$
+    On peut alors supposer sans perte de généralité que $s'<s$. Il suffit alors de choisir $\varepsilon \in ]0,s-s'[ $ afin d'obtenir que $s' < s-\varepsilon$. Or par le fait que $s'$ soit un majorant de $\mathcal{A}$ par hypothèse, alors $$
+    a \le s' < s- \varepsilon \:\: \forall a \in \mathcal{A}$$
+    $$ \implies \mathcal{A} \cap [s-\varepsilon, s] = \emptyset$$ 
+    Ce qui contredit l'hypothèse que $s$ est le supremmum de $\mathcal{A}$. Ainsi le supremmum est unique. $\Box$ \\ 
+    \textbf{Remarque:} Un raisonnement analogue montre que $\inf (\mathcal{A})$ est unique. 
+\end{exercice}
+
+
+
+
+\end{document}

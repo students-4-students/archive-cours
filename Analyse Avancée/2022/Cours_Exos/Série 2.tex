@@ -1,0 +1,165 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{15pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{multicol}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Analyse Avancée I - Série II}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\renewcommand{\maketitlehookd}{
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=0.8\textwidth]
+Passionné de mathématiques, le pape Pie XII souhaitait qu'on l'appelle Pie puissance 12.
+\end{tcolorbox}
+\scriptsize{Cette série vous est délivrée par Lounès, Louis et Till.} 
+\end{center}
+}
+
+\begin{document}
+
+\maketitle
+
+
+
+\begin{exercice}[]
+
+Écrivez les cinq premiers termes des suites suivantes. 
+\begin{multicols}{2}
+  \begin{enumerate}
+   
+        \item[(a)] $a_n=\frac{1}{3n+1}$
+        \item[(b)] $b_n=\frac{3n+1}{4n-1}$
+   
+    \columnbreak  % uniquement si tu veux changer de colonne à un endroit précis
+    \item[(c)] $c_n=\frac{n}{3^n}$
+    \item[(d)] $d_n = \sin{\big(\frac{n\pi}{4}\big)}$
+     \end{enumerate}
+\end{multicols}
+
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+Pour chaque suite de l'exercice 2.1, dites si elle converge ou pas et trouver la limite. Si vous n'arrivez à trouver la limite formellement, utilisez un calculateur graphique (ex : desmos.com). 
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+   Pour chaque suite ci-dessous, déterminer si elle converge ou non et, si elle converge, donner sa limite. Aucune preuve n'est demandée. Il est possible (et recommandé) d'utiliser un calculateur graphique (www.desmos.com). 
+\begin{multicols}{4}
+    \begin{enumerate}
+   
+        \item[(a)] $a_n=\frac{n}{n+1}$
+        \item[(b)] $b_n=\frac{n^2+3}{n^2-3}$
+   \item[(c)] $c_n=2^{-n}$
+   \item[(d)] $d_n=1+\frac{2}{n}$
+    \columnbreak  
+    \item[(e)] $e_n=2+(-1)^n$
+    \item[(f)] $f_n =\frac{(\sqrt[3]{n})^5}{(3\sqrt{n})^4}$
+    \item[(g)] $g_n=n!$
+    \item[(h)] $h_n=(-1)^n\cdot n$
+    \columnbreak 
+    \item[(i)] $i_n=\frac{(-1)^n}{n}$
+    \item[(j)] $j_n=\frac{7n^3+8n}{2n^3-3}$
+    \item[(k)] $k_n=\frac{9n^2-18}{6n+18}$
+    \item[(l)] $l_n=\sin{(\frac{n\pi}{2})}$
+      \columnbreak 
+      \item[(m)] $m_n=\sin{(\frac{2n\pi}{3})}n$
+      \item[(n)] $n_n=\frac{1}{n}\sin{(n)}$
+      \item[(o)] $o_n=\frac{3^n}{n!}$
+      \item[(p)] $p_n=\frac{6n+4}{9n^2+7}$
+     \end{enumerate}
+\end{multicols}
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+Déterminer les limites suivantes. Montrer toutes les étapes de démonstration.
+\begin{enumerate}
+    \item[(a)] lim $x_n$ où $x_n=\sqrt{n^2+1}-n$. \\ \textit{Indice : Montrer d'abord que } $x_n=\frac{1}{\sqrt{n^2+1}+n}$
+    \item[(b)] lim $(\sqrt{n^2+n}-n)$,
+    \item[(c)] lim $(\sqrt{4n^2+n}-2n)$.
+    \item[\textit{Indications : }] \textit{ Utilisez l'identité remarquable : $a^2-b^2=(a+b)(a-b)$}
+\end{enumerate}
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+Donnez un exemple d' :
+\begin{enumerate}
+    \item [(a)] Une suite $(x_n)$ de nombres irrationnels ayant une limite lim $x_n$ qui est un nombre rationnel.
+    \item[*(b)] Une suite $(r_n)$ de nombres rationnels ayant une limite lim $r_n$ qui est un nombre irrationnel. 
+\end{enumerate}
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+\begin{enumerate}
+    \item [(i)] Donnez la définition de la limite d'une suite .
+    \item[(ii)] Prouvez à l'aide de la définition de la limite que 
+\begin{enumerate}
+    \item[(a)] lim $\frac{1}{n^2}=0$
+    \item[*(b)] lim$\frac{4n^3+3n}{n^3-6}=4$
+    \item[(c)] la suite $x_n=(-1)^n$ ne converge pas. \\ \textit{Indice : Supposez que la suite converge et montrez que cela n'est finalement pas le cas. }
+\end{enumerate}
+\end{enumerate}
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+ Montrer la propriété suivante des limites de suites réelles:
+$$\text{Si } \lim_{n \to \infty} x_n = x \; \text{  et  } \; \lim_{n \to \infty} y_n = y, \; \text{  alors  } \; \lim_{n \to \infty} x_ny_n = xy.$$
+\textit{Indice: utiliser l'égalité \; $| x_ny_n - xy| = |x(y_n - y) + y_n(x_n-x) |$.} \\
+\end{exercice}
+\end{document}

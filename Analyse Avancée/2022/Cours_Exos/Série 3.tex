@@ -1,0 +1,139 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Analyse Avancée I - Série III}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\renewcommand{\maketitlehookd}{
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=0.8\textwidth]
+"Les hautes mathématiques sont l’autre musique de la pensée", \begin{center}George Steiner.\end{center} 
+\end{tcolorbox}
+\scriptsize{Cette série vous est délivrée par Lounès, Louis et Till.} 
+\end{center}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}
+Pour la suite $x_n=\frac{1}{n}$, tracer le graphe de la suite. Choisissez ensuite un $\epsilon$ arbitrairement petit (ex $\epsilon=0.1$) et tracez le rang $N(\epsilon)$ associé. Tracez également le $\epsilon$.
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+Soient $(u_n)$ et $(v_n)$ deux suites réelles. Dire si les assertions suivantes sont vraies ou fausses? Lorsqu'elles sont vraies, les démontrer. Lorsqu'elles sont fausses, donner un contre-exemple. 
+\begin{enumerate}
+    \item Si $(u_n)$ et $(v_n)$ divergent, alors $(u_n+v_n)$ diverge. 
+    \item Si $(u_n)$ et $(v_n)$ divergent, alors $(u_n \times v_n)$ diverge. 
+    \item Si $(u_n)$ converge et $(v_n)$ diverge, alors $(u_n+v_n)$ diverge.
+    \item Si $(u_n)$ converge et $(v_n)$ diverge, alors $(u_n\times v_n)$ diverge. 
+    \item Si $(u_n)$ n'est pas majorée, alors $(u_n)$ tends vers $+\infty$. 
+    \item Si $(u_n)$ est positive et tend vers $0$, alors $(u_n)$ est décroissante à partir d'un certain rang. 
+\end{enumerate}
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+Pour les égalités suivantes dite si elles sont vraies ou fausses (démontrez dans le cas vrai et donnez un contre-exemple pour le cas opposé) : 
+\begin{enumerate}
+  
+\begin{multicols}{2}
+    \begin{enumerate}
+     \item[(a)]  $\sum_{k=0}^{\infty}x_k= \sum_{n=0}^{\infty} x_n $\\
+     \item[(b)]  $\sum_{k=0}^{n-1} \frac{1}{n}=1$ \\
+     \item[(c)]  $\sum_{k=1}^{n} \frac{1}{k}=1$ \\
+     \columnbreak
+     \item[(d)]  \ $\sum_{k=0}^n x_k=\sum_{k=1}^{n+1} x_{k-1}$ \\
+     \item[(e)]  \ $\sum_{k=0}^{100}k=5050$ \\
+     \item[(f)]  \ $\text{Si } \lim_{n\xrightarrow{}\infty} x_n =0 \text{ alors } \sum_{n=0}^{\infty} x_k \text{ converge.}$
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+\end{exercice}
+
+\vspace{1em}
+\begin{exercice}
+  Montrer que toute suite convergente est une suite de Cauchy. \\
+Si $x_n$ converge vers $l \in \mathbb{R}$, montrer que $$\text{Pour tout  } \epsilon > 0, \; \text{  il existe  } N_\epsilon > 0 \; \text{ tel que }$$ $$n,m > N_\epsilon \implies | x_n - x_m | < \epsilon.$$
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+   *
+Montrer que la suite $(u_n)$ définie par 
+\begin{equation*}
+    u_n=(-1)^n+\frac{1}{n}
+\end{equation*}
+n'est pas convergente. Montrer ensuite que cependant elle est bornée. Qu'en déduisez vous ? \paragraph{}
+\textit{Indication : On prendra garde à ne pas parler de limite d'une suite sans avoir au préalable qu'elle converge !!\\
+De plus, utilisez le résultat sur les sous-suites : Soit $(u_n)$ une suite qui converge vers sa limite $l$ alors toute sous-suite $(u_n)_{k\in \mathbb{N}}$ a pour limite $l$.}
+\end{exercice}
+\vspace{1em}
+\begin{exercice} 
+\vspace{1em}
+Démontrer le théorème suivant : \\
+ Soit $(x_n)\subset \mathbb{R}$. Si $(x_n )$ est croissante (resp. décroissante) et bornée supérieurement (resp. bornée inférieurement), alors $(x_n)$ est convergente.
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+Montrer en utilisant les suites de Cauchy que la suite $(x_n)$, définie par $x_n=(-1)^n$ est divergente. \\ \textit{Indication :  utilisez la négation de la définition d'être de Cauchy. }
+\end{exercice}
+\end{document}

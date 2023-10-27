@@ -1,0 +1,118 @@
+\documentclass[a4paper, 12pt, french, twoside]{article}
+\usepackage{graphicx,wrapfig,lipsum}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amsmath}
+%\frenchbsetup{StandardLists=true} à inclure si on utilise 
+\usepackage[french]{babel}
+\usepackage{enumitem}
+\usepackage{float}
+%\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm, showframe]{geometry}
+\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{makecell}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{corollary}{Corollaire}[theorem]
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{defi}{Définition}[theorem]
+\newtheorem{rem}{Remarque}[theorem]
+
+\usepackage{pdfpages} % lien Pdf test
+ \usepackage{tcolorbox}
+
+\usepackage{cleveref}
+\crefrangelabelformat{equation}{(#3#1#4--#5#2#6)}
+\crefname{equation}{Eq.}{Eqs.}
+\Crefname{equation}{Equation}{Equations}
+
+
+%\usepackage{movie15}
+\usepackage{epstopdf}
+\usepackage{subcaption}
+\usepackage{multicol}
+
+%a abréviations
+\def \be {\begin{equation}}
+\def \ee {\end{equation}}
+\def \dd  {{\rm d}}
+\def \bm {\begin{pmatrix}}
+\def \em {\end{pmatrix}}
+
+%Ensembles 
+\newcommand{\Cc}{{\mathbb{C}}}
+\newcommand{\Ct}{\Cc^\times}
+\newcommand{\Hh}{{\mathbb{H}}}
+\newcommand{\Nn}{{\mathbb{N}}}
+\newcommand{\Zz}{{\mathbb{Z}}}
+\newcommand{\Zzn}{\Zz/n\Zz}
+\newcommand{\ZzNt}{(\Zz/N\Zz)^\times}%quotient 
+\newcommand{\Rr}{{\mathbb{R}}}
+\newcommand{\Rt}{{\Rr^\times}}
+\newcommand{\Qt}{{\Qq^\times}}
+\newcommand{\Qq}{{\mathbb{Q}}}
+%to do later
+\newcommand{\later}[1]{\textcolor{orange}{[#1]}}
+\newcommand{\com}[1]{\textcolor{magenta}{[#1]}}
+
+%to make hyper refs not surrounded with red
+\hypersetup{pdfborder=0 0 0}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+    
+\title{Série 3}
+
+\begin{document}
+
+\maketitle
+\section{Convergence de séries}
+
+Étudier la convergence des séries $\sum_n u_n $ avec : 
+
+\begin{enumerate}
+    \begin{multicols}{2}
+    \item $u_n= \dfrac{n}{n^3+1}$
+    \item $u_n=\dfrac{1}{\sqrt{n}}$
+    \item $u_n=\dfrac{x^n}{n!}$, $x\in \Rr$
+    \item $u_n=(-1)^n \dfrac{x^{2n}}{(2n)!}$ avec $n!=n\cdot (n-1)\cdot \cdot \cdot 3\cdot 2\cdot 1$
+    \item $u_n=\left (\dfrac{n-1}{2n+1}\right )^n$
+    \end{multicols}
+\end{enumerate}
+
+\section{Preuve}
+Montrer la remarque suivante:\\
+
+Pour deux ensemble $B,A$ tel que $B\subset A $ on a $\underset{x\in B}{\sup}f(x)\leq \underset{x\in A}{\sup}f(x)$, $f$ une fonction définie sur $A$.
+
+\section{Etude de fonctions}
+Donner le domaine de définition, l'infimum, le suprémum, le maximum et le minimum s'ils existent de chaque fonction suivante:
+
+\begin{enumerate}
+    \begin{multicols}{2}
+        \item $f(x)=x$
+        \item $f(x)=x^2$
+        \item $f(x)=\dfrac{1}{x}$
+        \item $e^x$
+        \item $\dfrac{1}{x\cdot(x-1)\cdot(x-2)\cdot\cdot\cdot (x-n)}$, $n\in \Nn$ fixé. 
+    \end{multicols} 
+\end{enumerate}
+\section{Création de fonctions}
+Donner un exemple de fonction bornée sur $[0,1]$ qui n'atteint ni son infimum ni son supremum.
+
+\section{Exercice *}
+ Soient $a, b \in \Rr, a < b$, et considérons une fonction continue $f : [a, b] \to [a, b]$. Prouver qu’il existe $c \in[a, b]$ tel que $f(c)=c$. 
+\end{document}

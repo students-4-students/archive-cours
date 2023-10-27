@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[cyr]{aeguill}
+\usepackage[francais]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{enumitem,amssymb}
+\newlist{checks}{itemize}{2}
+\setlist[checks]{label=$\square$}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{calc}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{pst-func}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{mdframed}
+\usepackage[boxed,vlined]{algorithm2e}
+\usepackage{cleveref}
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{1}{$\displaystyle \lim_{#1}\;$}}}
+\usepackage{float}
+%\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm, showframe]{geometry}
+\usepackage[top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\w}{\omega}
+\newcommand{\p}{\partial}
+\newcommand{\cross}{\times}
+\newcommand{\Col}{\text{Col}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\bigzero}{\makebox(0,0){\text{\huge0}}}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Vect}{Vect}
+\usepackage{mathtools, stmaryrd}
+\usepackage{xparse} \DeclarePairedDelimiterX{\Iintv}[1]{\llbracket}{\rrbracket}{\iintvargs{#1}}
+\NewDocumentCommand{\iintvargs}{>{\SplitArgument{1}{,}}m}
+{\iintvargsaux#1} %
+\NewDocumentCommand{\iintvargsaux}{mm} {#1\mkern1.5mu..\mkern1.5mu#2}
+\newcommand{\Cc}{{\mathbb{C}}}
+\newcommand{\Ct}{\Cc^\times}
+\newcommand{\Hh}{{\mathbb{H}}}
+\newcommand{\Nn}{{\mathbb{N}}}
+\newcommand{\Zz}{{\mathbb{Z}}}
+\newcommand{\Zzn}{\Zz/n\Zz}
+\newcommand{\ZzNt}{(\Zz/N\Zz)^\times}%quotient 
+\newcommand{\Rr}{{\mathbb{R}}}
+\newcommand{\Rt}{{\Rr^\times}}
+\newcommand{\Qt}{{\Qq^\times}}
+\newcommand{\Qq}{{\mathbb{Q}}}
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+\title{\textbf{Analyse Avancée -- Corrigé 3}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{Cours/assets/imgs/logo-round.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+
+\begin{document}
+
+% Header
+\pagestyle{fancy}
+\fancyhead[L]{Students 4 Students}
+\fancyhead[C]{\textit{Analyse avancée - Corrigé 1}}
+\fancyhead[R]{Septembre 2022}
+
+\maketitle
+
+
+
+\begin{exercice}[Convergence de séries]
+Les limites des séries, si elles existent, sont les suivantes:
+\begin{enumerate}
+    \item On observe que $0\leq\dfrac{n}{n^3+1}\leq \dfrac{n}{n^3}=\dfrac{1}{n^2} $. En utilisant le critère de comparaison et sachant que l'on a montré dans le cours que la série de terme général $\dfrac{1}{n^2}$ converge, la série est donc convergente.
+    \item Il est possible de procéder par comparaison en observant que $\dfrac{1}{n}\leq \dfrac{1}{\sqrt{n}}$. Or nous avons vu dans le cours que la série de terme général $\dfrac{1}{n}$ diverge. Ainsi, la série étudiée diverge aussi.
+    \item Pour cette série, la présence d'une factorielle nous indique d'utiliser le critère du quotient. Ainsi:
+    \begin{equation}
+        \lim_{n\to \infty}\left| \dfrac{u_{n+1}}{u_n}\right| =\lim_{n\to \infty} \left|  \dfrac{x^{n+1}}{(n+1)!}  \dfrac{n!}{x^n}  \right |=\lim_{n\to \infty} \left|  \dfrac{x}{(n+1)} \right |=0.
+    \end{equation}
+    Cette série converge donc. Par ailleurs, cette série a pour limite exp($x$), la fonction exponentielle.
+    
+    \item Même méthode, on utilise le critère de D'Alembert. Donc: 
+    \begin{equation}
+        \lim_{n\to \infty}\left| \dfrac{u_{n+1}}{u_n}\right| =\lim_{n\to \infty} \left|(-1)^{n+1} \dfrac{x^{2(n+1)}}{(2(n+1))!}\dfrac{(2n)!}{(-1)^{n} x^{2n}}\right|
+    \end{equation}
+    \begin{equation}
+        =\lim_{n\to \infty}\left| - \dfrac{x^2}{(2n+2)\cdot (2n+1} \right|=0.
+    \end{equation}
+    La limite étant 0 $<$ 1, la série converge. Par ailleurs, cette série converge vers $\cos (x)$. On remarque un lien vers la série de l'exponentielle qui sera vu au cours de vos cours d'analyse. 
+    \item La puissance en $n$ nous indique que l'usage du critère de Cauchy est le plus censé. Ainsi:
+
+    \begin{equation}
+        \lim_{n\to \infty}\left| \left(  \left (\dfrac{n-1}{2n+1}\right )^n\right)^{\frac{1}{n}}  \right |= \lim_{n\to \infty}\left|   \left (\dfrac{n-1}{2n+1}\right )  \right |=\dfrac{1}{2}<1.
+    \end{equation}
+    La série converge donc bien.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{exercice}[Preuve]
+    Par définition, on a  $\underset{x\in A}{\sup}f(x)$ comme étant le supremum de l'ensemble $\{f(x) ; x\in A\}$. De plus, en séparant l'ensemble $A$, il est possible de noter que $\underset{x\in A}{\sup}f(x)$ est le suprémum de $\{f(x) ; x\in B\} \cup \{f(x) ; x\in A\backslash B\}$. Ainsi, $\underset{x\in A}{\sup}f(x) = \max \{\underset{x\in B}{\sup}f(x), \underset{x\in A \backslash B}{\sup}f(x) \}$. Ainsi, il devient évident que $\underset{x\in B}{\sup}f(x) \leq \underset{x\in A}{\sup}f(x)$.
+
+\end{exercice}
+
+\begin{exercice}[Étude de fonctions]
+Les fonctions sont définies de la façon suivante:
+    \begin{enumerate}
+    \item Cette fonction est définie sur tous l'ensemble des réels. De plus, elle admet comme infimum $-\infty$ et comme supremum $\infty$. Elle n'a donc pas de maximum ou de minimum.
+    \item Cette fonction est définie sur tous l'ensemble des réels. De plus, elle admet comme infimum $0$ et comme supremum $\infty$. Elle n'a donc pas de maximum mais a un minimum qui est 0.
+    \item Cette fonction est définie sur tous l'ensemble des réels privé de 0. De plus, elle admet comme infimum $-\infty$ et comme supremum $\infty$. Elle n'a donc pas de maximum ou de minimum.
+    \item Cette fonction est définie sur tous l'ensemble des réels. De plus, elle admet comme infimum $0$ et comme supremum $\infty$. Elle n'a donc pas de maximum ou de minimum.
+    \item Cette fonction est définie sur tous l'ensemble des réels privée des nombres entiers de 0 à $n$. Il s'écrit $\Rr \backslash {0, 1,...,n}$ De plus, elle admet comme infimum $-\infty$ et comme supremum $\infty$. Elle n'a donc pas de maximum ou de minimum.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{exercice}[Création de fonctions]
+    Il suffit de créer une fonction définie sur un interval ouvert. En effet, considérons la fonction suivante:
+
+\begin{equation}
+    f(x)=\begin{cases}
+        2x+1, x\in (0,1)\\
+        2, x=0 \text{ et } x=1
+    \end{cases}.
+\end{equation}
+Cette fonction admet comme infimum 1 et supremum 3 qui ne sont jamais atteint bien que la fonction soit bornée.
+
+\end{exercice}
+
+
+\begin{exercice}[Exercice avancée]
+    
+Posons la fonction $F(x)=f(x)-x$. On a que $f(a), f(b)\in [a,b] $. Ainsi, on voit que:
+
+\begin{equation}
+    \begin{cases}
+        F(a)= f(a)-a \geq 0\\
+        F(b)= f(b)-b\leq 0
+    \end{cases}
+\end{equation}
+La fonction étant continue, il est possible d'utiliser le théorème des valeurs intermédiaires, vu au lycée/gymnase ou qui sera vu plus tard. Par ce théorème, on conclut qu'il existe un point $a\leq c\leq b$ tel que $F(c)=0\iff f(c)=c$.
+
+\end{exercice}
+
+\begin{exercice}
+    
+\end{exercice}
+
+
+\end{document}

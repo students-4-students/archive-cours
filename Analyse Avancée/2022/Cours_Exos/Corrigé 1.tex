@@ -1,0 +1,250 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+\newtheoremstyle{corrigé}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{corrigé}
+\newtheorem{corrigé}{Corrigé}
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Analyse Avancée I - Corrigé I}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\renewcommand{\maketitlehookd}{
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=0.8\textwidth]
+"Il faudrait avoir complètement oublié l'histoire de la science pour ne pas se souvenir que le désir de connaître la nature a eu la plus constante et la plus heureuse influence sur le développement des mathématiques." Henri Poincaré
+\end{tcolorbox}
+\scriptsize{Cette série vous ait délivré par Lounès, Louis et Till.} 
+\end{center}
+}
+
+\begin{document}
+
+\maketitle
+\vspace{1em}
+\begin{corrigé}
+ Il est essentiel de se souvenir que les ensembles sont des sous ensembles de certains, en effet : $\mathbb{N}\subset \mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}$.
+    
+    \begin{enumerate}
+    \item[(a)] $3.3\in \mathbb{R}, \mathbb{Q}$. 
+        \item[(b)] Une première remarque est que $\sqrt{3}\notin \mathbb{Q}$. En effet formellement on montre cela comme suit : \\
+       \textbf{Preuve formelle}
+        Par contradiction. Si $\sqrt{3}\in \mathbb{Q}$, alors $\exists$ un $r\in \mathbb{Q}$ tel que $\frac{p}{q}=\sqrt{3}$,\\ où $r=\frac{p}{q}\implies(\frac{p}{q})^2=3\implies p^2=3q^2\implies p^2$ est divisible par 3 et donc que $p$ est divisible par 3. Soit $p=3k$. Alors $9k^2=3q^2\implies 3k^2=q^2\implies q^2$ est divisible par 3 et donc que $q$ est divisible par 3. Ce qui est une contradiction car par définition $p$ et $q$ sont premiers entre eux. 
+        donc $\sqrt{3}\in \mathbb{R}$. \ \ \ \ \ $\Box$
+        \item[(c)] $-5 \notin \mathbb{N}$ mais $-5\in \mathbb{Z}\implies -5\in \mathbb{R},\mathbb{Q}, \mathbb{Z}$.
+        \item[(d)] $\pi\in \mathbb{R}$
+      
+
+     \item[(e)] $e\in \mathbb{R}$
+        \item[(f)] $3.\Bar{3}\in \mathbb{Q},\mathbb{R}$
+        \item[(g)] $5.54351684513416757453421345 \in \mathbb{Q},\mathbb{R}$
+        \item[(h)] $-\frac{6415323333}{3} \in \mathbb{Z},\mathbb{Q},\mathbb{R}$
+        \item[(i)] $\sqrt{5}\notin\mathbb{Q}$, même preuve que pour $\sqrt{3}$. Donc $\sqrt{5}\in \mathbb{R}$
+      \end{enumerate}
+\end{corrigé}
+\vspace{1em}
+\begin{corrigé}
+\begin{enumerate}
+\item[]
+ \item[(A) ] On remarque que l'ensemble n'est pas ordonné. Si l'on l'ordonne, on obtient que $A=\{1,2,3,4,4,5,9,9,12,56\}$. Ainsi inf$=1$ et sup$=56$. En particulier ils sont atteints et finis, et donc on a min$=1$ et max$=56$.
+         \item[]
+    \item[(B)] Ici on a une intersection de trois ensembles, dont l'un fermé et les deux autres ouverts. L'inf n'est rien d'autre que $1$ tandis que le sup est $9$. En revanche uniquement le sup  est atteint, donc max$=9$ mais il n'y a pas de minimum. 
+    \item[]
+    \item[(C) ] Par définition de l'ensemble des réels, il n'est pas fini; et donc inf$=-\infty$ et sup$=\infty$. 
+    \item[]
+    \item[(D) ] Le plus simple pour visualiser ce type d'ensemble (qui n'est rien d'autre que droite sur l'axe des réels) et de le réécrire plus explicitement ou bien de faire un schéma. On a que E$=]-\infty,9[$. Ainsi ni l'inf$=-\infty$ ni le sup$=9$ ne sont atteints, et donc il n'y a pas de minimum ou de maximum. En revanche, noter que nous sommes dans le domaine de définition $\mathbb{R}_+^{*}$, donc l'inf n'est rien d'autre que $0$. 
+    \item[]
+    \item[(E) ] L'idée ici est de visualiser le comportement de cet ensemble lorsqu'on augmente par incrémentions l'entier $n$ vers de grandes valeurs. Lorsque $n$ devient grand, $8/n \to 0$. Donc le sup qui est par définition le plus petit des majorants, est $4$, lorsque $n\to \infty$. L'ensemble n'étant pas borné inférieurement, l'inf$=-\infty$. 
+     \item[]
+    \item[(F) ] Cet ensemble a un minimum, qui est $0$, mais ne présente pas de maximum ! En effet $\sqrt{2}$ n'appartient pas à cet ensemble, tandis qu'il y a des rationnels dans un ensemble arbitrairement proche de $\sqrt{2}$. 
+    \item[]
+    \item[\textbf{Bonus} : (G) ] Si l'on décrit un peu plus l'ensemble on a que $G=\{1^{-1},2,3^{-1},4,5^{-1},6,7^{-1},\cdots\}=\{1,2,\frac{1}{3},4,\frac{1}{5},6,\frac{1}{7}\cdots\}$. Cet ensemble n'a ni de minimum ni de maximum. 
+    \item[]
+\end{enumerate}
+\end{corrigé}
+\vspace{1em}
+\begin{corrigé}
+      \begin{enumerate}
+          \item[]
+          \item
+      \textbf{Démonstration} : $|x|=\sqrt{x^2}$. \\
+      Soit $x>0$. Par définition de la racine carré d’un nombre positif, $({\sqrt{x}})^2 = \sqrt{x} \times \sqrt{x} = x$. On distingue deux cas (car valeur absolue) : \\
+- $1^{er}$ cas : $x>0$, donc $\vert x \vert = x$.
+
+Alors $\sqrt{x^2} = \sqrt{x \times x} = \sqrt{x} \times \sqrt{x} = x = \vert x \vert$. \\
+- $2^{ème}$ cas : $x<0$, donc $\vert x \vert = -x$. On sait que $-x > 0$ donc on peut calculer la racine carrée de $-x$.\\
+Alors $\sqrt{x^2} = \sqrt{x \times x} = \sqrt{(-x) \times (-x)} = \sqrt{-x} \times \sqrt{-x} = -x = \vert x \vert$
+
+\item \textbf{Démonstration} : $|a+b|<|a|+|b|$. \\
+Soit $a,b\in \mathbb{R}$ .
+L'astuce la plus simple pour démontrer cette inégalité triangulaire est de considérer $|a+b|^2$ 
+plutôt que de considérer $|a+b|$, et d'utiliser que $|x|^2=x^2$ pour tout $x$ réel. On a \begin{equation*}
+\begin{aligned}
+    |a+b|^2 &=(a+b)^2 \\
+    &= a^2 + 2ab + b^2 \\
+    &= |a|^2 + |b|^2 + 2ab.
+    \end{aligned}
+\end{equation*}
+ Comme $ab\leq |ab|=|a||b|$, il vient que \begin{equation*}
+     |a+b|^2 \leq |a|^2+|b|^2+2|a||b|=(|a|+|b|)^2.
+ \end{equation*}
+Comme la fonction  carré est strictement croissante (et positive), nous obtenons l'inégalité souhaitée \begin{equation*}
+    |a+b|\leq |a|+|b|.
+\end{equation*}
+
+
+\end{enumerate}
+\end{corrigé}
+\vspace{1em}
+\begin{corrigé}
+ Cet exercice a pour but de vous mettre au clair avec la définition d'une suite. Ce qu'il faut retenir c'est qu'une suite  est une application de $\mathbb{N}$ vers un sous-ensemble $E$ de $\mathbb{N},\mathbb{Z},\mathbb{Q}$ ou $\mathbb{R}$. Donc une suite prend comme élément "d'entrée" des nombres entiers, et seulement ! 
+ 
+\begin{enumerate}
+    \item [(a)] C'est la suite ayant pour ensemble d'arrivée $E$  $=\{0,1,2,3,\cdots\}$.
+    \item [(b)] On ne se laisse pas avoir par la notation, ici l'entrée de la fonction est le paramètre $u$ qui vit dans l'ensemble des entiers. C'est donc bien la suite ayant pour ensemble $E=\{1,e^1,e^2,\cdots\}$.
+    \item [(c)] Ici la variable est $x$ qui vit dans $\mathbb{N}$. C'est donc bien une suite. 
+
+     \item [(d)] C'est l'inverse du point précédent. Cette fois-ci $x\in \mathbb{R}$. Il ne s'agit donc pas d'une suite, sinon il y aurait contradiction avec sa définition. 
+      \item [(e)] Ici, on change un peu de notation, mais on se rattache toujours à ce qu'on le sait. Pour un $n$ fixé, $k$ va varier dans $\mathbb{N}$. Donc pour $n=2$ par exemple, on a une somation par incrémentions régulière de $1$ de $0$ à $\infty$. Donc on ne biaise pas la définition d'une suite, et cela se répète pour tout $n\in \mathbb{N}$. $S_n$ est donc bien une suite. 
+      \item [(f)] Il ne s'agit pas d'une suite, mais une limite de suite, celle de $S_n$. Vous verrez cela durant le semestre. 
+\end{enumerate}
+\end{corrigé}
+\vspace{1em}
+\begin{corrigé}
+- Soit $r=\frac{p}{q}\in \mathbb{Q}$, où $p$ et $q$ sont premiers entre eux par définition. Et soit $x\notin\mathbb{Q}$ i.e $x\in \mathbb{R}/\mathbb{Q}$. \\
+        Par l'absurde supposons que $r+x\in \mathbb{Q}$, alors il existe deux entiers $p'$ et $q'$ premiers entre eux tels que $r+x=\frac{p'}{q'}$. Donc $x=\frac{p'}{q'}-\frac{p}{q}=\frac{p'q-q'p}{qq'}\in \mathbb{Q}$, ce qui est absurde car $x\notin \mathbb{Q}$. \\
+        De la même manière, on montre que si $r\cdot x\in \mathbb{Q}$, alors $r\cdot x=\frac{p'}{q'}$, et donc que $x=\frac{p'}{q'}\frac{q}{p}\in \mathbb{Q}$. Ce qui est une fois de plus absurde.\flushright $\Box$
+\flushleft 
+        - Soient $r$ et $r'$ deux rationnels tels que $r<r'$. Soit $a=r+\frac{\sqrt{2}}{2}(r'-r)$. D'une part on a $a\in ]r, r'[$ (car $0<\frac{\sqrt{2}}{2}<1$) mais également par le premier point que $\sqrt{2}\cdot \big (\frac{r'-r}{2} \big)\notin \mathbb{Q}$, donc $a\notin \mathbb{Q}$. Et donc $a$ est un nombre irrationnel compris entre $r$ et $r'$, ce qu'il fallait démontrer. \flushright $\Box$
+\flushleft
+\end{corrigé}
+\vspace{1em}
+\begin{corrigé}
+  \begin{itemize}
+  \item[]
+  \item[]
+           \item 1) Attention au domaine de définition ! On doit faire attention à ne pas diviser par $0$. Sur le domaine de définition $D=\mathbb{R}/]-\infty, 4]$, on a 
+           \begin{equation*}
+               \bigg | \frac{x-4}{x+4}\bigg| \leq x-4 \Longleftrightarrow{} \left \{ \begin{matrix}
+\frac{x-4}{x+4}&<x-4\\
+\text{et}&\\
+\frac{x-4}{x+4}&>-(x-4)
+\end{matrix}
+\right.
+   \end{equation*}
+D'une part, 
+\begin{equation*}
+    \begin{aligned}
+    \frac{x-4}{x+4}<x-4 \Longleftrightarrow{}  \frac{x-4}{x+4}-(x-4)<0 & \Longleftrightarrow{}  \frac{-(x-3)(x+4)}{x+4}>0 \\
+     & \Longleftrightarrow{} x\in ]-\infty,4]. 
+    \end{aligned}
+\end{equation*}
+En revanche ceci contredit le domaine de définition. Donc on ne prend pas en compte ce résultat. 
+D'autre part, \begin{equation*}
+    \begin{aligned}
+    \frac{x-4}{x+4}>-(x-4) \Longleftrightarrow{}  \frac{x-4}{x+4}+(x-4)>0 & \Longleftrightarrow{}  \frac{(x-4)(x+5)}{x+4}>0 \\
+     & \Longleftrightarrow{} x\in ]-5,-4[ \cap ]4, +\infty[. 
+    \end{aligned}
+\end{equation*}
+En prenant l'intersection des solutions et de notre domaine de définition, on obtient finalement l'ensemble solution $S=]4, + \infty[$. 
+        \item[]
+           \item 2)  On trouve $(x+1)(x+2)=0$, donc deux racines distinctes qui sont $-1$ et $-2$. 
+           \item 3) On trouve $(x+2)(2x+1)$, où les racines sont $-2$ et $-1/2$. 
+           \item 4) On trouve $-x(x+3)-1=0$. On obtient finalement deux racines qui sont $x_1=-\frac{3}{2}-\frac{\sqrt{5}}{2}$ et $x_2=-\frac{3}{2}+\frac{\sqrt{5}}{2}$.
+           \item 5) En mettant au carré on trouve l'unique solution $x=2$. Noter le domaine de définition qui est $D=[0,6]$.  
+       \end{itemize}  \paragraph{}
+       On montre la démonstration par récurrence pour la somme sur les $k$, celle sur la somme géométrique se montre de manière analogue. 
+       \paragraph{}
+       L’hypothèse de récurrence est :
+       \begin{equation*}
+           P_n : \ \ \sum_{k=1}^{n}k=\displaystyle\frac{n(n+1)}{2}, \text{ pour tout } n\in \mathbb{N}^*.
+       \end{equation*}
+Pour $n=1$ : 
+\begin{equation*}
+    \sum_{k=1}^{1}k=1=\displaystyle\frac{1(1+1)}{2}.
+\end{equation*}
+Supposons maintenant que $P_n$ est vraie pour tout $n\neq0$. Ecrivons 
+\begin{equation*}
+    \sum_{k=1}^{n+1}k=\bigg(\sum_{k=1}^{n}k\bigg)+(n+1). 
+\end{equation*}
+En appliquant notre hypothèse de récurrence $P_n$, il vient : 
+\begin{equation*}
+    \bigg(\sum_{k=1}^{n}k\bigg)+(n+1)=\frac{n(n+2)}{2}+(n+1).
+\end{equation*}
+Le membre de droite s'écrit comme : 
+\begin{equation*}
+    \frac{n(n+2)}{2}+(n+1)=\frac{(n+1)(n+2)}{2}. 
+\end{equation*}
+Ainsi, nous venons de montrer que : 
+\begin{equation*}
+    \sum_{k=1}^{n+1}k=\displaystyle\frac{(n+1)(n+2)}{2}, 
+\end{equation*}
+c'est à dire que $P_{n+1}$ est vraie. \flushright $\Box$
+\flushleft
+  
+\end{corrigé}
+\end{document}

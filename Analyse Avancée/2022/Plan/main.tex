@@ -1,0 +1,187 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\usepackage{graphicx}
+
+
+%  http://math.univ-lyon1.fr/irem/IMG/pdf/LatexPourLeProfDeMaths.pdf
+
+%$\begin{array}{ccccc}
+%f & : & E & \to & F \\
+% & & x & \mapsto & f(x) \\
+%\end{array}$
+\usepackage{lmodern}
+\usepackage{soul}
+\usepackage{wrapfig}
+% scinder en deux parties triangulaires de même aire une cellule initialement rectangulaire 
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tikz,tkz-tab}
+\usepackage{lipsum} 
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{setspace}
+ % pour insérer des images 
+% Voici les commandes importants pour cadrer ton image ( ici mon image s'appelle Capture.jpeg j'ai déconné dans le nom mdr  
+%   \includegraphics[scale=0.5]{Capture.jpg.jpeg} l'image est réduite de moitié                               \includegraphics[width=10cm]{Capture.jpg.jpeg} l'image est retaillée pour avoir une largeur de 10cm \includegraphics[height=10cm]{Capture.jpg.jpeg} l'image est retaillée pour avoir une hauteur de 10cm \includegraphics[angle=0]{Capture.jpg.jpeg} l'image est tournée de 0°
+
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{multirow} % pour fusionner lignes tableaux
+\usepackage{url} % pour les url lol
+\usepackage{wrapfig}% pour countourner image 
+% pour écrire des maths: 
+%  “amsmath” “amssymb” et “mathrsfs”
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{amsfonts}
+
+
+
+\usepackage{pgfplots}
+\usepackage{pstricks}
+
+
+
+\usepackage{hyperref}
+\usepackage{pst-all}
+\usepackage{pst-plot}
+\usepackage{pstricks-add}
+
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{xlop}
+
+\title{S4S Analyse avancée }
+\author{ }
+\date{Printemps 2022}
+\makeindex
+
+\begin{document}
+
+\layout
+\maketitle
+\newcommand{\bcks}[1]{\textbackslash{}}
+\newcommand{\R}[2]{ $\mathbb{R}$ }
+
+
+
+
+
+\\ 
+ 
+ "\textbf{L'essence des mathématiques, c'est la liberté.}" \textbf{Georg Cantor}
+ 
+ \paragraph{}
+ 
+
+
+\paragraph{}
+\paragraph{}
+
+
+\renewcommand{\contentsname}{Sommaire} 
+\setcounter{tocdepth}{1}
+\tableofcontents
+\chapter{Introduction Et Motivations}
+\section{Présentation Du Programme Pour Les Mathématiciens et Physiciens}
+\lipsum[1]
+\section{Histoire De l'Analyse}
+\lipsum[1]
+\section{Les ensembles mathématiques $\mathbf{\mathbb{R},\mathbb{Z},\mathbb{N}, \text{ et }  \mathbb{Q}}$}
+\subsection{\S \ L'ensemble $\mathbb{N}$ des nombres naturels}
+\lipsum[1]
+%On désigne l'ensemble $\{1,2,3,...\}$ de tous les nombres entiers positifs par $\mathbb{N}$. Chaque nombre entier positif $n$ a un successeur, à savoir $n+1$. Ainsi, le successeur de $2$ est $3$, et $37$ est le successeur de $36$. Vous conviendrez probablement que les propriétés suivantes de $\mathbb{N}$ sont évidentes; du moins les quatre premières le sont.
+%\begin{enumerate}
+ %   \item  $1$ appartient à $\mathbb{N}$.
+%\item Si $n$ appartient à $\mathbb{N}$, alors son successeur $n+1$ appartient à $\mathbb{N}$. 
+%\item $1$ n'est le successeur d'aucun élément de $\mathbb{N}$.
+%\item Si $n$ et $m \in \mathbb{N}$ ont le même successeur, alors $n=m$.
+\item Un sous-ensemble de $\mathbb{N}$ qui contient %1, et qui contient $n+1$ chaque fois qu'il contient %$n$, doit être égal à $\mathbb{N}$.
+%\end{enumerate}
+\subsection{ L'ensemble $\mathbb{R}$ des réelles (pour mathématicien, pas nécessairement présenté en amphi) }
+\lipsum[1]
+\section{Définition Et Propriété De La Valeur Absolue}
+\lipsum[1]
+\chapter{Introduction Aux Suites Numériques}
+\section{Définition}
+\lipsum[1]
+\section{Les Suites Définis Par Récurrence}
+\lipsum[1]
+\section{Les Suites Arithmétiques}
+\lipsum[1]
+\section{Les Suites Géométriques}
+\lipsum[1]
+
+\lipsum[1]
+\chapter{Notions De Convergence}
+\section{$\epsilon$ et $\delta$}
+\lipsum[1]
+\section{Une Première Approche de La Notion De Convergence}
+\lipsum[1]
+\subsection{Exemples}
+\lipsum[1]
+\section{Le Théorème Des Gendarmes}
+\lipsum[1]
+\section{Les suites de Cauchy}
+\lipsum[1]
+\section{Concept De $\mathbf{\lim \sup}$ Et $\mathbf{\lim \inf}$}
+\lipsum[1]
+\chapter{Séries}
+\section{Propriétés Des Sommes}
+\lipsum[1]
+\section{Sommes Arithmétiques Et Géométriques}
+\lipsum[1]
+\section{Démonstration Par Récurrence Sur Les Sommes}
+\lipsum[1]
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================%==========================================================================
+%==========================================================================
+%==========================================================================
+%==========================================================================
+
+\end{document}

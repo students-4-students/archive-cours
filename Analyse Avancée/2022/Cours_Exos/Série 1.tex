@@ -1,0 +1,171 @@
+\documentclass[11pt,french,table]{article}
+\usepackage[french]{babel}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage{multicol}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Custom titling
+\usepackage{titling}
+\usepackage{tcolorbox}
+
+% Lipsum paragraphs
+\usepackage{lipsum}
+
+% Custom headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\theauthor}
+\fancyhead[C]{\itshape{\thetitle}}
+\fancyhead[R]{\thedate}
+\setlength{\headheight}{20pt}
+
+% Default mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Exercises environment and styling
+\usepackage{amsthm}
+\newtheoremstyle{exercice}%
+    {3pt}% Space above
+    {3pt}% Space below
+    {\large}% Body font
+    {}% Indent amount
+    {\bfseries}% Theorem head font
+    {.}% Punctuation after theorem heading
+    {\newline}% Space after theorem heading
+    {\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}% Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{exercice}
+\newtheorem{exercice}{Exercice}
+
+% Graphics
+\usepackage{graphicx}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\title{Analyse Avancée I - Série I}
+\posttitle{\par\end{center}}
+
+\renewcommand{\maketitlehookb}{
+\begin{center}
+\includegraphics[width=2cm]{assets/imgs/S4S_logo.png}
+\end{center}
+}
+
+\author{Students 4 Students}
+\date{Septembre 2022}
+
+\renewcommand{\maketitlehookd}{
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=0.8\textwidth]
+Cette première série porte sur les deux premières heures de cours. Aucune calculatrice n'est nécessaire. \\Vous noterez également que l'exercice 5 comporte des $"*"$. Il s'agit d'un exercice plus compliqué que les autres. Vous pouvez donc le faire en fin de série, ou bien tout simplement en discuter entre vous et avec les assistant·es. 
+\end{tcolorbox}
+\scriptsize{Cette série vous est délivrée par Lounès, Louis et Till.} 
+\end{center}
+}
+
+\begin{document}
+
+\maketitle
+\vspace{1em}
+\begin{exercice}[]
+ Pour les nombres suivant indiquez s'ils appartiennent à $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ ou $\mathbb{R}$.
+    \begin{multicols}{2}
+    \begin{enumerate}
+    \item[(a)] $3.3$
+        \item[(b)] $\sqrt{3}$
+        \item[(c)] $-5$
+        \item[(d)] $\pi$
+      
+    \columnbreak  
+     \item[(e)] $e$
+        \item[(f)] $3.\Bar{3}$
+        \item[(g)] $5.54351684513416757453421345$
+        \item[(h)] $-\frac{6415323333}{3}$
+        \item[(i)] $\sqrt{5}$
+      \columnbreak 
+      
+     \end{enumerate}
+\end{multicols}
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+ Pour les ensembles suivants, donnez le $\sup$ et l'$\inf$. Dire s'ils sont bornés et si oui donner le maximum et le minimum. 
+\begin{multicols}{2}
+\begin{enumerate}
+    \item[A $=$] $\{4,5,9,3,2,1,12,56,4,9\}$
+    \item[B $=$] $]5,6]\cup [5,9] \cup ]1,2[$
+    \item[C $=$]$\mathbb{R}$
+    \item[D $=$]$\{x \in \mathbb{R}^{*}_{+} \mid x<9 \}$
+    \columnbreak
+    \item[E $=$]$\{x \in \mathbb{R} \mid x<\frac{8}{n}+4 \ \forall n \in \mathbb{N}^*` \}$
+    \item[F $=$] \{$r\in \mathbb{Q}$ : $0\leq r \leq \sqrt{2}$\}
+    \item[\textbf{Bonus} : G $=$] \{$n^{(-1)^n}$ : $n\in \mathbb{N}$\}
+\end{enumerate}
+\end{multicols}
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+ Montrer que : 
+\begin{align*}
+    \lvert x \lvert = \sqrt{x^2}
+\end{align*}
+Démontrer l'inégalité triangulaire : 
+\begin{align*}
+    \lvert a+b \lvert \leq \lvert a \lvert +\lvert b\lvert 
+\end{align*}
+\textit{Indice : Utilisez le carré de la valeur absolue. } \\
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+ Indiquer pour les fonctions suivantes s'il s'agit d'une suite ou non. 
+\begin{multicols}{2}
+\begin{enumerate}
+    \item [(a)] $x_n=n, \ n \in \mathbb{N}$
+    \item [(b)] $f(u)=e^u, u \in \mathbb{N}$
+    \item [(c)] $f(x)=\sqrt{x}, \ x \in \mathbb{N}$
+    \columnbreak
+     \item [(d)] $f(x)=\sqrt{x}, \ x \in \mathbb{R}$
+      \item [(e)] $S_n=\sum_{k=1}^{n} \frac{1}{k}, \ n,k \in \mathbb{N}$
+      \item [(f)] $S=\sum_{n=1}^{\infty} \frac{1}{n^2}, \ n \in \mathbb{N}$
+\end{enumerate}
+\end{multicols}
+\end{exercice}
+\vspace{1em}
+\begin{exercice}
+ * - Montrer que si $r\in \mathbb{Q}$ et $x\in \mathbb{R}_{ / \mathbb{Q}}$ alors $x+r\in \mathbb{R}_{ / \mathbb{Q}}$ et $r\cdot x\in \mathbb{R}_{ / \mathbb{Q}}$.\\
+** - Sachant que $\sqrt{2}\notin \mathbb{Q}$, en déduire  qu'entre deux nombres rationnels il y a toujours un nombre irrationnel.
+\end{exercice}
+\vspace{1em}
+\begin{exercice}[Exercices de révisions du gymnase/lycée :]
+Résolvez les équations suivantes : 
+\begin{align*}
+1)& \ \displaystyle\left\lvert\frac{x-4}{x+4} \right\rvert < x-4 \ \ \text{ \textit{Indice : Distinguez les cas}}\\
+2)& \ x^2+3x+2=0 \\
+3)& \ 2x^2+5x+2=0 \\
+4)& \ -x^2-3x-1=0\\
+5)& \ \sqrt{6-x}=x
+\end{align*}
+Montrer les formules suivantes par récurrence : 
+\begin{align*}
+    \sum_{k=0}^n k &= 1+2+\cdots+n= \frac{n(n+1)}{2}, \ n \in \mathbb{N}\\
+    * \sum_{k=0}^n q^k &= \frac{1-q^{n+1}}{1-q}, \ n \in \mathbb{N}, \ q \in \mathbb{R}_{/ \{0,1\}}
+\end{align*} 
+\paragraph{Rappel : Principe de récurrence}
+       On cherche à prouver simultanément un ensemble de
+propriétés $P_n$ dépendant d’un entier naturel $n$. On procède de la manière suivante, en respectant ces étapes qui devront être apparentes dans la rédaction d'une récurrence : \\
+$\bullet$ Énoncé clair et précis des propriétés $P_n$ et du fait qu’on va réaliser une récurrence. \\
+$\bullet$ Initialisation : on vérifie que $P_0$ est vraie (habituellement un calcul très simple). \\
+$\bullet$ Hérédité : on suppose $P_n$ vraie pour un entier $n$ quelconque (c’est l’hypothèse de récurrence)
+et on prouve $P_{n+1}$ à l’aide de cette hypothèse (si on n’utilise pas l’hypothèse de récurrence, c’est qu’on n’avait pas besoin de faire une récurrence !).\\
+$\bullet$ Conclusion : En invoquant le principe de récurrence, on peut affirmer avoir démontré $P_n$ pour tout entier $n$.
+\end{exercice}
+\end{document}
