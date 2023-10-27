@@ -1,0 +1,754 @@
+\documentclass{article}
+
+%packages
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[cyr]{aeguill}
+\usepackage[french]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{enumitem,amssymb}
+\newlist{checks}{itemize}{2}
+\setlist[checks]{label=$\square$}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{pdfpages}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{calc}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{pst-func}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{nicefrac}
+\usepackage{mdframed}
+\usepackage[boxed,vlined]{algorithm2e}
+\usepackage{cleveref}
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{1}{$\displaystyle \lim_{#1}\;$}}}
+\usepackage{tkz-tab}
+
+\usetikzlibrary{babel}
+\usepackage{babel}
+\usepackage[european, straightvoltages]{circuitikz}
+\usepackage{multicol}
+
+%macros
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\w}{\omega}
+\newcommand{\p}{\partial}
+\newcommand{\cross}{\times}
+\newcommand{\inc}{\fontfamily{cmr}\selectfont\textperiodcentered}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\adh}{adh}
+\DeclareMathOperator{\argcosh}{argcosh}
+\DeclareMathOperator{\argsinh}{argsinh}
+\DeclareMathOperator{\Ima}{Im}
+\usepackage{mathtools, stmaryrd}
+\usepackage{xparse} \DeclarePairedDelimiterX{\Iintv}[1]{\llbracket}{\rrbracket}{\iintvargs{#1}}
+\NewDocumentCommand{\iintvargs}{>{\SplitArgument{1}{,}}m}
+{\iintvargsaux#1} %
+\NewDocumentCommand{\iintvargsaux}{mm} {#1\mkern1.5mu..\mkern1.5mu#2}
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikz/]
+
+\title{Introduction à l'électricité}
+\author{\href{https://s4s.fun}{\textcolor{blue}{\underline{STUDENTS FOR STUDENTS}}}\\Première édition}
+\date{Septembre 2021}
+
+\addto\captionsfrench {
+  \renewcommand{\contentsname}%
+    {Exercices}%
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+   \includegraphics[scale=0.5]{Images/ic_launcher.png} 
+\end{center}
+\vfill
+\tableofcontents
+\vfill
+\newpage
+
+\setlength{\parskip}{1ex}
+
+\section{Principes physiques et loi d'Ohm}
+
+\subsection{Oiseaux cuits}
+Simplement dit: l'oiseau a les deux pattes sur le même fil et forme ainsi une branche entre deux potentiels identiques. On trouve ainsi une chute de tension nulle aux \og bornes\fg de l'oiseau et les électrons passant par le fil n'ont pas de raison de passer par l'oiseau.\footnote{C'est ici très simplifié; le courant électrique préfère le chemin avec la plus petite résistance, c'est-à-dire le câble, mais un tout petit courant négligeable passe tout-de-même par l'oiseau dans le monde réel, où le câble a une résistance non-nulle (cf. diviseur de courant).}. Bien que l'oiseau prenne le potentiel du fil (aux alentours de $\SI{100}{\kilo\volt}$), il ne touche rien qui aurait un autre potentiel et aucun courant important n'a lieu.
+
+Cependant, et nous n'attendons pas, bien sûr, que vous donniez cette réponse, les lignes à haute tension conduisent en fait un courant alternatif qui change de signe ( ou direction) à une fréquence de $\SI{50}{\hertz}$, donc on ne peut plus appliquer le même raisonnement. L'oiseau représente ici une sorte de condensateur qui se charge et décharge avec la même fréquence qui le courant alternatif. Sa capacité étant très petite (de l'ordre des picofarads), le nombre de charges déplaçables est très petit lui aussi ($Q=CV\approx10^{-12}\cdot10^5=\SI{1e-7}{\coulomb}$) et le courant créé par le mouvement de ces charges est négligeable pour l'oiseau ($I=Qf=10^{-7}\cdot 50=\SI{5e-6}{\ampere}$, voir le graphe d'un des prochains exercices).
+
+\subsection{pH = 15}
+On applique à chaque fois la loi d'Ohm sur la seule résistance du circuit:
+\begin{enumerate}
+    \item $U=RI\Rightarrow I=\frac{U}{R}=\frac{10}{250}=\SI{0.04}{\ampere}$
+    \item $U=RI\Rightarrow R=\frac{U}{I}=\frac{15}{0.1}=\SI{150}{\ohm}$
+    \item $U=RI=30\times 0.2=\SI{6}{\volt}$
+    \item $U=RI\Rightarrow R=\frac{U}{I}=\frac{20}{0.4}=\SI{50}{\ohm}$
+\end{enumerate}
+
+\subsection{Accidents}
+\begin{enumerate}
+    \item Loi d'Ohm: $U=RI\Rightarrow I={U}{R}$:
+    \begin{itemize}
+        \item Peau sèche: $I=\frac{230}{1600}=\SI{0.14375}{\ampere}$
+        \item Peau humide: $I=\frac{230}{1000}=\SI{0.23}{\ampere}$
+        \item Peau mouillée: $I=\frac{230}{800}=\SI{0.2875}{\ampere}$
+        \item Peau immergée: $I=\frac{230}{300}=\SI{0.76667}{\ampere}$
+    \end{itemize}
+    On vous laissera tirer les conclusions utiles du graphe et abandonnons toute responsabilité de la suite.
+    \item Une décharge électrostatique est causée par une certaine quantité de charge accumulée, de la même façon que dans un condensateur, sauf que si on parle du corps humain, la capacité est très très faible. Comme cette capacité est faible, il y a très peu de charges accumulées même pour $\SI{3000}{\volt}$, et ces charges vont donc se vider extrêmement rapidement. Même si au final, le courant sera très grand\footnote{En réalité, le courant sera bien plus grand encore que le courant que vous calculeriez avec les résistances fournies dans l'exercice. Comme la décharge est très rapide, elle est équivalente à une tension avec une très haute fréquence, et l'impédance/résistance du corps humain sera donc plus faible qu'à $\SI{50}{\hertz}$.} à cause de cette grosse tension, il subsistera un temps bien trop bref pour causer des dégâts.
+    \item Un petit coup d'\oe{}il sur la loi d'Ohm nous montre que la tension et le courant sont proportionnels\footnote{À strictement parler, la résistance $R$ tend à varier avec la tension, surtout pour un objet aussi complexe que le corps humain, mais eeeeeeh.}, d'autant plus que c'est la tension qui cause le courant. Permettez-nous de poser ici une citation d'un géant de la matière :
+    \begin{quote}
+    Saying that the voltage doesn't kill is like saying that the earthquake in the middle of the ocean doesn't kill, it's the tsunami afterwards that kills. With that analogy, if I shoot you, it's not my fault, it's the bullet's fault.
+    \par\raggedleft{--- ElectroBoom (\textit{Which is the Killer, Current or Voltage?}, 2014)}
+    \end{quote}
+    
+    On s'attendrait donc que la haute tension d'une décharge électrostatique provoquerait un très haut courant, qui revient à être mortel\footnote{Petit spoiler pour l'exo suivant: la puissance générée dans la résistance (le corps humain frotté avec un pull par exemple) augmente avec le carré du courant, et cette puissance cuit littéralement la résistance (toujours le corps humain, par exemple).}. Cependant, le bas nombre d'électrons arrachés permet au courant et à la haute tension de subsister que pendant un très très petit instant, donc la peau est encore largement capable de dissiper la puissance. Styropyro pourra vous montrer quels dégâts sont possibles si l'on prolonge de telles décharges avec ses efface-tatouages du marché noir.
+\end{enumerate}
+
+\subsection{Ampoule}
+\begin{enumerate}
+    \item La puissance générée puis dissipée est exprimée par $P=UI$. Nous éliminons le la tension inconnue en appliquant la loi d'Ohm sur la résistance, ce qui nous donne $U=RI$, puis \[P=RI^2\] en injectant dans la première équation. La puissance est proportionnelle à la résistance, on veut donc une grande résistance pour maximiser la puissance\footnote{On ne veut pas en abuser non plus, surtout vu que la portion de puissance perdue en chaleur est de 95\% pour des lampes à incandescence et 75\% pour les fluorescentes. LEDs FTW avec ~10\%}.
+    \item Ici, seulement $U$ est connue, on utilise donc la loi d'Ohm pour trouver $I=\frac{U}{R}$ et puis \[P=\frac{U^2}{R}\] Il y a proportionnalité inverse entre la puissance et la résistance, on voudra donc une plus petite résistance pour augmenter la luminosité.
+\end{enumerate}
+
+\section{Traitement des circuits}
+
+\subsection{A e s t h e t i c s}
+
+\subsubsection{Un circuit moche}
+\label{sexo:circuit_moche}
+
+Voici le circuit simplifié:
+    \begin{center}
+    \begin{circuitikz}
+     \draw (0,0) to [european voltage source](0,4)
+     to [R, l=$R_1$](2,4)
+     to [R, l=$R_2$](4,4) 
+     to [R, l=$R_3$](4,0)
+     to [short](0,0)
+     (4,4) to [short](6,4)
+     to [R, l=$R_4$](6,0)
+     to [short](4,0)
+     (6,4) to [short](8,4)
+     to [R, l=$R_5$](8,2)
+     to [R, l=$R_6$](8,0)
+     to [european voltage source](6,0)
+     (8,4) to [short](10,4)
+     to [R, l=$R_7$](10,0)
+     to [short](8,0);
+     \end{circuitikz}
+    \end{center}
+    
+\subsubsection{Résistance équivalente série}
+
+En appliquant les lois des mailles et d'Ohm à gauche, on trouve \[U=U_{R_1}+U_{R_2}=R_1I+R_2I\] À droite, on trouve \[U=R_{eq}I\] pour finalement avoir
+\begin{align*}
+    R_{eq}I&=R_1I+R_2I\\
+    \Rightarrow R_{eq}&=R_1+R_2
+\end{align*}
+
+\subsubsection{Résistance équivalente parallèle}
+
+\noindent La loi des n\oe{}uds puis celle d'Ohm donnent à gauche : \[I=I_{R_1}+I_{R_2}=\frac{U}{R_1}+\frac{U}{R_2}\]
+\noindent La loi d'Ohm donne à droite : \[I=\frac{U}{R_{eq}}\]
+\noindent Cela donne finalement
+\begin{align*}
+    \frac{U}{R_{eq}}&=\frac{U}{R_1}+\frac{U}{R_2}\\
+    \Rightarrow \frac{1}{R_{eq}}&=\frac{1}{R_1}+\frac{1}{R_2}\\
+    \Rightarrow R_{eq}&=\frac{1}{\frac{1}{R_1}+\frac{1}{R_2}}=\frac{R_1R_2}{R_1+R_2}
+\end{align*}
+
+\subsubsection{Un circuit joli}
+
+En regardant le circuit du \ref{sexo:circuit_moche}, on remarque les simplifications suivantes :
+    \begin{itemize}
+        \item $R_1$ et $R_2$ sont en série, on peut donc les remplacer par une résistance de grandeur $R_1+R_2$ ;
+        \item $R_3$ et $R_4$ sont en parallèle, on les remplace par une résistance $R_3\parallel R_4=\frac{R_3R_4}{R_3+R_4}$ ;
+        \item $R_5$ et $R_6$ sont en série entre elles, puis à deux en parallèle avec $R_7$; la résistance équivalente donne $(R_5+R_6) \parallel R_7=\frac{(R_5+R_6)R_7}{R_5+R_6+R_7}$.
+    \end{itemize}
+    \begin{center}
+    \begin{circuitikz}
+     \draw (0,0) to [european voltage source](0,3)
+     to [R, l=$R_1+R_2$](3,3)
+     to [R, l=$R_ 3\parallel R_4$](3,0)
+     to [short](0,0)
+     (3,3) to [R, l=$(R_5+R_6) \parallel R_7$](6,3)
+     to [european voltage source](6,0)
+     to [short](3,0);
+     \end{circuitikz}
+    \end{center}
+
+\subsection{Diviseur de tension}
+
+\begin{enumerate}
+    \item On peut considérer un conducteur parfait comme une résistance nulle, sur laquelle on ne constate aucune chute de tension (comme un fil idéal dans un circuit théorique). On peut donc intuitivement penser que cette chute augmentera avec la résistance (comme le montre la loi d'Ohm, par laquelle on passera dans la question suivante). Cette augmentation se termine d'ailleurs avec le circuit ouvert, de résistance infinie et de chute de tension maximale entre ses bornes.
+    
+    Concrètement donc, $U_{R_1}$ et $U_{R_2}$ devraient être égales dans le cas où $R_1=R_2$, et la chute de tension aux bornes de la plus grande résistance sera elle aussi plus grande s'il y a inégalité entre les grandeurs des résistances.
+    \item Comme calculé dans l'exercice précédent, la loi des mailles puis la loi d'Ohm donnent \[U=U_{R_1}+U_{R_2}=R_1I+R_2I\]
+    En simplifiant pour $I$, on retrouve la résistance équivalente en série:\[I=\frac{U}{R_1+R_2}\]
+    \item En revenant à la loi d'Ohm, on a \[U_{R_2}=R_2I=R_2\frac{U}{R_1+R_2}\] C'est la formule du diviseur de tension. L'application numérique donne finalement
+    \begin{align*}
+        I&=\frac{5}{5000+15000}=\SI{0.25}{\milli\ampere}\\
+        U_{R_2}&=5000\cdot0.00025=\SI{1.25}{\volt}
+    \end{align*}
+    
+    En passant soit par la loi des mailles, soit par le diviseur de tension, on trouvera $U_{R_1}=\SI{3.75}{\volt}$, ce qui confirme notre hypothèse du début; la tension est distribuée sur les deux résistances et pondérée par leurs valeurs.
+\end{enumerate}
+
+\subsection{Lois de Kirchhoff}
+\begin{itemize}
+    \item Sur les deux n\oe{}uds (en haut et en bas), la loi des n\oe{}uds nous donne $I=I_1+I_2$.
+    \item Sur la maille avec $U$ et $R_3$, on obtient $U=U_{R_3}$.
+    \item Sur la maille avec $U$, $R_1$ et $R_2$, on trouve $U=U_{R_1}+U_{R_2}$.
+\end{itemize}
+
+Un petit tour avec la loi d'Ohm donne \[U=R_3I_1=R_1I_2+R_2I_2\]
+
+\noindent On en dégage déjà les courants :
+\begin{align*}
+    I_1&=\frac{U}{R_3}\\
+    I_2&=\frac{U}{R_1+R_2}\\
+    I&=\frac{U}{R_3}+\frac{U}{R_1+R_2}
+\end{align*}
+
+Factoriser nous donne \[I=\frac{R_1+R_2+R_3}{R_3(R_1+R_2)}U\]
+Un bon \oe{}il reconnaîtra la loi d'Ohm appliquée sur la résistance équivalente $(R_1+R_2)\parallel R_3$.
+
+Sur la maille de droite, il ne reste plus qu'à appliquer la loi d'Ohm sur chaque résistance:
+\begin{align*}
+    U_{R_1}&=R_1I_2=\frac{R_1}{R_1+R_2}U\\
+    U_{R_2}&=R_2I_2=\frac{R_2}{R_1+R_2}U
+\end{align*}
+
+Et bim, on retrouve le diviseur de tension. C'est un peu comme s'il y avait des raccourcis pratiques à connaître dans cette matière.
+
+\subsection{Lois de Kirchhoff, exemple un peu plus affreux}
+% Commençons par ajouter tous les différents courants et tensions sur le schéma, car nous n'avons indiqué seulement ceux qui sont à calculer dans l'énoncé :
+% \begin{center}
+% \begin{circuitikz}
+% \draw
+% (0,0) to [R, l_=$R_5$, v^<=$U_{R_5}$] (0,2)
+% to [R=$R_3$, v<=$U_{R_3}$, i<=$I_{R_3}$] (0,4)
+% to [R=$R_1$, v<=$U_{R_1}$] (0,6)
+% to [short, -*, i<=$I_{R_1}$] (2,6)
+% to [R, l_=$R_2$, v^=$U_{R_2}$] (2,4)
+% to [short, -*, i=$I_{R_2}$] (0,4)
+% (0,2) to [R, l^=$R_4$, v_=$U_{R_4}$, *-] (2.5,2)
+% to [short, -*, i=$I_{R_4}$] (2.5,0)
+% (2,6) to (4,6)
+% to [V=$U_1$] (4,3)
+% to [R=$R_6$, v=$U_{R_6}$, i>^=$I_{R_6}$] (6.5,3)
+% to [R=$R_{10}$, i>^=$I_{R_{10}}$, v>=$U_{R_{10}}$] (6.5,0)
+% to [V=$U_2$] (2.5,0)
+% to [short, i<=$I_{R_5}$](0,0)
+% (6.5,3) to [R=$R_8$, i<=$I_{R_8}$, v<=$U_{R_8}$] (6.5,6)
+% to [R=$R_7$, v<=$U_{R_7}$] (9,6)
+% to (9,3)
+% to [R=$R_9$, -*, v<=$U_{R_9}$] (6.5,3);
+% \end{circuitikz}
+% \end{center}
+
+\subsubsection{La façon bourrin}
+\label{sexo:bourrin}
+
+Commençons d'abord par nous occuper de la maille $R_{7,8,9}$. Il est peut-être intuitif qu'elle n'a aucun effet, mais voyons comment les lois de Kirchhoff peuvent le justifier. Exprimons la loi des mailles, puis utilisons la loi d'Ohm :
+\begin{align*}
+    U_{R_7} + U_{R_8} + U_{R_9} &= 0\\
+    R_7 I_{R_8} + R_8 I_{R_8} + R_9 I_{R_8} &= 0\\
+    (R_7+R_8+R_9)I_{R_8} &= 0\\
+    I_{R_8} &= 0
+\end{align*}
+
+\noindent Cela peut peut-être apparaître plus évident si l'on redessine la maille ainsi :
+\begin{center}
+\begin{circuitikz}
+\draw (0,0) to [short, -*] (0,3)
+to [R, l_=$R_8$, i<_=$I_{R_8}$, v^<=$U_{R_8}$] (3,3)
+to [R, l_=$R_7$, v^<=$U_{R_7}$] (3,0)
+to [R, l_=$R_9$, v^<=$U_{R_9}$] (0,0);
+\end{circuitikz}
+\end{center}
+
+On voit qu'on a simplement branché des résistances en série sur une \og source \fg absente, il n'y a donc aucun courant. On a beau connecter ce qu'on veut sur le n\oe{}ud en haut à gauche, aucune tension sera induite, car il faudrait avoir accès au moins à deux n\oe{}uds différents pour cela.
+
+On a donc déjà trouvé $I_{R_8}=0$, et on peut continuer en résolvant le circuit suivant :
+\begin{center}
+\begin{circuitikz}
+\draw
+(0,0) to [R, l_=$R_5$, v^<=$U_{R_5}$] (0,2)
+to [R=$R_3$, v<=$U_{R_3}$, i<=$I_{R_3}$] (0,4)
+to [R=$R_1$, v<=$U_{R_1}$] (0,6)
+to [short, -*, i<=$I_{R_1}$] (2,6)
+to [R, l_=$R_2$, v^=$U_{R_2}$] (2,4)
+to [short, -*, i=$I_{R_2}$] (0,4)
+(0,2) to [R, l^=$R_4$, v_=$U_{R_4}$, *-] (2.5,2)
+to [short, -*, i=$I_{R_4}$] (2.5,0)
+(2,6) to (4,6)
+to [V=$U_1$] (4,3)
+to [R=$R_6$, v=$U_{R_6}$, i>^=$I_{R_6}$] (6.5,3)
+to [R=$R_{10}$, i>^=$I_{R_{10}}$, v>=$U_{R_{10}}$] (6.5,0)
+to [V=$U_2$] (2.5,0)
+to [short, i<=$I_{R_5}$](0,0);
+\end{circuitikz}
+\end{center}
+\newpage
+\noindent On peut réécrire ce circuit sous un forme plus claire :
+\begin{center}
+\begin{circuitikz}
+\draw
+(0,0) to [R, l_=$R_5$, v^<=$U_{R_5}$] (0,8/3)
+to [R=$R_3$, v<=$U_{R_3}$, i<=$I_{R_3}$] (0,16/3)
+to [R=$R_1$, v<=$U_{R_1}$] (0,8)
+to [short, -*, i<=$I_{R_1}$] (2,8)
+to [R, l_=$R_2$, v^=$U_{R_2}$] (2,16/3)
+to [short, -*, i=$I_{R_2}$] (0,16/3)
+(0,8/3) to [short, *-, i=$I_{R_4}$] (2,8/3)
+to [R, l^=$R_4$, v_=$U_{R_4}$, -*] (2,0)
+(2,8) to (4,8)
+to [V=$U_1$] (4,6)
+to [R=$R_6$, v=$U_{R_6}$, i>^=$I_{R_6}$] (4,4)
+to [R=$R_{10}$, i>^=$I_{R_{10}}$, v>=$U_{R_{10}}$] (4,2)
+to [V=$U_2$] (4,0)
+to (2, 0)
+to [short, i<=$I_{R_5}$](0,0);
+\end{circuitikz}
+\end{center}
+
+On se retrouve avec sept résistances. Si on cherchait toutes les tensions et courants, on se retrouverait avec quatorze inconnues et quatorze équations. La moitié de ces équations proviennent des lois de Kirchhoff, et l'autre moitié de la loi d'Ohm. Ces équations sont toutes linéaires, il faut donc résoudre un système de la forme
+\[ Ax = b, A\in\mathbb{R}^{14\times 14}\,b,c\in\mathbb{R}^{14}\]
+
+C'est un problème d'algèbre linéaire que l'on a pas envie de faire à la main, mais cela montre qu'en toute généralité, on peut bêtement résoudre n'importe quel circuit à base de source de tension ou de courant et de résistances avec un ordinateur sous forme d'une équation matricielle.
+
+Par amusement (mais \textit{of course} on va pas la résoudre), voici la matrice complète :
+\[
+\setcounter{MaxMatrixCols}{14}
+\begin{bmatrix}
+1&0&0&0&0&0&0&-R_1&0&0&0&0&0&0\\
+0&1&0&0&0&0&0&0&-R_2&0&0&0&0&0\\
+0&0&1&0&0&0&0&0&0&-R_3&0&0&0&0\\
+0&0&0&1&0&0&0&0&0&0&-R_3&0&0&0\\
+0&0&0&0&1&0&0&0&0&0&0&-R_3&0&0\\
+0&0&0&0&0&1&0&0&0&0&0&0&-R_6&0\\
+0&0&0&0&0&0&1&0&0&0&0&0&0&-R_{10}\\
+1&-1&0&0&0&0&0&0&0&0&0&0&0&0\\
+0&0&0&1&-1&0&0&0&0&0&0&0&0&0\\
+1&0&1&0&1&-1&-1&0&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&1&1&0&0&0&1&0\\
+0&0&0&0&0&0&0&0&0&1&0&0&1&0\\
+0&0&0&0&0&0&0&0&0&0&1&1&1&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&1&-1
+\end{bmatrix}
+\begin{pmatrix}U_{R_1}\\U_{R_2}\\U_{R_3}\\U_{R_4}\\U_{R_5}\\U_{R_6}\\U_{R_{10}}\\I_{R_1}\\I_{R_2}\\I_{R_3}\\I_{R_4}\\I_{R_5}\\I_{R_6}\\I_{R_{10}}\\\end{pmatrix}
+=\begin{pmatrix}0\\0\\0\\0\\0\\0\\0\\0\\0\\U_1 + U_2\\0\\0\\0\\0\end{pmatrix}
+\]
+
+Les sept premières équations sont les équations d'Ohm. Les trois suivantes correspondent à la loi de maille, et les quatre dernières sont les lois des n\oe{}uds. La procédure qui va suivre est strictement équivalente à de l'élimination de Gauss, mais en utilisant un peu d'intuition pour aller plus vite et ne pas devoir tout écrire:
+
+Les sept équations des lois d'Ohm (les sept premières lignes) sont toutes de la forme $U_k = R_k I_k$. Elles nous disent simplement que dès qu'on a trouvé le courant, on aura automatiquement trouvé la tension. On peut donc jeter ces sept équations et ne chercher plus que le courant.
+
+De plus, la loi des n\oe{}uds nous donne
+\[I_{R_1} + I_{R_2} = I_{R_3} = I_{R_4} + I_{R_5} = -I_{R_6} = -I_{R_{10}}\]
+ce qui nous fournit déjà quatre équations. On voit que la moitié de ces équations dit simplement \[ I_{R_3}=-I_{R_6}=-I_{R_{10}}\] On a qu'à chercher qu'un seul des trois courants, par exemple $I_{R_{10}}$, qui était le courant demandé dans la donnée.
+
+Enfin, deux des trois équations venant de la loi des mailles nous disent simplement que 
+\begin{align*}
+    U_{R_1}&=U_{R_2}\\
+    U_{R_4}&=U_{R_5}
+\end{align*}
+mais comme on vient d'éliminer les tensions avec les lignes des lois d'Ohm, on écrit plutôt
+\[
+\left\{\begin{aligned}
+    R_1I_{R_1}=R_2I_{R_2}\\
+    R_4I_{R_4}=R_5I_{R_5}
+\end{aligned}\right. \Leftrightarrow
+\left\{\begin{aligned}
+    I_{R_1} &= \frac{R_2}{R_1} I_{R_2}\\
+    I_{R_5} &= \frac{R_4}{R_5} I_{R_4}
+\end{aligned}\right.
+\]
+On n'a plus qu'à chercher la moitié des tensions, par exemple $U_{R_2}$ et $U_{R_4}$, puisqu'on cherche $I_{R_2}$ et $I_{R_4}$ (d'où le fait qu'on ait isolé $I_{R_1}$ et $I_{R_5}$ pour les remplacer dans les équations plus bas).
+
+On a donc éliminé extrêmement aisément onze des quatorze équations. Après toutes les substitutions proposées plus tôt, on ne se retrouve plus qu'avec les trois équations suivantes, qui correspondent respectivement aux dixième, onzième et douzième lignes de la matrice précédente :
+\begin{align*}\left\{\begin{aligned}
+    R_2 I_{R_2} - R_3 I_{R_{10}} + R_4 I_{R_4} &= U_1 + R_6 I_{R_{10}} + R_{10} I_{R_{10}} + U_2\\
+    I_{R_1} + I_{R_2} &= -I_{R_{10}}\\
+    I_{R_4} + I_{R_5} &= -I_{R_{10}}
+\end{aligned}\right.\\
+\left\{\begin{aligned}
+    R_2 I_{R_2} - R_3 I_{R_{10}} + R_4 I_{R_4} &= U_1 + R_6 I_{R_{10}} + R_{10} I_{R_{10}} + U_2\\
+    \frac{R_2}{R_1} I_{R_2} + I_{R_2} &= -I_{R_{10}}\\
+    I_{R_4} + \frac{R_4}{R_5} I_{R_4} &= -I_{R_{10}}
+\end{aligned}\right.\end{align*}
+
+Le $-$ devant $R_3 I_{R_{10}}$ est dû au fait que $I_{R_{10}}$ va dans le sens opposé à $I_{R_3}$. De plus on est passé du premier système au second en utilisant la substitution mentionnée plus haut. On peut réécrire ce dernier système sous forme matricielle :
+\[
+\begin{bmatrix}
+R_2 & R_4 & -R_3 - R_6 - R_{10} \\
+1+\frac{R_2}{R_1} & 0 & 1 \\
+0 & 1+\frac{R_4}{R_5} & 1
+\end{bmatrix}
+\begin{pmatrix}
+I_{R_2} \\ I_{R_4} \\ I_{R_{10}}
+\end{pmatrix}=
+\begin{pmatrix}
+U_1 + U_2 \\ 0 \\ 0
+\end{pmatrix}
+\]
+
+La première ligne représente la loi des mailles sur la grande maille du circuit, et les deux dernières représentent la loi des n\oe{}uds aux deux n\oe{}uds aux bornes de $R_3$. Résoudre ce système revient à un problème d'algèbre linéaire. On utilise les notations suivantes :
+\[
+\begin{aligned}R_{a,b,c} &= R_a + R_b + R_c\\R_{a\parallel b} &= \frac{R_a R_b}{R_a + R_b}
+\end{aligned}\] On trouve : \begin{align*}
+&\begin{bmatrix}
+    R_2 & R_4 & -R_{3,6,10} & \bigm| & U_1+U_2\\
+    1 + \frac{R_2}{R_1} & 0 & 1 & \bigm| & 0\\
+    0 & 1 + \frac{R_4}{R_5} & 1 & \bigm| & 0
+\end{bmatrix}\\
+\overset{\substack{L_2 \rightarrow R_1 L_2 \\ L_3 \rightarrow R_5 L_3}}{\sim}
+&\begin{bmatrix}
+    R_2 & R_4 & -R_{3,6,10} & \bigm| & U_1+U_2\\
+    R_1 + R_2 & 0 & R_1 & \bigm| & 0\\
+    0 & R_4 + R_5 & R_5 & \bigm| & 0
+\end{bmatrix}\\
+\overset{L_1 \rightarrow L_1 - \frac{R_2}{R_1+R_2} L_2}{\sim}
+&\begin{bmatrix}
+    0 & R_4 & -R_{3,6,10} - R_{1\parallel 2} & \bigm| & U_1+U_2\\
+    R_1 + R_2 & 0 & R_1 & \bigm| & 0\\
+    0 & R_4 + R_5 & R_5 & \bigm| & 0
+\end{bmatrix}\\
+\overset{L_1 \rightarrow L_1 - \frac{R_4}{R_4+R_5} L_3}{\sim}
+&\begin{bmatrix}
+    0 & 0 & -R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5} & \bigm| & U_1+U_2\\
+    R_1 + R_2 & 0 & R_1 & \bigm| & 0\\
+    0 & R_4 + R_5 & R_5 & \bigm| & 0
+\end{bmatrix} \\%yeet yeet indyeet
+\sim
+&\begin{bmatrix}
+    R_1 + R_2 & 0 & R_1 & \bigm| & 0\\
+    0 & R_4 + R_5 & R_5 & \bigm| & 0 \\
+    0 & 0 & -R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5} & \bigm| & U_1+U_2\\
+\end{bmatrix} \\
+\sim
+&\begin{bmatrix}
+    R_1 + R_2 & 0 & R_1 & \bigm| & 0\\
+    0 & R_4 + R_5 & R_5 & \bigm| & 0 \\
+    0 & 0 & 1 & \bigm| & \frac{U_1+U_2}{-R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5}}\\
+\end{bmatrix} \\
+\sim
+&\begin{bmatrix}
+    R_1 + R_2 & 0 & 0 & \bigm| & \frac{-R_1(U_1+U_2)}{-R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5}}\\
+    0 & R_4 + R_5 & 0 & \bigm| & \frac{-R_5(U_1+U_2)}{-R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5}} \\
+    0 & 0 & 1 & \bigm| & \frac{U_1+U_2}{-R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5}}\\
+\end{bmatrix} \\
+\sim
+&\begin{bmatrix}
+    1 & 0 & 0 & \bigm| & \frac{-R_1(U_1+U_2)}{(R_1+R_2)(-R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5})}\\
+    0 & 1 & 0 & \bigm| & \frac{-R_5(U_1+U_2)}{(R_4+R_5)(-R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5})} \\
+    0 & 0 & 1 & \bigm| & \frac{U_1+U_2}{-R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5}}\\
+\end{bmatrix} \\
+\sim
+&\begin{bmatrix}
+    1 & 0 & 0 & \bigm| & \frac{R_1(U_1+U_2)}{(R_1+R_2)(R_{3,6,10} + R_{1\parallel 2} + R_{4\parallel 5})}\\
+    0 & 1 & 0 & \bigm| & \frac{R_5(U_1+U_2)}{(R_4+R_5)(R_{3,6,10} + R_{1\parallel 2} + R_{4\parallel 5})} \\
+    0 & 0 & 1 & \bigm| & \frac{U_1+U_2}{-R_{3,6,10} - R_{1\parallel 2} - R_{4\parallel 5}}\\
+\end{bmatrix} \\
+\end{align*}
+
+On trouve finalement les valeurs des trois courants $I_{R_2}$, $I_{R_4}$ et $I_{R_{10}}$. On a déjà trouvé que $U_{R_7}=0$ et $I_{R_8}=0$. De plus, on peut retrouver simplement les tensions $U_{R_3}$ et $U_{R_6}$ à partir de la loi d'Ohm.
+
+\begin{tcolorbox}[title=Résultats]
+\[\begin{aligned}
+    I_{R_2} &= \frac{R_1}{R_1+R_2}\frac{U_1+U_2}{(R_{3,6,10} + R_{1\parallel 2} + R_{4\parallel 5})}\\
+    I_{R_4} &= \frac{R_5}{R_4+R_5}\frac{U_1+U_2}{(R_{3,6,10}+ R_{1\parallel 2} + R_{4\parallel 5})} \\
+    I_{R_8} &= 0\\
+    I_{R_{10}}&= -\frac{U_1+U_2}{R_{3,6,10} + R_{1\parallel 2} + R_{4\parallel 5}} \\
+    U_{R_3} &= -R_3 I_{R_{10}}\\ &= \frac{R_3}{R_{3,6,10} + R_{1\parallel 2} + R_{4\parallel 5}}(U_1+U_2)\\
+    U_{R_6} &= R_6 I_{R_{10}}\\ &= -\frac{R_6}{R_{3,6,10} + R_{1\parallel 2} + R_{4\parallel 5}}(U_1+U_2)\\
+    U_{R_7} &= 0
+\end{aligned}\]
+\end{tcolorbox}
+    
+\subsubsection{La façon moins bourrin (mais c'est long quand même...)}
+
+Par exactement les mêmes arguments qu'au \ref{sexo:bourrin}, on peut éliminer la maille en haut à droite, et obtenir
+\begin{tcolorbox}
+\[\begin{aligned}
+    U_{R_7} &= 0\\
+    I_{R_8} &= 0
+\end{aligned}\]
+\end{tcolorbox}
+
+Comme on éliminé cette boucle, on peut donc directement partir de ce circuit :
+\begin{center}
+\begin{circuitikz}
+\draw
+(0,0) to [R, l_=$R_5$, v^<=$U_{R_5}$] (0,8/3)
+to [R=$R_3$, v<=$U_{R_3}$, i<=$I_{R_3}$] (0,16/3)
+to [R=$R_1$, v<=$U_{R_1}$] (0,8)
+to [short, -*, i<=$I_{R_1}$] (2,8)
+to [R, l_=$R_2$, v^=$U_{R_2}$] (2,16/3)
+to [short, -*, i=$I_{R_2}$] (0,16/3)
+(0,8/3) to [short, *-, i=$I_{R_4}$] (2,8/3)
+to [R, l^=$R_4$, v_=$U_{R_4}$, -*] (2,0)
+(2,8) to (4,8)
+to [V=$U_1$] (4,6)
+to [R=$R_6$, v=$U_{R_6}$, i>^=$I_{R_6}$] (4,4)
+to [R=$R_{10}$, i>^=$I_{R_{10}}$, v>=$U_{R_{10}}$] (4,2)
+to [V=$U_2$] (4,0)
+to (2, 0)
+to [short, i<=$I_{R_5}$](0,0);
+\end{circuitikz}
+\end{center}
+
+On aimerait d'abord présenter une simplification supplémentaire, pas obligatoire, mais qui simplifie beaucoup les calculs. Étant donnée une branche, on peut permuter les éléments de la branche sans changer ni le courant traversant la branche, ni les tensions aux bornes de chaque dipôle de la branche. La raison est que les tensions s'additionnent, et donc l'ordre n'a pas d'importance (par commutativité de l'addition), et pour un même courant, la tension aux bornes de chaque résistance ne va pas changer. Cette simplification ne marche évidemment pas si l'on a branché des choses au milieu de la branche.
+
+Dans le circuit, cela veut dire qu'on peut échanger les deux résistances $R_6$ et $R_{10}$ avec $U_1$, de sorte à obtenir le circuit suivant :
+\begin{center}
+\begin{circuitikz}
+\draw
+(0,0) to [R, l_=$R_5$, v^<=$U_{R_5}$] (0,8/3)
+to [R=$R_3$, v<=$U_{R_3}$, i<=$I_{R_3}$] (0,16/3)
+to [R=$R_1$, v<=$U_{R_1}$] (0,8)
+to [short, -*, i<=$I_{R_1}$] (2,8)
+to [R, l_=$R_2$, v^=$U_{R_2}$] (2,16/3)
+to [short, -*, i=$I_{R_2}$] (0,16/3)
+(0,8/3) to [short, *-, i=$I_{R_4}$] (2,8/3)
+to [R, l^=$R_4$, v_=$U_{R_4}$, -*] (2,0)
+(2,8) to [short, i>^=$I_{R_6}$] (4,8)
+to [R=$R_6$, v=$U_{R_6}$] (4,6)
+to [R=$R_{10}$, i^>=$I_{R_{10}}$, v>=$U_{R_{10}}$] (4,4)
+to [V=$U_1$] (4,2)
+to [V=$U_2$] (4,0)
+to (2, 0)
+to [short, i<=$I_{R_5}$](0,0);
+\end{circuitikz}
+\end{center}
+
+On peut combiner les deux sources de tensions en série par une seule de tension d'une valeur de $U_1+U_2$. De plus, on peut mettre la source à gauche pour reconnaître plus facilement le circuit (il faut faire attention de garder les flèches dans le même sens) :
+\begin{center}
+\begin{circuitikz}
+\draw
+    (0,0) to [V<=$U_1+U_2$] (0,4/3+3*8/3)
+    to [R, l_=$R_{10}$, v^<=$U_{R_{10}}$, i_<=$I_{R_{10}}$] ++(8/3, 0)
+    to [R, l_=$R_6$, v^<=$U_{R_6}$, i_<=$I_{R_6}$] ++(8/3, 0)
+    to [short, -*] ++(0, -2/3)
+    ++(-1, 0) to [R, l_=$R_1$, i_=$I_{R_1}$, v^=$U_{R_1}$] ++(0, -8/3)
+    to ++(1,0)
+    ++(-1, 8/3) to ++(2, 0)
+    to [R, l_=$R_2$, v^=$U_{R_2}$, i_=$I_{R_2}$] ++(0, -8/3)
+    to ++(-1,0)
+    to [R, l_=$R_3$, v^=$U_{R_3}$, *-*, i_=$I_{R_3}$] ++(0, -8/3)
+    ++(-1, 0) to [R, l_=$R_4$, v^=$U_{R_4}$, i_=$I_{R_4}$] ++(0, -8/3)
+    to ++(1,0)
+    ++(-1, 8/3) to ++(2, 0)
+    to [R, l_=$R_5$, v^=$U_{R_5}$, i_=$I_{R_5}$] ++(0, -8/3)
+    to ++(-1,0)
+    to [short, *-] ++(0, -2/3)
+    to (0,0);
+\end{circuitikz}
+\end{center}
+
+\noindent Visuellement, on retrouve maintenant aisément
+\[ -I_{R_{10}} = -I_{R_6} = I_{R_3} = I_{R_1} + I_{R_2} = I_{R_4} + I_{R_5} \]
+
+Cherchons $I_{R_3}$. Remplaçons d'abord $R_1$, $R_2$, $R_4$ et $R_5$, montées en parallèle, par leurs deux résistances équivalentes, notées $R_{1\parallel2}$ et $R_{4\parallel 5}$. On rappelle que \[R_{a\parallel b} = \frac{R_a R_b}{R_a + R_b} = \frac{1}{\frac{1}{R_a} + \frac{1}{R_b}}\] On se retrouve avec le circuit suivant :
+\begin{center}
+\begin{circuitikz}
+\draw (0,0)
+    to [V<=$U_1+U_2$] ++(0,6)
+    to [R=$R_{10}$] ++(2,0)
+    to [R=$R_6$] ++(2,0)
+    to [R=$R_{1\parallel 2}$] ++(0, -2)
+    to [R=$R_3$] ++(0, -2)
+    to [R=$R_{4\parallel 5}$] ++(0, -2)
+    to [short, i<=$I_{R_{10}}$] (0,0);
+\end{circuitikz}
+\end{center}
+
+On voit qu'on a simplement un circuit avec cinq résistances en parallèle. On peut donc les remplacer par une résistance équivalente dont la valeur vaut la somme de celle de chaque résistance. On réutilise les notations :
+\[
+\begin{aligned}R_{a,b,c} &= R_a + R_b + R_c\\R_{a\parallel b} &= \frac{R_a R_b}{R_a + R_b}
+\end{aligned}\] On trouve :
+\begin{center}
+\begin{circuitikz}
+\draw (0,0)
+    to [V<=$U_1+U_2$] (0,3)
+    to [short, i<=$I_{R_{10}}$] (2,3)
+    to [R=$R_{3,6,10}+R_{1\parallel 2}+R_{4\parallel 5}$] (2,0)
+    to (0,0);
+\end{circuitikz}
+\end{center}
+
+Ici, il est plus qu'évident comment retrouver le courant $I_{R_{10}}$. On utilise la loi d'Ohm et on trouve\begin{tcolorbox}\[I_{R_{10}} = -\frac{U_1+U_2}{R_{3,6,10}+R_{1\parallel 2}+R_{4\parallel 5}}\]\end{tcolorbox} 
+\noindent ce qui est exactement le même résultat que trouvé précédemment.
+
+À partir de l'avant-dernier circuit et de $I_{R_{10}}$, on peut retrouver $U_{R_3}$ et $U_{R_6}$ grâce à la loi d'Ohm. En utilisant $-I_{R_3} = I_{R_6} = I_{R_{10}}$, on trouve
+\begin{align*}
+    U_{R_3} &= -R_3 I_{R_{10}}\\
+    U_{R_6} &= R_6 I_{R_{10}}
+\end{align*}
+\noindent On trouve enfin :
+\begin{tcolorbox}
+\[\begin{aligned}
+    U_{R_3} &= \frac{R_3}{R_{3,6,10}+R_{1\parallel 2}+R_{4\parallel 5}}(U_1+U_2)\\
+    U_{R_6} &= -\frac{R_6}{R_{3,6,10}+R_{1\parallel 2}+R_{4\parallel 5}}(U_1+U_2)\\
+\end{aligned}\]
+\end{tcolorbox}
+\noindent On retrouve encore les mêmes résultats qu'en \ref{sexo:bourrin}. Ces formules sont d'ailleurs celle du diviseur de tension formé respectivement par $R_3$ et $R_6$, en série avec toutes les autres résistances. 
+
+On peut continuer en cherchant $I_{R_2}$ et $I_{R_4}$. Pour cela, observons cette maille :
+\begin{center}
+\begin{circuitikz}
+\draw (0,0)
+    to [short, -*, i=$I_{R_3}$] ++(0, -2/3)
+    to ++(-1,0)
+    to [R=$R_1$, i=$I_{R_1}$, v=$U_{R_1}$] ++(0, -8/3)
+    to [short, -*] ++(1,0)
+    to ++(0,-2/3) ++(0,2/3)
+    to ++(1,0)
+    to [R=$R_2$, i<=$I_{R_2}$, v<=$U_{R_2}$] ++(0,8/3)
+    to ++(-1,0);
+\end{circuitikz}
+\end{center}
+
+On peut déjà remarquer que $U_{R_1}=U_{R_2}$, et que ces deux tensions sont précisément les mêmes que celles aux bornes de la résistance $R_{1\parallel 2}$ d'un des précédents circuits. On peut trouver cette tension grâce à la loi d'Ohm, puisqu'on connaît $I_{R_{10}}$.
+\[U_{R_2} = -R_{1\parallel 2} I_{R_{10}}\]
+
+En appliquant encore la loi d'Ohm avec cette tension, on peut trouver $I_{R_2}$ :
+\[I_{R_2} = \frac{U_{R_2}}{R_2} = -\frac{R_{1\parallel 2}}{R_2} I_{R_{10}} = -\frac{R_1 R_2}{R_2(R_1+R_2)} I_{R_{10}} = -\frac{R_1}{R_1+R_2} I_{R_{10}}\]
+On retrouve la formule du diviseur de courant vue en exemple au cours.
+
+Pour trouver $I_{R_4}$, on peut appliquer exactement le même raisonnement sur la maille formée par $R_4$ et $R_5$. On trouvera enfin
+\begin{tcolorbox}
+\[\begin{aligned}
+    I_{R_2} &= \frac{R_1}{R_1+R_2} \frac{U_1+U_2}{R_{3,6,10}+R_{1\parallel 2}+R_{4\parallel 5}}\\
+    I_{R_4} &= \frac{R_5}{R_4+R_5} \frac{U_1+U_2}{R_{3,6,10}+R_{1\parallel 2}+R_{4\parallel 5}}
+\end{aligned}\]
+\end{tcolorbox}
+\noindent à nouveau exactement les mêmes résultats qu'au point \ref{sexo:bourrin}.
+
+
+
+\subsection{Autre exemple un peu pété}
+
+\subsection{Une ampoule sur une pile}
+
+\begin{enumerate}
+    \item Nous rappelons qu'une source de tension réelle est modélisée par une source de tension idéale avec une résistance $R_{in}$ dite interne en série:
+    \begin{center}
+        \begin{circuitikz}
+        \draw (0,3) to [european voltage source, v_=$\SI{9}{\volt}$](0,0)
+        (0,3) to [R, l=$R_{in}$](3,3)
+        to [lamp, v=$U_L$, l=$\SI{3}{\ohm}$](3,0)
+        to [short, i=$I_L$](0,0);
+        \end{circuitikz}
+    \end{center}
+    \item La puissance consommée par l'ampoule est donnée par $P_L=U_LI_L$. Ici, nous ne connaissons ni la tension, ni le courant passant par l'ampoule, mais nous pouvons les exprimer avec $R_{in}$ en utilisant la formule du diviseur de tension et la loi d'Ohm :
+    \[
+    \left\{\begin{aligned}U_L&=U\frac{R_L}{R_{in}+R_L}\\I_L&=\frac{U_L}{R_L}=\frac{U}{R_{in}+R_L}\end{aligned}\right.\Rightarrow P_L=U\frac{R_L}{R_{in}+R_L}\frac{U}{R_{in}+R_L}\quad\Rightarrow R_{in}=\sqrt{\frac{U^2R_L}{P_L}}-R_L=\SI{6}{\ohm}\]
+    
+    \item Avec $R_L=\SI{6}{\ohm}$, les deux résistances sur la branche sont égales et se partagent donc équitablement la tension: $U_L=\SI{4.5}{\volt}$. Le courant se trouve avec la résistance équivalente en série (donc la loi des mailles): \[I_L=\frac{U}{R_{in}+R_L}=\SI{0.75}{\ampere}\] La puissance dissipée est maintenant \[P_L=U_LI_L=\SI{3.375}{\watt}\]
+    On voit que malgré qu'on ait augmenté la résistance, la puissance a quand même augmenté. Ce n'était pas le cas pour les sources de tension idéales où la puissance était $P=\frac{U^2}{R}$. En fait, pour les sources de tension réelles, le maximum de puissance est obtenu quand la résistance de la charge (ici l'ampoule) est égale à la résistance interne de la source.
+    
+    \item Court-circuiter la pile revient à remplacer la lampe par un conducteur idéal, donc mettre sa résistance à $\SI{0}{\ohm}$. La chute de tension aura entièrement lieu sur la résistance interne, et la loi d'Ohm donne un courant \[I=\frac{U}{R_{in}}=\SI{1.5}{\ampere}\]
+\end{enumerate}
+
+\section{Condensateurs et bobines}
+
+\subsection{Moteur électrique}
+
+Mathématiquement, la relation $U=L\frac{\text{d}i}{\text{d}t}$ régissant la bobine nous donne $\frac{\text{d}i}{\text{d}t}=\frac{U}{L}$ puis $i(t)=\frac{U}{L}t$ (avec la constante d'intégration $i(0)$ nulle), le courant va donc augmenter linéairement avec le temps.\footnote{En pratique, les moteurs électriques sont alimentés par du courant alternatif. Le courant restera donc limité et n'augmentera pas infiniment.}
+
+À l'ouverture du circuit à un moment où la bobine est encore traversée par un courant (c'est-à-dire que le moteur tourne encore), on se retrouve dans la même situation qu'une source de courant connectée à un circuit-ouvert. On voit que si à la place du circuit-ouvert, on avait une très haute résistance, la bobine (comme les sources de courant) créerait donc une tension très haute en suivant la loi $U=RI$. Dans le cas limite d'un circuit ouvert, la résistance devient infinie et par conséquent la tension aussi.
+
+En pratique, la tension augmentera jusqu'à ce que la partie la plus faible du circuit faillisse. Le courant voulant passer par le circuit ouvert accumulera des charges opposées de chaque côté de l'interrupteur qui, en assez grand nombre, pourront générer des arcs électriques, soit entre les bornes de l'interrupteur, ou entre les spires de la bobine.
+
+En pratique, il y a toujours une résistance parasite involontaire en parallèle avec la bobine, et l'effet sera donc limité. Cela dit, cette résistance est usuellement très grande, donc la tension deviendra très grande elle aussi.
+
+On peut faire une analogie avec le volant d'inertie. Ouvrir le circuit revient à essayer de bloquer instantanément le volant d'inertie. Le seul moyen de bloquer instantanément une masse est d'appliquer une force infinie, qui appliquera une force infinie en retour. En pratique, on ne va pas la bloquer instantanément mais très rapidement, et à la place d'une force infinie, on aura une force très grande, pouvant néanmoins être très dangereuse.
+
+\subsection{Choisissez mieux vos ami\inc e\inc s}
+
+\begin{enumerate}
+    \item Après avoir été longtemps sous tension, la capacité s'est complètement chargée et est capable de fournir une tension pendant un moment après actionnement de l'interrupteur, le temps que son stock de charges se vide. L'ampoule se retrouvera donc encore fournie avec une tension, initialement égale à celle de la source et qui diminue rapidement avec le temps. Une fois la capacité déchargée, cette tension a disparu.
+    
+    Lorsqu'ensuite l'interrupteur est ré-enclenché, la source applique une tension aux bornes de la capacité qui recommence à se charger, puis créer à son tour une tension aux bornes de la lampe.
+    
+    Les charges et décharges évoluent exponentiellement et le courant passant par la lampe est proportionnel à la tension (la lampe étant essentiellement une résistance qui suit la loi d'Ohm), on retrouve donc des graphes de cette allure:
+    \begin{center}
+    Déchargement de la capacité :
+    
+    \begin{tabular}{*2{m{0.4\textwidth}}}
+    \begin{tikzpicture}
+    \centering
+    \begin{axis}[axis lines = left, xlabel = \(t\), ylabel = {\(u_C(t)\)}, width=0.4\textwidth, grid=both, xtick=\empty, ytick=\empty]
+    \addplot [domain=0:5, samples=20, color=red, thick]{exp(-x)};
+    \end{axis}
+    \end{tikzpicture}
+    &
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[axis lines = left, xlabel = \(t\), ylabel = {\(i_C(t)\)}, width=0.4\textwidth, grid=both, xtick=\empty, ytick=\empty]
+    \addplot [domain=0:5, samples=20, color=red, thick]{-exp(-x)};
+    \end{axis}
+    \end{tikzpicture}
+    \end{tabular}
+    Chargement de la capacité :
+    
+    \begin{tabular}{*2{m{0.4\textwidth}}}
+    \begin{tikzpicture}
+    \centering
+    \begin{axis}[axis lines = left, xlabel = \(t\), ylabel = {\(u_C(t)\)}, width=0.4\textwidth, grid=both, xtick=\empty, ytick=\empty]
+    \addplot [domain=0:5, samples=20, color=red, thick]{1-exp(-x)};
+    \end{axis}
+    \end{tikzpicture}
+    &
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[axis lines = left, xlabel = \(t\), ylabel = {\(i_C(t)\)}, width=0.4\textwidth, grid=both, xtick=\empty, ytick=\empty]
+    \addplot [domain=0:5, samples=20, color=red, thick]{exp(-x)};
+    \end{axis}
+    \end{tikzpicture}
+    \end{tabular}
+    \end{center}
+    Attention, ces valeurs restent majorées par $\SI{230}{\volt}$ pour la tension, et $230R_L$ pour le courant, la capacité ne pouvant pas dépasser la tension de la source. La tension grimpante lors du chargement se réduira donc à un plateau une fois que la courbe exponentielle atteint $\SI{230}{\volt}$, de même avec le courant.
+    \item La fonction $e^{-t}$ décroît avec le temps, donc $1-e^{-t}$ croît et on assigne facilement les fonctions aux graphes.
+    
+    Lors de la décharge, le courant suit une fonction décroissante du type $i_L(t)=Ke^{\frac{-t}{RC}}$. Mathématiquement, la condition de l'énoncé peut s'écrire $i_L(1)=0.05i_L(0)$, et donc $Ke^{\frac{-1}{RC}}=0.05Ke^{\frac{-0}{RC}}$. Simplifier cette équation donne $e^{\frac{-1}{RC}}=0.05\Rightarrow C=\frac{-1}{R\ln{0.05}}=\frac{-1}{880\cdot\ln{0.05}}\approx\SI{380}{\micro\farad}$.
+\end{enumerate}
+
+\subsection{Detective Current}
+
+\subsection{The secret for always staying down-to-Earth}
+
+\subsection{Capacité équivalente série}
+
+La loi des mailles donne $U=U_1+U_2$, puis l'équation du condensateur $U=\frac{Q_1}{C_1}+\frac{Q_2}{C_2}$. Avec la capacité équivalente, on veut obtenir $U=\frac{Q_{eq}}{C_{eq}}=\frac{Q_1}{C_1}+\frac{Q_2}{C_2}$. Pour que les composants restent électriquement neutres, les charges s'équilibrent sur les fils et les capacités et on a $Q_1+Q_2=Q_{eq}$. On obtient ainsi $\frac{Q}{C_{eq}}=\frac{Q}{C_1}+\frac{Q}{C_2}\Rightarrow C_{eq}=\frac{1}{\frac{1}{C_1}+\frac{1}{C_2}}$, quasiment la même formule que pour des résistances en parallèle.
+
+Physiquement, un condensateur est composé de deux plaques d'aire $A$ à une distance $d$. Intuitivement, la capacité augmente avec $A$ (le nombre de charges augmente) et diminue avec $d$ (les forces d'attraction entre les plaques de charges opposées diminuent), on a donc $C\propto\frac{A}{d}$\footnote{Le coefficient de proportionalité est $\varepsilon_0$ qui est la permittivité du vide, donc la facilité qu'un champ électrique a pour traverser l'espace entre les plaques.}. Mettre deux capacités identiques en série revient à doubler la distance entre la première et la dernière plaque, la capacité équivalente est ainsi divisée par deux, ce qui est confirmé par la formule que l'on vient de démontrer. L'effet est pareil pour deux capacités différentes, mais l'analogie ne fonctionne plus bien.
+
+D'ailleurs, mettre deux capacités identiques en parallèle (donc côte-à-côte) revient à doubler l'aire efficace, la capacité équivalente est donc le double de la capacité simple.
+
+Encore un fun-fact: les inductances suivent les mêmes relations que les résistances lorsqu'elles sont en série ou en parallèle. On vous laissera inventer l'intuition derrière.
+
+\subsection{Circuit LC}
+
+
+\end{document}
