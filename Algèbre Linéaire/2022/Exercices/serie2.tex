@@ -1,0 +1,179 @@
+% PREAMBULE
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=\textwidth]
+Si vous maîtrisez déjà le produit matriciel, les exos bonus pourront vous plaire. Il s'agit d'exercices supplémentaires pour vous habituer à la manipulation du produit matriciel, ainsi que d'essayer de définir formellement l'idée que $\R^n$ et $\P_{n-1}$ "se ressemblent". \\
+
+De plus, commencez avec le "groupe" d'exercices avec lequel vous vous sentez le plus à l'aise, donc soit les exercices 1,2,3,4 sur le produit matriciel, soit l'exercice 5 sur les espaces vectoriels. \\
+
+Enfin, ne paniquez pas si vous ne savez pas faire ces exercices. Réfléchissez, demandez l'aide des assistant.e.s, et au pire des cas vous allez revoir toutes ces notions durant le semestre. Il n'y a pas besoin de stresser ! :)
+\end{tcolorbox}
+\end{center}
+
+% EXERCICES
+
+\begin{exercice}
+Calculer le produit $AB$ des matrices suivantes:
+\begin{enumerate}
+    \item $A_1 = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}$ et $B_1 = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 24 \end{bmatrix}$ , montrer que $A_1 B_1 = B_1 A_1 = B_1$.
+    \item $A_2 = \begin{bmatrix} 5 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & 5 \end{bmatrix}$ et $B_2 = \begin{bmatrix} 3 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 7 \end{bmatrix}$ 
+    \item $A_3 = \begin{bmatrix} 1 & 2 & 3 \\ 0 & 2 & 1 \\ 0 & 0 & 2 \end{bmatrix}$ et $B_3 = \begin{bmatrix} 3 & 0 & 2 \\ 0 & 1 & 1 \\ 0 & 0 & 6 \end{bmatrix}$
+\end{enumerate}
+Vous remarquez peut être un pattern pour le produit $A_2 B_2$ et $A_3 B_3$. Les exercices \ref{exoProduitMatricesDiag} et \ref{exoProduitTriangSup} cherchent à démontrer ce pattern. \\ 
+De plus, la matrice $A_1$ est appelée \textit{matrice identité} et est notée $I_3$ (ou $I_n$ lorsque la matrice est de taille $n \times n$), et satisfait $\forall A \in \R^{n \times n}$, $A I_n = I_n A = A$. \\
+\end{exercice}
+
+\begin{exercice}
+\label{exoProduitMatricesDiag}
+% \textit{Pour cet exercice, essayez d'abord de vous placer dans les cas $n=2$ et $n=3$, ensuite essayez de généraliser à $n$ quelconque.} \\
+
+\noindent Nous dirons que $D \in \R^{n \cross n}$ est \textit{diagonale} si et seulement si $\forall (i,j) \in \Iintv{1,n}^2 \ i \neq j \implies d_{i,j} = 0$, autrement dit :
+$$
+D = \begin{bmatrix}
+d_{1,1} & 0 & 0 & \cdots & 0\\
+0 & d_{2,2} & 0 & \cdots & 0 \\
+\vdots & &\ddots & & \vdots \\
+0 & 0 & \cdots & d_{n-1, n-1} & 0\\
+0 & 0 &\cdots& 0 & d_{n,n}
+\end{bmatrix}
+$$ 
+\noindent Montrer que si $A,B \in \R^{n \cross n}$ sont deux matrices diagonales de dimension $n\times n$ alors leur produit $AB$ est aussi une matrice diagonale de dimension $n\times n$. \\
+
+\noindent \underline{Indice} : Essayez d'abord de regarder à quoi ressemble le produit de deux matrices diagonales pour $n=2$ et $n=3$, ensuite essayez de généraliser à $n$ quelconque. \\
+\end{exercice}
+
+\begin{exercice}
+\label{exoProduitTriangSup}
+\noindent Une \textit{matrice triangulaire supérieure} est une matrice carrée telle que ses coefficients en dessous de sa diagonale sont tous nuls. Une matrice \textit{triangulaire inferieure} est une matrice de forme similaire, avec des coefficients nuls au dessus de la diagonale. C'est des matrices de la forme:
+$$\begin{bmatrix}
+* & * & * & \cdots & * \\
+  & * & * & \cdots & * \\
+  &   & \ddots & \ddots & \vdots \\
+  & \bigzero  &  & \ddots & \vdots \\
+  &   &   &  & *
+\end{bmatrix} \text{ et }
+\begin{bmatrix}
+* &  &  &  &  \\
+\vdots  & \ddots &  & \bigzero &  \\
+\vdots & \ddots & \ddots &  &  \\
+* & \cdots & * & * &  \\
+*  & \cdots & * & * & *
+\end{bmatrix}$$
+Plus formellement, une matrice $A$ est triangulaire supérieure si $i > j \implies a_{i,j} = 0$, et est triangulaire inférieure si $i < j \implies a_{i,j} = 0$. Les matrices suivantes sont triangulaires supérieures :
+$$
+\begin{bmatrix}
+1 & 2\\
+0 & 3
+\end{bmatrix}, \begin{bmatrix}
+0 & 0\\
+0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 3\\
+0 & 1
+\end{bmatrix}
+$$
+
+\noindent Montrer que le produit de deux matrices triangulaires supérieures est aussi une matrice triangulaire supérieure. \\
+
+\noindent \underline{Indice} : Même indice que l'exercice \ref{exoProduitMatricesDiag}. Essayez d'abord de regarder à quoi ressemble le produit de deux matrices triangulaires supérieures pour $n=2$ et $n=3$, ensuite essayez de généraliser à $n$ quelconque. \\
+\end{exercice}
+
+\begin{exercice}
+\noindent Soient $b \in \R$, $n \in \N_{\geq 1}$, et soit $A = \begin{bmatrix} 1 & b \\ 0 & 1 \end{bmatrix} \in \R^{2 \cross 2}$. \\
+Montrer par récurrence que $A^n = \underbrace{AAA\cdots AAA}_{n \text{ fois}} = \begin{bmatrix}
+1 & nb \\ 0 & 1 \end{bmatrix}$. \\
+\end{exercice}
+
+\begin{exercice}
+Vérifier si les espaces suivants sont des espaces vectoriels sur $\R$ ou non.
+
+\begin{enumerate}
+    \item $\mathbb Z^2$ muni des opérations usuelles d'addition de deux vecteurs et de la multiplication par un scalaire
+        $$\begin{pmatrix} a \\ b \end{pmatrix} + \begin{pmatrix} c \\ d \end{pmatrix} = \begin{pmatrix} a + c \\ b + d \end{pmatrix}, \quad \lambda \cdot \begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} \lambda a \\ \lambda b \end{pmatrix}$$
+        où $a,b,c,d \in \mathbb Z$ et $\lambda \in \R$.
+    \item $\P_n = \{c_0 + c_1 \cdot t + ... + c_{n} \cdot t^{n} \ \mid \ c_0, c_1, ..., c_{n} \in \R\}$, l'ensemble des polynômes de degré $\leq n$ à coefficients réels, muni des opérations usuelles d'addition de deux polynômes et de la multiplication par un scalaire.
+    \item Soit $A \in \mathbb R^{n \times m}$ une matrice fixée. Considérer l'ensemble $\ker A = \{x \in \R^m : Ax = 0\}$ muni des opérations usuelles d'addition de deux vecteurs et de la multiplication par un scalaire.
+    \item $(\R_+)^n = \{(x_1,...,x_n) \in \mathbb R^n : x_1 > 0, ..., x_n > 0\}$ muni des opérations usuelles d'addition de deux vecteurs et de la multiplication par un scalaire.
+    \item $(\R_+)^n = \{(x_1,...,x_n) \in \mathbb R^n : x_1 > 0, ..., x_n > 0\}$ muni des opérations non-standards suivantes :
+    $$\text{Addition : } \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} \oplus 
+        \begin{pmatrix}
+            y_1 \\ y_2 \\ \vdots \\ y_n
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1y_1 \\ x_2y_2 \\ \vdots \\ x_ny_n
+        \end{pmatrix}$$
+    
+        $$\text{Multiplication par un scalaire : } \lambda \otimes \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1^{\lambda} \\ x_2^{\lambda} \\ \vdots \\ x_n^{\lambda}
+        \end{pmatrix}$$
+    où $x_i > 0, y_i > 0$ pour $i = 1, ..., n$ et $\lambda \in \R$. \\
+    
+\end{enumerate}
+\end{exercice}
+
+% ---- BONUS ------
+\section*{Bonus}
+
+\begin{exercice}
+\noindent Soit $A \in \R^{n \cross p}$. Nous définissons la \textit{transposée} de $A$ comme étant la matrice $A^T \in \R^{p \cross n}$ telle que $(A^T)_{i,j} = A_{j,i}$. 
+Par exemple : si $A = \begin{bmatrix}
+1 & 2 & 3\\
+4 & 5 & 6
+\end{bmatrix}$, alors $A^T = \begin{bmatrix}
+1 & 4\\
+2 & 5 \\
+3 & 6
+\end{bmatrix}$.\\
+
+\noindent Nous dirons que $A$ est \textit{symétrique} si $A^T=A$, et \textit{antisymétrique} si $A^T=-A$. \\
+Par exemple, $\begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$ est symétrique, et $\begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$ est antisymétrique. \\
+
+\begin{enumerate}
+    \item Soient $A \in \R^{p \cross n}$, $B \in \R^{n \cross k}$. Montrer que $(AB)^T = B^T A^T$.
+    \item En déduire, à l'aide du résultat de l'exercice \ref{exoProduitTriangSup}, que le produit de deux matrices triangulaires inférieures est aussi une matrice triangulaire inférieure.
+    \item Montrer que toute matrice carrée peut s'écrire comme somme d'une matrice symétrique et d'une matrice antisymétrique. \textit{Indication : pour $A \in \R^{n \cross n}$, utiliser $A$ et $A^T$ pour construire ces deux matrices. Poser un système linéaire si nécessaire.} \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\noindent Soit $A \in \R^{n \cross n}$. Nous définissons la \textit{trace} de $A$, notée $\Tr(A)$, comme la somme de ses éléments diagonaux. Autrement dit, $\displaystyle \Tr(A) \coloneqq \sum_{i=1}^{n} a_{i,i}$. Exemple : $\Tr\left(\begin{bmatrix}
+1 & 2\\
+0 & 5
+\end{bmatrix}\right) = 1 + 5 = 6$.
+\begin{enumerate}
+    \item Soient $A,B \in \R^{n \cross n}$. Montrer que $\Tr(AB)=\Tr(BA)$
+    \item Soient $A,B,C \in \R^{n \cross n}$. Montrer que $\Tr(ABC)=\Tr(CAB)$.
+    \item L'égalité serait-elle toujours valable si on remplaçait son membre de droite par $\Tr(ACB)$? \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\noindent Nous notons l'ensemble des polynômes à coefficients réels de degré au plus $n$ par $\P_n$. De plus, pour $p \in \P_n$ et $t \in \R$, on écrira:
+$$p(t) = a_0 + a_1 t + \cdots + a_n t^n = \sum_{i=1}^{n} a_i t^i, \; a_i \in \R$$
+Notons qu'il existe une bijection naturelle entre $\P_n$ et $\R^{n+1}$, qui nous permet de faire correspondre un polynôme de degré au plus $n$ à un vecteur dans $\R^{n+1}$. Ceci est pratique, car nous pouvons utiliser ce que nous connaissons sur les vecteurs de $\R^m$ et les matrices pour résoudre des problèmes liés aux polynômes. 
+\begin{enumerate}
+    \item Soit $f_n: \P_n \to \R^{n+1}$ cette bijection.
+    \begin{enumerate}
+        \item Expliciter $f_n$, i.e, étant donné $p \in \P_n$, décrire $f_n(p)$.
+        \item Vérifier que $\forall a, b \in \P_n$, $f_n(a + b) = f_n(a) + f_n(b)$ et que $\forall p \in \P_n$ et $\forall \lambda \in \R$, $f_n(\lambda p) = \lambda f_n(p)$. Notons que nous définissons $(a+b)(t) = a(t) + b(t)$.
+    \end{enumerate}
+    \item Soit $p \in \P_3$, et soit l'application
+    \begin{align*}
+        T: \ &\P_2 \to \P_1\\
+        &p \mapsto T(p) \text{ tel que }\forall t \in \R \ T(p)(t) = (2a_0 + 3a_1) + (a_0 + 4a_2)t
+    \end{align*}
+    En utilisant la bijection $f_n$ trouvée dans la question 1 ainsi que sa fonction réciproque $f_n^{-1} : \R^{n+1} \to \P_n$ (telle que $f_n(f_n^{-1})(v) = v$ et $f_n^{-1}(f_n(p)) =p $), trouver la matrice associée à: 
+    \begin{align*}
+        f_1 \circ T \circ f_2^{-1}: \ &\R^3 \to \R^2\\
+        &x \mapsto f_1(T(f_2^{-1}(x)))
+    \end{align*}
+    \textit{Indication : Il s'agit de trouver la matrice $A$ telle que $f_1(T(f_2^{-1}(x)))= Ax$. Explicitez alors $f_1(T(f_2^{-1}(x)))$, i.e, regardez ce que vaut cette quantité pour un $x$ arbitraire.}
+    \item L'application matricielle associée à la matrice trouvée en $2$ est-elle surjective ? Injective ?\\
+    
+\end{enumerate}
+\end{exercice}

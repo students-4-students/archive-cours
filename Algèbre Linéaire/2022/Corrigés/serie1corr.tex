@@ -1,0 +1,422 @@
+% PREAMBULE
+
+% \begin{center}
+% \begin{tcolorbox}[boxrule=0pt,frame empty,width=\textwidth]
+% Préambule de la correction 1 si nécessaire.
+% \end{tcolorbox}
+% \end{center}
+
+% CORRECTIONS
+
+\begin{exercice}
+\,
+
+\noindent Rappelons que les opérations valables pour l'échelonnage sont la multiplication d'une ligne par un scalaire, l'échange de deux lignes, et l'addition d'un multiple (non nul) d'une ligne à une autre.  Ainsi, toutes les matrices qui interviennent dans le processus sont ligne-équivalentes. Il existe une infinité de formes échelonnées d'une matrice, alors vous pouvez avoir des résultats différents. Vous pourrez alors vérifier si vos matrices échelonnées sont ligne-équivalentes à celles proposées dans ce corrigé. 
+\begin{enumerate}
+
+\item Procédons colonne par colonne, en précisant les opérations faites sur les lignes entre deux étapes :
+$$  \begin{bmatrix}
+    1 & 2 & 1 \\
+    2 & 5 & 3\\
+    3 & 10 & 8
+    \end{bmatrix}
+$$
+
+$$ 
+\overset{L_2 \leftarrow L_2 - 2L_1}{\sim}
+\begin{bmatrix}
+    1 & 2 & 1 \\
+    0 & 1 & 1\\
+    3 & 10 & 8
+    \end{bmatrix}
+$$
+
+$$ 
+\overset{L_3 \leftarrow L_3 - 3L_1}{\sim}
+\begin{bmatrix}
+    1 & 2 & 1 \\
+    0 & 1 & 1\\
+    0 & 4 & 5
+    \end{bmatrix}
+$$
+
+$$
+\overset{L_3 \leftarrow L_3 - 4L_2}{\sim}
+\begin{bmatrix}
+    1 & 2 & 1 \\
+    0 & 1 & 1\\
+    0 & 0 &  1
+    \end{bmatrix}
+$$
+
+\item Le processus à suivre est le même, mais la matrice est plus grande :
+$$  \begin{bmatrix}
+    1 & -3 & 2 & 4 \\
+    4 & 2 & 8 & 2 \\
+    3 & 9 & -6 & 6 \\
+    2 & 1 & 4 & 1
+    \end{bmatrix}
+$$
+
+$$
+\overset{L_2 \leftarrow L_2 - 4L_1}{\sim}
+\begin{bmatrix}
+    1 & -3 & 2 & 4 \\
+    0 & 14 & 0 & -14 \\
+    3 & 9 & -6 & 6 \\
+    2 & 1 & 4 & 1
+    \end{bmatrix}
+$$
+
+$$
+\overset{L_3 \leftarrow L_3 - 3L_1}{\sim}
+\begin{bmatrix}
+    1 & -3 & 2 & 4 \\
+    0 & 14 & 0 & -14 \\
+    0 & 18 & -12 & -6 \\
+    2 & 1 & 4 & 1
+    \end{bmatrix}
+$$
+
+$$
+\overset{L_4 \leftarrow L_4 - 2L_1}{\sim}
+\begin{bmatrix}
+    1 & -3 & 2 & 4 \\
+    0 & 14 & 0 & -14 \\
+    0 & 18 & -12 & -6 \\
+    0 & 7 & 0 & -7
+    \end{bmatrix}
+$$
+
+$$
+\overset{L_2 \leftarrow \frac{1}{14}L_2}{\sim}
+\begin{bmatrix}
+    1 & -3 & 2 & 4 \\
+    0 & 1 & 0 & -1 \\
+    0 & 18 & -12 & -6 \\
+    0 & 7 & 0 & -7
+    \end{bmatrix}
+$$  
+
+$$
+\overset{L_3 \leftarrow L_3 - 18L_2}{\sim}
+\begin{bmatrix}
+    1 & -3 & 2 & 4 \\
+    0 & 1 & 0 & -1 \\
+    0 & 0 & -12 & 12 \\
+    0 & 7 & 0 & -7
+    \end{bmatrix}
+$$
+
+$$
+\overset{L_4 \leftarrow L_4 - 7L_2}{\sim}
+\begin{bmatrix}
+    1 & -3 & 2 & 4 \\
+    0 & 1 & 0 & -1 \\
+    0 & 0 & -12 & 12 \\
+    0 & 0 & 0 & 0
+    \end{bmatrix}
+$$
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item Tout d'abord, $\lambda f(x) = f(\lambda x)$ $\forall \lambda \in \R$ et $\forall x \in \R^n$. En particulier, pour $\lambda = 0$:
+    $$0 \cdot f(x) = f(0 \cdot x) \implies f(0) = 0$$
+    
+    Ensuite, $f(v)=0 \implies f(v) = f(0)$ par la linéarité de $f$. Or on suppose que $f$ est injective, alors on sait que $f(v) = f(0) \implies v = 0$, donc $\ker(f) = \{0\}.$
+
+    C'est-à-dire qu'en prenant un vecteur $v$ quelconque dans le noyau de $f$, et en supposant l'injectivité de $f$ on arrive à la conclusion que $v = 0$.
+    
+    \item $f(v_1) = f(v_2) \implies f(v_1) - f(v_2) = 0 \implies f(v_1 - v_2) = 0 $ par la linéarité de $f$, donc $v_1-v_2 \in \ker(f)$. Or on suppose que $\ker(f) = \{0\}$, donc $v_1 - v_2 = 0 \implies v_1 = v_2$. 
+    
+    En résumé, on part de $f(v_1) = f(v_2)$ et, en supposant que le noyau de $f$ est vide, on conclut que $v_1 = v_2$, ce qui permet d'affirmer que si $\ker(f)=\{0\}$, alors f est injective. \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item D'abord, soit $x \in S(A,b)$. Alors $Ax = Ax_p \implies A(x-x_p) = 0 \implies x-x_p \in \ker(A)$. Puis, puisque $x = x_p + \underbrace{(x-x_p)}_{\in \ker(A)}$, nous avons $x \in x_p + \ker(A)$. Ceci donne $S(A,b) \subseteq x_p + \ker(A)$.
+    \item Réciproquement, soit $x \in x_p + \ker(A)$, alors $\exists x_h \in \ker(A)$ tel que $x = x_p + x_h$. Alors $Ax = A(x_p + x_h) = Ax_p + Ax_h = Ax_p + 0 = Ax_p=b \implies x \in S(A,b)$, donc $x_p + \ker(A) \subseteq S(A,b)$.
+    \item Comme $S(A,b) \subseteq x_p + \ker(A)$ et $x_p + \ker(A) \subseteq S(A,b)$, alors $x_p + \ker(A) = S(A,b)$. \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Nous avons déjà vu en cours que les applications de la forme $T(x) = Ax$ (avec $A$ une matrice) sont linéaires. 
+\begin{enumerate}
+    \item Nous avons que $T_1 (x) = Ax$ avec $A = 
+    \begin{bmatrix} 3 & -1 & 0 & 0 & -15 \end{bmatrix} \in \R^{1 \times 5}$. $T_1$ est donc linéaire.
+    
+    \item Le terme en $x^2$ présent dans la 3e coordonnée de $T_2 (x)$ pose problème. En effet, pour $x,y \in \R$, $[T_2 (x+y)]_3 = (x+y)^2 \neq x^2 + y^2 = [T_2 (x)]_3 + [T_2 (y)]_3$. $T_2$ n'est pas linéaire.
+    
+    \item Nous avons que $T_3 (x) = Ax$ avec $A = \begin{bmatrix} 1 & 0 \\ 0 & 1 \\ 3 & 3 \end{bmatrix} \in \R^{3 \times 2}$. $T_3$ est donc linéaire. 
+    
+    \item Le terme en $x_1 x_2$ présent dans la 3e coordonnée de $T_4 (x)$ pose problème. En effet, pour $\lambda \in \R$, $[T_4 (\lambda x)]_3 = \lambda x_1 \lambda x_2 = \lambda^2 x_1 x_2 \neq \lambda x_1 x_2 = [\lambda T_4 (x)]_3$. $T_4$ n'est donc pas linéaire.
+    
+    \item Nous avons que $T_5 (x) = Ax$ avec $A = \begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & -\cos\theta \end{bmatrix} \in \R^{2 \times 2}$. $T_5$ est donc linéaire.
+    
+    \item Nous avons que $T_5 (x) = Ax$ avec $A = 
+    \begin{bmatrix}
+    \cos\theta & 0 & -\sin\theta \\
+    0 & 1 & 0 \\
+    \sin\theta & 0 & \cos\theta \end{bmatrix} \in \R^{3 \times 3}$. $T_6$ est donc linéaire. Remarquons d'ailleurs que cette application linéaire représente une rotation dans $\R^3$ autour de l'axe $Oy$ !
+    
+    \item Comme pour $T_4$, le terme croisé $x_3 x_4$ pose problème. $T_7$ n'est donc pas linéaire.
+    
+    \item Nous avons que $T(x) = Ax$ avec $A = \begin{bmatrix} 1 \\ \sqrt{5} \\ 0 \\ -\pi \end{bmatrix} \in \R^{4 \times 1}$. $T_8$ est donc linéaire.
+    
+    \item Si $b=0$, alors $T_9 (x) = Ax$ est linéaire. Si $b \neq 0$, alors $T_9$ n'est pas linéaire. En effet, pour $x,y \in \R^n$, $T_9(x+y) = A(x+y) +b = Ax + b + Ay = T_9 (x) + Ay \neq T_9(x) + T_9(y)$. \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice} 
+\,
+\begin{enumerate}
+    \item Pour un certain $x \neq 0$, $Ax=\lambda x$. Donc:
+    $$Ax=\lambda x \implies Ax-\lambda x = 0 \implies Ax - \lambda I_nx = 0 \implies (A-\lambda I_n)x = 0$$
+    La multiplication de $A-\lambda I_n$ par  $x$ nous donne le vecteur nul, ce qui signifie que $x \in \ker (A-\lambda I_n)$. Comme $x \neq 0$, $\ker (A-\lambda I_n) \neq \{0 \}$.
+    \item Nous calculons $A-3I_3$:
+    $$A-3I_3 = \begin{bmatrix} -2 & -4 & 2 \\ -2 & 1 & 2 \\ 4 & 2 & 5 \end{bmatrix} - \begin{bmatrix} 3 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 3 \end{bmatrix} = \begin{bmatrix} -5 & -4 & 2 \\ -2 & -2 & 2 \\ 4 & 2 & 2 \end{bmatrix}$$
+    Echelonnons :
+    $$\begin{bmatrix} -5 & -4 & 2 \\ 
+    -2 & -2 & 2 \\ 
+    4 & 2 & 2 
+    \end{bmatrix} \sim 
+    \begin{bmatrix} 
+    1 & 4/5 & -2/5 \\ 
+    -2 & 2 & 2 \\ 
+    4 & 2 & 2 
+    \end{bmatrix} \sim
+    \begin{bmatrix} 
+    1 & 4/5 & -2/5 \\ 
+    0 & -2/5 & 6/5 \\ 
+    0 & -6/5 & 18/5 
+    \end{bmatrix} \sim
+    \begin{bmatrix} 
+    1 & 4/5 & -2/5 \\ 
+    0 & -2 & 6 \\ 
+    0 & -6 & 18 
+    \end{bmatrix} $$
+    $$\sim\begin{bmatrix} 
+    5 & 4 & -2 \\ 
+    0 & 6 & -18 \\ 
+    0 & -6 & 18 
+    \end{bmatrix} \sim
+    \begin{bmatrix} 
+    5 & 4 & -2 \\ 
+    0 & 1 & -3 \\ 
+    0 & 0 & 0 
+    \end{bmatrix} \sim 
+    \begin{bmatrix} 
+    5 & 0 & 10 \\ 
+    0 & 1 & -3 \\ 
+    0 & 0 & 0 
+    \end{bmatrix} \sim
+    \begin{bmatrix} 
+    1 & 0 & 2 \\ 
+    0 & 1 & -3 \\ 
+    0 & 0 & 0 
+    \end{bmatrix}$$
+    De ceci nous tirons le système linéaire :
+    $\begin{cases}
+    x_1 = -2x_3 \\
+    x_2 = 3x_3\\
+    x_3 \in \R
+    \end{cases}$, le noyau est donc : $$\ker (A-3I_3) = \left\{ x_3\begin{bmatrix}
+    -2 \\ 3 \\ 1
+    \end{bmatrix} \ | \  x_3 \in \R \right\} \neq \{0\}$$\\
+    \end{enumerate}
+\end{exercice}
+
+\section*{Bonus}
+
+\begin{exercice}
+\, 
+\begin{enumerate}
+    \item La seconde ligne comporte un $1$ comme premier coefficient, que nous choisirons comme premier pivot.
+    \begin{align*}
+        \begin{bmatrix}
+        4 & -1 & 3 & -6\\
+        1 & -2 & 1 & 0\\
+        0 & 5 & -2 & 8
+        \end{bmatrix} 
+        \overset{L_1 \leftrightarrow L_2}{\sim}
+        &\begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        4 & -1 & 3 & -6\\
+        0 & 5 & -2 & 8
+        \end{bmatrix}
+        \overset{L_2 \to L_2 - 4L_1}{\sim}
+        \begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & 7 & -1 & -6\\
+        0 & 5 & -2 & 8
+        \end{bmatrix}
+    \end{align*}
+    \noindent Pour la seconde colonne, il n'y a pas de meilleur choix de pivot, les deux choix possibles mènent à des calculs... peu plaisants.
+    \begin{align*}
+        \begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & 7 & -1 & -6\\
+        0 & 5 & -2 & 8
+        \end{bmatrix}
+        \overset{L_3 \leftrightarrow L_2}{\sim}
+        &\begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & \color{blue}5 & -2 & 8\\
+        0 & 7 & -1 & -6
+        \end{bmatrix}
+        \overset{L_2 \to \frac{1}{5}L_2}{\sim}
+        \begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & \color{blue}1 & -\frac{2}{5} & \frac{8}{5}\\
+        0 & 7 & -1 & -6
+        \end{bmatrix}\\
+        \overset{L_3 \to L_3 - 7L_2}{\sim}
+        &\begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & \color{blue}1 & -\frac{2}{5} & \frac{8}{5}\\
+        0 & 0 & \frac{14}{5}-1 & -6-\frac{56}{5}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & \color{blue}1 & -\frac{2}{5} & \frac{8}{5}\\
+        0 & 0 & \color{blue}\frac{9}{5} & -\frac{86}{5}
+        \end{bmatrix}\\
+        \overset{L_3 \to \frac{5}{9}L_3}{\sim}
+        &\begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & \color{blue}1 & -\frac{2}{5} & \frac{8}{5}\\
+        0 & 0 & \color{blue}1 & -\frac{86}{9}
+        \end{bmatrix}
+        \overset{L_2 \to L_2 + \frac{2}{5}L_3}{\sim}
+        \begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & \color{blue}1 & 0 & \frac{8}{5} - \frac{2}{5}\frac{86}{9}\\
+        0 & 0 & \color{blue}1 & -\frac{86}{9}
+        \end{bmatrix}\\
+        =
+        &\begin{bmatrix}
+        \color{blue}1 & -2 & 1 & 0\\
+        0 & \color{blue}1 & 0 & -\frac{20}{9}\\
+        0 & 0 & \color{blue}1 & -\frac{86}{9}
+        \end{bmatrix}
+        \overset{L_1 \to L_1 - L_3}{\sim}
+        \begin{bmatrix}
+        \color{blue}1 & -2 & 0 & \frac{86}{9}\\
+        0 & \color{blue}1 & 0 & -\frac{20}{9}\\
+        0 & 0 & \color{blue}1 & -\frac{86}{9}
+        \end{bmatrix}\\
+        \overset{L_1 \to L_1 + 2L_2}{\sim}
+        &\begin{bmatrix}
+        \color{blue}1 & 0 & 0 & \frac{46}{9}\\
+        0 & \color{blue}1 & 0 & -\frac{20}{9}\\
+        0 & 0 & \color{blue}1 & -\frac{86}{9}
+        \end{bmatrix}
+    \end{align*}\\
+
+    \item  Nous avons que:
+    \begin{align*}
+        \begin{bmatrix}
+        1 & -4 & 7 & \bigm| & 1 \\
+        0 & 3 & -5 & \bigm| & -3 \\
+        -2 & 5 & -9 & \bigm| & 1
+        \end{bmatrix}
+        \overset{L_3 \rightarrow L_3+2L_1}{\sim}
+        &\begin{bmatrix}
+        1 & -4 & 7 & \bigm| & 1 \\
+        0 & 3 & -5 & \bigm| & -3 \\
+        0 & -3 & 5 & \bigm| & 3
+        \end{bmatrix}
+        \overset{L_3 \rightarrow L_3+L_2}{\sim}
+        \begin{bmatrix}
+        1 & -4 & 7 & \bigm| & 1 \\
+        0 & 3 & -5 & \bigm| & -3 \\
+        0 & 0 & 0 & \bigm| & 0
+        \end{bmatrix} \\
+        \overset{\substack{L_1 \rightarrow 5L_1 \\ L_2 \rightarrow 7L_2}}{\sim}
+        &\begin{bmatrix}
+        5 & -20 & 35 & \bigm| & 5 \\
+        0 & 21 & -35 & \bigm| & -21 \\
+        0 & 0 & 0 & \bigm| & 0
+        \end{bmatrix}
+        \overset{\substack{L_1 \rightarrow L_1+L_2 \\ L_2 \rightarrow \frac{1}{21}L_2}}{\sim}
+        \begin{bmatrix}
+        5 & 1 & 0 & \bigm| & -16 \\
+        0 & 1 & -5/3 & \bigm| & -1 \\
+        0 & 0 & 0 & \bigm| & 0
+        \end{bmatrix} \\
+        \overset{L_1 \rightarrow L_1-L_2}{\sim}
+        &\begin{bmatrix}
+        5 & 0 & 5/3 & \bigm| & -15 \\
+        0 & 1 & -5/3 & \bigm| & -1 \\
+        0 & 0 & 0 & \bigm| & 0
+        \end{bmatrix}
+        \overset{L_1 \rightarrow \frac{1}{5}L_1}{\sim}
+        \begin{bmatrix}
+        1 & 0 & 1/3 & \bigm| & -3 \\
+        0 & 1 & -5/3 & \bigm| & -1 \\
+        0 & 0 & 0 & \bigm| & 0
+        \end{bmatrix}
+    \end{align*}
+    Le système correspondant à la forme échelonnée réduite est:
+    $$\begin{cases}
+    x_1 + \frac{1}{3} x_3 = -3 \\
+    x_2 - \frac{5}{3}x_3 = -1 \\
+    x_3 \in \R
+    \end{cases} \iff 
+    \begin{cases}
+    x_1 = -\frac{1}{3} x_3 -3 \\
+    x_2 = \frac{5}{3}x_3 -1 \\
+    x_3 \in \R
+    \end{cases}$$
+    L'ensemble des solutions est alors:
+    $$S(A,b) = \left\{ \begin{bmatrix} -3 \\ -1 \\ 0 \end{bmatrix} + x_3 \begin{bmatrix} -1/3 \\ 5/3 \\ 1 \end{bmatrix} \ | \ x_3 \in \R \right\}$$
+    \, \\
+
+    \item Nous avons que:
+    \begin{align*}
+        \begin{bmatrix}
+        2 & -7 & 3 & \bigm| & -2 \\
+        -2 & 1 & 7 & \bigm| & -1 \\
+        1 & -5 & 4 & \bigm| & -3
+        \end{bmatrix}
+        \overset{L_2 \rightarrow L_2 +L_1}{\sim}
+        &\begin{bmatrix}
+        \color{blue}2 & -7 & 3 & \bigm| & -2 \\
+        0 & -6 & 10 & \bigm| & -3 \\
+        1 & -5 & 4 & \bigm| & -3
+        \end{bmatrix}
+        \overset{L_1 \rightarrow \frac{1}{2}L_1}{\sim}
+        \begin{bmatrix}
+       \color{blue} 1 & -7/2 & 3/2 & \bigm| & -1 \\
+        0 & -6 & 10 & \bigm| & -3 \\
+        1 & -5 & 4 & \bigm| & -3
+        \end{bmatrix} \\
+        \overset{L_3 \rightarrow L_3 - L_1}{\sim}
+        &\begin{bmatrix}
+        \color{blue}1 & -7/2 & 3/2 & \bigm| & -1 \\
+        0 & -6 & 10 & \bigm| & -3 \\
+        0 & -3/2 & 5/2 & \bigm| & -2
+        \end{bmatrix}
+        \overset{L_3 \rightarrow -4L_3}{\sim}
+        \begin{bmatrix}
+        \color{blue}1 & -7/2 & 3/2 & \bigm| & -1 \\
+        0 &\color{blue} -6 & 10 & \bigm| & -3 \\
+        0 & 6 & -10 & \bigm| & 8 %yeet
+        \end{bmatrix} \\
+        \overset{L_3 \rightarrow L_3+L_2}{\sim}
+        &\begin{bmatrix}
+        \color{blue}1 & -7/2 & 3/2 & \bigm| & -1 \\
+        0 & \color{blue}-6 & 10 & \bigm| & -3 \\
+        0 & 0 & 0 & \bigm| & \color{blue}5
+        \end{bmatrix}
+    \end{align*}
+    La dernière ligne s'écrit $0x_1 + 0 x_2 + 0x_3 = 5 \implies 0=5$, ce qui est contradictoire, et donc $S(A,b) = \emptyset$. Ainsi, une forme échelonnée ici suffit pour conclure, pas besoin de la forme réduite. \\
+\end{enumerate}
+\end{exercice}

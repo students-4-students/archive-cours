@@ -1,0 +1,249 @@
+% PREAMBULE
+
+% \begin{center}
+% \begin{tcolorbox}[boxrule=0pt,frame empty,width=\textwidth]
+% Préambule de la correction 1 si nécessaire.
+% \end{tcolorbox}
+% \end{center}
+
+% CORRECTIONS
+
+
+%%% CORRIGE 1 %%%
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item VRAI~: Rappelons que la contraposée de $A \implies B$ est $\neg B \implies \neg A$. Dans ce cas précis, nous avons que $A$~: \guillemotleft $\,n \in \mathbb N$ \guillemotright \, et $B$~: \guillemotleft~$\, \exists k \in \mathbb N \text{ t.q. } n=2k \text { ou } n=2k+1$~\guillemotright.
+
+    Dans notre cas~:
+
+    \begin{itemize}
+        \item $\neg A$: \guillemotleft \, $n \not\in \mathbb N$ \guillemotright
+        \item $\neg B$: \guillemotleft \, $\forall k \in \mathbb N, \text{ si } n \not= 2k \text { et } n\not= 2k+1$ \guillemotright
+    \end{itemize}
+
+    Détaillons pour $B$~:
+    \begin{align*}
+        \neg B &\iff \neg \left( \exists k \in \mathbb N \text{ t.q. } n=2k \text { ou } n=2k+1 \right) \\
+            &\iff \forall k \in \mathbb N, \neg \left( n=2k \text{ ou } n=2k+1 \right) \\
+            &\iff \forall k \in \mathbb N, n \not= 2k \text { et } n\not= 2k+1
+    \end{align*}
+
+    \item VRAI~: La fonction $f$ est injective s.si $\forall x, y \in \mathbb R f(x) = f(y) \implies x = y$. Dans ce cas présent, on peut trouver un contre-exemple. On a pour $x = 0$ et $x = 2\pi$, $f(x) = f(y) = 0$ mais pas que $x = y$. Donc la fonction n'est pas injective.
+
+    \item FAUX~: La fonction $f$ est strictement croissante sur l'intervalle $x \in \left[-\frac \pi 2, + \frac \pi 2\right]$, ce qui la rend injective.
+    
+    \item VRAI: La fonction $f: A \rightarrow B$ est surjective si pour tout élément de $B$, il existe un antécédent dans $A$. Ici, par définition de l'ensemble image $\text{Im}(f)$, on a bien cette propriété. Donc la proposition est vraie. \\
+\end{enumerate}
+
+\end{exercice}
+
+
+
+%%% CORRIGE 2 %%%
+\begin{exercice}
+Soit une fonction $f:E\rightarrow G$, soient $A, B \subset E$.\\
+Commençons par définir $f(A \cup B)$ et $f(A)\cup f(B)$ :
+\begin{itemize}
+    \item  $f(A \cup B) = \left\{y \in G \,|\, \exists x \in A \cup B : f(x) = y\right\}$
+
+    \item $f(A) = \left\{y \in G \,|\, \exists x \in A : f(x) = y\right\}$
+
+    \item $f(B) = \left\{y \in G \,|\, \exists x \in B : f(x) = y\right\}$
+\end{itemize}
+
+On a :
+\begin{align*}
+    f(A \cup B) &= \left\{y \in G \,|\, \exists x \in A \cup B : f(x) = y\right\}\\
+                &= \left\{y \in G \,|\, \left(\exists x \in A : f(x) = y\right) \text{ ou } \left(\exists x \in B : f(x) = y\right) \right\}\\
+                &= \left\{y \in G \,|\, \exists x \in A : f(x) = y\right\} \cup \left\{y \in G \,|\, \exists x \in B : f(x) = y\right\}\\
+                  % &= \left\{y \in G \,|\, \left(\exists x \in A\right) \cup \left(\exists x \in B\right) : f(x) = y\right\}\\
+                  &= f(A)\cup f(B) \\
+\end{align*}
+\end{exercice}
+
+%%% CORRIGE 3 %%%
+\begin{exercice}
+Soient $A$ et $B$ deux ensembles de cardinalité finie.
+
+\begin{enumerate}
+    
+    \item
+    \begin{enumerate}
+        \item Si $\card(A)=3$ et $\card(B)=2$, il n'existe pas de fonction injective $f:A\rightarrow B$.
+
+        Rappelons qu'une fonction $f : A \rightarrow B $ est dite injective si $\forall x_1, x_2 \in A$, si $x_1 \neq x_2$, alors $f(x_1) \neq f(x_2)$.
+        
+        Ceci signifie que pour chaque $b \in B$, il existe \textit{au plus un} $a \in A$ tel que $f(a) = b$. Si $\card(A)=3$ et $\card(B)=2$, mettons par exemple $A = \{a_1, a_2, a_3\}$ et $B = \{b_1, b_2\}$, il n'existera pas de fonction injective $f:A\rightarrow B$ car 2 éléments de $A$ seront envoyés sur une même image dans $B$, par exemple :
+
+        \begin{center}
+            \begin{tikzpicture}
+              [scale=.6,auto=right]
+                  \node[vertex] (a1) at (1,10)  {$a_1$};
+                  \node[vertex] (a2) at (1,8)  {$a_2$};
+                  \node[vertex] (a3) at (1,6)  {$a_3$};
+                  \node[vertex] (b1) at (8,10)  {$b_1$};
+                  \node[vertex] (b2) at (8,8)  {$b_2$};
+            
+                 \draw[->] (a1)--(b1);
+                 \draw[->] (a2)--(b1);
+                 \draw[->] (a3)--(b2);
+            \end{tikzpicture}
+        \end{center}
+
+        \item Démontrons que si $f:A\rightarrow B$ est injective, alors $\card(A) \leq \card(B)$.
+
+        L'ensemble image de $A$ par la fonction $f$ est tel que $f(A) \subseteq B$, donc $\card(f(A)) \leq \card(B)$. Or $f$ est injective donc 2 éléments distincts de $A$ sont envoyés vers 2 éléments distincts de $f(A)$, donc $\card(A)=\card(f(A))$.
+        
+        La première relation se réécrit donc comme $\card(f(A)) = \card(A) \leq \card(B)$.
+
+        Ainsi, $f:A\rightarrow B \text{ injective } \implies \card(A) \leq \card(B)$.\\
+
+        \textit{Remarque :} La contreaposée de cette implication, $\card(A) > \card(B) \implies f:A\rightarrow B \text{ pas injective}$, a été vérifiée dans la question précédente pour le cas particulier $\card(A)=3$ et $\card(B)=2$.
+
+        % Soient $1 \leq i, j \leq n$ pour $n \in \mathbb{N}^*$, $A = \{a_1, a_2, \ldots, a_i, \ldots, a_n\}$.
+
+        % $f$ est injective si $\forall i \neq j,\ f(a_i)\neq f(a_j)$. Dans ce cas, les éléments $f(a_i)$ sont tous distincts dans $B$, donc $\card(A) \leq \card(B)$.
+
+
+        
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item Supposons à présent que $\card(A)=2$ et $\card(B)=3$. Dans ces conditions, il n'existe pas de fonction $f:A\rightarrow B$ surjective.
+
+        Rappelons que $f:A\rightarrow B \text{ \textit{surjective}} \iff \forall b \in B, \ \exists a \in A \text{ tel que } f(a) = b$. Autrement dit, chaque élément de $B$ doit avoir \textit{au moins} un antécédent dans $A$.
+
+        Cependant, puisque $\card(A)=2$, il y a seulement deux éléments dans $A$, il n'est pas possible d'assigner un antécédent distinct à chaque élément de $B$, car il y a plus d'éléments dans $B$ que dans $A$ :
+
+        \begin{center}
+            \begin{tikzpicture}
+              [scale=.6,auto=right]
+                  \node[vertex] (a1) at (1,10)  {$a_1$};
+                  \node[vertex] (a2) at (1,8)  {$a_2$};
+                  \node[vertex] (b1) at (8,10)  {$b_1$};
+                  \node[vertex] (b2) at (8,8)  {$b_2$};
+                  \node[vertex] (b3) at (8,6)  {$b_3$};
+            
+                 \draw[->] (a1)--(b1);
+                 \draw[->] (a2)--(b3);
+                 \draw[->,draw = red, densely dotted] (a1)--(b2);
+                 \node (forbidden_arrow) at (4.5,9) {};
+                 \draw[red]($(forbidden_arrow)+(-0.4,-0.4)$)--($(forbidden_arrow)+(0.4,+0.4)$);
+                 \draw[red]($(forbidden_arrow)+(-0.4,+0.4)$)--($(forbidden_arrow)+(0.4,-0.4)$);
+            \end{tikzpicture}
+        \end{center}
+
+        Dans le schéma ci-dessus, il n'est pas possible que chaque élément $b_i$ soit relié à un élément $a_i$, à part si un même antécédent $a_i$ était envoyé sur 2 images $b_j$ différentes, ce qui, pour une fonction n'est pas possible (flèche rouge du schéma interdite).
+
+
+        \item Supposons $f:A\rightarrow B$ surjective, on a alors $f(A) = B$. Mais $\card(A) \geq \card(f(A))$ et $\card(f(A)) = \card(B)$ par l'hypothèse que $f$ était surjective.
+
+        On a donc bien montré $f:A\rightarrow B \text{ surjective } \implies \card(A) \geq \card(B)$.
+    \end{enumerate}
+
+
+    \item Une fonction $f$ est dite bijective si elle est à la fois injective et surjective.
+
+    Or nous avons montré que :
+    \begin{align*}
+        f:A\rightarrow B \text{ injective } &\implies \card(A) \leq \card(B)\\
+        f:A\rightarrow B \text{ surjective } &\implies \card(A) \geq \card(B)
+    \end{align*}
+
+    Donc si $f$ est bijective,  $\card(A) \leq \card(B)$ et $\card(A) \geq \card(B)$, donc $\card(A) = \card(B)$
+
+    \item Enfin, montrons que si $\card(A) = \card(B)$, alors $\exists f:A\rightarrow B$ bijective.
+
+    $A$ et $B$ sont des ensembles de cardinalité finie, posons $\card(A) = \card(B) = n,\ n \in \mathbb{N}^*$.
+    
+    On peut construire les ensembles $A$ et $B$ de la façon suivante : $A = \left\{a_1, a_2, \ldots, a_n\right\}$ et $B = \left\{b_1, b_2, \ldots, b_n\right\}$.
+
+    Définissons la fonction $f:A\rightarrow B$ telle que $f(a_1) = b_1,\ f(a_2) = b_2, \ldots,\ f(a_n) = b_n$, ou plus simplement : $f(a_i) = b_i,\ \forall 1 \leq i \leq n$.
+
+    On peut représenter cette fonction de la manière suivante :
+        \begin{center}
+            \begin{tikzpicture}
+              [scale=.6,auto=right]
+                  \node[vertex] (a1) at (1,10)  {$a_1$};
+                  \node[vertex] (a2) at (1,8)  {$a_2$};
+                  \node[vertex] (an) at (1,5)  {$a_n$};
+                  \node[vertex] (b1) at (8,10)  {$b_1$};
+                  \node[vertex] (b2) at (8,8)  {$b_2$};
+                  \node[vertex] (bn) at (8,5)  {$b_n$};
+
+                  \draw[->] (a1)--(b1);
+                  \draw[->] (a2)--(b2);
+                  \node at (4.5,6.5) {\Large \vdots};
+                  \draw[->] (an)--(bn);
+            \end{tikzpicture}
+        \end{center}
+    
+
+    $f$ est clairement bijective puisque tous les éléments de $B$ sont atteints et ont un unique antécédent. On a bien trouvé une fonction $f:A\rightarrow B$ qui est bijective, en supposant $\card(A) = \card(B)$.\\
+    \end{enumerate}
+\textit{Remarque :}\\
+    Dans la question 3, nous avons montré que la bijectivité d'une fonction $f:A\rightarrow B$ impose $\card(A)=\card(B)$. Ceci est valable pour \textit{toutes} les fonctions bijectives $f:A\rightarrow B$.\\
+    Dans la question 4, nous montrons que si $\card(A)=\card(B)$, il existe \textit{une} bijection entre $A$ et $B$.\\
+    Autrement dit, $\card(A)=\card(B)$ est une condition nécessaire mais pas suffisante pour établir la bijectivité d'une fonction $f:A\rightarrow B$.\\
+\end{exercice}
+
+%%% CORRIGE 4 %%%
+\begin{exercice}\ 
+Soient $A$, $B$ et $E$ des ensembles, tels que $A,B \subset E$.
+    \begin{enumerate}
+        \item
+        Le \textit{complémentaire} de $A$ dans $E$ est noté $\compl{A}$. Il est défini par les éléments qui appartiennent à $E$ sans appartenir à $A$ : $\compl{A} = \left\{x \in E : x \notin A\right\}$.
+
+        \begin{enumerate}
+
+            \item $\compl{(A \cup B)}$ s'explicite comme \guillemotleft les éléments qui ne sont pas dans $\left[A \text{ \textbf{ou} } B\right]$\guillemotright, autrement dit, les éléments qui ne sont ni dans $A$ ni dans $B$. Plus formellement, ces éléments ne sont $\left[\text{pas dans } A\right]$ \textbf{et} $\left[\text{pas dans } B\right]$, ce qui se note comme l'ensemble $\compl{A} \cap \compl{B}$.
+
+            \item $\compl{(A \cap B)}$ désigne les éléments qui ne sont pas dans $\left[A \text{ \textbf{et} } B\right]$. Ces éléments peuvent être dans $A$ mais pas dans $B$, ou inversement : dans $B$ mais pas dans $A$. Mathématiquement, cet ensemble se décrit comme \guillemotleft les éléments qui ne sont $\left[\text{pas dans }A\right]$ \textbf{ou} $\left[\text{pas dans }B\right]$\guillemotright, soit $\compl{A} \cup \compl{B}$.
+        \end{enumerate}
+
+        \item On cherche à montrer par l'absurde que si $A,B \subset E$ et $A \subset B$, alors $\compl{A} \cup B = E$.
+        
+        Rappelons que pour démontrer une implication $P \implies Q$ par l'absurde, on suppose que cette implication est fausse et on cherche une contradiction.
+        
+        Autrement dit, on suppose $\text{non}\left[P \implies Q\right]$, c'est à dire $\left[P \text{ et non-}Q\right]$, pour trouver une contradiction. \\
+        
+
+        L'implication à montrer $P \implies Q$ se sépare de la manière suivante :
+        \begin{itemize}
+            \item $P$ (hypothèse) : $\forall A, B \subset E,\ A \subset B$
+            \item $Q$ (conclusion) : $\compl{A} \cup B = E$
+        \end{itemize}
+        Pour utiliser la démonstration par l'absurde, on suppose :
+        \begin{itemize}
+            \item $P$ : $\forall A, B \subset E,\ A \subset B$
+            \item $\text{non-}Q$ : $\compl{A} \cup B \neq E$.\\
+        \end{itemize}
+
+        Par hypothèse :
+        \begin{align*}
+            \compl{A} \cup B \neq E
+            &\implies \exists x\in E,\quad x\notin \compl{A} \cup B\\
+            &\implies \exists x\in E,\quad x\in \compl{(\compl{A} \cup B)}\\
+            &\implies \exists x\in E,\quad x\in A \cap \compl{B} \text{ (par la question 1)}\\
+            &\implies \exists x\in E,\quad x\in A \text{ et } x\in \compl{B}\\
+            &\implies \exists x\in E,\quad x\in A \text{ et } x\notin B\\
+            &\implies A \not \subset B.
+        \end{align*}
+
+        Or par l'hypothèse de départ (notée $P$), on a supposé que $A \subset B$. On arrive donc à une situation contradictoire, avec simultanément $A \subset B$ et $A \not \subset B$.
+
+        L'hypothèse $\text{non-}Q$ : $\compl{A} \cup B \neq E$ mène donc à une contradiction, ainsi la conclusion $\compl{A} \cup B = E$ est vraie. \\
+    \end{enumerate}
+\end{exercice}
+
+%%% CORRIGE 5 %%%
+\begin{exercice}
+\,
+    \begin{enumerate}
+        \item On voit "à l'oeil nu" que $\alpha=2$ et $\beta=-1$. Sinon, on peut résoudre un système linéaire à 2 inconnues et 2 équations.
+
+        \item C'est bel et bien vrai, car $v_1$ et $v_2$ sont non colinéaires. On vous laisse la démonstration pour le semestre !
+    \end{enumerate}
+\end{exercice}

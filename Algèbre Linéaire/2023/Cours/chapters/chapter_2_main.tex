@@ -1,0 +1,287 @@
+\chapter{Pré-requis sur les ensembles, fonctions et matrices}
+
+Les trois premiers points de cette sous-section ne concernent pas spécifiquement l'algèbre linéaire mais vous serviront dans tout cours de maths. Vous savez peut-être déjà une grande partie de ce qui suit mais sûrement pas absolument tout.
+
+\section{Opérations élémentaires sur les ensembles, dont le produit cartésien}
+Dans ce cours comme tous les cours EPFL hormis ceux traitant justement de théorie des ensembles, nous dirons simplement et naïvement qu'\textbf{un ensemble est une collection d'éléments uniques et non ordonnés}. Dans la suite, nous notons, $A$ étant un ensemble, que $a \in A \iff$ (si et seulement si) l'élément $a$ appartient à l'ensemble $A$.\\
+
+\noindent Pour caractériser un ensemble, il suffit par exemple:
+\begin{itemize}
+    \item de lister tous ses éléments : $\{1, 2\}$, $\{\text{chaussette rouge, chaussette verte}\}$, ...
+    \item de le définir comme \textit{sous-ensemble} d'un ensemble connu en ajoutant une propriété, parfois appelée propriété bâtisseuse notée après une barre verticale : \\ 
+    $\{ n \in \mathbb{N} \ | \ n \text{ divise 5}\}$ est l'ensemble des diviseurs naturels de 5, où $\mathbb{N} = \{0, 1, 2, ...\}$. Nous dirons au passage qu'un ensemble $E$ est sous-ensemble d'un ensemble $F$ si $E \subseteq F$, i.e si $E$ est inclus dans $F$, plus explicitement :
+    $$E \subseteq F \iff \forall \text{ (pour tout) } e \in E, \ e \in F$$
+    
+    \item de le construire par union, intersection, complément, différence, produit cartésien entre ensembles.
+\end{itemize}
+Détaillons le dernier point: 
+
+\begin{boxdef}
+Soient deux ensembles $A$ et $B$, sous-ensembles de $X$. Alors nous pouvons définir :
+\begin{itemize}
+    \item \textit{L'union} de $A$ et $B$, notée $A \cup B = \{x \in X \ | \ x \in A \text{ ou }x \in B\}$.
+    \item \textit{L'intersection} de $A$ et $B$, notée $A \cap B = \{x \in X \ | \ x \in A \text{ et } x \in B\}$.
+    \item \textit{Le complément} de $A$, notée $\Bar{A} = \{x \in X \ | \ x \notin A\}$.
+    \item \textit{La différence} de $A$ et $B$, notée $A \setminus B = A \cap \Bar{B} = \{ x \in X \ | \ x \in A \text{ et } x \not\in B \}$.
+    \item \textit{Le produit cartésien} de $A$ et $B$, noté $A \times B = \{(a,b) \ | \ a \in A, b \in B\}$ où $(a,b)$ est une \text{paire ordonnée} - en particulier $(a,b) \neq (b,a)$.
+    Pour des ensembles $A_1, A_2,..., A_n$, nous pouvons définir leur produit cartésien ainsi, avec $\Iintv{1, n} = \{i \in \mathbb{N} \ | \ 1 \leq i \text{ et } i \leq n\}$ pour $n \in \mathbb{N}$ : $$A_1 \times A_2 \times ... \times A_n = \{(a_1, a_2, ..., a_n) \ | \ \forall i \in \Iintv{1, n}\ a_i \in A_i\}$$
+\end{itemize}
+\end{boxdef}
+
+\textbf{\textit{Remarques:}}
+\begin{itemize}
+    \item On a que $A \cup \Bar{A} = X$ et $A \cap \Bar{A} = \emptyset$, l'ensemble vide.
+    \item Le produit cartésien nous intéressera particulièrement dans la suite. Cependant, il faut faire attention: \textit{$A$ n'est \textbf{pas} un sous-ensemble de $A \times B$}, $A \times B$ est constitué de paires, et pas $A$.\\
+\end{itemize}
+
+
+\section{Définition d'une application ensembliste, ou fonction}
+Dans cette section, notre seul objectif sera de définir formellement ce qu'est une \textit{application ensembliste}, autrement dit \textit{une fonction}. \\
+La notion préliminaire est celle de \textit{relation} entre deux ensembles $A$ et $B$: 
+\begin{boxdef}
+Nous nommerons tout sous-ensemble $F$ de $A \times B$ une \textit{relation} entre $A$ et $B$. 
+\end{boxdef}
+
+Ensuite, nous dirons, concernant cette relation $F$, que :
+\begin{boxdef}
+$F$ est une \textit{fonction} de $A$ vers $B \iff \forall a \in A\ \exists!$ (il existe un unique) $b := F(a) \in B$ tel que $(a, F(a)) \in F$
+Nous notons alors :
+\begin{align*}
+    F: \ &A \to B\\
+    &a \mapsto F(a)
+\end{align*}
+\end{boxdef}
+En d'autres termes, pour chaque $a \in A$, un unique $F(a) \in B$ lui est associé, ce qui devrait correspondre à la définition de fonction donnée au gymnase, au lycée, ...
+
+\section{Injectivité, surjectivité, bijectivité}
+\noindent Cette section devrait contenir du contenu nouveau pour beaucoup. \\
+
+\begin{boxdef}
+Soit $f: A \to B$ une fonction. Nous définissons son \textit{injectivité} : \\
+\begin{center}
+    $f$ est \textit{injective} $\iff \forall a_1$ $\in A \, \forall a_2 \in A$, $a_1 \neq a_2 \implies f(a_1) \neq f(a_2)$.
+\end{center}
+\, \\
+De manière équivalente, en usant de la contraposée :\\
+\begin{center}
+    $f$ est \textit{injective} $\iff \forall a_1 \in A \, \forall a_2 \in A$, $f(a_1) = f(a_2) \implies a_1 = a_2$.
+\end{center}
+\end{boxdef}
+
+Ceci signifie que pour chaque $b \in B$, il existe \textit{au plus un} $a \in A$ tel que $f(a) = b$. Ainsi, si $A = \{a_1, a_2, a_3\}$ et $B = \{b_1, b_2, b_3, b_4\}$, voici une relation sur $A$ et $B$ définissant une fonction injective :
+
+\begin{center}
+\begin{tikzpicture}
+  [scale=.6,auto=right]
+      \node[vertex] (a1) at (1,10)  {$a_1$};
+      \node[vertex] (a2) at (1,8)  {$a_2$};
+      \node[vertex] (a3) at (1,6)  {$a_3$};
+      \node[vertex] (b1) at (8,10)  {$b_1$};
+      \node[vertex] (b2) at (8,8)  {$b_2$};
+      \node[vertex] (b3) at (8,6)  {$b_3$};
+      \node[vertex] (b4) at (8,4)   {$b_4$};
+
+     \draw[->] (a1)--(b2);
+     \draw[->] (a2)--(b3);
+     \draw[->] (a3)--(b4);
+\end{tikzpicture}
+\end{center}
+
+\noindent En effet, à chaque $b_i$ est associé au plus un $a_i$, le fait que $b_1$ n'ait pas d'antécédent ne nuit pas à l'injectivité. Cependant, la relation suivante sur $A$ et $B$ définit bien une fonction, mais pas une fonction injective :
+
+\begin{center}
+\begin{tikzpicture}
+  [scale=.6,auto=right]
+      \node[vertex] (a1) at (1,10)  {$a_1$};
+      \node[vertex] (a2) at (1,8)  {$a_2$};
+      \node[vertex] (a3) at (1,6)  {$a_3$};
+      \node[vertex] (b1) at (8,10)  {$b_1$};
+      \node[vertex] (b2) at (8,8)  {$b_2$};
+      \node[vertex] (b3) at (8,6)  {$b_3$};
+      \node[vertex] (b4) at (8,4)   {$b_4$};
+
+     \draw[->] (a1)--(b2);
+     \draw[->] (a2)--(b2);
+     \draw[->] (a3)--(b4);
+\end{tikzpicture}
+\end{center}
+Cette relation définit une fonction non injective car il existe 2 $a_i$, $a_1$ et $a_2$, qui ont pour image $b_2$.\\
+
+\noindent Sur des exemples plus réalistes témoignant l'importance des ensembles de départ et d'arrivée :\\
+$f: \R \to \R, x \mapsto x^2$ n'est pas injective, car tout réel positif non nul admet 2 antécédents par $f$: $x = f(\sqrt{x}) = f(-\sqrt{x})$. Au passage, $\R$ est l'ensemble des nombres réels.
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-2,xmax=2,
+        ymin=-2,ymax=2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+\addplot[no marks,black,-] expression[domain=-2:2,samples=100]{x^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\noindent Cependant, $g: \R^+ \to \R, x \mapsto x^2$ est bien injective, car nous avons limité le domaine de départ (aussi appelé domaine de définition) afin de faire en sorte qu'au plus un antécédent existe pour toute image.
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=0,xmax=2,
+        ymin=-2,ymax=2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+\addplot[no marks,black,-] expression[domain=0:2,samples=100]{x^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\noindent Passons à la seconde définition importante concernant les fonctions, celle de \textit{surjectivité}.\\
+
+\begin{boxdef}
+Soit $f: A \to B$ une fonction. Alors: \\
+$$f \text{ est \textit{surjective} } \iff \forall b \in B \ \exists \text{ (existe au moins un) }a \in A \text{ tel que } f(a) = b
+$$
+\end{boxdef}
+Ceci signifie... rien de plus que la définition : pour chaque $b \in B$, il existe \textit{au moins} un $a \in A$ tel que $f(a) = b$. Le "au moins" est important, ainsi la fonction suivante est surjective avec $A = \{a_1, ..., a_4\}$ et $B = \{b_1, b_2, b_3\}$ :
+
+\begin{center}
+\begin{tikzpicture}
+  [scale=.6,auto=right]
+      \node[vertex] (a1) at (1,10)  {$a_1$};
+      \node[vertex] (a2) at (1,8)  {$a_2$};
+      \node[vertex] (a3) at (1,6)  {$a_3$};
+      \node[vertex] (a4) at (1,4)  {$a_4$};
+      \node[vertex] (b1) at (8,10)  {$b_1$};
+      \node[vertex] (b2) at (8,8)  {$b_2$};
+      \node[vertex] (b3) at (8,6)  {$b_3$};
+
+     \draw[->] (a1)--(b1);
+     \draw[->] (a2)--(b2);
+     \draw[->] (a3)--(b3);
+     \draw[->] (a4)--(b3);
+\end{tikzpicture}
+\end{center}
+Elle est surjective car au moins un $a_i$ pointe vers chaque $b_j$. Notons qu'elle n'est pas injective car $a_3$ et $a_4$ ont l'image commune $b_3$. Si nous rajoutions un $b_4$ sans lui lier de $a_i$, la fonction obtenue ne serait plus surjective, ce $b_4$ n'admettant pas d'antécédent.\\
+
+\noindent Avant d'arriver à des exemples plus réalistes, définissons \textit{l'ensemble image} d'une fonction $f: A \to B$:
+\begin{boxdef}
+Soit $f: A \to B$. Étant donné un sous-ensemble $S \subseteq A$, nous définissons : 
+$$f(S) = \{b \in B \ | \ \exists s  \in S  \ f(s) = b\}
+$$
+L'\textit{image} de $f$ sera alors :
+$$\Ima(f) = f(A) = \{ b \in B \ | \ \exists a \in A \ f(a) = b \}
+$$
+\end{boxdef}
+Ainsi, étant donnée une telle fonction $f$, nous pouvons restreindre son domaine d'arrivée afin de la rendre surjective : $g: A \to \Ima(f), x \mapsto f(x)$ est surjective par définition.\\
+
+\noindent En fait, nous pouvons même définir la surjectivité autrement mais de manière équivalente grâce à cet ensemble image :
+
+\begin{boxdef}[Une autre définition de la surjectivité]
+$$f: A \to B \text{ est surjective } \iff \Ima(f) = B
+$$
+\end{boxdef}
+
+\noindent Pour retourner à l'exemple de fonctions associant des carrés à des antécédents : soit $f : \R \to \R^+, x \mapsto x^2$, cette fonction est surjective puisque pour tout $x \geq 0 \ \exists y \in \R$ tel que $f(y) = x$, et ce $y = \sqrt{x}$ :
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-2,xmax=2,
+        ymin=0,ymax=2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+\addplot[no marks,black,-] expression[domain=-2:2,samples=100]{x^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+La même fonction à laquelle on associerait le domaine d'arrivée $\R$ voire même $\C$ sans changer le domaine de définition deviendrait non surjective, car pour $b = -1$ par exemple, il n'existe pas de $a$ réel tel que $a^2 = -1$.\\
+
+\noindent Dernière définition de cette section, la \textit{bijectivité}:
+\begin{boxdef}
+Soit $f: A \to B$ une fonction. Alors:
+\begin{align*}
+    f \text{ est \textit{bijective} } &\iff f \text{ est injective et surjective}\\
+    &\iff \forall b \in B\ \exists! a \in A \ f(a) = b
+\end{align*}
+\end{boxdef}
+Pour reprendre une dernière fois nos petites fonctions avec des flèches, avec cette fois $A = \{a_1, a_2, a_3\}$ et $B = \{b_1, b_2, b_3\}$, la fonction suivante est bijective :
+
+\begin{center}
+\begin{tikzpicture}
+  [scale=.6,auto=right]
+      \node[vertex] (a1) at (1,10)  {$a_1$};
+      \node[vertex] (a2) at (1,8)  {$a_2$};
+      \node[vertex] (a3) at (1,6)  {$a_3$};
+      \node[vertex] (b1) at (8,10)  {$b_1$};
+      \node[vertex] (b2) at (8,8)  {$b_2$};
+      \node[vertex] (b3) at (8,6)  {$b_3$};
+
+     \draw[->] (a1)--(b2);
+     \draw[->] (a2)--(b1);
+     \draw[->] (a3)--(b3);
+\end{tikzpicture}
+\end{center}
+Elle vérifie bien injectivité et surjectivité. \\
+Aussi, pour clore sur les fonctions associant des carrés, la fonction suivante est bijective, où nous avons réduit le domaine de départ pour la rendre injective, puis restreint le domaine d'arrivée pour la rendre surjective :\\
+\begin{align*}
+    f: \ &\R^+ \to \R^+ \\
+    &x \mapsto x^2
+\end{align*}
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=0,xmax=2,
+        ymin=0,ymax=2,
+        axis x line=middle,
+        axis y line=middle,
+        axis line style=->,
+        xlabel={$x$},
+        ylabel={$y$},
+        ]
+\addplot[no marks,black,-] expression[domain=0:2,samples=100]{x^2};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\section{Définitions de $\R^n$, de matrice et du produit matrice-vecteur}
+\label{definitionProduitMatVec}
+\noindent En algèbre linéaire, la fonction qui nous occupera longtemps - en fait tout le reste de ce cours préparatif - est la suivante, où $n,p \in \mathbb{N}_{\geq 1}$ :
+\begin{align*}
+    f: \ &\R^n \to \R^p\\
+    &x \mapsto f(x) = Ax \text{ où $A$ est une matrice } p \times n
+\end{align*}
+Décortiquons cette fonction pas à pas.\\
+D'abord, nous savons en fait ce qu'est $\R^n$ à présent : 
+\begin{boxdef}[Espace $\R^n$]
+$$\R^n = \underbrace{\R \times \R \times ... \times \R}_{n \text{ fois}} = \{x=(x_1, x_2, ..., x_n) \ | \ \forall i \in \Iintv{1, n}\ x_i \in \R\}$$
+\end{boxdef}
+Ainsi, $\R^2 = \R \times \R$ est, géométriquement, l'ensemble des points $(x,y)$ du plan, au même titre que $\R^3$ est l'ensemble des points $(x,y,z)$ de l'espace.\\
+Nous nommerons l'ensemble des éléments de $\R^n$ des \textit{vecteurs}. Ainsi, $f$ associe des vecteurs de dimension $n$ à des vecteurs de dimension $p$, ok. Désormais la question est : comment... ?\\
+Notons les vecteurs en colonnes ainsi: $x = (a,b,c) = \begin{bmatrix}a \\ b \\ c \end{bmatrix}$. Puis, soit $f: \R^3 \to \R^2$.\\
+Considérons $f(x) = f\left(\begin{bmatrix}a \\ b \\ c \end{bmatrix} \right) = \begin{bmatrix}a+5b \\ 3a-b+2c \end{bmatrix}$. Mettons en évidence les coefficients devant $a, b$ et $c$ :
+$$\begin{bmatrix}a+5b \\ 3a-b+2c \end{bmatrix} = \begin{bmatrix}1 \cdot a+5\cdot b + 0 \cdot c \\ 3 \cdot a + (-1) \cdot b+2 \cdot c \end{bmatrix} = \underbrace{\begin{bmatrix} 1 & 5 & 0 \\3 & -1 & 2 \end{bmatrix}}_{A_{2 \times 3}} \begin{bmatrix}a \\ b \\ c \end{bmatrix}
+$$
+Que signifie cette dernière égalité ? Ici, $A$ est une matrice $2 \times 3$, une matrice n'étant rien de plus qu'un tableau (fini) de nombres, ici, réels, de $p$ lignes (ici 2) et $n$ colonnes (ici 3). La dernière égalité use du \textit{produit matrice-vecteur} : En multipliant une matrice de taille $p \times n$ par un vecteur de dimension $n$, nous obtenons un vecteur de dimension $p$ tel que chaque $i$ème \textit{coordonnée} est le \textit{produit scalaire} de la $i$ème ligne de la matrice avec le vecteur. Ainsi :
+\begin{boxdef}[Produit matrice-vecteur]
+\label{trueDefProduitMatVec}
+\, \begin{align*}
+Ax = \begin{bmatrix} a_{1,1} & a_{1,2} & \cdots & a_{1, n} \\ a_{2,1} & a_{2,2} & \cdots & a_{2, n} \\ \vdots & \ddots & & \vdots \\ a_{p,1} & \cdots & \cdots & a_{p,n} \end{bmatrix}\begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
+&= \begin{bmatrix} a_{1,1}x_1 + a_{1,2}x_2 + a_{1,3}x_3 + ... + a_{1, n}x_n \\ a_{2,1}x_1 + a_{2,2}x_2 + a_{2,3}x_3 + ... + a_{2, n}x_n \\ \vdots \\ a_{p,1}x_1 + a_{p,2}x_2 + a_{p,3}x_3 + ... + a_{p, n}x_n \end{bmatrix} \\
+&=  \left[\sum_{k = 1}^n a_{i,k}x_k\right]_{i \in \Iintv{1,p}}
+\end{align*}
+\end{boxdef}
+Notons tout de suite que dans la fonction proposée $f: \R^n \to \R^p, x \mapsto Ax$, $n$ est le nombre de \textit{colonnes} de $A$ et $p$ son nombre de \textit{lignes}. En effet, une matrice prend des vecteurs de dimension son nombre de colonnes pour les associer à des vecteurs de dimension son nombre de lignes, donc l'application $f$ associée que nous nommerons \textit{application matricielle} ou fonction matricielle dans la suite a pour domaine de définition les vecteurs de dimension le nombre de colonnes, et pour domaine d'arrivée les vecteurs de dimension le nombre de lignes.\\
+
+\noindent Remarquons qu'une matrice \textit{n'est pas} une simple notation, mais est bien un objet mathématique en tant que tel, qui pourrait être précisé ainsi : si $b_1, ..., b_n$ sont les colonnes d'une matrice $B$ de taille $p \times n$ - donc des vecteurs de dimension $p$, nous pourrions poser que $B = (b_1, ..., b_n)$ ainsi $B \in (\R^p)^n$ vu que $B$ est un $n$-tuple d'éléments d'un certain ensemble $E$, et $E$ se trouve être $\R^p$. Ceci donne une définition plus rigoureuse que celle d'un tableau de $pn$ entrées, mais nous privilégions néanmoins la notation du tableau car elle est plus intuitive. \\
+Pour cette raison, nous notons l'ensemble des matrices de taille $p \times n$ à coefficients réels ainsi : $\R^{p \times n}$.\\

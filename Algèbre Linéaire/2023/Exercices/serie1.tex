@@ -1,0 +1,98 @@
+% PREAMBULE
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=\textwidth]
+\textbf{Préambule :} Les exercices de cette série ne portent pas spécifiquement sur l'algèbre linéaire. Il s'agira plutôt d'étudier plusieurs notions et outils mathématiques que vous utiliserez dans plusieurs cours à l'EPFL dont l'algèbre linéaire, et qui vous seront plus généralement assez utiles. Enjoy !
+\end{tcolorbox}
+\end{center}
+
+% EXERCICES
+
+
+%%% EXO 1 %%%
+\begin{exercice}
+
+Pour chaque proposition, indiquer si elle est vraie ou fausse, en justifiant~:
+
+\begin{enumerate}
+    \item La contraposée de~: $n \in \mathbb N \implies \exists k \in \mathbb N \text{ t.q. } n=2k \text { ou } n=2k+1$ \\
+    est $:$ $\forall k \in \mathbb N, n \not= 2k \text { et } n\not= 2k+1 \implies n \not\in \mathbb N$
+
+    \item Soit $f: \mathbb R \rightarrow \mathbb R, f(x) = \sin(x)$. $f$ n'est pas injective.
+
+    \item Soit $f: \left[-\frac \pi 2, \frac \pi 2\right] \rightarrow \mathbb R, f(x) = \sin(x)$. $f$ n'est pas injective.
+
+    \item Soit $f: A \rightarrow B$. Si $B = \text{Im}(f)$, alors $f$ est surjective.\\
+\end{enumerate}
+
+\end{exercice}
+
+
+%%% EXO 2 %%%
+\begin{exercice}
+
+\textit{Définition :} Soit $g:U\rightarrow V$ une fonction. L'\textit{ensemble image} de $A \subset U$ par $g$, noté $g(A)$, est défini par $g(A) = \left\{g(x) : x \in A \right\}$.\\ \\
+Soit une fonction $f:E\rightarrow G$, soient $A,\ B \subset E$. Montrer que $f(A \cup B) = f(A)\cup f(B)$. Pour cela, commencer par définir les ensembles $f(A \cup B)$ et $f(A)\cup f(B)$. \\
+\end{exercice}
+
+
+%%% EXO 3 %%%
+\begin{exercice}
+    La \textit{cardinalité} d'un ensemble, notée $\card()$, est définie comme son nombre d'éléments.\\
+    Par exemple, pour l'ensemble $A = \left\{3, \sqrt{2}, -1, 0\right\}$, on a $\card(A)=4$ car $A$ est consitué de 4 éléments.\\ \\
+    Soient $A$ et $B$ deux ensembles de cardinalité finie.
+
+    \begin{enumerate}
+    
+    \item
+    \begin{enumerate}
+        \item Supposons que $\card(A)=3$ et $\card(B)=2$. Existe-t-il une fonction injective $f:A\rightarrow B$ ?\\
+        \textit{Indication : faire un dessin.}
+
+        \item Démontrer que si $f:A\rightarrow B$ est injective, alors $\card(A) \leq \card(B)$.
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item Supposons à présent que $\card(A)=2$ et $\card(B)=3$. Existe-t-il une fonction surjective $f:A\rightarrow B$ ?\\
+        \textit{Indication : faire un dessin.}
+
+        \item Démontrer que si $f:A\rightarrow B$ est surjective, alors $\card(A) \geq \card(B)$.
+    \end{enumerate}
+
+
+    \item En déduire que si $f:A\rightarrow B$ est bijective, alors $\card(A) = \card(B)$.
+
+    \item Montrer finalement que si $\card(A) = \card(B)$, alors $\exists f:A\rightarrow B$ bijective.
+    
+    \end{enumerate}
+    \textit{Remarque :} Nous avons montré dans cet exercice l'équivalence suivante : $$\exists f:A\rightarrow B \text{ bijective} \iff \card(A)=\card(B)$$
+\end{exercice}
+
+
+%%% EXO 4 %%%
+\begin{exercice}
+Soient $A$, $B$ et $E$ des ensembles, tels que $A,B \subset E$.
+    \begin{enumerate}
+        \item Se convaincre des égalités suivantes par un dessin ou en les explicitant :
+        \begin{enumerate}
+            \item $(A \cup B)^c = A^c \cap B^c$
+            \item $(A \cap B)^c = A^c \cup B^c$
+        \end{enumerate}
+
+        \item Montrer par l'absurde que si $A,B \subset E$ et $A \subset B$, alors $A^c \cup B = E$.\\
+        \textit{Indication : faire un dessin, utiliser la première question.} \\
+    \end{enumerate}
+\end{exercice}
+
+
+%%% EXO 5 %%%
+\begin{exercice}
+    Soient $\vec{v_1}, \vec{v_2} \in \R^2$ deux vecteurs non colinéaires, c'est-à-dire que la seule solution de $\alpha \vec{v_1} + \beta \vec{v_2} = \vec{0}$ avec $\alpha, \beta \in \R$ est $\alpha = \beta = 0$.
+    \begin{enumerate}
+        \item Supposons que $\vec{v_1} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ et $\vec{v_2} = \begin{pmatrix} 1 \\ 2
+        \end{pmatrix}$. Soit $\vec{v_3} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$. Trouver $\alpha, \beta \in \R$ tels que $\alpha \vec{v_1} + \beta \vec{v_2} = \vec{v_3}$.
+
+        \item Soit maintenant $\vec{v_3} \in \R^2$ quelconque. Sans faire de démonstration, est-il vrai qu'il existe toujours $\alpha, \beta \in \R$ tels que $\alpha \vec{v_1} + \beta \vec{v_2} = \vec{v_3}$ ? Présenter vos arguments (mathématiques et/ou intuitifs) aux assistant.es.
+    \end{enumerate}
+\end{exercice}
+

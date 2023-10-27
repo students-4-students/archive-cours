@@ -1,0 +1,148 @@
+% PREAMBULE
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=\textwidth]
+Savoir échelonner une matrice est un skill que vous allez de toute manière apprendre dès la fin des premières semaines de votre BA1. Si vous avez du mal avec le premier exercice et que vous ne voulez pas perdre votre temps dessus, nous vous conseillons de passer aux autres. De plus, l'exercice bonus de cette série est utile pour entraîner encore plus votre maîtrise de l'algorithme de Gauss pour échelonner des matrices.
+\end{tcolorbox}
+\end{center}
+
+% EXERCICES
+
+\begin{exercice}
+Échelonner les 2 matrices suivantes :  \\
+\begin{enumerate}
+    \item 
+    \begin{bmatrix}
+    1 & 2 & 1 \\
+    2 & 5 & 3\\
+    3 & 10 & 8
+    \end{bmatrix}
+    
+    \item 
+    \begin{bmatrix}
+    1 & -3 & 2 & 4 \\
+    4 & 2 & 8 & 2 \\
+    3 & 9 & -6 & 6 \\
+    2 & 1 & 4 & 1
+    \end{bmatrix} \\
+\end{enumerate} 
+\end{exercice}
+
+\begin{exercice}
+\textit{L'injectivité revient à dire que pour chaque image, il existe au plus un antécédent. Le but de cet exercice est de montrer que, pour les applications linéaires, étudier les antécédents de $0 \in \R^m$ suffit ! $0 \in \R^m$ possède au moins $0 \in \R^n$ comme antécédent. S'il est le seul, alors l'injectivité est montrée. Nous aurons donc une méthode rapide pour déterminer si une application linéaire est injective ou non.} \\
+
+\noindent Soit une application linéaire $f : \R^n \to \R^m$. Le but de cet exercice est de démontrer que $\ker(f) = \{0\} \iff f$ est injective. Ceci étant une équivalence, la démonstration doit contenir la preuve des deux implications. %\iff ou bien \Leftrightarrow
+\begin{enumerate}
+    \item $\Leftarrow$: Démontrer que si $f$ est injective alors $\ker(f) = \{0\}$, c'est-à-dire que si $v \in$ $\ker(f)$ alors nécessairement $v=0$. Utiliser la linéarité et l'injectivité de $f$. 
+    
+    \textit{Indice: Utiliser la linéarité de $f$ pour montrer que $f(0) = 0$, ensuite procéder à la démonstration.}
+    
+    \item $\Rightarrow$: Soient $v_1$ et $v_2$ $\in \R^n$ tels que $f(v_1) = f(v_2)$. Démontrer que si $\ker(f) = \{0\}$ alors $f$ est injective. Pour cela, penser à ce qu'implique l'injectivité sur $v_1$ et $v_2$. \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Soient $A \in \R^{m \times n}$ et $b \in \R^m$. Soit encore une \textit{solution particulière} $x_p$ de l'équation $Ax=b$, c'est à dire un vecteur dans $\R^n$ qui satisfait $Ax_p = b$. 
+
+\noindent Le but de cet exercice est de montrer que l'ensemble des solutions $S(A,b)$ de l'équation $Ax=b$ est de la forme $\{x_p + x_h \, | \, x_h \in \ker(A) \} = x_p + \ker(A)$.
+
+\begin{enumerate}
+    \item Montrer que $S(A,b) \subseteq x_p + \ker(A)$. Pour faire cela, prendre un vecteur $x \in S(A,b)$ et montrer que $x \in x_p + \ker(A)$.
+    \item Montrer que $x_p + \ker(A) \subseteq S(A,b)$. Même démarche que précédemment: prendre un vecteur $x \in x_p + \ker(A)$ et montrer que $x \in S(A,b)$.
+    \item Conclure. \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Déterminer si les applications suivantes sont linéaires :
+\begin{enumerate}
+    \item $T_1 \colon \R^5 \to \R$ définie par
+    \[
+        T_1 \left(\begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix} \right) = 3x_1 - x_2 - 15x_5
+    \]
+    
+    \item $T_2 \colon \R \to \R^3$ définie par
+    \[
+        T_2(x) = \begin{bmatrix}3x\\0\\x^2\end{bmatrix}
+    \]
+    
+    \item $T_3 \colon \R^2 \to \R^3$ définie par
+    \[
+        T_3 \left(\begin{bmatrix}x_1\\x_2\end{bmatrix} \right) = \begin{bmatrix}x_1\\x_2\\3(x_1 + x_2)\end{bmatrix}
+    \]
+    
+    \item $T_4 \colon \R^2 \to \R^3$ définie par
+    \[
+        T_4 \left(\begin{bmatrix}x_1\\x_2\end{bmatrix} \right) = \begin{bmatrix}x_1 + x_2\\3x_1 -x_2\\x_1 x_2\end{bmatrix}
+    \]
+    
+    \item $T_5 \colon \R^2 \to \R^2$ définie par
+    \[
+        T_5 \left(\begin{bmatrix}x\\y\end{bmatrix} \right) = \begin{bmatrix}x\cos\theta-y\sin\theta\\x\sin\theta-y\cos\theta\end{bmatrix}
+    \]
+    pour un certain $\theta \in [0, 2\pi [$.
+    
+    \item $T_6 \colon \R^3 \to \R^3$ définie par
+    \[
+        T_6 \left(\begin{bmatrix}x\\y\\z\end{bmatrix} \right) = \begin{bmatrix}x\cos\theta-z\sin\theta\\y\\x\sin\theta+z\cos\theta\end{bmatrix}
+    \]
+    pour un certain $\theta \in [0, 2\pi [$.
+    
+    \item $T_7 \colon \R^5 \to \R$ définie par
+    \[
+        T_7 \left(\begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix} \right) = ax_1 + bx_2 + x_3 x_4 + cx_5
+    \]
+    pour $a,b,c \in \R$.
+    
+    \item $T_8 \colon \R \to \R^4$ définie par
+    \[
+        T_8(x) = \begin{bmatrix}x\\\sqrt{5}x\\0\\-\pi x\end{bmatrix}
+    \]
+    
+    \item $T_9 \colon \R^n \to \R^m$ définie par
+    \[
+        T_9 (x) = Ax + b
+    \]
+    avec $A \in \R^{m \times n}$ et $b \in \R^m$. \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\noindent Soit $A \in \R^{n \cross n}$. L'application $T(x)=Ax$ va re-dimensionner et pivoter le vecteur $x$. Il est intéressant d'étudier l'ensemble des $x \in \R^n$ tels que l'application $T$ ne les pivote pas, i.e les $x \in \R^n$ qui ne changent pas de direction après avoir été transformés par $T$ et qui ne subissent qu'un re-dimensionnement. \\
+Plus précisément, nous cherchons les $x \in \R^n$ tels que $Ax=\lambda x$, pour un ou plusieurs $\lambda \in \R$ qui sont aussi recherchés. Nous demanderons de plus que $x \neq 0$, car pour toute transformation matricielle $T$, $T(0)=0$ ce qui n'est pas intéressant.
+\begin{enumerate}
+    \item Soient $A \in \R^{n \cross n}$ et $\lambda \in \R$ tels qu'il existe $x \neq 0$ tel que $Ax = \lambda x$. Montrer que $\ker (A-\lambda I_n) \neq \{0\}$.
+    \item Soit $A= \begin{bmatrix} -2 & -4 & 2 \\ -2 & 1 & 2 \\ 4 & 2 & 5 \end{bmatrix}$. \\
+    Admettons que les valeurs de $\lambda$ tels que $Ax=\lambda x$ pour cette matrice sont $\lambda_1 = -5$, $\lambda_2 = 3$, $\lambda_3 = -6$. \\
+    Calculer le noyau de $A-3 I_3$ et vérifier qu'il est bien différent de $\{0\}$.
+\end{enumerate}
+\underline{Remarque}: Les vecteurs calculés en 2) représentent l'ensemble des vecteurs tels que $Ax=3x$ pour cette matrice $A$. \\
+\end{exercice}
+
+\section*{Bonus}
+\begin{exercice}
+Calculer les formes échelonnées réduites des matrices suivantes :
+\begin{enumerate}
+    \item $\begin{bmatrix}
+    4 & -1 & 3 & -6\\
+    1 & -2 & 1 & 0\\
+    0 & 5 & -2 & 8
+    \end{bmatrix}$ \\
+    \, \\
+    
+    \item $\begin{bmatrix}
+    1 & -4 & 7 & \bigm| & 1 \\
+    0 & 3 & -5 & \bigm| & -3 \\
+    -2 & 5 & -9 & \bigm| & 1
+    \end{bmatrix}$ \\
+    \, \\
+    Expliciter, s'il existe, l'ensemble des solutions du système associé à cette matrice augmentée. \\
+    
+    \item $\begin{bmatrix}
+    2 & -7 & 3 & \bigm| & -2 \\
+    -2 & 1 & 7 & \bigm| & -1 \\
+    1 & -5 & 4 & \bigm| & -3
+    \end{bmatrix}$ \\
+    \, \\
+    Expliciter, s'il existe, l'ensemble des solutions du système associé à cette matrice augmentée. \\
+\end{enumerate}
+\end{exercice}

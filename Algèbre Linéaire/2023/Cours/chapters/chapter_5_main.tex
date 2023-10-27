@@ -1,0 +1,802 @@
+\chapter{Espaces vectoriels: une introduction}
+
+\section{Comparaison de $\R^n$ et $\P_{n-1}$} \label{sec:comp_rn_polyn}
+Introduisons désormais l'ensemble des polynômes de degré $\leq n-1$ à coefficients réels
+$$\P_{n-1} = \{c_0 + c_1 \cdot t + ... + c_{n-1} \cdot t^{n-1} \ \mid \ c_0, c_1, ..., c_{n-1} \in \R\}$$
+Ici, nous avons choisi d'utiliser la variable $t$ pour l'inconnue du polynôme. On remarque immédiatement qu'un polynôme de degré $\leq n-1$ est entièrement défini par ses $n$ coefficients $c_0,c_1,...,c_{n-1}$. On peut donc faire l'association suivante
+\begin{equation}
+    c_0 + c_1 \cdot t + ... + c_{n-1} \cdot t^{n-1} \in \P_{n-1} \longleftrightarrow 
+\begin{bmatrix}
+c_0 \\ c_1 \\ \vdots \\ c_{n-1}
+\end{bmatrix} \in \R^n
+\label{eq:vecteur_coeff}
+\end{equation}
+qui est une bijection ! Les deux ensembles sont alors "de même taille", mais il y a plus que ça.
+
+\subsection{Résolution de systèmes linéaires dans $\P_2$}
+\label{sec:poly_lin_syst}
+On se souvient que les systèmes linéaires sur $\R^n$ sont de la forme 
+$$\begin{cases} a_{1,1}x_1 + a_{1,2}x_2 + a_{1,3}x_3 + ... + a_{1, n}x_n &= b_1 \\ a_{2,1}x_1 + a_{2,2}x_2 + a_{2,3}x_3 + ... + a_{2, n}x_n &= b_2 \\ \vdots \\ a_{p,1}x_1 + a_{p,2}x_2 + a_{p,3}x_3 + ... + a_{p, n}x_n &= b_p \end{cases}$$
+Les coefficients $a_{i,j}, b_i \in \R$ sont préalablement fixés et on cherche à trouver $x_1,...,x_n \in \R$. On note
+$$v_1 = \begin{bmatrix}
+a_{1,1} \\ a_{2,1} \\ \vdots \\ a_{p,1}
+\end{bmatrix} \quad 
+v_2 = \begin{bmatrix}
+a_{1,2} \\ a_{2,2} \\ \vdots \\ a_{p,2}
+\end{bmatrix} \quad \cdots \quad
+v_{n} =  \begin{bmatrix}
+a_{1,n} \\ a_{2,n} \\ \vdots \\ a_{p,n}
+\end{bmatrix} \quad 
+b = \begin{bmatrix}
+b_1 \\ b_2 \\ \vdots \\ b_{p}
+\end{bmatrix}$$
+
+et donc le système linéaire se réécrit comme
+\begin{equation}
+    x_1 \cdot v_1 + ... + x_n \cdot v_n = b
+    \label{eq:syst_lin}
+\end{equation}
+où $v_1,...,v_n,b \in \R^p$ sont préalablement fixés et on cherche à trouver $x_1,...,x_n \in \R$. Pour retrouver la notion de système linéaire sur l'ensemble des polynômes, il suffit de remplacer les vecteurs $v_1,...,v_n,b \in \R^p$ de l'équation (\ref{eq:syst_lin}) par des polynômes de $\P_{p-1}$.
+
+On se restreint à $\P_2 = \{c_0 + c_1 \cdot t + c_2 \cdot t^2 \ \mid \ c_0, c_1, c_2 \in \R\}$ pour se fixer les idées. Un système linéaire sur $\P_2$ sera donc de la forme
+\begin{equation}
+    x_1 \cdot (a_{0,1} + a_{1,1} \cdot t + a_{2,1} \cdot t^2) + ... + x_n \cdot (a_{0,n} + a_{1,n} \cdot t + a_{2,n} \cdot t^2) = (b_0 + b_1 \cdot t + b_2 \cdot t^2)
+    \label{eq:syst_lin_p2}
+\end{equation}
+où les coefficients des polynômes présents sont préalablement fixés et on cherche à trouver $x_1,...,x_n \in \R$. Comment procéder ?
+
+L'égalité (\ref{eq:syst_lin_p2}) est une égalité de polynômes: elle doit être vraie pour tout $t \in \R$. On peut montrer que c'est équivalent à une égalité de chaque monôme séparément, c'est-à-dire
+$$\begin{cases} (x_1 \cdot a_{0,1} + ... + x_n \cdot a_{0,n}) \cdot 1 &= b_0 \cdot 1 \\ 
+(x_1 \cdot a_{1,1} + ... + x_n \cdot a_{1,n}) \cdot t &= b_1 \cdot t \\ 
+(x_1 \cdot a_{2,1} + ... + x_n \cdot a_{2,n}) \cdot t^2 &= b_2 \cdot t^2 \\ 
+\end{cases}$$
+On peut alors simplifier les monômes $1, t, t^2$ et on obtient
+$$\begin{cases} x_1 \cdot a_{0,1} + ... + x_n \cdot a_{0,n} &= b_0 \\ 
+x_1 \cdot a_{1,1} + ... + x_n \cdot a_{1,n} &= b_1 \\ 
+x_1 \cdot a_{2,1} + ... + x_n \cdot a_{2,n} &= b_2 \\ 
+\end{cases}$$
+qui est un système linéaire dans $\R^2$ qu'on a appris à résoudre dans le Chapitre 3. Il n'est plus du tout question de polynômes dans ce système, mais uniquement des coefficients de ceux-ci.
+
+En d'autres termes, pour résoudre le système linéaire (\ref{eq:syst_lin}) quand les éléments $v_1, ..., v_n, b$ sont des polynômes de $\P_{p-1}$, il suffit de remplacer les polynômes par leur vecteur de coefficients respectifs (le vecteur de la bijection (\ref{eq:vecteur_coeff})) et résoudre le système linéaire à $n$ inconnues et $p$ équations qui en découle à l'aide des méthodes du Chapitre 3 !
+
+\subsubsection{Exemple:}
+Illustrons cela avec un exemple: Soit $b(t) = 2+2t+3t^2 \in \P_2$, et soit la famille de polynômes dans $\P_2$ $\{ p_1(t), p_2(t), p_3(t) \} = \{1+t^2, t, t+t^2\}$. Est-ce que $b$ peut être écrit comme combinaison linéaire de $p_1, p_2$ et $p_3$ ? Autrement dit, existe-t-il trois réels $x_1,x_2,x_3$ tel que $b(t) = x_1 p_1(t) + x_2 p_2 (t) + x_3 p_3 (t)$ ?
+
+Nous cherchons à avoir une équation similaire à la \ref{eq:syst_lin_p2} pour pouvoir en tirer un système d'équations linéaire. Pour faire cela, nous développons $b(t) = x_1 p_1(t) + x_2 p_2 (t) + x_3 p_3 (t)$ et nous obtenons:
+$$2+2t+3t^2 = x_1 + (x_2 + x_3) \cdot t + (x_1 + x_3) \cdot t^2$$
+Égalisons maintenant les coefficients constants, les coefficients devant $t$ et les coefficient devant $t^2$:
+$$\begin{cases}
+x_1 = 2 \\
+x_2 + x_3 = 2 \\
+x_1 + x_3 = 3
+\end{cases}$$
+Comme prévu, il s'agit juste d'un système linéaire, qui ne contient que les coefficients des polynômes. 
+
+Et si on avait utilisé directement la bijection établie dans l'équation \ref{eq:vecteur_coeff} ? En remplaçant $p_1, p_2, p_3$ et $b$ par leur vecteur dans $\R^3$ correspondant, on aurait d'abord eu ces correspondances:
+$$p_1(t) = 1+t^2 \longleftrightarrow \begin{bmatrix} 1\\0\\1 \end{bmatrix}, \, p_2(t) = t \longleftrightarrow \begin{bmatrix} 0\\1\\0 \end{bmatrix}$$ 
+$$p_3(t) = t+t^2 \longleftrightarrow \begin{bmatrix} 0\\1\\1 \end{bmatrix}, \, b(t) = \longleftrightarrow \begin{bmatrix} 2\\2\\3 \end{bmatrix}$$
+Ceci mènera donc à l'équation suivante:
+$$x_1 \begin{bmatrix} 1\\0\\1 \end{bmatrix} + x_2 \begin{bmatrix} 0\\1\\0 \end{bmatrix} + x_3 \begin{bmatrix} 0\\1\\1 \end{bmatrix} = \begin{bmatrix} 2\\2\\3 \end{bmatrix}
+\iff 
+\begin{bmatrix} x_1 \\ x_2 + x_3 \\ x_1 + x_3 \end{bmatrix} = \begin{bmatrix} 2 \\ 2 \\ 3\end{bmatrix} $$
+Ce qui correspond au même système linéaire obtenu avec la première méthode ! Nous pouvons donc bien voir que la nature de l'objet ne change pas la méthode de résolution du problème: que ce soit un polynôme dans $\P_2$ ou vecteur dans $\R^3$, nous retombons sur nos pattes et nous nous retrouvons à résoudre un système linéaire comme un autre.
+
+\subsection{Comparaison des opérations $+$ et $\cdot$}
+
+Etant donné deux polynômes $p(t) = a_0 + a_1 \cdot t_1 + ... + a_{n-1} \cdot t^{n-1}$, $q(t) = b_0 + b_1 \cdot t_1 + ... + b_{n-1} \cdot t^{n-1}$ de $\P_{n-1}$, nous avons la possibilité de les additionner et obtenir un nouveau polynôme de degré $\leq n-1$ (\textit{Note :} si on multiplie $p(t)$ et $q(t)$ ensemble, le polynôme résultant n'est plus de degré $\leq n-1$ en général, donc cette opération ne nous intéresse pas ici). Cela donne 
+$$p(t) + q(t) = (a_0 + b_0) + (a_1 + b_1) \cdot t_1 + ... + (a_{n-1} + b_{n-1}) \cdot t^{n-1}$$
+Les monômes $1, t, ..., t^{n-1}$ restent inchangés et seuls les coefficients sont modifiés.
+
+En termes de vecteur de coefficients (le vecteur de la bijection (\ref{eq:vecteur_coeff})), le vecteur du polynôme $p(t) + q(t)$ est donc donné par la somme du vecteur de $p(t)$ et du vecteur de $q(t)$, c'est-à-dire :
+
+$$\underbrace{\begin{bmatrix}
+a_0 + b_0 \\ a_1 + b_1 \\ \vdots \\ a_{n-1} + b_{n-1}
+\end{bmatrix}}_{\text{vecteur de coefficients de } p(t) + q(t)} =
+\underbrace{\begin{bmatrix}
+a_0 \\ a_1 \\ \vdots \\ a_{n-1}
+\end{bmatrix}}_{\text{vecteur de coefficients de } p(t)} +
+\underbrace{\begin{bmatrix}
+b_0 \\  b_1 \\ \vdots \\ b_{n-1}
+\end{bmatrix}}_{\text{vecteur de coefficients de } q(t)}$$
+
+L'addition de deux polynômes de $\P_{n-1}$ ou de deux vecteurs de $\R^n$ ont donc une structure similaire.
+
+Etant donné un polynôme $p(t) = a_0 + a_1 \cdot t_1 + ... + a_{n-1} \cdot t^{n-1}$ et un réel $\lambda \in \R$, nous avons aussi la possibilité de multiplier $p(t)$ par $\lambda$ et obtenir un nouveau polynôme de degré $\leq n-1$. Cela donne 
+$$\lambda \cdot p(t) = (\lambda a_0) + (\lambda a_1) \cdot t_1 + ... + (\lambda a_{n-1}) \cdot t^{n-1}$$
+En termes de vecteur de coefficients, le vecteur du polynôme $\lambda \cdot p(t)$ est donc donné par la multiplication du vecteur de $p(t)$ et du scalaire $\lambda$, c'est-à-dire :
+
+$$\underbrace{\begin{bmatrix}
+\lambda  a_0 \\ \lambda  a_1  \\ \vdots \\ \lambda  a_{n-1}
+\end{bmatrix}}_{\text{vecteur de coefficients de } \lambda \cdot p(t) } =
+\lambda \cdot \underbrace{\begin{bmatrix}
+a_0 \\ a_1 \\ \vdots \\ a_{n-1}
+\end{bmatrix}}_{\text{vecteur de coefficients de } p(t)}$$
+
+La multiplication d'un polynôme de $\P_{n-1}$ ou d'un vecteur de $\R^n$ par un scalaire $\lambda \in \R$ ont donc également une structure similaire.
+
+\subsection{Dépendance et indépendance linéaire de vecteurs de $\R^n$ et de polynômes}
+Soient $v_1, ..., v_k \in \R^n$ un ensemble fini de vecteurs. On se souvient que ces vecteurs sont dit linéairement dépendants s'il est possible de trouver $\alpha_1, ..., \alpha_k \in \R$, avec au moins un $\alpha_i$ non-nul, tels que
+\begin{equation}
+    \alpha_1 \cdot v_1 + ... + \alpha_k \cdot v_k = 0 
+    \label{eq:dep_lin}
+\end{equation}
+En d'autres termes, il s'agit de savoir si le système linéaire (\ref{eq:dep_lin}), dont les inconnues sont les $\alpha_1, ..., \alpha_k$, admet une solution qui n'est pas la solution triviale (c'est-à-dire $\alpha_1 = ... = \alpha_k = 0$).
+
+Pour retrouver la notion de dépendance linéaire sur l'ensemble des polynômes, il suffit de remplacer les vecteurs $v_1,...,v_k \in \R^n$ de l'équation (\ref{eq:dep_lin}) par des polynômes de $\P_{n-1}$. Un tel système se résout comme dans la Section \ref{sec:poly_lin_syst}, c'est-à-dire qu'on remplace les polynômes par leur vecteur de coefficients et on résout le système linéaire à $k$ inconnues et $n$ équations qui en découle à l'aide des méthodes du Chapitre 3 !
+
+
+\section{Autres espaces ayant un comportement similaire}
+
+Nous avons vu que les polynômes à coefficients réels se comportent comme des vecteurs de $\R^n$. Cependant, il y a un grand nombre d'autres espaces qui se comportent aussi comme ces vecteurs qu'on connaît déjà très bien.
+
+Avant de continuer, il semble important d'éclaircir ce que l'on entend par "espace". Voici la définition formelle :
+
+\begin{boxdef} [Espace]
+    Un espace est un \textbf{ensemble} avec une \textbf{structure} ajoutée.
+\end{boxdef}
+
+D'habitude, cette définition n'est pas donnée dans les cours d'algèbre linéaire du fait qu'elle est très abstraite. Cependant, même si nous ne pouvons pas forcément la comprendre dans sa totalité, il peut être utile de la décortiquer un peu pour donner un fil directeur aux exemples qui suivent.
+
+Bien sûr, nous savons déjà ce que c'est un ensemble et nous avons sûrement déjà une intuition de ce que "structure ajoutée" veut dire. Dans le cas des vecteurs, cette structure est le fait de pouvoir les additionner entre eux, et de pouvoir les multiplier par un scalaire. Dans le cas de polynômes, nous avons vu que nous pouvons aussi les additionner entre eux et les multiplier par un scalaire.
+
+\textit{\textbf{Remarque:}} \\
+Nous verrons plus tard que ces deux opérations doivent vérifier certaines propriétés pour qu'un espace puisse être considéré un espace vectoriel, mais pour le moment, nous resterons avec cette idée générale de structure.
+
+En fait, ce qui nous a permis de dire que $\R^{n+1}$ et $\P_n$ se comportent l'un comme l'autre est la similarité entre les structures ajoutées à ces deux ensembles. Sans leur structure, il n'y a pas vraiment de liens intéressants entre eux. 
+
+Certes, ces deux ensembles ont la même "taille", mais ce n'est que leur structure et le comportement de leurs éléments qui nous intéressent dans cette section. Les questions de taille concernent plutôt la notion de dimension, qui sera abordée dans votre cours d'algèbre linéaire, mais dépasse la portée de ce polycopié. Si nous ne prenons pas en compte la "taille", tout comme nous comparons $\mathbb{P}_n$ à $\R^{n+1}$, nous pourrions aussi comparer $\R^n$ à $\R$ ou $\R^2$ à $\mathbb{P}_{10}$.
+
+D'ailleurs, dans les exemples qui suivent, nous verrons des ensembles dont les éléments peuvent aussi être ajoutés entre eux et multipliés par un scalaire. Ils auront donc eux aussi une structure similaire à celle de $\R^n$, quelque soit leur "taille".
+
+Du fait de cette structure, nous pourrons construire des systèmes d'équations linéaires dans ces espaces, exactement comme dans $\R^n$ et nous pourrons même parler de colinéarité, d'indépendance linéaire, etc.
+
+\textbf{\textit{Remarque :}}\\
+Pour le moment, et d'ailleurs pour la totalité de votre cours d'algèbre linéaire, "scalaire" n'est qu'un synonyme de nombre réel.
+
+\subsection{Les droites et plans $\subset \R^n$ passant par l’origine}
+
+\subsubsection{Droites}
+
+La représentation géométrique de $\R$ est usuellement une droite, et les éléments de cette droite sont des vecteurs colonne d'une seule composante $[x]$.
+
+\begin{center}
+\begin{tikzpicture} 
+    \draw[black,-stealth] (-5,0) -- (5,0) node[anchor=south east]{$\boldsymbol{\R}$};
+    \draw[black] (0,-0.1) -- (0,0.1) node[anchor=south west]{$0$};
+    \draw[red,very thick,-stealth] (0,0) -- (3,0) node[anchor=south]{$\begin{bmatrix}\textcolor{red}{x}\end{bmatrix}$};
+\end{tikzpicture}
+\end{center}
+
+$\R$ est bien sûr un cas particulier de $\R^n$ et a donc la même structure : nous pouvons additionner ses vecteurs entre eux (addition entre réels) et les multiplier par un scalaire (multiplication entre réels).
+
+\textit{\textbf{Remarque:}} \\
+Ici, la multiplication entre réels ne nous intéresse pas en qualité d'opération entre les éléments de notre espace, mais en tant que multiplication par un scalaire (il se trouve qu'ici, les scalaires sont aussi les éléments de l'ensemble, mais cette dualité ne nous empêche pas de manipuler les nombres réels comme s'il s'agissait de vecteurs).
+
+De plus, la structure de cette droite est conservée lorsque nous "dessinons" l'axe des ordonnées pour passer en deux dimensions ! Dans ce cas, les éléments de la droite deviennent des vecteurs colonnes à deux composantes  de la forme $\begin{bmatrix}x\\0\end{bmatrix}$. On peut noter l'ensemble de ces vecteurs ainsi: 
+
+\[
+D_0 = \left\{\begin{bmatrix}x\\y\end{bmatrix} \in \R^2 \mid y = 0\right\}
+\]
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[black,-stealth] (-4.5,0) -- (4.5,0) node[anchor=south west]{$\boldsymbol{x}$};
+    \draw[black,-stealth] (0,-1.5) -- (0, 1.5) node[anchor=south west]{$\boldsymbol{y}$};
+    \draw[red,very thick] (-4.4,0) -- (4.4,0) node[anchor=south east]{$D_0$};
+    \draw[black] (2,1) node{$\boldsymbol{\R^2}$};
+    \foreach \x in {-4, -2, ..., 4}
+        \draw[black] (\x, 0.1) -- (\x, -0.1) node[below left=3pt]{$\x$};
+    \foreach \x in {-1, 1}
+        \draw[black] (-0.1, \x) -- (0.1, \x) node[below left=3pt]{$\x$};
+\end{tikzpicture}
+\end{center}
+
+Nous pouvons alors additionner deux vecteurs de $D_0$, et le résultat est encore un vecteur de $D_0$. Par exemple :
+
+\[
+\begin{bmatrix}-3\\0\end{bmatrix}
++ \begin{bmatrix}2\\0\end{bmatrix}
+= \begin{bmatrix}-1\\0\end{bmatrix} \in D_0
+\]
+
+\begin{center}
+\begin{tikzpicture}[
+    vector/.style={-stealth,very thick},
+    ]
+    \draw[black,-stealth] (-5,0) -- (5,0) node[anchor=south west]{$\boldsymbol{x}$};
+    \draw[black,-stealth] (0,-1.5) -- (0, 1.5) node[anchor=south west]{$\boldsymbol{y}$};
+    \draw[vector,red] (0,0) -- (-3,0) node[anchor=south west,scale=0.7]{$\begin{bmatrix}-3\\0\end{bmatrix}$};
+    \draw[vector,red] (0,0) -- (2,0) node[anchor=south east,scale=0.7]{$\begin{bmatrix}2\\0\end{bmatrix}$};
+    \draw[vector,green] (0,0) -- (-1,0) node[anchor=south,scale=0.7]{$\begin{bmatrix}-3\\0\end{bmatrix} + \begin{bmatrix}2\\0\end{bmatrix}$};
+    \foreach \x in {-4, -2, ..., 4}
+        \draw[black] (\x, 0.1) -- (\x, -0.1) node[below left=3pt]{$\x$};
+    \foreach \x in {-1, 1}
+        \draw[black] (-0.1, \x) -- (0.1, \x) node[below right=3pt]{$\x$};
+\end{tikzpicture}
+\end{center}
+
+Nous pouvons aussi multiplier un vecteur de $D_0$ par un scalaire et nous retrouvons encore un vecteur de $D_0$. Par exemple :
+
+\[
+-2 \times \begin{bmatrix}-2\\0\end{bmatrix}
+= \begin{bmatrix}4\\0\end{bmatrix} \in D_0
+\]
+
+\begin{center}
+\begin{tikzpicture}[
+    vector/.style={-stealth,very thick},
+    ]
+    \draw[black,-stealth] (-5,0) -- (5,0) node[anchor=south west]{$\boldsymbol{x}$};
+    \draw[black,-stealth] (0,-1.5) -- (0, 1.5) node[anchor=south west]{$\boldsymbol{y}$};
+    \draw[vector,red] (0,0) -- (-2,0) node[anchor=south west,scale=0.7]{$\begin{bmatrix}-2\\0\end{bmatrix}$};
+    \draw[vector,green] (0,0) -- (4,0) node[anchor=south,scale=0.7]{$-2 \times \begin{bmatrix}-2\\0\end{bmatrix}$};
+    \foreach \x in {-4, -2, ..., 4}
+        \draw[black] (\x, -0.1) -- (\x, 0.1) node[below left=5pt]{$\x$};
+    \foreach \x in {-1, 1}
+        \draw[black] (-0.1, \x) -- (0.1, \x) node[below left=5pt]{$\x$};
+\end{tikzpicture}
+\end{center}
+
+N'est-ce pas une belle surprise ? A l'intérieur même de $\R^2$ nous avons trouvé un espace qui se comporte comme $\R^n$ ! Peut-t-on en trouver d'autres ? Qu'en est-il des autres droites de $\R^2$ ? Nous allons voir que \textbf{toutes} les droites qui passent par l'origine ont une structure similaire à celle de $\R^n$ (et en fait, \textbf{seulement} les droites qui passent par l'origine).
+
+Mais avant cela, quelques définitions :
+
+\begin{boxdef} [Stabilité pour une opération]
+    Soit $E$ un sous-ensemble de $\R^n$.
+ \begin{itemize}
+     \item On dit que $E$ est \textbf{stable pour l'addition} si pour tout couple de vecteurs de $E$, $(\vec{u}, \vec{v})$, la somme $\vec{u} + \vec{v}$ appartient à $E$.
+     \item On dit que $E$ est \textbf{stable pour la multiplication par un scalaire}, si pour tout vecteur $\vec{v}$ de $E$ et pour tout nombre réel $\lambda$, le produit $\lambda \vec{v}$ appartient à $E$.
+ \end{itemize}
+\end{boxdef}
+
+Cette définition ne devrait pas forcément être évidente pour la plupart d'entre vous, mais les exemples qui suivent vous montreront en quoi elle est utile. Retournons donc à nos droites.
+
+Pour définir une droite passant par l'origine, il suffit de définir sa direction, ce que l'on peut faire à l'aide d'un vecteur directeur. Ainsi, la définition que nous avons donné pour $D_0$ est équivalent à la suivante :
+
+\[
+D_0 = \left\{\lambda \cdot \begin{bmatrix} 1\\0\end{bmatrix} \mid \lambda \in \R\right\} = \Vect\left(\begin{bmatrix}1\\0\end{bmatrix}\right)
+\]
+
+\textit{\textbf{Remarque:}}\\
+Ici, le vecteur $\begin{bmatrix} 1\\0\end{bmatrix}$ correspond à la direction horizontale, mais on aurait pu donner aussi $\begin{bmatrix} -3\\0\end{bmatrix}$ ou même $\begin{bmatrix} 0.5\\0\end{bmatrix}$ comme vecteur directeur. En fait, tous les vecteurs de $D_0$ sont des vecteurs directeurs de $D_0$.
+
+En nous inspirant de la définition~\ref{def:vecteng}, on dit que le vecteur directeur \textbf{engendre} la droite.
+
+Ceci nous mène à la définition suivante :
+
+\begin{boxdef}[Droite de $\R^n$ passant par l'origine]
+ Soit $n \in \mathbb{N}^*$ $\vec{v} \in \R^n$.\\
+ La droite de $\R^n$ passant par l'origine et de vecteur directeur $\vec{v}$ est définie par $D_{\vec{v}} = \Vect(\vec{v}) = \left\{\lambda \cdot \vec{v} \mid \lambda \in \R \right\}$.
+\end{boxdef}
+
+Par exemple, $D_0 = D_{\tiny \begin{bmatrix}1\\0\end{bmatrix}} = D_{\tiny \begin{bmatrix}3\\0\end{bmatrix}}$.
+
+Nous savons que cette définition marche pour $\R$, $\R^2$ et $\R^3$ car ce sont les espaces que nous sommes capables de visualiser. Cependant, même si nous perdons notre intuition géométrique pour $\R^4$ et au-delà, il est assez naturel de définir les droites de la même façon dans ces espaces.
+
+Considérons donc une droite $D_{\tiny \begin{bmatrix} 3\\4\end{bmatrix}}$ de vecteur directeur $\begin{bmatrix} 3\\4\end{bmatrix}$ :
+
+\[
+D_{\tiny \begin{bmatrix} 3\\4\end{bmatrix}}\ = \left\{ \lambda \cdot \begin{bmatrix} 3\\4\end{bmatrix} \mid \lambda \in \R \right\}
+\]
+
+Il s'agit de l'ensemble des vecteurs colinéaires à $\begin{bmatrix} 3\\4\end{bmatrix}$, c'est-à-dire la droite engendrée par $\begin{bmatrix} 3\\4\end{bmatrix}$.
+
+\begin{center}
+\begin{tikzpicture}[
+    vector/.style={-stealth,very thick},
+    ]
+    \draw[black,-stealth] (-3,0) --  (5.5,0) node[anchor=south west]{$\boldsymbol{x}$};
+    \draw[black,-stealth] (0,-3) -- (0,5.5) node[anchor=south west]{$\boldsymbol{y}$};
+    \draw[red, thick] (3.75,5) -- (-1.5,-2) node[anchor=south east]{$D_{\tiny \begin{bmatrix} 3\\4\end{bmatrix}}$};
+    \draw[vector,blue] (0,0) -- (3,4) node[anchor=south east,scale=0.7]{$\begin{bmatrix}3\\4\end{bmatrix}$};
+    \foreach \x in {-2, 0, ..., 4}
+        \draw[black] (\x, -0.1) -- (\x, 0.1) node[below left=5pt]{$\x$};
+    \foreach \x in {-2,2,4}
+        \draw[black] (-0.1, \x) -- (0.1, \x) node[below left=5pt]{$\x$};
+\end{tikzpicture}
+\end{center}
+
+\begin{boxprop} \label{prop:d34}
+$D_{\tiny \begin{bmatrix} 3\\4\end{bmatrix}}$ est stable pour l'addition et pour la multiplication par un scalaire.
+\end{boxprop}
+
+\begin{proof}
+    Soient $\vec{p}$ et $\vec{q}$ deux vecteurs quelconques de $D_{\tiny \begin{bmatrix} 3\\4\end{bmatrix}}$ et soit $\mu \in \R$. Alors, nous pouvons écrire $\vec{p}$ et $\vec{q}$ sous la forme vecteurs colinéaires à $\begin{bmatrix} 3\\4\end{bmatrix}$:
+    
+    \begin{center}
+    $\vec{p} = \alpha \cdot \begin{bmatrix} 3\\4\end{bmatrix}$
+    
+    et
+    
+    $\vec{q} = \beta \cdot \begin{bmatrix} 3\\4\end{bmatrix}$
+    \end{center}
+    
+    pour $\alpha$, $\beta \in \R$.
+    
+    \begin{itemize}
+        \item \textbf{Addition.}\\$\vec{p} + \vec{q} = \alpha \cdot \begin{bmatrix} 3\\4\end{bmatrix} + \beta \cdot \begin{bmatrix} 3\\4\end{bmatrix} = (\alpha + \beta) \cdot \begin{bmatrix} 3\\4\end{bmatrix}$ avec $(\alpha + \beta) \in \R$. Donc $\vec{p} + \vec{q} \in D_{\tiny \begin{bmatrix} 3\\4\end{bmatrix}}$.
+        \item \textbf{Multiplication par un scalaire.}\\$\mu \cdot \vec{p} = \mu \cdot (\alpha \cdot \begin{bmatrix} 3\\4\end{bmatrix}) = (\mu \cdot \alpha) \cdot \begin{bmatrix} 3\\4\end{bmatrix}$, avec $\mu\alpha \in \R$. Donc $\mu \cdot \vec{p} \in D_{\tiny \begin{bmatrix} 3\\4\end{bmatrix}}$.
+    \end{itemize}
+\end{proof}
+
+Notez que le vecteur $\begin{bmatrix} 3\\4\end{bmatrix}$ n'a rien de spécial. Nous aurions pu le remplacer sans aucun problème par n'importe quel vecteur $\vec{v} \in \R^2$ et la conclusion aurait été la même : l'ensemble des vecteurs colinéaires à $\vec{v}$ est stable par addition et par multiplication par un scalaire et se comporte donc comme $\R^n$.
+
+D'ailleurs, il n'était pas nécessaire de limiter nos observations à $\R^2$. En effet, nous pouvons très bien considérer $\vec{v} \in \R^n$ et avoir des résultats équivalents à ceux de la proposition ~\ref{prop:d34} :
+
+\begin{boxthm} \label{thm:stab_droites}
+Soient $n \in \mathbb{N}^*$ et $\vec{v} \in \R^n$.\\
+Alors, $D_{\vec{v}}$ est :
+\begin{itemize}
+    \item stable pour l'addition,
+    \item et stable pour la multiplication par un scalaire.
+\end{itemize}
+\end{boxthm}
+
+Et nous pouvons simplement recopier notre preuve précédente en remplaçant $\begin{bmatrix} 3\\4\end{bmatrix}$ par $\vec{v} \in \R^n$.
+
+\begin{proof}
+    Soient $\vec{p}$ et $\vec{q}$ deux vecteurs quelconques appartenant à $D_{\vec{v}}$ et soit $\mu \in \R$. Alors, nous pouvons écrire : $\vec{p} = \alpha \vec{v}$ et $\vec{q} = \beta \vec{v}$ pour des certains $\alpha$, $\beta \in \R$.
+    \begin{itemize}
+        \item \textbf{Addition.}\\$\vec{p} + \vec{q} = \alpha \vec{v} + \beta \vec{v} = (\alpha + \beta) \vec{v}$ avec $(\alpha + \beta) \in \R$. Donc $\vec{p} + \vec{q} \in D_{\vec{v}}$.
+        \item \textbf{Multiplication par un scalaire.}\\$\mu \vec{p} = \mu (\alpha \vec{v}) = (\mu \alpha) \vec{v}$, avec $\mu\alpha \in \R$. Donc $\mu \vec{p} \in D_{\vec{v}}$.
+    \end{itemize}
+\end{proof}
+
+Finalement, il convient d'exemplifier pourquoi les droites qui ne passent pas par l'origine ne possèdent pas une structure similaire à celle de $\R^n$, c'est à dire qu'elles ne sont ni stables pour l'addition, ni stables pour la multiplication par un scalaire.
+
+Considérons la droite suivante :
+
+\[
+D_1 = \left\{\begin{bmatrix}x\\y\end{bmatrix} \in \R^2 \mid y = 1\right\}
+\]
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[black,-stealth] (-6.5,0) -- (6.5,0) node[anchor=south west]{$\boldsymbol{x}$};
+    \draw[black,-stealth] (0,-4.5) -- (0, 4.5) node[anchor=south west]{$\boldsymbol{y}$};
+    \draw[green, thick] (-6,0) -- (6,0) node[below left=5pt]{$D_{\tiny \begin{bmatrix}1\\0\end{bmatrix}}$};
+    \draw[green, thick] (-3,-4) -- (3,4) node[anchor=south east]{$D_{\tiny \begin{bmatrix}3\\4\end{bmatrix}}$};
+    \draw[red, thick] (-6,1) -- (6,1) node[anchor=south east]{$D_1$};
+    \foreach \x in {-6,-4, ..., 6}
+        \draw[black] (\x, 0.1) -- (\x, -0.1) node[below left=3pt,scale=0.7]{$\x$};
+    \foreach \x in {-4,-2,2,4}
+        \draw[black] (-0.1, \x) -- (0.1, \x) node[below left=3pt, scale=0.7]{$\x$};
+\end{tikzpicture}
+\end{center}
+
+Dans ce cas, l'addition de vecteurs de $D_1$ et la multiplication par un scalaire de vecteurs de $D_1$ ne reste pas à l'intérieur de $D_1$ :
+
+\[
+\begin{bmatrix}0\\1\end{bmatrix} + \begin{bmatrix}-2\\1\end{bmatrix} = \begin{bmatrix}-2\\2\end{bmatrix} \notin D_1
+\]
+
+et
+
+\[
+-2 \times \begin{bmatrix}0\\1\end{bmatrix} = \begin{bmatrix}0\\-2\end{bmatrix} \notin D_1
+\]
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[black,-stealth] (-6.5,0) -- (6.5,0) node[anchor=south west]{$\boldsymbol{x}$};
+    \draw[black,-stealth] (0,-4.5) -- (0, 4.5) node[anchor=south west]{$\boldsymbol{y}$};
+    \draw[red, thick] (-6,1) -- (6,1) node[anchor=south east]{$D_1$};
+    \draw[red, very thick,-stealth] (0,0) -- (0,1) node[anchor=north west, scale=0.7]{$\begin{bmatrix}0\\1\end{bmatrix}$};
+    \draw[red, very thick,-stealth] (0,0) -- (-2,1) node[anchor=north east, scale=0.7]{$\begin{bmatrix}-2\\1\end{bmatrix}$};
+    \draw[blue, very thick,-stealth] (0,0) -- (-2,2) node[anchor=south west, scale=0.7]{$\begin{bmatrix}0\\1\end{bmatrix} + \begin{bmatrix}-2\\1\end{bmatrix}$};
+    \draw[blue, very thick,-stealth] (0,0) -- (0,-2) node[anchor=south west, scale=0.7]{$-2 \cdot \begin{bmatrix}0\\1\end{bmatrix}$};
+    \foreach \x in {-6,-4, ..., 6}
+        \draw[black] (\x, 0.1) -- (\x, -0.1) node[below left=3pt,scale=0.7]{$\x$};
+    \foreach \x in {-4,-2,2,4}
+        \draw[black] (-0.1, \x) -- (0.1, \x) node[below left=3pt, scale=0.7]{$\x$};
+\end{tikzpicture}
+\end{center}
+
+
+\subsubsection{Plans}
+
+Nous sommes donc partis de $\R$ et nous avons montré que les droites de $\R^n$ passant par l'origine se comportent comme $\R^n$ lui-même.
+
+Si nous étions des mathématiciens très curieux, il nous paraîtrait naturel de chercher à "partir" de $\R^2$ au lieu de $\R$ pour, peut-être, faire des découvertes aussi intéressantes.
+
+Et comme vous le soupçonnez sans doute déjà, c'est ce que nous allons faire en étudiant les plans de $\R^n$. Cette fois-ci, nous donnerons directement la définition :
+
+\begin{boxdef} [Plan de $\R^n$ passant par l'origine]
+ Soit $n \in \mathbb{N}^*$.\\
+ La plan engendré par les vecteurs $\vec{u}$ et $\vec{v}$ de $\R^n$, non colinéaires, est défini par $P_{\vec{u},\vec{v}} = \Vect(\vec{u}, \vec{v}) = \{ \lambda \vec{u} + \mu \vec{v} \mid \lambda, \mu \in \R\}$.
+\end{boxdef}
+
+Bien que, de nouveau, notre intuition géométrique ne nous permet pas de visualiser des objets en dimension supérieure à $3$, nous avons donné pour   $\R^n$ la même définition qu'on aurait donné pour $\R^3$.
+
+Pour bien comprendre cette définition, il est important de considérer les cas limites, comme $n=2$. Notez que, tout comme $\R$ peut être engendré par tout vecteur de $\R$, $\R^2$ peut-être engendré par tout couple de vecteurs non colinéaires de $\R^2$, de façon que les plans de $\R^2$ sont en fait $\R^2$ tout entier.
+
+\textit{\textbf{Remarque :}}\\
+La condition "non colinéaires" est critique : si $\vec{u}$ et $\vec{v}$ étaient colinéaires, ils engendreraient une droite et pas un plan ! En effet, dans ce cas là, nous pourrions écrire  $\vec{v}$ de la forme $\alpha\vec{u}$ et donc $\Vect(\vec{u},\vec{v}) = \Vect(\vec{u},\alpha\vec{u}) = \{\lambda\vec{u}+\mu(\alpha\vec{u}) \mid \lambda, \mu \in \R\} = \{(\lambda+\mu\alpha)\vec{u} \mid \lambda, \mu\in\R\}$, or $(\lambda+\mu\alpha)$ est un nombre réel qu'on peut noter $\beta$, donc $\Vect(\vec{u},\vec{v}) = \{\beta\vec{u}\mid\beta\in\R\} = \Vect(\vec{u}) = D_{\vec{u}}$.
+
+Par exemple, considérons le plan engendré par les vecteurs $\begin{bmatrix}2\\1\\1\end{bmatrix}$ et $\begin{bmatrix}2\\-1\\1\end{bmatrix}$ :
+
+\[
+P_{\tiny \begin{bmatrix}2\\1\\1\end{bmatrix},\begin{bmatrix}2\\-1\\1\end{bmatrix}} = \left\{\lambda\cdot\begin{bmatrix}2\\1\\1\end{bmatrix}+\mu\cdot\begin{bmatrix}2\\-1\\1\end{bmatrix}\mid\lambda,\mu\in\R\right\}
+\]
+
+\begin{center}
+\begin{tikzpicture}[
+    axis/.style={black,-stealth},
+    vector/.style={very thick, -stealth},
+    help line/.style={opacity=0.7,very thin,dashed,red},
+    marked/.style={very thin,red},
+    ]
+    \draw[axis] (0,0,0) -- (5,0,0) node[anchor=south west]{$\boldsymbol{x}$};
+    \draw[axis] (0,-3.5,0) -- (0,3.5,0) node[anchor=south west]{$\boldsymbol{y}$};
+    \draw[black] (0,0,-6) -- (0,0,0);
+    
+    \draw[help line] (2,1,1) -- (2,0,1);
+    \draw[help line] (2,-1,1) -- (2,0,1);
+    \draw[help line,loosely dashed] (2,0,1) -- (2,0,0);
+    \draw[help line] (0,0,0) -- (2,0,1);
+    \draw[marked] (2,0,-.15) -- (2,0,.15);
+    
+    \draw[text=red,text opacity=1,draw opacity=0,fill=red!20,fill opacity=0.6] (4,3,2) node[above right=.5pt]{$P_{\tiny \begin{bmatrix}2\\1\\1\end{bmatrix},\begin{bmatrix}2\\-1\\1\end{bmatrix}}$} -- (-4,3,-2) -- (-4,-3,-2) -- (4,-3,2) -- cycle;
+    
+    \draw[black] (-5,0,0) -- (0,0,0);
+    \draw[axis] (0,0,0) -- (0,0,6) node[anchor=south east]{$\boldsymbol{z}$};
+    \draw[vector,red] (0,0,0) -- (2,1,1) node[anchor=south west]{$\tiny \begin{bmatrix}2\\1\\1\end{bmatrix}$};
+    \draw[vector,red] (0,0,0) -- (2,-1,1)node[anchor=north]{$\tiny \begin{bmatrix}2\\-1\\1\end{bmatrix}$};
+    \draw[marked] (1.9,0,1) -- (2.1,0,1);
+    \draw[marked] (2,0,1-.15) -- (2,0,1+.15);
+    \draw[help line,loosely dashed] (2,0,1) -- (0,0,1);
+    \draw[marked] (-.1,0,1) -- (.1,0,1);
+\end{tikzpicture}
+\end{center}
+
+Ainsi, les vecteurs suivants appartiennent à $P_{\tiny \begin{bmatrix}2\\1\\1\end{bmatrix},\begin{bmatrix}2\\-1\\1\end{bmatrix}}$ :
+
+En posant $\lambda = 1$ et $\mu = -2$, on obtient
+\[
+    1 \cdot \begin{bmatrix}2\\1\\1\end{bmatrix} - 2 \cdot \begin{bmatrix}2\\-1\\1\end{bmatrix} = \begin{bmatrix}-2\\3\\-1\end{bmatrix} \in P_{\tiny \begin{bmatrix}2\\1\\1\end{bmatrix},\begin{bmatrix}2\\-1\\1\end{bmatrix}}
+\]
+
+En posant $\lambda = 1$ et $\mu = 1$, on obtient
+\[
+ 1 \cdot \begin{bmatrix}2\\1\\1\end{bmatrix} + 1 \cdot \begin{bmatrix}2\\-1\\1\end{bmatrix} = \begin{bmatrix}4\\0\\2\end{bmatrix} \in P_{\tiny \begin{bmatrix}2\\1\\1\end{bmatrix},\begin{bmatrix}2\\-1\\1\end{bmatrix}}
+\]
+
+\begin{center}
+\begin{tikzpicture}[
+    axis/.style={black,-stealth},
+    vector/.style={very thick, -stealth},
+    help line/.style={opacity=0.7,very thin,dashed},
+    marked/.style={very thin},
+    ]
+    \draw[axis] (0,0,0) -- (6,0,0) node[anchor=south west]{$\boldsymbol{x}$};
+    \draw[axis] (0,-4,0) -- (0,4,0) node[anchor=south west]{$\boldsymbol{y}$};
+    \draw[black] (0,0,-6) -- (0,0,0);
+    
+    \draw[help line, red] (2,1,1) -- (2,0,1);
+    \draw[help line, red] (2,-1,1) -- (2,0,1);
+    \draw[help line,loosely dashed, red] (2,0,1) -- (2,0,0);
+    \draw[marked, red] (2,0,-.15) -- (2,0,.15);
+    \draw[help line, magenta] (-2,3,-1) -- (-2,0,-1);
+    \draw[help line, magenta] (-2,0,-1) -- (0,0,0);
+    \draw[help line, loosely dashed, magenta] (-2,0,-1) -- (0,0,-1);
+    \draw[help line, loosely dashed,magenta] (4,0,2) -- (4,0,0);
+    \draw[marked,magenta] (.1,0,-1) -- (-.1,0,-1);
+    \draw[marked,magenta] (4,0,-.15) -- (4,0,.15);
+    
+    \draw[text=red,text opacity=1,draw opacity=0,fill=red!20,fill opacity=0.6] (5,3.5,2.5) node[above right=.5pt]{$P_{\tiny \begin{bmatrix}2\\1\\1\end{bmatrix},\begin{bmatrix}2\\-1\\1\end{bmatrix}}$} -- (-5,3.5,-2.5) -- (-5,-3.5,-2.5) -- (5,-3.5,2.5) -- cycle;
+    
+    \draw[black] (-6,0,0) -- (0,0,0);
+    \draw[axis] (0,0,0) -- (0,0,6) node[anchor=south east]{$\boldsymbol{z}$};
+    \draw[vector,red] (0,0,0) -- (2,1,1) node[anchor=south west]{$\tiny \begin{bmatrix}2\\1\\1\end{bmatrix}$};
+    \draw[vector,red] (0,0,0) -- (2,-1,1)node[anchor=north]{$\tiny \begin{bmatrix}2\\-1\\1\end{bmatrix}$};
+    \draw[vector,magenta] (0,0,0) -- (-2,3,-1) node[anchor=south]{$\tiny \begin{bmatrix}-2\\3\\-1\end{bmatrix}$};
+    \draw[vector,magenta] (0,0,0) -- (4,0,2) node[anchor=west]{$\tiny \begin{bmatrix}4\\0\\2\end{bmatrix}$};
+    \draw[marked,red] (1.9,0,1) -- (2.1,0,1);
+    \draw[marked,red] (2,0,1-.15) -- (2,0,1+.15);
+    \draw[help line,loosely dashed,red] (2,0,1) -- (0,0,1);
+    \draw[marked,red] (-.1,0,1) -- (.1,0,1);
+    
+    \draw[help line,loosely dashed,magenta] (-2,0,-1) -- (-2,0,0);
+    \draw[help line,loosely dashed,magenta] (4,0,2) -- (0,0,2);
+    \draw[marked,magenta] (-2,0,-.15) -- (-2,0,.15);
+    \draw[marked,magenta] (-2-.1,0,-1) -- (-2+.1,0,-1);
+    \draw[marked,magenta] (-2,0,-1-.15) -- (-2,0,-1+.15);
+    \draw[marked,magenta] (-.1,0,2) -- (.1,0,2);
+    
+\end{tikzpicture}
+\end{center}
+
+Comme pour les droites, nous avons le théorème suivant :
+
+\begin{boxthm}
+Soit $n \geq 2$ et soient $\vec{u}, \vec{v}$ des vecteurs non colinéaires de $\R^n$.\\
+Alors, $D_{\vec{u},\vec{v}}$ est :
+\begin{itemize}
+    \item stable pour l'addition,
+    \item et stable pour la multiplication par un scalaire.
+\end{itemize}
+\end{boxthm}
+
+La preuve est assez similaire à celle du théorème ~\ref{thm:stab_droites}, mais la notation est un peu plus lourde :
+    
+\begin{proof}
+    Soient $\vec{p_1}, \vec{p_2}$ deux vecteurs de $D_{\vec{u},\vec{v}}$ et $\alpha$ un nombre réel. Alors, il existe des nombres réels $\lambda_1, \lambda_2, \mu_1$ et $\mu_2$  tels que :
+    
+    \[
+        \vec{p_1} = \lambda_1\vec{u} + \mu_1\vec{v}
+    \]
+    
+    et
+    
+    \[
+        \vec{p_2} = \lambda_2\vec{u} + \mu_2\vec{v}
+    \]
+    
+    \begin{itemize}
+        \item \textbf{Addition.} $\vec{p_1} + \vec{p_2} = (\lambda_1\vec{u}+\mu_1\vec{v}) + (\lambda_2\vec{u}+\mu_2\vec{v}) = (\lambda_1 + \lambda_2)\vec{u}+(\mu_1+\mu_2)\vec{v}$. Mais $(\lambda_1+\lambda_2)$ et $(\mu_1+\mu_2)$ sont des nombre réels, donc $\vec{p_1}+\vec{p_2}$ est de la forme $\lambda\vec{u}+\mu\vec{v}$. Ainsi, $\vec{p_1}+\vec{p_2}$ appartient à $P_{\vec{u},\vec{v}}$.
+        \item \textbf{Multiplication par un scalaire.} $\alpha \cdot \vec{p_1} = \alpha \cdot (\lambda_1\vec{u}+\mu_1\vec{v}) = (\alpha\lambda_1)\vec{u}+(\alpha\mu_1)\vec{v}$. Mais $\alpha\lambda_1$ et $\alpha\mu_1$ sont des nombre réels, donc $\alpha\vec{p_1}$ est de la forme $\lambda\vec{u}+\mu\vec{v}$. Ainsi, $\alpha\vec{p_1}$ appartient à $P_{\vec{u},\vec{v}}$.
+    \end{itemize}
+\end{proof}
+
+Comme pour les droites, il convient d'étudier les plans ne passant pas par l'origine :
+
+Considérons le plan horizontal défini par $y=1$, ou par $P_1=\left\{\begin{bmatrix}x\\y\\z\end{bmatrix} \mid y = 1\right\}$. $\begin{bmatrix}0\\1\\0\end{bmatrix}$ et $\begin{bmatrix}3\\1\\1\end{bmatrix}$ appartiennent à ce plan, mais leur somme, et leur produit par un scalaire différent de $1$ n'appartient pas au plan.
+
+\begin{center}
+\begin{tikzpicture}[
+    axis/.style={black,-stealth},
+    vector/.style={very thick, -stealth},
+    grid line/.style={very thin, dotted}
+    ]
+    \draw[axis] (-5,0,0) -- (5,0,0) node[anchor=south]{$\boldsymbol{x}$};
+    \draw[black] (0,-4,0) -- (0,1,0);
+    \draw[axis] (0,0,-5) -- (0,0,5) node[anchor=south east]{$\boldsymbol{z}$};
+    \draw[vector,red] (0,0,0) -- (0,1,0) node[anchor=south east]{$\tiny \begin{bmatrix}0\\1\\0\end{bmatrix}$};
+    \draw[vector,red] (0,0,0) -- (3,1,1) node[anchor=south west]{$\tiny \begin{bmatrix}3\\1\\1\end{bmatrix}$};
+    
+    \draw[very thick,blue] (0,0,0) -- (1.5,1,0.5);
+    
+    
+    \draw[vector,blue] (0,0,0) -- (0,-2,0) node[anchor=north east]{$\tiny -2\cdot\begin{bmatrix}0\\1\\0\end{bmatrix}$};
+    
+    \draw[text=red,text opacity=1,draw opacity=0,fill=red!20,fill opacity=0.6] (4,1,-3) node[anchor=south west]{$P_1$} -- (-3,1,-3) -- (-3,1,5) -- (4,1,5) -- cycle;
+    
+    \draw[vector,blue] (1.5,1,.5) -- (3,2,1) node[anchor=south]{$\tiny \begin{bmatrix}0\\1\\0\end{bmatrix} + \begin{bmatrix}3\\1\\1\end{bmatrix}$};
+    \draw[very thin,blue] (1.5-.1,1,.5) -- (1.5+.1,1,.5);
+    \draw[very thin,blue] (1.5,1,.5-.15) -- (1.5,1,.5+.15);
+    
+    \foreach \x in {-2,...,3}
+        \draw[grid line,red] (\x,1,-3) -- (\x,1,5);
+    \foreach \z in {-2,...,4}
+        \draw[grid line,red] (-3,1,\z) -- (4,1,\z);
+    
+    \draw[axis] (0,1,0) -- (0,4,0) node[anchor=west]{$\boldsymbol{y}$};
+\end{tikzpicture}
+\end{center}
+%il est absolument magnifique ce schema tikz :o - bassam
+
+Vous pouvez d'ailleurs vous amuser à montrer que :
+
+\begin{itemize}
+    \item il n'existe pas deux vecteurs de $P_1$ dont leur somme appartienne aussi à $P_1$.
+    \item il n'existe aucun vecteur de $P_1$ dont le produit par un scalaire différent de $1$ appartienne aussi à $P_1$.
+\end{itemize}
+
+Si le terme existait, on dirait que $P_1$ est grossièrement instable pour l'addition et pour la multiplication par un scalaire.
+
+Si vous préférez une approche plus pratique aux plans passant par l'origine, allez voir \href{https://www.geogebra.org/3d/gscy7h3z}{ce document GeoGebra}. Il suffit de modifier les coordonnées des points $A$ et $B$ pour avoir un plan engendré par les vecteurs que vous désirez.
+
+Nous avons montré que les droites et les plans passant par l'origine ont la même structure que $\R^n$, mais nous n'avons pas montré formellement qu'il est nécessaire qu'il passent par l'origine pour avoir cette structure. Pour ceux que ça intéresse, nous donnerons maintenant une preuve assez simple de ceci :
+
+\begin{proof}
+    Soit $E$ un sous-ensemble de $\R^n$ stable pour l'addition et pour la multiplication par un scalaire.\\
+    Soit $\vec{v}$ un vecteur quelconque de $E$. Alors, $1\cdot\vec{v}+(-1)\cdot\vec{v}$ appartient à $E$, d'où $\vec{v}-\vec{v}=\vec{0}$ appartient à $E$. $E$ est donc forcé de contenir l'origine.
+\end{proof}
+
+\subsubsection{Espaces et sous-espaces}
+Nous savons maintenant que les droites de $R^n$ (engendrées par un seul vecteur) et les plans de $R^n$ (engendrés par deux vecteurs non colinéaires) se comportent comme $R^n$ lui-même. 
+
+En fait il n'y a aucune raison de nous arrêter à deux vecteurs : vous verrez dans votre cours d'algèbre linéaire que tous les espaces de la forme $\Vect{\vec{v_1},\cdots,\vec{v_k}}$ avec $\vec{v_1},\cdots,\vec{v_k}$ des vecteurs \textbf{linéairement indépendants} de $\R^n$ et $k \leq n$ se comportent aussi comme $\R^n$.
+
+Il existe donc, à l'intérieur de $\R^n$ des sous-ensembles qui se comportent comme $\R^n$ lui-même. Si $\R^n$ est un espace, il est assez naturel d'appeler ces sous-ensembles des sous-espaces. Pourquoi est-ce particulièrement intéressant de trouver des sous-espaces ?
+
+Lorsque nous voulons vérifier si un ensemble nouveau se comporte comme $\R^n$, il faut que nous vérifions que les opérations d'addition et de multiplication par un scalaire existent et vérifient un longue liste de propriétés que vous pouvez trouver dans la section ~\ref{sec:def_ev}, dont la stabilité.
+
+Cependant, lorsque nous voulons vérifier si un sous-ensemble d'un espace connu se comporte comme $\R^n$, nous savons déjà que l'addition et la multiplication par un scalaire existent et vérifient la plupart de ces propriétés. Il ne nous reste qu'à vérifier si ce sous-ensemble est stable pour ces opérations, ce qui, parfois, est beaucoup plus simple.
+
+
+\subsection{Les matrices $n \times n$ à coefficients dans $\R$}
+Les matrices en elles mêmes sont des espaces. Considérons $\mathcal{M}_{n\times n}(\R)$ et voyons s'il a bien la structure de $\R^n$ en utilisant les notions vues au précédemment.
+
+\begin{itemize}
+    \item Stabilité additive : La somme de deux matrices reste une matrice de même taille.
+    \item Stabilité multiplicative : Une matrice multipliée par un scalaire reste bien sûr une matrice de même taille.
+\end{itemize}
+
+Il a donc bien la structure qui nous intéresse.
+
+Comme pour les polynômes, cela implique que nous pouvons résoudre des équations linéaires dans l'espace des matrices comme dans $\R^n$. Considérons tout d'abord $\mathcal{M}_{2 \cross 2}(\R)$ et l'équation suivante :
+
+
+\begin{equation} \label{eq:eq_lin_matr}
+    x_1\begin{bmatrix}1&3\\4&3\end{bmatrix}+ x_2\begin{bmatrix}4&5\\3&2\end{bmatrix}+x_3\begin{bmatrix}4&2\\3&4\end{bmatrix} = \begin{bmatrix}0&0\\0&0\end{bmatrix}
+\end{equation}
+
+Il s'agit d'une équation homogène à trois inconnues, que nous savons déjà résoudre s'il s'agissait de vecteurs, mais comment faire pour des matrices ?
+
+En fait, il suffit de nous inspirer de ce que l'on a fait avec les polynômes : puisqu'un polynôme est défini entièrement par ses coefficients, nous avons trouvé une équivalence, une bijection, entre les polynômes et les vecteurs. Vu qu'une matrice est aussi entièrement définie par ses coefficients, il est naturel de chercher à trouver une représentation vectorielle pour une matrice. Par exemple en considérant la bijection suivante :
+\begin{align*}
+    \phi \colon \mathcal{M}_{2\cross 2}(\R) & \longrightarrow\R^4\\
+    \begin{bmatrix}a_{1,1} & a_{1,2}\\ a_{2,1} & a_{2,2}\end{bmatrix} & \longmapsto \begin{bmatrix}a_{1,1}\\a_{1,2}\\a_{2,1}\\a_{2,2}\end{bmatrix}  
+\end{align*}
+
+dont la fonction inverse serait donnée par $\phi^-1(\begin{bmatrix}a_1\\a_2\\a_3\\a_4\end{bmatrix}) = 
+\begin{bmatrix}
+a_1 & a_2\\
+a_3 & a_4
+\end{bmatrix}$,
+
+nous pouvons réécrire l'équation \ref{eq:eq_lin_matr} à la manière de la section \ref{sec:comp_rn_polyn} :
+
+\begin{equation*}
+    x_1\cdot\begin{bmatrix}1\\3\\4\\3\end{bmatrix} + x_2\cdot\begin{bmatrix}4\\5\\3\\2\end{bmatrix} + x_3\cdot\begin{bmatrix}4\\2\\3\\4\end{bmatrix} = \vec{0}
+\end{equation*}
+
+ce qui donne
+
+\begin{equation} \label{eq:eq_lin_matr_2}
+    \begin{bmatrix}
+    1 & 4 & 4\\
+    3 & 5 & 2\\
+    4 & 3 & 3\\
+    3 & 2 & 4
+    \end{bmatrix}
+    \begin{bmatrix}
+    x_1\\x_2\\x_3
+    \end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+\end{equation}.
+
+Les solutions de l'équation \ref{eq:eq_lin_matr_2}, que nous pourrons trouver à l'aide de la méthode de Gauss, seront exactement les solutions de l'équation \ref{eq:eq_lin_matr}.
+
+La bijection $\phi$ que nous avons définie précédemment, n'est en fait qu'un réaménagement des coefficients d'une matrice. Telle est la similarité entre les ensembles $\mathcal{M}_{m \cross n}(\R)$ et $\R^{m \cross n}$, que, parfois, on utilise cette dernière notation pour faire référence aux matrices.
+
+\subsection{Les fonctions continues}
+%#rayan Trop poussé ? Ca demande un peu d'intuition en analyse je pense
+%bassam: il faut juste qu'ils sachent ce qu'est une fonction continue, cf discussion sur discord. Au pire des cas, yeet cette partie du polycop et la mettre en exo.
+
+Considérons l'ensemble $\mathcal{C}(\R,\R)$, c'est-à-dire l'ensemble des fonctions continues de $\R$ dans $\R$. Il n'est pas usuel de traiter des fonctions comme des objets mathématiques : d'habitude, nous ne nous intéressons qu'à la valeur numérique d'une fonction ou bien à l'expression algébrique qui lui est associée.
+
+\subsubsection{Notation}
+Il convient donc de faire une distinction importante entre l'objet (noté $f$) et la valeur numérique de $f$ lorsqu'on l'évalue en un nombre $x$, (notée $f(x)$).
+
+Ainsi, $f$ peut très bien appartenir à un ensemble. Nous pouvons écrire, par exemple, $f \in \mathcal{C}(\R,\R)$, alors qu'écrire $f(x) \in \mathcal{C}(\R,\R)$ est problématique puisque $f(x)$ n'est pas une fonction mais un nombre ou une expression.
+
+Ainsi, si on veut faire référence à une fonction dont on connaît l'expression, sans lui donner un nom, par exemple la fonction carré ou la fonction exponentielle, nous pouvons être tentés d'écrire $x^2 \in \mathcal{C}(\R,\R)$ ou $e^x \in \mathcal{C}(\R,\R)$, ce qui (de nouveau) est problématique du fait que $x^2$ et $e^x$ sont des nombres et pas des fonctions. Dans ces cas, on utilisera les notations suivantes :
+\begin{itemize}
+    \item $x \mapsto x^2$ pour la fonction carré (on lit "la fonction qui a $x$ associe $x^2$").
+    \item $x \mapsto e^x$ pour la fonction exponentielle (on lit "la fonction qui a $x$ associe $e^x$").
+\end{itemize}
+
+Ces deux notations font bien référence à des fonctions, et on peut donc écrire $x \mapsto e^x \in \mathcal{C}(\R,\R)$.
+
+\subsubsection{Continuité}
+Vous avez sûrement vu au lycée ou au gymnase ce qu'est une fonction continue : une fonction dont le graphe peut être dessiné sans lever le crayon. Par exemple, $x \mapsto x^2$ est une fonction continue, mais $x \mapsto \lfloor x \rfloor$ ne l'est pas.
+
+Bien que cette définition n'est pas formelle, elle est largement suffisante pour cette section.
+
+On vous a peut être aussi mentionné certaines règles de stabilité pour les fonctions continues :
+
+\begin{itemize}
+    \item La somme de deux fonctions continues est continue.
+    \item Le produit de deux fonctions continues est continue.
+    \item La composition de deux fonctions continues est continue.
+    \item Le produit d'une fonction continue et d'un nombre réel est continue.
+\end{itemize}
+
+Vu que nous ne sommes pas entrés dans les détails de la définition, une démonstration ne convient pas ici, et nous supposerons tout simplement que ces affirmations sont vraies. Bien évidemment, c'est la première et la dernière qui nous intéressent ici, car elles confèrent à $\mathcal{C}(\R,\R)$ une structure comme celle de $\R^n$.
+
+Quelques exemples :
+
+\begin{itemize}
+    \item $x \mapsto x$ et $x \mapsto 1$ sont continues, donc $x \mapsto x + 1$ est aussi continue.
+    \item $x \mapsto \sin(x)$ est continue, donc $x \mapsto 3\sin(x)$ est aussi continue.
+    \item $x \mapsto \cos(x)$ et $x \mapsto e^x$ sont continues, donc  $4\cos(x) - e^x$ est aussi continue.
+\end{itemize}
+
+Peut-on donc aussi parler de combinaisons linéaires de fonctions ? D'équations linéaires sur $\mathcal{C}(\R,\R)$ ? D'indépendance linéaire de fonctions ? Bien sûr !
+
+D'ailleurs, les notions de noyau, d'équation homogène et d'indépendance linéaire seront très utilisées lors des cours sur les équations différentielles en Analyse II à cause de cette similarité en structure entre $\R^n$ et $\mathcal{C}(\R,\R)$.
+
+\section{Définition d’un espace vectoriel} \label{sec:def_ev}
+Comme vu ci-dessus, la structure de $\R^n$ est partagée par d'autres espaces qui au premier abord ne se ressemblent pas. Cette similarité est la motivation derrière l'abstraction de cette structure, qui mène à la définition d'un espace vectoriel.
+
+Intuitivement, un espace vectoriel est un espace qui se comporte comme tous les exemples ci-dessus: c'est un ensemble qui contient des éléments qui peuvent être additionnés entre eux et multipliés par des scalaires. Ces opérations d'addition et de multiplication par un scalaire doivent obéir certaines lois, pour rendre leur utilisation plus agréable et pour donner un sens à leur étude.
+
+Dans les sous-parties qui suivent, nous allons énoncer la définition d'un espace vectoriel. Nous allons essayer de préserver les points communs des exemples ci-dessus, tout en gardant le nombre de propriétés à satisfaire au strict minimum, pour avoir une définition très globale et applicable dans beaucoup de contextes.
+
+\subsection{Axiomes de l'opération $+$}
+La première généralisation à faire est celle de l'opération d'addition entre deux vecteurs:
+\begin{boxdef}[Espace Vectoriel]
+\label{defEspaceVectoriel}
+Un espace vectoriel sur $\R$ est un ensemble $E$ muni d'une opération $+$ et d'une opération $\cdot$. L'opération $+$ satisfait les propriétés suivantes:
+\begin{itemize}
+    \item \textit{Stabilité}: $\forall x,y \in E$, $x+y \in E$ 
+    \item \textit{Associativité}: $\forall x,y,z \in E$, $x+(y+z) = (x+y)+z$ 
+    \item \textit{Commutativité}: $\forall x,y \in E$, $x+y=y+x$
+    \item \textit{Élément neutre}: il existe un vecteur $0_E \in E$ tel que $\forall x \in E$, $x+0_E = x$ 
+    \item \textit{Inverse}: $\forall x \in E$, $\exists -x \in E$ tel que $x+(-x) = 0_E$
+\end{itemize}
+\end{boxdef}
+
+Par la suite, nous allons utiliser la notation $x+(-y) \equiv x-y$.
+
+\subsection{Axiomes de l'opération $\cdot$}
+Les propriétés que la multiplication par un scalaire doit satisfaire sont similaires à celles de l'addition:
+\begin{greybox}
+\textbf{Définition \ref{defEspaceVectoriel} (suite).} L'opération $\cdot$ satisfait les propriétés suivantes:
+\begin{itemize}
+    \item \textit{Stabilité}: $\forall x \in E$ et $\forall a \in \R$, $a\cdot x \equiv ax \in E$
+    \item \textit{Associativité}: $\forall x \in E$ et $\forall a,b \in \R$, $a(b x) = (ab) x$
+    \item \textit{Élément neutre}: $\forall x \in E$, $1 \cdot x = x \cdot 1 = x$
+\end{itemize}
+\end{greybox}
+
+\subsection{Axiomes de l’interaction entre $+$ et $\cdot$}
+Enfin, les deux opérations d'addition et de multiplication par un scalaire doivent être compatibles les unes avec les autres:
+\begin{greybox}
+\textbf{Définition \ref{defEspaceVectoriel} (suite).} Les opérations $+$ et $\cdot$ satisfont de plus les propriétés suivantes:
+\begin{itemize}
+    \item \textit{Distributivité de la somme de deux scalaires}: $\forall a,b \in \R$ et $\forall x \in E$, $(a+b)x = ax + bx$
+    \item \textit{Distributivité de la somme de deux vecteurs}: $\forall a \in \R$ et $\forall x,y \in E$, $a(x+y) = ax+ay$
+\end{itemize}
+\end{greybox}
+
+Ceci termine la définition. Les exemples les plus fréquents d'espaces vectoriels ont été donnés dans les sous-parties ci-dessus, et il y en a d'autres dans la série d'exercices qu'on vous laissera découvrir.
+
+Donnons cependant un exemple d'un objet qui n'est \underline{pas} un espace vectoriel. Considérons l'espace $V$ des fonctions strictement croissantes sur $\R$, muni de l'addition et de la multiplication par scalaire standards:
+$$(f+g)(x) = f(x) + g(x) \text{ et } (\lambda f)(x) = \lambda f(x) \; \forall x \in \R$$
+Ceci n'est pas un espace vectoriel: l'élément neutre de l'addition, la fonction identiquement nulle, n'est pas strictement croissante. Elle n'appartient donc pas à $V \implies V$ n'est pas un espace vectoriel.
+
+Qu'en est-il de l'espace $W$ des fonctions croissantes $\R$, muni des mêmes opérations ? Cette fois-ci, la fonction $f(x) = 0$ $\forall x \in \R$ est bien élément de $W$. Ce n'est toujours pas un espace vectoriel: l'opération de multiplication par un scalaire n'est pas stable. En effet, multiplier une fonction croissante par un réel $\lambda$ négatif nous donne une fonction décroissante qui n'appartient pas à $W$. Concrètement, la fonction $f(x) = x$ est un contre exemple: elle est croissante, mais avec $\lambda = -1$ nous avons que $\lambda f(x) = -x$ qui est décroissante.
+
+\textit{\textbf{Remarque:}} \\
+Cette définition d'espace vectoriel n'est pas la plus générale. En effet, il est possible de définir des espaces vectoriels sur d'autres \textit{corps} que les réels, c'est-a-dire que la multiplication avec un scalaire peut s'effectuer avec des scalaires appartenant à d'autres espaces appropriés (les nombres complexes $\C$ constituent un exemple fréquent). Ce cas général ne sera pas traité dans ce polycopié, et ne sera probablement pas traité non plus dans les cours d'algèbre linéaire non avancés à l'EPFL. Ceci est d'ailleurs la raison pour laquelle nous écrivons "multiplication par un scalaire" plutôt que de préciser directement qu'il s'agit d'une multiplication avec un réel.
+
+\section{Définition d’un sous espace vectoriel}
+
+\subsection{Intuition}
+%un sous ensemble peut hériter des opérations de l’EV, et peut lui même devenir un EV sous certaines conditions
+Maintenant qu'on sait qu'un espace vectoriel est un certain ensemble, on peut intuitivement se demander si on peut en définir des sous-ensembles. On peut en effet, et de façon plus intéressante, on peut même s'imaginer créer un sous-ensemble qui hérite des mêmes opérations et des mêmes axiomes que l'espace  vectoriel en question. C'est exactement l'idée des sous-espace vectoriels.
+
+Un sous-espace vectoriel est donc un espace vectoriel qui est clos dans un autre. Additionner des vecteurs ensemble, les multiplier par un scalaire ; peu importe, on est toujours dans l'espace de base.
+
+C'est une notion qui peut sembler légèrement anecdotique, mais elle permet pourtant d'accéder à énormément d'autres notions comme les bases par exemple.
+
+
+\subsection{Définition}
+La définition d'un sous-espace vectoriel ressemble énormément à celle d'un espace vectoriel classique. 
+\begin{boxdef}[Sous-Espace Vectoriel]
+ Soit E un espace vectoriel sur $\R$ et W $\subset $ E un sous-ensemble de E. Alors W est un sous-espace vectoriel de E si :
+ \begin{itemize}
+     \item \textit{Élément neutre}: il existe un vecteur $0 \in W$ tel que $\forall x \in W$, $x+0 = x$ 
+     \item \textit{Stabilité par l'addition} $\forall x,y \in W$, $x+y \in E$ 
+     \item \textit{Stabilité par la multiplication} $\forall x \in W$ et $\forall a \in \R$, $a\cdot x \equiv ax \in E$
+ \end{itemize}
+\end{boxdef}
+
+C'est une notion plus facile à comprendre avec quelques exemples alors en voici un : \\
+Prenons $\P_1(\R)$, c'est-à-dire l'ensemble des polynômes de degré au plus 1 à coefficients réels. On va montrer qu'il est sous-espace vectoriel de $\P(\R)$, l'ensemble de tous les polynômes.
+\begin{itemize}
+    \item Élément neutre : $0 \in \P(\R)$ (tous les coefficients sont nuls)
+    \item Stabilité additive : Prenons $p(x) = ax+b$ et $q(x) = cx+d$, $p, q \in \P_1(\R)$. Alors: 
+    $$(p+q)(x) = p(x)+q(x) = (a+c)x+(b+d)$$
+    ce qui reste bien un polynôme !
+    \item Stabilité multiplicative : Ici, attention à ne pas être tenté de faire $p\cdot q$ car on parle de multiplication par un scalaire. Reprenons $p(x)=ax+b$. Alors
+    $$\lambda p(x) = \lambda ax + \lambda b = (\lambda a)x + (\lambda b)$$
+    ce qui est toujours un polynôme. \\
+\end{itemize}
+
+Nous n'allons pas rentrer dans davantage de détails dans ce cours car cela donnerait sur un chapitre entier. De très nombreux exemples de sous-espaces vectoriels seront vus lors des séries. Cela dit, il y a un théorème plutôt simple qui va nous intéresser.
+\begin{boxthm}
+Soit W un sous-espace vectoriel de E. Alors W est lui même un espace vectoriel.
+\end{boxthm}

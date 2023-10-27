@@ -1,0 +1,73 @@
+% PREAMBULE
+\begin{center}
+\begin{tcolorbox}[boxrule=0pt,frame empty,width=\textwidth]
+\textbf{Préambule :} Enfin des exercices d'algèbre linéaire ! Toutes les notions abordées dans ces exercices seront vues en long et en large pendant le semestre, n'hésitez donc pas à sauter des questions si vous sentez que vous y passez trop de temps.
+\end{tcolorbox}
+\end{center}
+
+% EXERCICES
+
+\begin{exercice}
+Résoudre le système linéaire suivant avec la méthode "classique" puis avec la matrice augmentée, comparer les résultats:
+\begin{equation*}
+    \begin{cases}
+    2x + y = 2 \\
+    -2x + 2y = 1 \\
+\end{cases}
+\end{equation*} \\
+\end{exercice}
+
+\begin{exercice}
+Vérifier si les espaces suivants sont des espaces vectoriels sur $\R$ ou non.
+
+\begin{enumerate}
+    \item $\mathbb Z^2$ muni des opérations usuelles d'addition de deux vecteurs et de la multiplication par un scalaire
+        $$\begin{pmatrix} a \\ b \end{pmatrix} + \begin{pmatrix} c \\ d \end{pmatrix} = \begin{pmatrix} a + c \\ b + d \end{pmatrix}, \quad \lambda \cdot \begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} \lambda a \\ \lambda b \end{pmatrix}$$
+        où $a,b,c,d \in \mathbb Z$ et $\lambda \in \R$.
+    \item $\P_n = \{c_0 + c_1 \cdot t + ... + c_{n} \cdot t^{n} \ \mid \ c_0, c_1, ..., c_{n} \in \R\}$, l'ensemble des polynômes de degré $\leq n$ à coefficients réels, muni des opérations usuelles d'addition de deux polynômes et de la multiplication par un scalaire.
+    \item $(\R_+)^n = \{(x_1,...,x_n) \in \mathbb R^n : x_1 > 0, ..., x_n > 0\}$ muni des opérations usuelles d'addition de deux vecteurs et de la multiplication par un scalaire.
+    \item $(\R_+)^n = \{(x_1,...,x_n) \in \mathbb R^n : x_1 > 0, ..., x_n > 0\}$ muni des opérations non-standards suivantes :
+    $$\text{Addition : } \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} \oplus 
+        \begin{pmatrix}
+            y_1 \\ y_2 \\ \vdots \\ y_n
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1y_1 \\ x_2y_2 \\ \vdots \\ x_ny_n
+        \end{pmatrix}$$
+    
+        $$\text{Multiplication par un scalaire : } \lambda \otimes \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1^{\lambda} \\ x_2^{\lambda} \\ \vdots \\ x_n^{\lambda}
+        \end{pmatrix}$$
+    où $x_i > 0, y_i > 0$ pour $i = 1, ..., n$ et $\lambda \in \R$. \\
+    
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Déterminer si les applications suivantes sont linéaires ou non:
+\begin{enumerate}
+    \item $T_1 \colon \R^3 \to \R$ définie par
+    \[
+        T_1 (\vec{x}) = T_1(x_1, x_2, x_3) = 3x_1 - x_2 - 15x_3
+    \]
+    \item $T_2: \R^2 \to \P_2$ définie par 
+    $$T_2(\vec{x}) = T_2(x_1, x_2) = 1 + x_1 t + (x_1 + 3x_2)t^2$$
+    \item $f_n: \P_n \to \R^{n+1}$ définie par, pour $p \in \P_n$, $p(t) = a_0 + a_1 t + \cdots + a_n t^n$: 
+    $$f_n(p) = f_n(a_0 + a_1 t + \cdots + a_n t^n) = \begin{pmatrix}
+        a_0 \\ a_1 \\ \vdots \\ a_n
+    \end{pmatrix}$$ \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+    Soient $V, W$ des espaces vectoriels et $T: V \to W$ une application linéaire.
+    \begin{enumerate}
+        \item Montrer que $T(0_V) = 0_W$.
+        \item Montrer que $T$ est injective si et seulement si ($\iff$) le seul antécédent de $0_W$ est $0_V$.
+    \end{enumerate}
+\end{exercice}

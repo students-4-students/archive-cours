@@ -1,0 +1,395 @@
+% PREAMBULE
+
+% \begin{center}
+% \begin{tcolorbox}[boxrule=0pt,frame empty,width=\textwidth]
+% Préambule de la correction 2 si nécessaire.
+% \end{tcolorbox}
+% \end{center}
+
+% CORRECTIONS
+
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item $A_1 B_1 = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 24 \end{bmatrix} = \begin{bmatrix}
+    1 \cdot 1 + 0 \cdot 4 + 0 \cdot 7 & 1 \cdot 2 + 0 \cdot 5 + 0 \cdot 8 & 1 \cdot 3 + 0 \cdot 6 + 0 \cdot 24 \\
+    0 \cdot 1 + 1 \cdot 4 + 0 \cdot 7 & 0 \cdot 2 + 1 \cdot 5 + 0 \cdot 8 & 0 \cdot 3 + 1 \cdot 6 + 0 \cdot 24 \\
+    0 \cdot 1 + 0 \cdot 4 + 1 \cdot 7 & 0 \cdot 2 + 0 \cdot 5 + 1 \cdot 8 & 0 \cdot 3 + 0 \cdot 6 + 1 \cdot 24 \\
+    \end{bmatrix}$ \\
+    $\implies A_1 B_1 = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 24 \end{bmatrix} = B_1$.
+    \item $A_2 B_2 = \begin{bmatrix} 5 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & 5 \end{bmatrix} \cdot \begin{bmatrix} 3 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 7 \end{bmatrix} = \begin{bmatrix}
+    5\cdot 3 & 0 & 0 \\ 0 & 4\cdot 2 & 0 \\ 0 & 0 & 5\cdot 7 \end{bmatrix} = \begin{bmatrix}
+    15 & 0 & 0 \\ 0 & 8 & 0 \\ 0 & 0 & 35 \end{bmatrix}$
+    \item $A_3 B_3 = \begin{bmatrix} 1 & 2 & 3 \\ 0 & 2 & 1 \\ 0 & 0 & 2 \end{bmatrix} \cdot \begin{bmatrix} 3 & 0 & 2 \\ 0 & 1 & 1 \\ 0 & 0 & 6 \end{bmatrix} = \begin{bmatrix}
+    3 & 2 & 22 \\
+    0 & 2 & 8 \\
+    0 & 0 & 12
+    \end{bmatrix}$
+\end{enumerate}
+\, \\
+\end{exercice}
+
+\begin{exercice}
+\, \\
+\noindent $(AB)_{i,j}=\displaystyle\sum_{k=1}^{n}a_{i,k}b_{k,j}$. Mais par hypothèse, $A$ et $B$ sont diagonales, donc $a_{i,j} = 0$ si $i \neq j$, et de même $b_{i,j} = 0$ si $i \neq j$. \\
+Ceci implique que $(AB)_{i,j} = 0$ si $i \neq j$, et donc que $AB$ est diagonale. Plus visuellement : 
+\begin{align*}
+AB &= \begin{bmatrix}
+a_{1,1} & 0 & 0 & \cdots & 0\\
+0 & a_{2,2} & 0 & \cdots & 0 \\
+\vdots & &\ddots & & \vdots \\
+0 & 0 & \cdots & a_{n-1, n-1} & 0\\
+0 & 0 &\cdots& 0 & a_{n,n}
+\end{bmatrix}
+\begin{bmatrix}
+b_{1,1} & 0 & 0 & \cdots & 0\\
+0 & b_{2,2} & 0 & \cdots & 0 \\
+\vdots & &\ddots & & \vdots \\
+0 & 0 & \cdots & b_{n-1, n-1} & 0\\
+0 & 0 &\cdots& 0 & b_{n,n}
+\end{bmatrix}\\
+&= \begin{bmatrix}
+b_{1,1}a_{1,1} & 0a_{1,1} & 0a_{1,1} & \cdots & 0a_{1,1}\\
+0a_{2,2} & b_{2,2}a_{2,2} & 0a_{2,2} & \cdots & 0a_{2,2} \\
+\vdots & &\ddots & & \vdots \\
+0a_{n-1, n-1} & 0a_{n-1, n-1} & \cdots & b_{n-1, n-1}a_{n-1, n-1} & 0a_{n-1, n-1}\\
+0a_{n,n} & 0a_{n,n} &\cdots& 0a_{n,n} & b_{n,n}a_{n,n}
+\end{bmatrix}\\
+&= \begin{bmatrix}
+a_{1,1}b_{1,1} & 0 & 0 & \cdots & 0\\
+0 & a_{2,2}b_{2,2} & 0 & \cdots & 0 \\
+\vdots & &\ddots & & \vdots \\
+0 & 0 & \cdots & a_{n-1,n-1}b_{n-1, n-1} & 0\\
+0 & 0 &\cdots& 0 & a_{n,n}b_{n,n}
+\end{bmatrix}
+\end{align*}
+\, \\
+\end{exercice}
+
+\begin{exercice}
+\, \\
+\noindent $(AB)_{i,j}=\displaystyle\sum_{k=1}^{n}a_{i,k}b_{k,j}$ \\
+Or d'après les hypothèses $b_{k,j}$ et $a_{i,k}$ sont nuls si $i>k$ et $k>j$. Ainsi il suit que si $i>j$ alors $(AB)_{i,j}=0$, et donc que $AB$ est triangulaire supérieure. Plus visuellement :
+\begin{align*}
+AB &= \begin{bmatrix}
+a_{1,1} & a_{1,2} & a_{1,3} & \cdots & a_{1,n} \\
+  & a_{2,2} & a_{2,3} & \cdots & a_{2,n} \\
+  &   & \ddots & \ddots & \vdots \\
+  & \bigzero  &  & \ddots & \vdots \\
+  &   &   &  & a_{n,n}
+\end{bmatrix}
+ \begin{bmatrix}
+b_{1,1} & b_{1,2} & b_{1,3} & \cdots & b_{1,n} \\
+  & b_{2,2} & b_{2,3} & \cdots & b_{2,n} \\
+  &   & \ddots & \ddots & \vdots \\
+  & \bigzero  &  & \ddots & \vdots \\
+  &   &   &  & b_{n,n}
+\end{bmatrix}\\
+&= \begin{bmatrix}
+A\begin{bmatrix}
+b_{1,1} \\ 0 \\ \vdots \\ 0
+\end{bmatrix} & 
+A\begin{bmatrix}
+b_{1,2} \\ b_{2,2} \\ \vdots \\ 0
+\end{bmatrix} &
+\cdots &
+A \begin{bmatrix}
+b_{1,n} \\ b_{2,n} \\ \vdots\\ b_{n,n}
+\end{bmatrix}
+\end{bmatrix}\\
+&= \begin{bmatrix}
+a_{1,1}b_{1,1} &a_{1,1} b_{1,2} + a_{1,2}b_{2,2}  & \cdots & \sum_{k = 1}^n a_{1, k}b_{k, n} \\
+  & a_{2,2}b_{2,2}  & \cdots & \sum_{k = 2}^n a_{2,k}b_{k,n} \\
+  &   & \ddots & \vdots \\
+  & \bigzero  & & \vdots \\
+  &   &   &   a_{n,n}b_{n,n}
+\end{bmatrix}
+\end{align*}
+\, \\
+\end{exercice}
+
+\begin{exercice}
+\noindent Soit $A = \begin{bmatrix}
+1 & b \\ 0 & 1 \end{bmatrix}$, et soit $(P_n): A^n = \begin{bmatrix} 1 & nb \\ 0 & 1 \end{bmatrix}$. \\
+Pour $n=1$, $A^1 = \begin{bmatrix} 1 & b \\ 0 & 1 \end{bmatrix}$ et $A^1 = \begin{bmatrix} 1 & 1\cdot b \\ 0 & 1 \end{bmatrix}$, $(P_1)$ est vraie et donc $(P_n)$ est initialisée. \\
+
+\noindent Soit maintenant $n\geq1$. Supposons $(P_n)$ vraie et montrons qu'elle implique $(P_{n+1})$:
+$$A^n = \begin{bmatrix}
+1 & nb \\ 0 & 1 \end{bmatrix} \implies A^{n+1} = A^n A = \begin{bmatrix}
+1 & nb \\ 0 & 1 \end{bmatrix}  \begin{bmatrix}
+1 & b \\ 0 & 1 \end{bmatrix}$$
+Donc:
+$$A^{n+1} = \begin{bmatrix}
+1\times 1 + 0\times nb & 1\times b + nb \times 1 \\ 0\times 1 + 1\times 0 & 0 \times b + 1 \times 1 \end{bmatrix} = \begin{bmatrix} 1 & (n+1)b \\ 0 & 1 \end{bmatrix}$$
+
+\noindent $(P_{n+1})$ est vraie, et en conclusion, $\forall n \in \N_{\geq 1}$, $\forall b \in \R$, $A^n = \begin{bmatrix}
+1 & nb \\ 0 & 1 \end{bmatrix}$. \\
+\end{exercice}
+
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item Nous effectuons la multiplication d'un vecteur de $\Z^2$ avec un scalaire réel. Les composantes du vecteur résultant ne sont donc pas forcement des entiers relatifs, ce qui rend l'opération de multiplication par un scalaire pas stable. 
+    
+    Pour donner un contre exemple concret, prenons $v = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \in \Z^2$ et $\lambda = \frac{1}{2} \in \R$. Il suit que $\lambda v = \begin{bmatrix} 1/2 \\ 1/2 \end{bmatrix} \not\in \Z^2$ car $\frac{1}{2} \not\in \Z$.
+    
+    $\Z^2$ muni des opérations d'addition et de multiplication par scalaire réel standards n'est donc pas un espace vectoriel.
+    
+    \item Notons $\displaystyle p(t) = a_0 + a_1 t + \cdots + a_n t^n = \sum_{k=0}^{n} a_k t^k$ et $\displaystyle q(t) = b_0 + b_1 t + \cdots + b_n t^n = \sum_{k=0}^{n} b_k t^k \in \P_n$.
+    \begin{itemize}
+        \item L'addition de deux polynômes est stable, i.e la somme de $p$ et $q$ est aussi un polynôme de degré $\leq n$: $\displaystyle (p+q)(t) = p(t)+q(t) = \sum_{k=0}^{n} (a_k+b_k) t^k$
+        \item Nous avons $\forall p,q,r \in \P_n$ et $\forall t \in \R$, $p(t) + (q(t) + r(t)) = (p(t) + q(t)) + r(t)$ car $p(t), q(t), r(t) \in \R$ et que l'addition de réels est associative. Il suit que la somme de polynômes est aussi associative.
+        \item La somme de polynômes est commutative par le même argument que le dernier point.
+        \item L'élément neutre pour l'addition est donné par le polynôme $p(t) = 0$ $\forall t \in \R$. Il est bien dans $\P_n$ car $p(t) = 0 + 0\cdot t + \cdots + 0 \cdot t^n$.
+        \item Étant donné $p \in \P_n$, alors on a que $\displaystyle -p(t) = -\sum_{k=0}^{n} a_k t^k =  \sum_{k=0}^{n} -a_k t^k \in \P_n$ et que $p(t) + (-p(t)) = 0$.
+    \end{itemize}
+    Le reste des axiomes se vérifie de la même manière. La plupart découlent du fait que $p(t) \in \R$ et que les nombres réels possèdent les propriétés de distributivité, d'associativité, etc nécessaires. $\P_n$ est donc un espace vectoriel !
+    
+    \item On cherche à savoir si les éléments de $\ker A$ possèdent une structure d'espace vectoriel.
+    \begin{itemize}
+        \item Tout d'abord, il s'agit d'éléments de $\R^m$, les opérations d'addition et de multiplication par scalaire standards sont donc associatives, commutatives et distributives. L'élément neutre pour la multiplication par un scalaire est aussi présent.
+        \item Si $x,y \in \ker A$, alors $Ax=0$ et $Ay = 0$. En sommant les deux équations, nous avons $Ax + Ay = 0 \iff A(x+y) = 0 \iff x+y \in \ker A$. La somme de vecteurs est donc stable.
+        \item $0 \in \ker A$ car $A\cdot 0 = 0$, l'élément neutre de l'addition est bien présent.
+        \item Si $x \in \ker A$, alors $Ax = 0 \implies -Ax = 0 \implies A \cdot (-x) = 0 \iff -x \in \ker A$. Chaque élément du noyau de $A$ admet donc un inverse qui appartient au noyau.
+        \item Si $x \in \ker A$, alors $Ax=0$. En multipliant cette équation par un $\lambda \in \R$ nous avons $\lambda Ax = 0 \implies A(\lambda x) = 0 \iff \lambda x \in \ker A$. La multiplication par scalaire est bien stable.
+    \end{itemize}
+    En conclusion, le noyau d'une matrice $A$ est un espace vectoriel ! Vu autrement, $\ker A$ est un sous-espace vectoriel de $\R^m$.
+    
+    \item Soit $x \in (\R_+)^n$ et soit $\lambda = -1$. Alors $\lambda x = -x$, et $(-x)_i < 0$ $\forall i \in \Iintv{1,n}$ car $x_i > 0$. Ceci veut dire que $-x \not\in (\R_+)^n$. La multiplication par scalaire n'est donc pas stable $\implies$ $(\R_+)^n$ muni des opérations standards n'est pas un espace vectoriel. De plus, comme $x_i > 0$, le vecteur nul (l'élément neutre de l'addition standard) n'appartient pas à $(\R_+)^n$.
+    
+    \item Les opérations définies ne sont pas habituelles, il faudra vérifier chaque propriété individuellement. Notons cet espace vectoriel $E$, et soient $x,y,z \in E$. 
+    \begin{itemize}
+        \item Comme $x_i > 0$ et $y_i > 0$ $\forall i \in \Iintv{1,n}$, alors $x_i y_i > 0$. Ceci veut dire que $(x \oplus y)_i = x_i y_i > 0$ $\forall i \in \Iintv{1,n}$, et donc que $x \oplus y \in E$. L'addition est stable.
+        \item Nous avons que $[x \oplus (y \oplus z)]_i = x_i \cdot (y_i \cdot z_i) = (x_i \cdot y_i) \cdot z_i = [(x \oplus y) \oplus z)]_i$ $\forall i \in \Iintv{1,n}$. L'addition est donc associative.
+        \item Nous avons que $(x\oplus y)_i = x_i y_i = y_i x_i = (y \oplus x)_i$ $\forall i \in \Iintv{1,n}$. L'addition est donc commutative.
+        \item Il faut d'abord trouver l'élément neutre: il s'agit d'un vecteur $0_E$ tel que $x \oplus 0_E = x$. En regardant la définition de l'opération $\oplus$, le vecteur qui satisfait cela est le vecteur dont toutes ses composantes sont égales à $1$. En effet:
+        $$x \oplus 0_E = \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} \oplus 
+        \begin{pmatrix}
+            1 \\ 1 \\ \vdots \\ 1
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1 \cdot 1 \\ x_2 \cdot 1 \\ \vdots \\ x_n \cdot 1
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} = x$$
+        Ce vecteur est bien élément de $E$ car $(0_E)_i = 1 > 0$ $\forall i \in \Iintv{1,n}$.
+        \item Il faut maintenant construire un inverse pour cette opération $\oplus$. Pour un $x \in E$, on cherche un $-x$ tel que $x \oplus -x = 0_E$. Sachant que $0_E$ est un vecteur qui contient que des $1$, nous pouvons définir l'inverse comme suit:
+        $$x \oplus -x = \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} \oplus 
+        \begin{pmatrix}
+            1/x_1 \\ 1/x_2 \\ \vdots \\ 1/x_n
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1 \cdot 1/x_1 \\ x_2 \cdot 1/x_2 \\ \vdots \\ x_n \cdot 1/x_n
+        \end{pmatrix} =
+        \begin{pmatrix}
+            1 \\ 1 \\ \vdots \\ 1
+        \end{pmatrix} = 0_E$$
+        De plus, comme $x \in E$, $x_i > 0$. Ceci veut dire que $\frac{1}{x_i}$ est bien définie (on ne divise jamais par $0$) et strictement positive. Ceci veut donc dire que $\forall x \in E$, $\exists -x \in E$ tel que $x \oplus -x = 0_E$.
+        \item Passons à la multiplication par un scalaire! L'opération $\otimes$ est stable car, pour $i \in \Iintv{1,n}$, si $x_i > 0$ et $\lambda \in \R$, alors $x_i ^\lambda > 0$. Ceci veut dire que $(\lambda \otimes x)_i > 0$ et donc que $\lambda \otimes x \in E$.
+        \item Il faut regarder l'associativité. Soient $\lambda, \mu \in \R$ et $i \in \Iintv{1,n}$. Alors:
+        $$[\lambda \otimes (\mu \otimes x)]_i = (x_i ^ \mu) ^ \lambda = x_i ^{\lambda \mu} = [(\lambda \mu) \otimes x]_i$$
+        L'opération $\otimes$ est bien associative.
+        \item L'élément neutre de $\otimes$ est toujours le réel $1$. En effet, $\forall i \in \Iintv{1,n}$:
+        $$(1 \otimes x)_i = x_i ^ 1 = x_i$$
+        \item Regardons maintenant la distributivité de la somme de deux scalaires. Soit $i \in \Iintv{1,n}$:
+        $$[(\lambda + \mu) \otimes x]_i = x_i ^{\lambda + \mu} = x_i^\lambda x_i^\mu = [(\lambda \otimes x) \oplus (\mu \otimes x)]_i \implies (\lambda + \mu) \otimes x = (\lambda \otimes x) \oplus (\mu \otimes x)$$
+        A noter que le $+$ dans $\lambda + \mu$ est l'addition de deux réels.
+        \item Regardons enfin la distributivité de la somme de deux vecteurs. Soit $i \in \Iintv{1,n}$:
+        $$[\lambda \otimes (x \oplus y)]_i = (x_i y_i)^\lambda = x_i^\lambda y_i^\lambda = [(\lambda \otimes x) \oplus (\lambda \otimes y)]_i \implies \lambda \otimes (x \oplus y) = (\lambda \otimes x) \oplus (\lambda \otimes y)$$
+    \end{itemize}
+    Tous les axiomes d'un espace vectoriel sont satisfaits, ce qui veut dire que $E$ est bel et bien un espace vectoriel !
+\end{enumerate}
+\end{exercice}
+
+\section*{Bonus}
+
+\begin{exercice}
+% \noindent $A=\displaystyle\frac{A+A^{T}}{2}+\frac{A-A^{T}}{2}$.
+\, 
+\begin{enumerate}
+    \item $(AB)_{i,j}=\displaystyle\sum_{k=1}^{n}a_{i,k}b_{k,j}$ \\
+    Donc :
+    $$[(AB)^{T}]_{i,j}=(AB)_{j,i}=\sum_{k=1}^{n}a_{j,k}b_{k,i}$$
+    En notant $c_{i,j}$ les éléments de $A^{T}$ et $d_{i,j}$ les éléments de $B^{T}$ nous pouvons réécrire la dernière somme de la manière suivante, puisque $c_{k,j} = a_{j,k}$ et $d_{i,k} = b_{k,i}$ :
+    $$\sum_{k=1}^{n}c_{k,j}d_{i,k}=\sum_{k=1}^{n}d_{i,k}c_{k,j}=(B^{T}A^{T})_{i,j}$$
+    Donc $[(AB)^T]_{i,j} = (B^T A^T)_{i,j}$, et donc $(AB)^T = B^T A^T$.
+    \item Il suffit de remarquer que toute matrice triangulaire inférieure est la transposée d'une matrice triangulaire supérieure. \\
+    En effet, soient $A,B \in \R^{n\cross n}$ deux matrices triangulaires supérieures. Nous savons que, par l'exercice 9, leur produit $AB$ est aussi une matrice triangulaire supérieure. Donc:
+    $$\underbrace{(AB)^T}_{\text{triang. inf}} = \underbrace{B^T}_{\text{triang. inf}} \cdot  \underbrace{A^T}_{\text{triang. inf}}$$
+    \item Soit $A \in \R^{n \cross n}$. Nous voulons trouver $S \in \R^{n \cross n}$ et $Q \in \R^{n \cross n}$ telles que $A = S+Q$, $S$ symétrique et $Q$ antisymétrique, i.e : $s_{i,j} = s_{j,i}$ et $q_{i,j} = -q_{j,i}$. L'idée sera de rassmembler tout ce que nous savons sur $s_{i,j}$ et $q_{i,j}$.\\
+    Ainsi, nous posons : $a_{i,j} = s_{i,j} + q_{i,j}$. Remarquons également : $a_{j,i} = s_{j,i} + q_{j,i} = s_{i,j} - q_{i,j}$. Nous obtenons ainsi le système linéaire suivant, avec inconnues $s_{i,j}$ et $q_{i,j}$ :
+    $$
+    \begin{cases}
+    s_{i,j} + q_{i,j} = a_{i,j}\\
+    s_{i,j} - q_{i,j} = a_{j,i}
+    \end{cases}
+    $$
+    Que nous pouvons réécrire sous forme d'équation matricielle :
+    $$
+    \begin{bmatrix}
+    1 & 1\\
+    1 & -1
+    \end{bmatrix}\begin{bmatrix}
+    s_{i,j} \\ q_{i,j}
+    \end{bmatrix}=\begin{bmatrix}
+    a_{i,j} \\ a_{j,i}
+    \end{bmatrix}
+    $$
+    Résolvons en calculant la forme échelonnée réduite de la matrice augmentée :
+    $$
+    \begin{bmatrix}
+    1 & 1 & \bigm| & a_{i,j}\\
+    1 & -1 & \bigm| & a_{j,i}
+    \end{bmatrix} \sim
+    \begin{bmatrix}
+    1 & 1 & \bigm| & a_{i,j}\\
+    0 & -2 & \bigm| & a_{j,i} - a_{i,j}
+    \end{bmatrix}\sim
+    \begin{bmatrix}
+    1 & 1 & \bigm| & a_{i,j}\\
+    0 & 1 & \bigm| & \frac{a_{i,j} - a_{j,i}}{2}
+    \end{bmatrix}\sim
+    \begin{bmatrix}
+    1 & 0 & \bigm| &\frac{a_{i,j} + a_{j,i}}{2}\\
+    0 & 1 & \bigm| & \frac{a_{i,j} - a_{j,i}}{2}
+    \end{bmatrix}
+    $$
+    Ainsi la solution unique de ce système est donnée par :
+    $$
+    (*) : \begin{cases}
+    s_{i,j} = \frac{a_{i,j} + a_{j,i}}{2}\\
+    q_{i,j} = \frac{a_{i,j} - a_{j,i}}{2}
+    \end{cases}
+    $$
+    En conclusion :
+    $$
+    \begin{cases}
+    S = \frac{1}{2}(A + A^T)\\
+    Q = \frac{1}{2}(A - A^T)
+    \end{cases}
+    $$
+    Nous vérifions bien que $A$ est la somme de ces 2 matrices:
+    $$
+    S + Q = \frac{1}{2}(A + A^T) + \frac{1}{2}(A - A^T) = A + A^T - A^T = A
+    $$
+    Puis, nous vérifions bien que $S$ et $Q$ sont respectivement symétrique et antisymétrique par $(*)$ : 
+    $$
+    \begin{cases}
+    s_{j,i} = \frac{a_{j,i}+a_{i,j}}{2} = \frac{a_{i,j} + a_{j,i}}{2} = s_{i,j}\\
+    -q_{j,i} = -\frac{a_{j,i} - a_{i,j}}{2} = \frac{a_{i,j} - a_{j,i}}{2} = q_{i,j}
+    \end{cases}
+    $$
+    Remarque : nous aurions pu deviner les matrices $S$ et $Q$ puis montrer leur validité, nous avons présenté ici un moyen de les trouver afin d'illustrer jusqu'où simplement lire la donnée et écrire toutes les informations qui en découlent nous mène.\\
+    
+    \noindent Notons que nous pourrions montrer que, pour $C, D \in \R^{p \cross n}$ :
+    $$(C + D)^T = C^T + D^T
+    $$
+\end{enumerate}
+\, \\
+\end{exercice}
+
+\begin{exercice}
+\item Reprenons la définition de la multiplication matricielle et de la trace pour exprimer $\displaystyle \Tr(AB)$ et $\displaystyle \Tr(BA)$. 
+    
+\noindent Nous avons $\displaystyle (AB)_{i,j} = \sum_{k=1}^{n} a_{i,k} b_{k,j}$ et $\displaystyle (BA)_{i,j} = \sum_{k=1}^{n} b_{i,k} a_{k,j}$, ainsi que la définition de la trace $\displaystyle \Tr(C) \coloneqq \sum_{i=1}^{n} c_{i,i}$. 
+
+\begin{enumerate}
+    \item Il suffit d'écrire les formules des éléments diagonaux de $C=AB$ puis $D=BA$ et ensuite comparer, en passant par une permutation de deux sommes finies. \\
+    En effet: 
+    $$\Tr(AB) = \sum_{i=1}^{n} (AB)_{i,i} = 
+    \sum_{i=1}^{n}\sum_{k=1}^{n}a_{i,k}b_{k,i}= \sum_{k=1}^{n}\sum_{i=1}^{n}a_{i,k}b_{k,i} = \sum_{k=1}^{n}\sum_{i=1}^{n}b_{k,i}a_{i,k} = \sum_{k=1}^{n} (BA)_{k,k} = \Tr(BA)$$
+    \item En posant $D=AB$, il suit d'après la question précédente que $\Tr(ABC)=\Tr(DC)=\Tr(CD)=\Tr(CAB)$.
+    \item  
+    $ABC = \begin{bmatrix}
+    2&3\\
+    2&4\\
+    \end{bmatrix}
+    \begin{bmatrix}
+    1&3\\
+    0&0 \\
+    \end{bmatrix} 
+    \begin{bmatrix}
+    1&2\\
+    0&0 \\
+    \end{bmatrix} = 
+    \begin{bmatrix}
+    2&4\\
+    2&4 \end{bmatrix}, \ ACB = \begin{bmatrix}
+    2&3\\
+    2&4\\
+    \end{bmatrix}  
+    \begin{bmatrix}
+    1&2\\
+    0&0 \\
+    \end{bmatrix} 
+    \begin{bmatrix}
+    1&3\\
+    0&0 \\
+    \end{bmatrix} = 
+    \begin{bmatrix}
+    2&6\\
+    2&6\\
+    \end{bmatrix}$ \newline \newline
+Il est clair que les traces de ces deux matrices ne sont pas égales : $\Tr(ABC) = 2+4 = 6$ et $\Tr(ACB) = 2 + 6 = 8$. \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Une idée que nous pourrions avoir est de ranger les coefficients du polynôme dans un vecteur, car un polynôme est entièrement déterminé par ses coefficients. Ceci donne, pour $p(t) = a_0 + a_1t + \cdots + a_n t^n$:
+        $$f_n(p)=(a_{0},a_{1},...,a_{n}) \in \R^{n+1}$$
+        De plus, $f_n$ est bijective. En effet, elle est surjective car $\forall x = (x_0, ..., x_n) \in \R^{n+1}$, $p(t) = x_0 + x_1 t + \cdots + x_n t^n$ est tel que $f_n(p) = x$, autrement dit, tout vecteur dans $\R^{n+1}$ possède au moins un antécédent. $f_n$ est aussi injective, car si $p_1 \neq p_2$, alors $f_n(p_1) \neq f_n(p_2)$ (deux polynômes sont égaux ssi (si et seulement si) chacun de leurs coefficients sont égaux, et de manière similaire deux vecteurs sont égaux ssi chacune de leurs entrées sont égales). 
+        \item Soient $a(t) = a_0 + a_1t+ \cdots + a_nt^n$ et $b(t) = b_0 + b_1t + \cdots + b_nt^n$, puis $\lambda \in \R$. \\
+        $f_n(a + b) = (a_0 + b_0, \cdots, a_n + b_n) = (a_0, \cdots, a_n) + (b_0, \cdots, b_n) = f_n(a) + f_n(b)$.\\
+        $f_n(\lambda a) = (\lambda a_0, \cdots, \lambda a_n) = \lambda(a_0, \cdots, a_n) = \lambda f_n(a)$.\\
+        
+        \noindent Cette propriété est dite celle de linéarité de $f_n$. Vous verrez plus tard dans le semestre que $f_n$ est un \textit{isomorphisme} entre les \textit{espaces vectoriels} $\P_n$ et $\R^{n+1}$, i.e une bijection entre ces deux ensembles telle que, du point de vue de l'algèbre linéaire, ces deux ensembles se "ressemblent".
+    \end{enumerate}
+    \item
+    Tâchons de comprendre cette application $g = f_1 \circ T \circ f_2^{-1}$, en la décrivant explicitement. Soit $a = (a_0, a_1, a_2)$, utilisons les définitions des applications $f_2^{-1}, T$ et $f_1$ successivement :
+    $$
+    f_2^{-1}(a)= f_2^{-1}((a_0,a_1,a_2)) = a_0 + a_1t+ a_2t^2
+    $$
+    $$
+    T\circ f_2^{-1}(a) = (2a_0 + 3a_1)+(a_0 + 4a_2)t
+    $$
+    $$
+    g(a) = f_1 \circ T\circ f_2^{-1}(a) = (2a_0 + 3a_1, a_0 + 4a_2)
+    $$
+    Observons le membre de droite, et remarquons que:
+    $$\begin{bmatrix} 2a_0 + 3a_1 \\ a_0 + 4a_2\end{bmatrix} = 
+    \begin{bmatrix} 2 & 3 & 0 \\ 1 & 0 & 4 \\ \end{bmatrix} \begin{bmatrix} a_0 \\ a_1 \\ a_2\end{bmatrix}$$
+    La matrice associée à $g = f_1 \circ T\circ f_2^{-1}$ est donc $A = \begin{bmatrix} 2 & 3 & 0 \\ 1 & 0 & 4 \end{bmatrix}$ puisque $g(a) = Aa \ \forall a \in \R^3$.\\
+    
+    \noindent Cette composition de forme $h \circ F \circ \Tilde{h}^{-1}$ sera souvent utile durant le semestre pour étudier l'application $F$ en passant par $\R^n$.
+    \item Echelonnons pour voir si la forme échelonnée compte un pivot par ligne:
+    $$\begin{bmatrix} 
+    2 & 3 & 0 \\ 
+    1 & 0 & 4 
+    \end{bmatrix} \overset{L_{1} \leftrightarrow L_{2}}{\sim} 
+    \begin{bmatrix} 
+    1 & 0 & 4 \\ 
+    2 & 3 & 0 
+    \end{bmatrix} \overset{L_{2} \rightarrow L_{2}-2L_{1}}{\sim} 
+    \begin{bmatrix} 
+    1 & 0 & 4 \\ 
+    0 & 3 & -8 
+    \end{bmatrix} \overset{L_{2} \rightarrow \frac{1}{3}L_2}{\sim}
+    \begin{bmatrix} 
+    1 & 0 & -4 \\ 
+    0 & 1 & \frac{-8}{3} 
+    \end{bmatrix}$$
+    Le nombre de pivots est $2$, soit un pivot par ligne, donc l'application est surjective. D'autre part, la matrice ne possède pas un pivot par colonne, donc l'application n'est pas injective. Notons que la dernière étape arrivant à la forme échelonnée réduite à partir de la forme échelonnée n'est pas nécessaire ici, car tout ce qui nous importe est le nombre de pivots. \\
+    
+    \noindent Vous verrez plus tard dans le semestre que cette éventuelle surjectivité et/ou injectivité de $h \circ F \circ \Tilde{h}^{-1}$ avec $h, \Tilde{h}$ des isomorphimes (des fonctions bijectives et linéaires) sera équivalente à la surjectivité et/ou injectivité de $F$. Ainsi, ici, nous étudions $T$ à travers la matrice associée à $f_1 \circ T \circ f_2^{-1}$. \\
+    
+\end{enumerate}
+\end{exercice}

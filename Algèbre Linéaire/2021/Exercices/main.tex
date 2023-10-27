@@ -1,0 +1,283 @@
+\documentclass{article}
+\usepackage[margin=1in,a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[cyr]{aeguill}
+\usepackage[francais]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{enumitem,amssymb}
+\newlist{checks}{itemize}{2}
+\setlist[checks]{label=$\square$}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{pst-func}
+\usepackage{xcolor}
+\usepackage{nicefrac}
+\usepackage{mdframed}
+\usepackage[boxed,vlined]{algorithm2e}
+\usepackage{cleveref}
+% \usepackage{graphicx}
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{1}{$\displaystyle \lim_{#1}\;$}}}
+\usepackage{graphicx}
+\usepackage{tkz-tab}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Pn}{\mathbb{P}}
+\newcommand{\w}{\omega}
+\newcommand{\p}{\partial}
+\newcommand{\cross}{\times}
+\newcommand{\Col}{\text{Col}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\bigzero}{\makebox(0,0){\text{\huge0}}}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\adh}{adh}
+\DeclareMathOperator{\argcosh}{argcosh}
+\DeclareMathOperator{\argsinh}{argsinh}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Vect}{Vect}
+\usepackage{mathtools, stmaryrd}
+\usepackage{xparse} \DeclarePairedDelimiterX{\Iintv}[1]{\llbracket}{\rrbracket}{\iintvargs{#1}}
+\NewDocumentCommand{\iintvargs}{>{\SplitArgument{1}{,}}m}
+{\iintvargsaux#1} %
+\NewDocumentCommand{\iintvargsaux}{mm} {#1\mkern1.5mu..\mkern1.5mu#2}
+
+
+\title{Students for Students \\Algèbre linéaire - Série}
+\author{}
+\date{}
+
+\begin{document}
+\tikzset{%
+   point/.style = {fill=black,inner sep=1pt, circle, minimum width=3pt,align=right,rotate=60},
+   } 
+\tikzstyle{weight} = [font=\scriptsize]  
+\tikzstyle{vertex}=[circle,fill=blue!20]
+
+\maketitle
+
+\subsection*{Préambule}
+\textbf{Nous n'attendons pas de vous que vous finissiez tous ces exercices en trois heures. Pour les sections qui n'ont pas algèbre linéaire \textit{avancée}, nous vous conseillons de vous concentrer sur les exercices de la première page. Pour les sections MA et PH, nous conseillons de commencer par la deuxième page.}\\
+Nous resterons à votre disposition le reste de la semaine pour vos éventuelles questions sur ces exercices.
+
+\subsection*{Exercice 1}
+\noindent Calculer les formes échelonnées réduites des matrices suivantes et préciser, pour chaque matrice, si son application matricielle associée est surjective et/ou injective :
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{bmatrix}
+    4 & -1 & 3 & -6\\
+    1 & -2 & 1 & 0\\
+    0 & 5 & -2 & 8
+    \end{bmatrix}$
+    \item $\begin{bmatrix}
+    1 & -5 & 4 & -3\\
+    2 & -7 & 3 & -2\\
+    -2 & 1 & 7 & -1
+    \end{bmatrix}$ \\
+    \item $\begin{bmatrix}
+    1 & -3 & 2 \\
+    -5 & -2  & 7  \\
+    4 & -10  & 6 \\
+    10 & -7 & -3
+    \end{bmatrix}$
+    \item $\begin{bmatrix}
+    -4 & 5 & 9\\
+    1 & -2 & 1\\
+    0 & 2 & -8 
+    \end{bmatrix}$
+\end{enumerate}
+\end{multicols}
+
+\subsection*{Exercice 2}
+\noindent Trouver l'ensemble de solutions des systèmes linéaires suivants :
+\begin{multicols}{2}
+\begin{enumerate}
+    \item $\begin{cases}
+    2x_1 - 6x_3 = -8\\
+    x_2 + 2x_3 = 3\\
+    3x_1 + 6x_2 -2x_3 = -4
+    \end{cases}$
+    \item $\begin{cases}
+    2x_1 -7x_2+ 3x_3 = -2\\
+    -2x_1 + x_2 + 7x_3 = -1\\
+    x_1 -5x_2 + 4x_3 = -3\\
+    \end{cases}$ 
+    \item $\begin{bmatrix}
+    1 & -4 & 7\\
+    0 & 3 & -5\\
+    -2 & 5 & -9
+    \end{bmatrix}\begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+    \end{bmatrix} =
+    \begin{bmatrix}
+    1 \\ -3 \\ 1
+    \end{bmatrix}$
+    \item $\begin{bmatrix}
+    2 & 3\\
+    6 & 5\\
+    2 & -5
+    \end{bmatrix}x = 
+    \begin{bmatrix}
+    -1 \\ 0 \\ 7
+    \end{bmatrix}$\\
+    
+    \noindent D'abord, $x \in \R^n$ où $n = $ ?
+\end{enumerate}
+\end{multicols}
+
+\subsection*{Exercice 3}
+\noindent Soit $b \in \R$, et soit la matrice $A = \begin{bmatrix} b & 1 \\ 1 & 0 \end{bmatrix} \in \R^{2 \cross 2}$. \\
+Calculer $A^{-1}$ en fonction de $b$. \\
+\textit{Indication: attention à la division par 0.} 
+
+\subsection*{Exercice 4}
+\begin{enumerate}
+    \item Soient $a,b,c,d \in \R$, et soit $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \in \R^{2 \cross 2}$. \\
+    Quelle relation doivent vérifier les coefficients de $A$ pour que son inverse existe ? Sous l'hypothèse que cette relation est vérifiée, calculer $A^{-1}$.\\
+    \textit{Indication: attention à la division par 0.}
+    \item Vérifier que le résultat obtenu est bien en accord avec celui de l'exercice 3.
+\end{enumerate} 
+
+\subsection*{Exercice 5}
+\noindent Nous notons l'ensemble des polynômes à coefficients réels de degré au plus $n$ par $\Pn_n$. De plus, pour $p \in \Pn_n$ et $t \in \R$, on écrira:
+$$p(t) = a_0 + a_1 t + \cdots + a_n t^n = \sum_{i=1}^{n} a_i t^i, \; a_i \in \R$$
+Notons qu'il existe une bijection naturelle entre $\Pn_n$ et $\R^{n+1}$, qui nous permet de faire correspondre un polynôme de degré au plus $n$ à un vecteur dans $\R^{n+1}$. Ceci est pratique, car nous pouvons utiliser ce que nous connaissons sur les vecteurs de $\R^m$ et les matrices pour résoudre des problèmes liés aux polynômes. 
+\begin{enumerate}
+    \item Soit $f_n: \Pn_n \to \R^{n+1}$ cette bijection.
+    \begin{enumerate}
+        \item Expliciter $f_n$, i.e, étant donné $p \in \Pn_n$, décrire $f_n(p)$.
+        \item Vérifier que $\forall a, b \in \Pn_n$, $f_n(a + b) = f_n(a) + f_n(b)$ et que $\forall p \in \Pn_n$ et $\forall \lambda \in \R$, $f_n(\lambda p) = \lambda f_n(p)$. Notons que nous définissons $(a+b)(t) = a(t) + b(t)$.
+    \end{enumerate}
+    \item Soit $p \in \Pn_3$, et soit l'application
+    \begin{align*}
+        T: \ &\Pn_2 \to \Pn_1\\
+        &p \mapsto T(p) \text{ tel que }\forall t \in \R \ T(p)(t) = (2a_0 + 3a_1) + (a_0 + 4a_2)t
+    \end{align*}
+    En utilisant la bijection $f_n$ trouvée dans la question 1 ainsi que sa fonction réciproque $f_n^{-1} : \R^{n+1} \to \Pn_n$ (telle que $f_n(f_n^{-1})(v) = v$ et $f_n^{-1}(f_n(p)) =p $), trouver la matrice associée à: 
+    \begin{align*}
+        f_1 \circ T \circ f_2^{-1}: \ &\R^3 \to \R^2\\
+        &x \mapsto f_1(T(f_2^{-1}(x)))
+    \end{align*}
+    \textit{Indication : Il s'agit de trouver la matrice $A$ telle que $f_1(T(f_2^{-1}(x)))= Ax$. Explicitez alors $f_1(T(f_2^{-1}(x)))$, i.e, regardez ce que vaut cette quantité pour un $x$ arbitraire.}
+    \item L'application matricielle associée à la matrice trouvée en $2$ est-elle surjective ? Injective ?\\
+    
+\end{enumerate}
+
+\subsection*{Exercice 6}
+\noindent Soit $A \in \R^{n \cross n}$. Nous avons vu en cours que l'application $T(x)=Ax$ va re-dimensionner et pivoter le vecteur $x$. Il est intéressant d'étudier l'ensemble des $x \in \R^n$ tels que l'application $T$ ne les pivote pas, i.e les $x \in \R^n$ qui ne changent pas de direction après avoir été transformés par $T$ et qui ne subissent qu'un re-dimensionnement. \\
+Plus précisément, nous cherchons les $x \in \R^n$ tels que $Ax=\lambda x$, pour un ou plusieurs $\lambda \in \R$ qui sont aussi recherchés. Nous demanderons de plus que $x \neq 0$, car pour toute transformation matricielle $T$, $T(0)=0$ ce qui n'est pas intéressant.
+\begin{enumerate}
+    \item Soient $A \in \R^{n \cross n}$ et $\lambda \in \R$ tels qu'il existe $x \neq 0$ tel que $Ax = \lambda x$. Montrer que $\ker (A-\lambda I_n) \neq \{0\}$.
+    \item Soit $A= \begin{bmatrix} -2 & -4 & 2 \\ -2 & 1 & 2 \\ 4 & 2 & 5 \end{bmatrix}$. \\
+    Admettons que les valeurs de $\lambda$ tels que $Ax=\lambda x$ pour cette matrice sont $\lambda_1 = -5$, $\lambda_2 = 3$, $\lambda_3 = -6$. \\
+    Calculer le noyau de $A-3 I_3$ et vérifier qu'il est bien différent de $\{0\}$.
+\end{enumerate}
+\underline{Remarque}: Les vecteurs calculés en 2) représentent l'ensemble des vecteurs tels que $Ax=3x$ pour cette matrice $A$. \\
+
+\subsection*{Exercice 7}
+\noindent Soient $b \in \R$, $n \in \N_{\geq 1}$, et soit $A = \begin{bmatrix} 1 & b \\ 0 & 1 \end{bmatrix} \in \R^{2 \cross 2}$. \\
+Montrer par récurrence que $A^n = \underbrace{AAA\cdots AAA}_{n \text{ fois}} = \begin{bmatrix}
+1 & nb \\ 0 & 1 \end{bmatrix}$.
+
+\subsection*{Exercice 8}
+\noindent Nous dirons que $D \in \R^{n \cross n}$ est \textit{diagonale} si et seulement si $\forall (i,j) \in \Iintv{1,n}^2 \ i \neq j \implies d_{i,j} = 0$, autrement dit :
+$$
+D = \begin{bmatrix}
+d_{1,1} & 0 & 0 & \cdots & 0\\
+0 & d_{2,2} & 0 & \cdots & 0 \\
+\vdots & &\ddots & & \vdots \\
+0 & 0 & \cdots & d_{n-1, n-1} & 0\\
+0 & 0 &\cdots& 0 & d_{n,n}
+\end{bmatrix}
+$$ 
+\noindent Montrer que si $A,B \in \R^{n \cross n}$ sont deux matrices diagonales de dimension $n\times n$ alors leur produit $AB$ est aussi une matrice diagonale de dimension $n\times n$. 
+
+\subsection*{Exercice 9}
+\noindent Une \textit{matrice triangulaire supérieure} est une matrice carrée telle que ses coefficients en dessous de sa diagonale sont tous nuls. Une matrice \textit{triangulaire inferieure} est une matrice de forme similaire, avec des coefficients nuls au dessus de la diagonale. C'est des matrices de la forme:
+$$\begin{bmatrix}
+* & * & * & \cdots & * \\
+  & * & * & \cdots & * \\
+  &   & \ddots & \ddots & \vdots \\
+  & \bigzero  &  & \ddots & \vdots \\
+  &   &   &  & *
+\end{bmatrix} \text{ et }
+\begin{bmatrix}
+* &  &  &  &  \\
+\vdots  & \ddots &  & \bigzero &  \\
+\vdots & \ddots & \ddots &  &  \\
+* & \cdots & * & * &  \\
+*  & \cdots & * & * & *
+\end{bmatrix}$$
+Plus formellement, une matrice $A$ est triangulaire supérieure si $i > j \implies a_{i,j} = 0$, et est triangulaire inférieure si $i < j \implies a_{i,j} = 0$. Les matrices suivantes sont triangulaires supérieures :
+$$
+\begin{bmatrix}
+1 & 2\\
+0 & 3
+\end{bmatrix}, \begin{bmatrix}
+0 & 0\\
+0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 3\\
+0 & 1
+\end{bmatrix}
+$$
+
+\noindent Montrer que le produit de deux matrices triangulaires supérieures est aussi une matrice triangulaire supérieure.
+
+\subsection*{Exercice 10}
+\noindent Soit $A \in \R^{n \cross p}$. Nous définissons la \textit{transposée} de $A$ comme étant la matrice $A^T \in \R^{p \cross n}$ telle que $(A^T)_{i,j} = A_{j,i}$. 
+Par exemple : si $A = \begin{bmatrix}
+1 & 2 & 3\\
+4 & 5 & 6
+\end{bmatrix}$, alors $A^T = \begin{bmatrix}
+1 & 4\\
+2 & 5 \\
+3 & 6
+\end{bmatrix}$.\\
+
+\noindent Nous dirons que $A$ est \textit{symétrique} si $A^T=A$, et \textit{antisymétrique} si $A^T=-A$. \\
+Par exemple, $\begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}$ est symétrique, et $\begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$ est antisymétrique. \\
+
+\begin{enumerate}
+    \item Soient $A \in \R^{p \cross n}$, $B \in \R^{n \cross k}$. Montrer que $(AB)^T = B^T A^T$.
+    \item En déduire, à l'aide du résultat de l'exercice 9, que le produit de deux matrices triangulaires inférieures est aussi une matrice triangulaire inférieure.
+    \item Montrer que toute matrice carrée peut s'écrire comme somme d'une matrice symétrique et d'une matrice antisymétrique. \textit{Indication : pour $A \in \R^{n \cross n}$, utiliser $A$ et $A^T$ pour construire ces deux matrices. Poser un système linéaire si nécessaire.}
+\end{enumerate}
+
+%\subsection*{Exercice 11}
+%\begin{enumerate}
+%    \item Soient $A \in \R^{p \cross n}$, $B \in \R^{n \cross k}$. Montrer que $(AB)^T = B^T A^T$.
+%    \item En déduire, à l'aide du résultat de l'exercice 9, que le produit de deux matrices triangulaires inférieures est aussi une matrice triangulaire inférieure. \\
+%\end{enumerate}
+
+\subsection*{Exercice 11}
+\noindent Soit $A \in \R^{n \cross n}$. Nous définissons la \textit{trace} de $A$, notée $\Tr(A)$, comme la somme de ses éléments diagonaux. Autrement dit, $\displaystyle \Tr(A) \coloneqq \sum_{i=1}^{n} a_{i,i}$. Exemple : $\Tr\left(\begin{bmatrix}
+1 & 2\\
+0 & 5
+\end{bmatrix}\right) = 1 + 5 = 6$.
+\begin{enumerate}
+    \item Soient $A,B \in \R^{n \cross n}$. Montrer que $\Tr(AB)=\Tr(BA)$
+    \item Soient $A,B,C \in \R^{n \cross n}$. Montrer que $\Tr(ABC)=\Tr(CAB)$.
+    \item L'égalité serait-elle toujours valable si on remplaçait son membre de droite par $\Tr(ACB)$?
+\end{enumerate}
+%hello louis 
+%Hello Salim (c'etait moi (bassam) qui avait ecris ça ;-;)
+
+\end{document}

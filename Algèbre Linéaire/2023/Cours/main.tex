@@ -1,0 +1,199 @@
+
+\documentclass[oneside,12pt,french,table]{book}
+\usepackage[french]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace} 
+\setstretch{1.1}
+% Lorem ipsum paragraphs
+\usepackage{lipsum}
+
+% Paragraph spacing
+\usepackage{parskip}
+
+% Custom fonts. This package is only available with XeLaTex (pdflatex is a mess to deal with)
+\usepackage{fontspec}
+\setmainfont{GeneralSans}[
+    Path = assets/fonts/,
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic
+]
+
+% Fancy chapters
+\usepackage[Bjornstrup]{fncychap}
+\ChTitleVar{\Large\flushright\bfseries}
+
+% Mathematical packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Theorem styling and environments
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Théorème}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remarque}
+
+\theoremstyle{plain}
+\newtheorem{lemma}[definition]{Lemme}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[definition]{Proposition}
+
+\theoremstyle{plain}
+\newtheorem{corollary}[definition]{Corollaire}
+
+% Boxed theorems
+\usepackage{tcolorbox}
+
+\newenvironment{greybox}{%
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+}{\end{tcolorbox}}
+
+\newenvironment{boxdef}{
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+    \begin{definition}
+}{
+    \end{definition}
+    \end{tcolorbox}
+}
+
+\newenvironment{boxthm}{
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+    \begin{theorem}
+}{
+    \end{theorem}
+    \end{tcolorbox}
+}
+
+\newenvironment{boxlemma}{
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+    \begin{lemma}
+}{
+    \end{lemma}
+    \end{tcolorbox}
+}
+
+\newenvironment{boxprop}{
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+    \begin{proposition}
+}{
+    \end{proposition}
+    \end{tcolorbox}
+}
+
+\newenvironment{boxcor}{
+    \begin{tcolorbox}[boxrule=0pt, frame empty]
+    \begin{corollary}
+}{
+    \end{corollary}
+    \end{tcolorbox}
+}
+
+% Graphics
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{graphicx}
+\usepackage{tkz-tab}
+\usepackage{float} % for float positioning, in particular the H modifier
+\usepackage{subcaption} % for subfigures and subcaptions
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+%\pgfplotsset{%
+%  every tick label/.append style = {font=\tiny},
+%  every axis label/.append style = {font=\scriptsize}
+%}
+
+\tikzset{%
+  point/.style = {fill=black,inner sep=1pt, circle, minimum width=3pt,align=right,rotate=60},
+  } 
+\tikzstyle{weight} = [font=\scriptsize]  
+\tikzstyle{vertex}=[circle,fill=blue!20]
+
+% Clickable links
+\usepackage{xcolor} % table for colored tables
+\definecolor{S4S-light}{HTML}{50527F}
+\definecolor{S4S-accent}{HTML}{2C2C5C}
+\usepackage[colorlinks,allcolors=S4S-light,linktocpage]{hyperref}
+
+% Other useful packages
+\usepackage{mdframed}
+
+% Useful commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\w}{\omega}
+\newcommand{\cross}{\times}
+\newcommand{\Col}{\text{Col}}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Vect}{Vect}
+\usepackage{mathtools, stmaryrd}
+\usepackage{xparse} \DeclarePairedDelimiterX{\Iintv}[1]{\llbracket}{\rrbracket}{\iintvargs{#1}}
+\NewDocumentCommand{\iintvargs}{>{\SplitArgument{1}{,}}m}
+{\iintvargsaux#1} %
+\NewDocumentCommand{\iintvargsaux}{mm} {#1\mkern1.5mu..\mkern1.5mu#2}
+
+% Title
+\title{
+    Cours d'Algèbre Linéaire \\ \vspace{0.5cm}
+    \includegraphics[scale=0.5]{assets/imgs/logo-round.png}
+}
+\author{Students 4 Students}
+\date{Septembre 2023}
+
+% DOCUMENT BEGINS
+\begin{document}
+\graphicspath{ {./assets/imgs/} }
+
+\maketitle
+
+\tableofcontents
+
+\setcounter{chapter}{-1}
+\chapter{Préambule}
+Ce document est le polycopié du cours d'algèbre linéaire donné lors de la troisième édition de Students 4 Students, en septembre 2023.
+
+Le cours d'Algèbre Linéaire du BA1 EPFL est très similaire dans toutes les sections d'ingénierie, si bien que toutes les sections sauf celles de mathématiques et de physique pourront profiter pleinement de ce polycopié. Ces dernières auront un cours spécial d'Algèbre Linéaire Avancée à S4S, idem en Analyse.
+
+Ainsi, nous ne donnerons que les définitions que nous jugeons nécessaires et/ou utiles à la compréhension de cette première approche de l'algèbre linéaire.
+
+De plus, le contenu de ce polycopié dépasse largement le contenu qui sera enseigné dans les cours ex-cathedra pendant la semaine S4S. Le choix des notions à aborder a évolué depuis l'écriture de la première version de ce document, mais malgré cela la décision de garder les chapitres non enseignés a été prise, au cas où il y aurait des lecteurs/lectrices intéressés par ce contenu.
+
+Ceci d'ailleurs justifie en partie la taille de ce polycopié: 75 pages c'est beaucoup, et nous nous attendons pas à vous enseigner toute cette matière durant les 4 heures de cours. En plus de la taille de police pas très petite, il y a beaucoup d'illustrations et d'explications qui viennent compléter les définitions et les résultats.
+
+\textit{Ont contribué à la rédaction du polycopié et des exercices: Alexandre Sallinen, Louis Martins Gonçalves, Bassam El Rawas, Salim Najib, Inès Montero, Rayan Boucheny, Dylan Samuelian, Gabriel Jiménez Calles, Luca Jiménez Glur, Marwan Azuz, Teo Halevi}.
+
+\textit{Ont contribué à la relecture/aide latex du polycopié et des exercices: Michael Zhang, Lina Sadgal, Sofia Taouhid}.
+
+\include{chapters/chapter_1_main.tex}
+\include{chapters/chapter_2_main.tex}
+\include{chapters/chapter_3_main.tex}
+\include{chapters/chapter_4_main.tex}
+\include{chapters/chapter_5_main.tex}
+
+\chapter{Derniers mots et remerciements}
+\section*{Édition 2021}
+Il reste encore beaucoup de choses à dire sur l’algèbre linéaire, que nous vous laisserons découvrir durant le semestre ainsi que durant la série d’exercice liée à ce cours. En particulier, ici, nous n’avons pas touché aux espaces vectoriels et leurs applications linéaires dont respectivement $\R^n$ et les applications matricielles ne sont que des exemples particuliers - quoique très importants, pour des raisons que vous verrez bientôt, peut être même en série...
+
+Les auteurs Alexandre Sallinen, Louis Martins Gonçalves, Bassam El Rawas et Salim Najib tiennent à remercier les Helpers de S4S de l’équipe d’algèbre linéaire pour leur feedback et corrections, et souhaitent à tout le monde une bonne pré-rentrée !
+
+\section*{Édition 2022}
+Le cours a bien évolué depuis sa création l'an dernier ! Il est bien sur impossible de tout dire dans un cours de pré-rentrée, mais comparé à l'édition précédente nous avons changé notre avis sur ce qu'on considère comme essentiel pour introduire la matière. Notamment, les espaces vectoriels ont été introduits en se concentrant sur l'intuition, et l'algorithme de Gauss pour échelonner des matrices a perdu sa place comme élément central de ce cours. \\
+
+Bien à vous, et bon courage pour votre année :D \\
+- Bassam El Rawas
+
+\section*{Édition 2023}
+Encore une édition de ce cours d'algèbre linéaire, cette fois-ci en s'inspirant de l'édition 2022, notamment sur l'aspect $\R^n$ et espaces vectoriels qui a été développé d'avantage en cours. Pour citer Salim Najib, l'évolution de ce cours est comme une descente du gradient, on évolue en fonction des erreurs commises l'année d'avant en essayant de les corriger. Ceci est aussi du au fait que le référent de cours ainsi que l'équipe conceptrice du cours n'ont pas beaucoup changé entre 2022 et 2023 (ni entre 2021 et 2023, d'ailleurs). 
+
+Merci à l'équipe conceptrice de ce cours et aux assistant.es pour avoir rendu l'enseignement de ce cours possible ! J'espère que votre semaine de pré-rentrée se passe bien, et que votre parcours à l'EPFL se passe encore mieux. \\
+- Bassam El Rawas
+
+\end{document}

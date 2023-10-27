@@ -1,0 +1,191 @@
+% PREAMBULE
+
+% \begin{center}
+% \begin{tcolorbox}[boxrule=0pt,frame empty,width=\textwidth]
+% Préambule de la correction 2 si nécessaire.
+% \end{tcolorbox}
+% \end{center}
+
+% CORRECTIONS
+
+\begin{exercice}
+Nous présentons la résolution avec la forme échelonnée:
+$$    
+\begin{bmatrix}
+    2 & 1 & \bigm| & 2\\
+    -2 & 2 & \bigm| & 1
+\end{bmatrix} \sim
+\begin{bmatrix}
+    2 & 1 & \bigm| & 2\\
+    0 & 3 & \bigm| & 3
+\end{bmatrix} \sim
+\begin{bmatrix}
+    2 & 1 & \bigm| & 2\\
+    0 & 1 & \bigm| & 1
+\end{bmatrix} \sim
+\begin{bmatrix}
+    2 & 0 & \bigm| & 1\\
+    0 & 1 & \bigm| & 1
+\end{bmatrix} \sim
+\begin{bmatrix}
+    1 & 0 & \bigm| & \frac{1}2\\
+    0 & 1 & \bigm| & 1
+\end{bmatrix}
+$$
+La solution de ce système est donc $(x,y) = (\frac{1}{2},1)$. Avec une notation qui est peut-être plus familiaire:
+$$
+\begin{cases}
+    2x + y = 2 \\
+    -2x + 2y = 1
+\end{cases} \iff
+\begin{cases}
+    2x + y = 2 \\
+    3y = 3
+\end{cases} \iff
+\begin{cases}
+    2x + y = 2 \\
+    y = 1
+\end{cases} \iff
+\begin{cases}
+    2x = 1 \\
+    y = 1
+\end{cases} \iff
+\begin{cases}
+    x = \frac{1}{2} \\
+    y = 1
+\end{cases}
+$$
+Nous retrouvons bel et bien la même solution. Remarquons que, dans les 2 méthodes, nous avons appliqué les mêmes opérations. Ceci montre que les coefficients devant les inconnues dans un système linéaire contiennent la totalité des informations nécessaires pour sa résolution et la caractérisation de ses solutions. \\
+\end{exercice}
+
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item Nous effectuons la multiplication d'un vecteur de $\Z^2$ avec un scalaire réel. Les composantes du vecteur résultant ne sont donc pas forcement des entiers relatifs, ce qui rend l'opération de multiplication par un scalaire pas stable. 
+    
+    Pour donner un contre exemple concret, prenons $v = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \in \Z^2$ et $\lambda = \frac{1}{2} \in \R$. Il suit que $\lambda v = \begin{bmatrix} 1/2 \\ 1/2 \end{bmatrix} \not\in \Z^2$ car $\frac{1}{2} \not\in \Z$.
+    
+    $\Z^2$ muni des opérations d'addition et de multiplication par scalaire réel standards n'est donc pas un espace vectoriel.
+    
+    \item Notons $\displaystyle p(t) = a_0 + a_1 t + \cdots + a_n t^n = \sum_{k=0}^{n} a_k t^k$ et $\displaystyle q(t) = b_0 + b_1 t + \cdots + b_n t^n = \sum_{k=0}^{n} b_k t^k \in \P_n$.
+    \begin{itemize}
+        \item L'addition de deux polynômes est stable, i.e la somme de $p$ et $q$ est aussi un polynôme de degré $\leq n$: $\displaystyle (p+q)(t) = p(t)+q(t) = \sum_{k=0}^{n} (a_k+b_k) t^k$
+        \item Nous avons $\forall p,q,r \in \P_n$ et $\forall t \in \R$, $p(t) + (q(t) + r(t)) = (p(t) + q(t)) + r(t)$ car $p(t), q(t), r(t) \in \R$ et que l'addition de réels est associative. Il suit que la somme de polynômes est aussi associative.
+        \item La somme de polynômes est commutative par le même argument que le dernier point.
+        \item L'élément neutre pour l'addition est donné par le polynôme $p(t) = 0$ $\forall t \in \R$. Il est bien dans $\P_n$ car $p(t) = 0 + 0\cdot t + \cdots + 0 \cdot t^n$.
+        \item Étant donné $p \in \P_n$, alors on a que $\displaystyle -p(t) = -\sum_{k=0}^{n} a_k t^k =  \sum_{k=0}^{n} -a_k t^k \in \P_n$ et que $p(t) + (-p(t)) = 0$.
+    \end{itemize}
+    Le reste des axiomes se vérifie de la même manière. La plupart découlent du fait que $p(t) \in \R$ et que les nombres réels possèdent les propriétés de distributivité, d'associativité, etc nécessaires. $\P_n$ est donc un espace vectoriel !
+    
+    \item Soit $x \in (\R_+)^n$ et soit $\lambda = -1$. Alors $\lambda x = -x$, et $(-x)_i < 0$ $\forall i \in \Iintv{1,n}$ car $x_i > 0$. Ceci veut dire que $-x \not\in (\R_+)^n$. La multiplication par scalaire n'est donc pas stable $\implies$ $(\R_+)^n$ muni des opérations standards n'est pas un espace vectoriel. De plus, comme $x_i > 0$, le vecteur nul (l'élément neutre de l'addition standard) n'appartient pas à $(\R_+)^n$.
+    
+    \item Les opérations définies ne sont pas habituelles, il faudra vérifier chaque propriété individuellement. Notons cet espace vectoriel $E$, et soient $x,y,z \in E$. 
+    \begin{itemize}
+        \item Comme $x_i > 0$ et $y_i > 0$ $\forall i \in \Iintv{1,n}$, alors $x_i y_i > 0$. Ceci veut dire que $(x \oplus y)_i = x_i y_i > 0$ $\forall i \in \Iintv{1,n}$, et donc que $x \oplus y \in E$. L'addition est stable.
+        \item Nous avons que $[x \oplus (y \oplus z)]_i = x_i \cdot (y_i \cdot z_i) = (x_i \cdot y_i) \cdot z_i = [(x \oplus y) \oplus z)]_i$ $\forall i \in \Iintv{1,n}$. L'addition est donc associative.
+        \item Nous avons que $(x\oplus y)_i = x_i y_i = y_i x_i = (y \oplus x)_i$ $\forall i \in \Iintv{1,n}$. L'addition est donc commutative.
+        \item Il faut d'abord trouver l'élément neutre: il s'agit d'un vecteur $0_E$ tel que $x \oplus 0_E = x$. En regardant la définition de l'opération $\oplus$, le vecteur qui satisfait cela est le vecteur dont toutes ses composantes sont égales à $1$. En effet:
+        $$x \oplus 0_E = \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} \oplus 
+        \begin{pmatrix}
+            1 \\ 1 \\ \vdots \\ 1
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1 \cdot 1 \\ x_2 \cdot 1 \\ \vdots \\ x_n \cdot 1
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} = x$$
+        Ce vecteur est bien élément de $E$ car $(0_E)_i = 1 > 0$ $\forall i \in \Iintv{1,n}$.
+        \item Il faut maintenant construire un inverse pour cette opération $\oplus$. Pour un $x \in E$, on cherche un $-x$ tel que $x \oplus -x = 0_E$. Sachant que $0_E$ est un vecteur qui contient que des $1$, nous pouvons définir l'inverse comme suit:
+        $$x \oplus -x = \begin{pmatrix}
+            x_1 \\ x_2 \\ \vdots \\ x_n
+        \end{pmatrix} \oplus 
+        \begin{pmatrix}
+            1/x_1 \\ 1/x_2 \\ \vdots \\ 1/x_n
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x_1 \cdot 1/x_1 \\ x_2 \cdot 1/x_2 \\ \vdots \\ x_n \cdot 1/x_n
+        \end{pmatrix} =
+        \begin{pmatrix}
+            1 \\ 1 \\ \vdots \\ 1
+        \end{pmatrix} = 0_E$$
+        De plus, comme $x \in E$, $x_i > 0$. Ceci veut dire que $\frac{1}{x_i}$ est bien définie (on ne divise jamais par $0$) et strictement positive. Ceci veut donc dire que $\forall x \in E$, $\exists -x \in E$ tel que $x \oplus -x = 0_E$.
+        \item Passons à la multiplication par un scalaire! L'opération $\otimes$ est stable car, pour $i \in \Iintv{1,n}$, si $x_i > 0$ et $\lambda \in \R$, alors $x_i ^\lambda > 0$. Ceci veut dire que $(\lambda \otimes x)_i > 0$ et donc que $\lambda \otimes x \in E$.
+        \item Il faut regarder l'associativité. Soient $\lambda, \mu \in \R$ et $i \in \Iintv{1,n}$. Alors:
+        $$[\lambda \otimes (\mu \otimes x)]_i = (x_i ^ \mu) ^ \lambda = x_i ^{\lambda \mu} = [(\lambda \mu) \otimes x]_i$$
+        L'opération $\otimes$ est bien associative.
+        \item L'élément neutre de $\otimes$ est toujours le réel $1$. En effet, $\forall i \in \Iintv{1,n}$:
+        $$(1 \otimes x)_i = x_i ^ 1 = x_i$$
+        \item Regardons maintenant la distributivité de la somme de deux scalaires. Soit $i \in \Iintv{1,n}$:
+        $$[(\lambda + \mu) \otimes x]_i = x_i ^{\lambda + \mu} = x_i^\lambda x_i^\mu = [(\lambda \otimes x) \oplus (\mu \otimes x)]_i \implies (\lambda + \mu) \otimes x = (\lambda \otimes x) \oplus (\mu \otimes x)$$
+        A noter que le $+$ dans $\lambda + \mu$ est l'addition de deux réels.
+        \item Regardons enfin la distributivité de la somme de deux vecteurs. Soit $i \in \Iintv{1,n}$:
+        $$[\lambda \otimes (x \oplus y)]_i = (x_i y_i)^\lambda = x_i^\lambda y_i^\lambda = [(\lambda \otimes x) \oplus (\lambda \otimes y)]_i \implies \lambda \otimes (x \oplus y) = (\lambda \otimes x) \oplus (\lambda \otimes y)$$
+    \end{itemize}
+    Tous les axiomes d'un espace vectoriel sont satisfaits, ce qui veut dire que $E$ est bel et bien un espace vectoriel ! \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item Nous avons que, $\forall \vec{x}, \vec{y} \in \R^3$:
+        \begin{align*}
+            T_1(\vec{x} + \vec{y}) &= T(x_1 + y_1, x_2 + y_2, x_3 + y_3) \\
+            &= 3(x_1 + y_1) - (x_2 + y_2) -15(x_3 + y_3) \\
+            &= 3x_1 - x_2 -15x_3 + 3y_1 -y_2 -15y_3 \\
+            &= T_1(\vec{x}) + T_1(\vec{y})
+        \end{align*}
+        De plus, $\forall \vec{x} \in \R^3$ et $\forall \lambda \in \R$:
+        \begin{align*}
+            T_1(\lambda \vec{x}) &= T(\lambda x_1, \lambda x_2, \lambda x_3) \\
+            &= 3\lambda x_1 - \lambda x_2 -15 \lambda x_3 \\
+            &= \lambda(3x_1 - x_2 -15x_3) \\
+            &= \lambda T_1(\vec{x})
+        \end{align*}
+        Donc $T$ est bien linéaire.
+
+    \item Nous avons que, $\forall \lambda \in \R$ et $\forall \vec{x} \in \R^2$:
+    \begin{align*}
+        T_2(\lambda \vec{x}) &= 1 + \lambda x_1 t + (\lambda x_1 + 3\lambda x_2)t^2 \\
+        &= 1 + \lambda x_1 t + \lambda(x_1 + 3x_2)t^2 \\
+        &\neq \lambda + \lambda x_1 t + \lambda(x_1 + 3x_2)t^2 \\
+        &= \lambda T_2(\vec{x})
+    \end{align*}
+    Comme $T_2(\lambda \vec{x}) \neq \lambda T_2(\vec{x})$ pour tout $\lambda \in \R$ et $\vec{x} \in \R^2$, $T_2$ ne peut pas être linéaire.
+    
+    \item Nous avons pour $p,q \in \P_n$, $p(t) = a_0 + \cdots + a_n t^n$ et $q(t) = b_0 + \cdots + b_n t^n$:
+    \begin{align*}
+        f_n(p+q) &= f_n\left(a_0 + b_0 + (a_1 + b_1)t + \cdots + (a_n + b_n)t^n\right) \\
+        &= \begin{pmatrix} a_0 + b_0 \\ a_1 + b_1 \\ \vdots \\ a_n + b_n \end{pmatrix} \\
+        &= \begin{pmatrix} a_0 \\ a_1 \\ \vdots \\ a_n \end{pmatrix} + \begin{pmatrix} b_0 \\ b_1 \\ \vdots \\ b_n \end{pmatrix} \\
+        &= f_n(p) + f_n(q)
+    \end{align*}
+    De plus, $\forall \lambda \in \R$ et $\forall p \in \P_n$:
+    \begin{align*}
+        f_n(\lambda p) &= f_n(\lambda a_0 + \lambda a_1 t + \cdots + \lambda a_n t^n) \\
+        &= \begin{pmatrix} \lambda a_0 \\ \lambda a_1 \\ \vdots \\ \lambda a_n \end{pmatrix} \\
+        &= \lambda \begin{pmatrix} a_0 \\ a_1 \\ \vdots \\ a_n \end{pmatrix} \\
+        &= \lambda f_n(p)
+    \end{align*}
+    Donc $f_n$ est bien linéaire. Elle est aussi bijective d'ailleurs: cette bijection justifie mathématiquement le fait que $\P_n$ et $\R^{n+1}$ se ressemblent, au sens introduit en cours. \\
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+\,
+\begin{enumerate}
+    \item Tout d'abord, comme $T$ est linéaire, $\lambda T(v) = T(\lambda v)$ $\forall \lambda \in \R$ et $\forall v \in V$. En particulier, pour $\lambda = 0$:
+    $$0_W = 0 \cdot T(v) = T(0 \cdot v) = T(0_V) \implies T(0_V) = 0_W$$
+    
+    \item On nous demande de démontrer une équivalence, il faut donc prouver deux implications: \\
+    
+    Supposons d'abord que $T$ est injective. $T(v)=0_W \implies T(v) = T(0_V)$ par la linéarité de $T$. Or on suppose que $T$ est injective, alors on sait que $T(v) = T(0_V) \implies v = 0_V$, donc le seul antécédent de $0_W$ est $0_V$. \\
+    
+    Supposons ensuite que le seul antécédent de $0_W$ est $0_V$, c'est-à-dire que la seule solution de $T(v)=0_W$ est $v=0_V$. Nous avons $T(v_1) = T(v_2) \implies T(v_1) - T(v_2) = 0_W \implies T(v_1 - v_2) = 0_W $ par la linéarité de $T$, donc $v_1-v_2$ est un antécédent de $0_W$. Or on suppose que le seul antécédent de $0_W$ est $0_V$, donc $v_1 - v_2 = 0_V \implies v_1 = v_2$. 
+    
+    En résumé, on part de $T(v_1) = T(v_2)$ et, en supposant que le seul antécédent de $0_W$ est $0_V$, on conclut que $v_1 = v_2$, ce qui permet d'affirmer que $T$ est injective. \\
+\end{enumerate}
+\end{exercice}
