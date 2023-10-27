@@ -1,0 +1,154 @@
+%\documentclass[10pt,oneside,reqno]{amsart}
+\documentclass[border=6mm,tikz]{standalone}
+
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage{import}
+
+\usepackage[mode=buildnew]{standalone}% requires -shell-escape
+
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+%\setlength {\textwidth}{16.5truecm} 
+%{\textheight}{22.0truecm} \calclayout
+
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{pstricks-add}
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{calc}
+\newtheorem{teo}{Théorème}
+\newtheorem{lemma}[teo]{Lemme}
+\newtheorem{prop}[teo]{Proposition}
+\newtheorem{cor}[teo]{Corollaire}
+\usepackage{tcolorbox}
+\usepackage{wrapfig}
+\usepackage{textcomp}
+\usepackage{siunitx}
+\def \be {\begin{equation}}
+\def \ee {\end{equation}}
+\def \dd  {{\rm d}}
+\def \CFL {\beta_{CFL}}
+\newcommand{\mail}[1]{{\href{mailto:#1}{#1}}}
+\newcommand{\ftplink}[1]{{\href{ftp://#1}{#1}}}
+\newcommand{\shrink}{\vspace{-1cm}}
+\newcommand{\shrinkD}{\vspace{-0.5cm}}
+\newcommand{\x}{\vec x}
+\newcommand{\video}[2]{\nonfrench\href{#1}{#2}\endnonfrench\ }
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usetikzlibrary{decorations.pathmorphing}
+\newcommand{\notimplies}{%
+    \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+\newcommand{\Ressort}[4][]{
+\node [minimum size=#2,#1] (ressort) at (#4) {};
+\pgfmathparse{#2/#3}\let\pas\pgfmathresult
+\draw [decorate,decoration={zigzag,segment length=\pas,amplitude=0.3cm}]
+(ressort.east) -- (ressort.west);
+}
+\newtheorem{Exercice}{Exercice}[section]
+\newtheorem{Corrige}{Corrigé}[section]
+\newtheorem{Methode}{Methode}[section]
+
+
+
+\DeclareMathAlphabet\mathzapf{T1}{pzc}{mb}{it}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{fancybox}
+\bibliographystyle{amsplain}
+\usepackage{systeme}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+
+\usepackage{yfonts}
+\usepackage[french]{babel}
+
+\newtheorem{lemme}{Lemme}[subsection]
+\newtheorem{assertion}{Assertion}[subsection]
+
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollaire}{Corollaire}[section]
+\newtheorem{introduction}{Introduction}[section]
+%\theoremstyle{definition}
+\newtheorem{definition}{Définition}[section]
+\newtheorem{savoirf}{Savoir-faire}[section]
+\newtheorem{rem}{Remarque}[section]
+\usepackage{titlesec}
+\usepackage[titles,subfigure]{tocloft}
+\usepackage{titletoc}
+\setlength{\cftbeforesecskip}{3pt plus.2pt}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsecleader}{\normalfont\cftdotfill{\cftsecdotsep}}
+
+\renewcommand{\cftsecdotsep}{\cftdotsep}
+\cftpagenumbersoff{subsubsection}
+\usepackage[T2A]{fontenc}
+
+%\cftpagenumbersoff{subsection}
+\begin{document}
+
+\usepgflibrary{shapes.geometric}
+\tdplotsetmaincoords{100}{0}
+\begin{tikzpicture}[tdplot_main_coords]
+\pgfmathsetmacro{\R}{2}
+\pgfmathsetmacro{\HW}{4}
+\pgfmathsetmacro{\HC}{6}
+
+
+% water
+\fill[blue!40] plot[variable=\x,domain=0:180,smooth] ({\R*cos(\x)},{\R*sin(\x)},0)
+-- 
+plot[variable=\x,domain=180:360,smooth] ({\R*cos(\x)},{\R*sin(\x)},\HW)
+-- cycle;
+\draw[blue] plot[variable=\x,domain=0:360,smooth,samples=51]
+({\R*cos(\x)},{\R*sin(\x)},\HW);
+% "invisible" lined
+\draw[dashed] plot[variable=\x,domain=180:360,smooth]
+({\R*cos(\x)},{\R*sin(\x)},0);
+% visible cylinder lines
+\draw plot[variable=\x,domain=0:180,smooth]
+({\R*cos(\x)},{\R*sin(\x)},0) 
+-- 
+plot[variable=\x,domain=180:360,smooth]
+({\R*cos(\x)},{\R*sin(\x)},\HC) -- cycle;
+\draw plot[variable=\x,domain=0:180,smooth]
+({\R*cos(\x)},{\R*sin(\x)},\HC); 
+\begin{axis}[
+x=1cm,y=1cm,
+axis lines=right,
+xmin=0,
+xmax=\R,
+ymin=0.1,
+ymax=\HC,
+xtick={-10},
+ytick={-2,-1,...,\HC}]
+
+\begin{scriptsize}
+%height
+\node[] at (0.4,\HW) {$y(t)$};
+
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+%
+
+\end{document}
+

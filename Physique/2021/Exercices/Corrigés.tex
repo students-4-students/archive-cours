@@ -1,0 +1,470 @@
+ \documentclass[a4paper,10pt,twoside]{article}
+\usepackage{mathtools}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage[colorlinks,bookmarks=false,linkcolor=black,urlcolor=blue, citecolor=black]{hyperref}
+\usepackage{french}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{subcaption}
+
+\paperheight=297mm
+\paperwidth=210mm
+
+\setlength{\textheight}{260mm} % originale = 235mm
+\setlength{\topmargin}{-2cm}  % originale = -1.2cm
+\setlength{\textwidth}{16.5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{-0.3cm}
+
+\pagestyle{plain}
+\def \be {\begin{equation}}
+\def \ee {\end{equation}}
+\def \dd  {{\rm d}}
+\def \CFL {\beta_{CFL}}
+\newcommand{\mail}[1]{{\href{mailto:#1}{#1}}}
+\newcommand{\ftplink}[1]{{\href{ftp://#1}{#1}}}
+\newcommand{\shrink}{\vspace{-1cm}}
+\newcommand{\shrinkD}{\vspace{-0.5cm}}
+\newcommand{\x}{\vec x}
+\newcommand{\video}[2]{\nonfrench\href{#1}{#2}\endnonfrench\ }
+
+\begin{document}
+
+
+\section*{Corrigés}
+    
+    
+\subsubsection*{1. Le Lièvre et la Tortue}
+Ceci est un exercice typique de cinématique. Ce qui est recherché n'est pas la résolution d'équations complexes ou d'avoir les bonnes idées, mais plutôt de vous confronter à la modélisation. Cet exercice est simple s'il est bien modélisé dès le départ, et très complexe sinon.
+
+Dans un premier temps, faisons un schéma de la situation. Une bonne solution ici est de faire un graphique avec la distance en fonction du temps. On sait que la distance totale est $L$ et que c'est lorsque la torture est à une distance $l_0$ que le lièvre accélère. Aucune force n'est mise en jeu ici, il faut juste que l'on évalue les vitesses et progressions du Lièvre et de la Tortue à chaque temps $t$. Donc il nous faut des équations du mouvement. Ces équations correspondent en fait à la fonction dessinée pour chacun sur le graphique. On cherche bien $x(t)$, soit une distance en fonction du temps. Commençons.\\
+\\
+\textbf{Pour la Tortue:}\\
+La Tortue est la plus simple. On va noter $x_T$ sa position en fonction du temps. On sait qu'elle garde une vitesse constante tout au long de la course. On a donc que l'accélération est nulle. On le voit intuitivement ou mathématiquement: 
+\[ \dot{x}_T=cst \implies \ddot{x}_T=0 \]
+car la dérivé d'une constante est nulle.
+De plus, on sait que $\dot{x}_T= v_T$.
+\[\implies x_T(t)=v_T t+x_0\]
+Or $x_0=0$ car elle part au départ. On a donc pour la Tortue :
+\[ x_T=v_T t\]
+\\
+\textbf{Pour le Lièvre :} \\
+Le Lièvre est dans une situation plus compliquée. Tout d'abord, avant que la Tortue soit à la distance $l_0$, il va à une vitesse $v_L$. Donc dans un premier temps, \[x_{L1}(t)=v_L t \]
+Il n'y a pas de constante car le Lièvre part depuis la ligne de départ. \\
+Lorsque la Tortue est à la distance $l_0$, il accélère, avec une accélération constante valant $a$. Il faut savoir à quel temps la Tortue arrive à $l_0$. Notons ce temps $t'$. L'équation que nous allons écrire est valable à partir de $t'$. Donc on va avoir $x_{L2}(t)$ et on veut que lorsque $t=t'$, on voit que Lièvre est à $x_0$ comme sur le schéma. C'est pour cela que lorsque l'on va intégrer, on aura $t-t'$ plutôt qu'un simple $t$. Cela se justifie par l'intégration, lorsque l'on intègre celle de la Tortue, on fait :
+\[ x_T(t)-x_T(0)= \int_{0}^{t} v_T \, dt\ \Rightarrow  x_T(t) = v_T (t-0) + x_0 \]
+Alors que là on fait:
+\[ \dot{x}_{L2} (t) - \dot{x}_{L2} (t')  =\int_{t'}^{t} a \, dt\ \Rightarrow \dot{x}_{L2} (t)  = a(t-t')+v_0\]
+car notre équation n'est valable qu'à partir du temps $t'$. \\
+Ceci était une des subtilités de l'exercice.\\
+Posons nos équations du mouvement:
+\begin{equation}
+    \centering
+    \begin{cases}
+         \ddot{x}_{L2}(t)=a \\
+         \dot{x}_{L2}(t)=a(t-t')+v_0 \\
+         x_{L2}(t)=\frac{1}{2}a(t-t')^2+v_0(t-t')+x_0
+    \end{cases}
+\end{equation}
+On a :
+\[v_0=v_L\] car le Lièvre est à cette vitesse lorsqu'il décide d'accélérer. Pour déterminer $x_0$, il faut savoir où est le lièvre lorsque la Tortue est en $l_0$.  On a donc:
+\[x_T (t')=l_0 \iff v_T t'=l_0 \]
+\[ t'=\dfrac{l_0}{v_T}\] 
+
+On prend l'équation de mouvement du lièvre avant qu'il accélère et on a :
+\[ x_{L1} (t')=v_L t'=x_0\] 
+Donc on peut remplacer dans l'équation du mouvement $x_{L2}(t)$ : 
+\[ x_{L2}(t)=\frac{1}{2}a(t-t')^2+v_L(t-t')+ v_L t'\]
+Nous avons donc nos équations de mouvement qui sont posées. Ce qu'on veut maintenant, c'est trouvé quelle est l'accélération nécessaire pour que $x_{L2}(t_f)>x_T(t_f)$.
+Il faut que l'on détermine $t_f$. On fait comme tout à l'heure et on se sert de la Tortue, parce qu'on saura où elle est en tout temps. Donc ce temps est celui où la Tortue arrive à la ligne d'arrivée. C'est donc: 
+\[x_T(t_f)=L \iff v_T t_f=L \iff t_f=\dfrac{L}{v_T} \]
+Posons notre inéquation :
+
+\[x_{L2}(t_f)>x_T(t_f) \]
+
+\[\frac{1}{2} a(t_f-t')^2+v_L (t_f-t')+ v_L t'>L\]
+
+\[\frac{1}{2} a(t_f-t')^2>L-v_L t_f\]
+
+\[ a>2 \dfrac{L-v_L t_f}{(t_f-t')^2}\]
+On remplace $t_f$ et $t'$:
+\[ a>2 \dfrac{L-v_L \dfrac{L}{v_T}}{\left(\dfrac{L}{v_T}-\dfrac{l_0}{v_T}\right)^2}\]
+
+\[ a>2 L v_T\dfrac{v_T-v_L}{(L-l_0)^2}\]
+Donc il faut que l'accélération du Lièvre soit supérieure à cette quantité si l'on veut qu'il gagne la course. \\
+Maintenant, il s'agit de vérifier si notre solution est cohérente. Premièrement, l'homogénéité! (Je n'insisterai jamais assez là-dessus, vérifiez bien l'homogénéité de vos résultats.)
+\[ [a]=\dfrac{d}{t^2}\]
+\[ [2 L v_T\dfrac{v_T-v_L}{(L-l_0)^2}]= d \frac{d}{t} \dfrac{\frac{d}{t}-\frac{d}{t}}{(d-d)^2}= d \frac{d}{t} \dfrac{\frac{d}{t}}{d^2}=\dfrac{d}{t^2}\]
+Notre solution a donc bien la dimension d'une accélération. Maintenant, vérifions quelques limites. \\ 
+Intuitivement, si le Lièvre se rend compte que la Tortue est devant alors que celle-ci est très proche de la ligne, il devra accélérer énormément. Donc:
+\[ \lim_{l_0 \to L}{2 L v_T\dfrac{v_T-v_L}{(L-l_0)^2}}=\infty\] est cohérent.\\
+De plus, si $v_T \to 0$, on devrait avoir que le Lièvre n'a pas à beaucoup accélérer, la Tortue allant très lentement. 
+
+\[ \lim_{v_T \to 0}{2 L v_T\dfrac{v_T-v_L}{(L-l_0)^2}}=0\] tout est bien cohérent!
+
+\newpage
+
+\subsubsection*{2. Le corbeau et le renard}
+Cet exercice est une application parfaite de la méthode de résolution d'exercice de physique.
+Pour appréhender le problème, on voit qu'il faut commencer par déterminer les équations horaires du fromage et de la flèche, puis montrer que les deux objets se rencontrent.
+Comme d'habitude, on commence toujours par dessiner la situation et choisir le repère, ici un repère cartésien.
+Ensuite on identifie les forces sur chacun des systèmes:
+
+\begin{enumerate}
+
+    \item \textbf {Pour le fromage : } \\
+     Le fromage ne subit qu'une seule force une fois lâché par le corbeau, le poids : $\vec{P} = M\vec{g}$
+    Par la seconde loi de Newton, on obtient l'équation vectorielle suivante:
+    \[ M\vec{a} = M\vec{g} \implies \vec{a} = \vec{g} \]
+    \\
+     \textbf{Pour la flèche} \\
+    Comme le fromage, la flèche ne subit qu'une seule force: le poids. La seule différence avec le fromage est qu'elle a une vitesse initiale non-nulle. 
+    \\ 
+    On a donc aussi :
+    \[m\vec{a_f}=m\vec{g} \implies \vec{a_f}=\vec{g} \]
+    \\
+    \item \textbf{Pour le fromage : } \\
+    Notre accélération $\vec{a}$ peut se décomposer dans notre repère cartésien. En effet, on a :
+    \[\vec{a}= \ddot{x}.\vec{u_x} + \ddot{y}.\vec{u_y} \]
+    De plus, on a : $\vec{g}= - g. \vec{u_y}$. \\
+    
+    En projetant notre équation sur les axes x et y, on trouve: 
+    \begin{equation}
+        \begin{cases}
+            \ddot{x} = 0 \\
+            \ddot{y} = -g
+        \end{cases}
+    \end{equation}
+    
+    En intégrant chaque équation des deux côtés, on obtient:
+    \begin{center}
+        $\begin{cases}
+        \dot{x}(t) = \dot{x}_0   \\
+        \dot{y}(t) = -gt + \dot{y}_0        \end{cases}$
+    \end{center}
+    Puis en intégrant à nouveau:
+     \begin{center}
+        $\begin{cases}
+        x(t) = \dot{x}_0t + x_0 \\
+        y(t) = -\frac{1}{2}gt^2 + \dot{y}_0t + y_0
+        \end{cases}$
+    \end{center}
+    
+    On peut facilement retrouver les constantes d'intégration en utilisation les conditions initiales, ici:
+    \begin{itemize}
+        \item Pour $x_0$, c'est une constante d'intégration. Si je veux l'isoler, je vois que je peux le faire à $t=0$. En effet, $x(0)=L$. On sait que $x(0)=L$ car au début, le fromage est dans la bouche du Corbeau et est situé à $x=L$. On peut faire la même chose pour $y_0$. Si l'on regarde où est le fromage à $t=0$ en terme de y, elle est à une hauteur $H$. Donc on a $y_0=H$.
+        \item Il reste à déterminer $\dot{x_0}$ et $\dot{y_0}$. Il faut regarder les équations permettant d'isoler ces valeurs, soit $\dot{x}(t)$ et $\dot{y}(t)$ à $t=0$. Donc en fait, $\dot{x}_0$ et $\dot{y}_0$ correspondent à la vitesse initiale. Pour le fromage, on sait qu'elle est nulle. Donc $\dot{x}_0=0$ et $\dot{y}_0=0$
+    \end{itemize}
+    
+    En utilisant ces conditions initiales on trouve les équations horaires:
+    \begin{center}
+    $
+        \begin{cases}
+         x(t) = L \\
+        y(t) = -\frac{1}{2}gt^2 + H
+        \end{cases}
+        $
+    \end{center}
+    
+ 
+    
+    \textbf{Pour la flèche : } \\
+    On retrouve donc les mêmes équations horaires: 
+    
+     \begin{center}
+        $\begin{cases}
+        x_f(t) = At + B \\
+        y_f(t) = -\frac{1}{2}gt^2 + Ct + D
+        \end{cases}$
+    \end{center}
+    
+    Pour retrouver les constantes, nous devons utiliser les conditions initiales: 
+    \begin{itemize}
+        \item Pour $B$, c'est une constante d'intégration. Si je veux l'isoler, je vois que je peux le faire à $t=0$. En effet, $x_f(0)=B$. On sait que $x_f(0)=0$ car au début, la flèche n'est pas partie et est située à $x=0$. On peut faire la même chose pour $y_0$. Si l'on regarde où est la flèche à $t=0$ en terme de y, elle est à une hauteur h. Donc on a $D=h$.
+        \item $\vec{v_0} = 
+    \begin{pmatrix} 
+    v_0 \cos{\alpha}\\
+    v_0 \sin{\alpha}
+    \end{pmatrix}$ (obtenue par projection du vecteur de la vitesse initiale)
+    \end{itemize}
+    
+    On obtient donc les équation horaires de la flèche:
+    \begin{center}
+        $\begin{cases}
+        x_f(t) = v_0 \cos{\alpha} t\\
+        y_f(t) = -\frac{1}{2}gt^2 + v_0 \sin{\alpha}t + h
+    \end{cases}$
+    \end{center}
+       Si vous avez déjà étudier des objets en chute libre, ces équations vous semblent sûrement très naturelles, et vous n'aurez pas besoin d'évaluer les équations aux conditions initiales pour trouver les constantes d'intégration. Cependant, c'est un joli exercice à car parfois rechercher les valeurs des constantes d'intégration peut s'avérer tricky. 
+    \item Pour montrer qu'il y a un point d'intersection, il suffit de montrer qu'il existe un temps $t$, où la flèche et le fromage ont la même ordonnée et même abscisse. \\Cherchons d'abord le temps où ils ont le même abscisse. 
+    \begin{center}
+        $\begin{cases}
+        x_f(t)=v_0 \cos{\alpha}t \\
+        x(t)=L
+        \end{cases}$
+        
+    \end{center}
+    On veut \[x_f(t)= x(t) \implies t=\dfrac {L}{v_0\cos{\alpha}}\] \\
+    Ensuite cherchons le temps $t'$, où les ordonnées sont les mêmes:
+    \begin{center}
+        $\begin{cases}
+             y_f(t')= -\frac{1}{2}gt'^2 + v_0 \sin{\alpha}t' + h \\
+             y(t')=-\frac{1}{2}gt^2 + H
+        \end{cases}$        
+    \end{center}
+    Posons donc \[y_f(t')=y(t') \implies v_0 \sin{\alpha}t'=H-h \\
+    \iff t'=\dfrac {H-h}{v_0 \sin{\alpha}} \]
+    Il faut que \[t=t'\implies \dfrac {H-h}{v_0 \sin{\alpha}}=\dfrac {L}{v_0\cos{\alpha}} \\
+    \iff \tan{\alpha}=\dfrac{H-h}{L} \]
+    Ceci est cohérent avec le schéma. Cela implique donc qu'il existe un temps $t'$ où les deux objets se croisent, même si cela doit être très profond dans la terre. 
+    
+    \item Soit $t'$ le temps où a lieu la collision. On veut 
+    \begin{center}
+        $\begin{cases}
+             x_f(t')=L \\
+             y(t')=y_f(t') \\
+             y(t')>0
+        \end{cases}$
+    \end{center} 
+    \textbullet \[x_f(t')=L \implies t'=\dfrac{L}{v_0 \cos{\alpha}}\]
+    \\
+    \textbullet \[ y(t')>0 \\
+    \iff -\frac{1}{2} gt'^2 +H >0 \\
+    \iff -\frac{1}{2} g \dfrac{L^2}{v_0^2 \cos^2{\alpha}} +H >0 \] \\
+    \begin{center}
+    \[ \iff  v_0^2 >\frac{1}{2} g \dfrac{L^2}{\cos^2{\alpha}H} \]
+        
+    \end{center}
+    Or d'après la figure, on a:
+    \begin{center}
+       \[ \cos{\alpha}= \dfrac{L}{\sqrt{(H-h)^2+ L^2}} \]
+    \[ \implies 
+    v_0^2 >\frac{1}{2} g \dfrac{(H-h)^2+ L^2}{H}\]
+    \end{center}
+    La vitesse étant une grandeur positive, on a donc:
+    \begin{center}
+        \[v_0 >\sqrt{\frac{1}{2} g \dfrac{(H-h)^2+ L^2}{H}}  \]
+    \end{center}
+     \textbf{Vérification de l'homogénéité :} \\
+    \[[v_0]=\frac{d}{t} \] 
+    \[ [g]=\dfrac{d}{t^2} \] 
+    Et donc: 
+    \[ [\sqrt{\frac{1}{2} g \dfrac{(H-h)^2+ L^2}{H}}]=\sqrt{\dfrac{m(m^2+ m^2)}{ms^2}}\\
+    =\frac{m}{s} =[v] \] \\
+    L'homogénéité a été vérifiée. Procédons à la limite: 
+    \[ v_0 > \sqrt{\frac{1}{2} g \dfrac{(H-h)^2+ L^2}{H} }\]
+    \[ \lim_{H\to 0} \sqrt{\frac{1}{2} g \dfrac{(H-h)^2+ L^2}{H}} =\infty \]
+    Ceci est cohérent physiquement car si le fromage se trouve très près du sol, il faut que la vitesse initiale de la flèche soit très grande pour toucher le fromage avant que celui ne touche le sol. Notre solution a donc été vérifiée comme cohérente au niveau des unités et d'une limite. Il est possible de vérifier avec d'autres limites, quand $g$ tend vers 0 ou l'infini par exemple. 
+    \end{enumerate}
+    
+\newpage
+
+\subsubsection*{3. Oscillateur harmonique}
+ 
+\noindent\textit{Faites l'inventaire des forces extérieures auxquelles est soumise la masse.}
+
+\noindent La masse est soumise à deux forces. On pose ici l'axe $\mathbf{e_z}$ vers le bas, et l'origine au niveau du plafond.
+
+\begin{itemize}
+    \item Le poids $\vec P = m\vec g = mg\mathbf{ e_z}$.
+    \item La force de rappel du ressort $F = -k(z-l_0)\mathbf{ e_z}$  \\ 
+\end{itemize}
+\noindent\textit{Déterminez la position d'équilibre de l'oscillateur, autrement dit la position à laquelle les forces s'annulent :}
+
+\noindent Soit $z_e$ la position d'équilibre. En ce point, on a que : 
+\begin{gather*}
+    \sum \vec{F}^{ext}=0 \iff mg-k(z_e-l_0) =0 \\
+    \iff z_e = \dfrac{mg}{k}+l_0
+\end{gather*}
+Ainsi en $z=\dfrac{mg}{k}+l_0$, la masse ne ressent aucune force apparente.\\
+
+\noindent\textit{Déterminez l'équation horaire de la masse autour de cette position d'équilibre :}
+
+\noindent La deuxième loi de Newton donne : 
+\begin{equation*}
+    m\vec a = \vec F+\vec P \Rightarrow m\ddot z = mg-k(z-l_0)
+\end{equation*}
+On peut donc fair un changemeent de variable et écrire $z = \bar z+z_e$ ou $\bar z$ est la déviation par rapport à la position d'équilibre. En insérant ça dans l'équation précédente on a : 
+\begin{gather*}
+    m\dfrac{d^2(\bar z+z_e)}{dt^2}=mg-k(\bar z+z_e-l_0)
+    \iff \ddot {\bar z} = g -\dfrac{k}{m}(\bar z+ \dfrac{mg}{k}+l_0-l_0)\iff \ddot {\bar z}= -\dfrac{k}{m}\bar z 
+\end{gather*}
+Nous avons là l'équation d'un oscillateur harmonique dont l'on connaît la solution. En posant $\omega_0 = \sqrt{\dfrac{k}{m}}$ on trouve alors :
+\begin{gather*}
+    \bar z(t) = A\cos{\omega_0t}+ B\sin{\omega_0t} \\
+     \dot{\bar z}(t) = -A\omega_0\sin{\omega_0t} +B\omega_0\cos{\omega_0t}
+\end{gather*}
+On peut retrouver les constantes $A$ et $B$ grâce aux conditions initiales : 
+\begin{gather*}
+    \bar z(0)=A=z_0 \\
+    \dot {\bar z}(0) = B\omega_0 = \dot z_0 \Rightarrow B = \dfrac{\dot z_0}{\omega_0}
+\end{gather*}
+Finalement l'équation horaire de l'oscillateur autour de sa position d'équilibre est donnée par : 
+\begin{equation*}
+     \bar z(t) = z_0\cos{\omega_0t}+ \dfrac{\dot z_0}{\omega_0}\sin{\omega_0t}
+\end{equation*}
+
+\mathbf{Remarque} : On aurait aussi pu poser l'origine à distance $l_0$ sous le plafond, ce qui aurait pas mal simplifié certains calculs.
+
+\newpage
+
+\subsubsection*{4. Chute sur sphère}
+\noindent \textbf{Système et Repère} On choisit le système composé du point matériel de masse $m$ au point $P$. On choisit le repère sphérique $(\mathbf{e_r, e_\theta, e_\phi})$ d'origine $O$, le centre de la sphère. \\
+\textbf{Contraintes} Le point matériel est contraint de se déplacer sur la surface de la sphère de rayon R. On a donc: $r = R = cste \implies \dot{r} = 0$ et $\ddot{r} = 0$ \\
+\textbf{Bilan des forces extérieures}
+\begin{itemize}
+    \item Poids : $\mathbf{P} = m \mathbf{g} = mg (-\cos{\theta} \mathbf{e_r} + \sin{\theta} \mathbf{e_\theta})$
+    \item Réaction normale de la sphère: $\mathbf{N} = N \mathbf{e_r}$
+\end{itemize}
+
+\begin{enumerate}
+    \item Écrire les équations du mouvement sans les résoudre \\
+    Par la seconde loi de Newton, on a $\sum \mathbf{F}^{ext} = \mathbf{P} + \mathbf{N} = m \mathbf{a}$. En tenant compte des contraintes, on peut simplifier l'expression de l'accélération en coordonnées sphériques:
+    \[ \mathbf{a} = -R(\dot \theta^2 - \dot\phi^2\sin^2{\theta}) \mathbf{e_r} + 
+R (\ddot \theta - \dot{\phi}^2 \cos{\theta} \sin{\theta}) \mathbf{e_\theta} + R (\ddot \phi \sin{\theta}+  2 \dot{\phi} \dot{\theta} \cos{\theta}) \mathbf{e_\phi} \]
+
+L'équation du mouvement s'écrit donc en composantes: 
+
+\begin{equation}
+    \begin{cases}
+         \mathbf{e_r} : N -mg\cos{\theta} =  -mR(\dot \theta^2 - \dot\phi^2\sin^2{\theta}) \\
+         \mathbf{e_\theta} : mg\sin{\theta} = mR (\ddot \theta - \dot{\phi}^2 \cos{\theta} \sin{\theta}) \\
+         \mathbf{e_\phi}: 0 = m R (\ddot \phi \sin{\theta}+  2 \dot{\phi} \dot{\theta} \cos{\theta})
+    \end{cases}
+\end{equation}
+
+Il est important de remarquer que comme les forces $\mathbf{P}$ et $\mathbf{N}$ agissent dans un plan perpendiculaire à $\mathbf{e_\phi}$, il n'y a pas d'accélération selon la direction $\mathbf{e_\phi}$. La masse commence à glisser sans vitesse initiale depuis le sommet, puis reste dans le plan vertical dans lequel elle a commencé sa glissade. Par conséquent, son mouvement a lieu selon un angle $\phi$ constant, et donc $\dot{\phi} = 0$ et $\ddot{\phi} = 0$. La troisième équation devient donc identiquement nulle et on peut la jeter. Les deux premières équations se réduisent à un mouvement en coordonnées polaires dans un plan vertical, ie: 
+
+\begin{equation}
+    \begin{cases}
+         N -mg\cos{\theta} =  -mR \dot \theta^2 \\
+         mg\sin{\theta} = mR\ddot{\theta}
+    \end{cases}
+\end{equation}
+
+\item Trouver le point D de décollement \\
+La masse décolle de la sphère lorsque la réaction normale de la sphère devient nulle, c'est-à-dire lorsque $N = 0$. A cet instant précis on quitte les contraintes, car $r$ ne sera plus une constante, et ses dérivées ne seront donc plus nulles. On multiplie la deuxième équation par : $\frac{\dot{\theta}}{mR}$, et on obtient : 
+\[ \frac{g}{R} \dot{\theta} \sin{\theta} = \dot{\theta} \ddot{\theta} \]
+On remarque alors que on peut exprimer chaque côté de l'équation comme une dérivée par rapport au temps: 
+\[ \frac{d}{dt}(-\frac{g}{R} \cos{\theta}) = \frac{d}{dt} (\frac{1}{2} \dot{\theta}^2) \]
+On peut donc intégrer cette équation et obtenir:
+\[ \frac{1}{2} \dot{\theta}^2 = - \frac{g}{R} \cos{\theta} + C \]
+avec C la constante d'intégration. On utilise alors les conditions initiales, i.e. $\theta = 0$ et $\dot{\theta} = 0 \implies C = \frac{g}{R}$. L'équation devient alors: 
+\[ \frac{1}{2} \dot{\theta}^2 = - \frac{g}{R}(1-\cos{\theta}) \]
+
+On reprend alors notre première équation du mouvement, au moment où la masse décolle (et donc $N = 0$), et on peut la mettre sous la forme:
+\[ \frac{1}{2} \dot{\theta}^2 = - \frac{g}{2R}\cos{\theta} \]
+
+On peut donc comparer les deux équations obtenues, et on a : 
+\[ \frac{1}{2} \dot{\theta}^2 = - \frac{g}{R}(1-\cos{\theta}) - \frac{g}{2R}\cos{\theta}\]
+\[ \implies 1-\cos{\theta} = \frac{1}{2}\cos{\theta}\]
+\[ \implies 1 = \frac{3}{2}\cos{\theta} \implies \cos{\theta} = \frac{2}{3}\]
+
+Il est intéressant de remarquer que cette condition est indépendante de $R, m$ et $g$. C'est un résultat purement géométrique !
+
+\end{enumerate}
+
+\newpage
+
+
+
+\subsubsection*{5. Coordonnées cylindriques (Facultatif) }
+
+\noindent -\textit{Exprimez le vecteur position $\vec r$ en coordonnées cylindriques :} \\
+Dans la base cylindrique, le vecteur position est donné conformément à la figure par :
+\[\vec r = \rho\mathbf{ e_\rho} + z\mathbf{ e_z}\]
+
+\noindent -\textit{Exprimez les  vecteurs $\mathbf{ e_\rho}$ et  $\mathbf{ e_\theta}$ dans la base cartésienne ($\mathbf{ e_x}$, $\mathbf{ e_y}$, $\mathbf{ e_z}$) : } \\
+En projetant $\mathbf{ e_\rho}$ et $\mathbf{ e_\theta}$ sur les axes $Ox$,$Oy$,$Oz$ on trouve : 
+\begin{equation*}
+\begin{cases}
+     \mathbf{ e_\rho} = \cos{\theta}\mathbf{ e_x} + \sin{\theta}\mathbf{ e_y} \\
+     \mathbf{ e_\theta} = -\sin{\theta}\mathbf{ e_x} + \cos{\theta}\mathbf{ e_y}
+     \end{cases}
+\end{equation*}
+\noindent -\textit{Donnez les dérivés des vecteurs $\mathbf{ e_\rho}$ et  $\mathbf{ e_\theta}$ dans la base cylindrique ($\mathbf{ e_\rho}$, $\mathbf{ e_\theta}$, $ \mathbf{e_z}$).} 
+\\
+Comme $\mathbf{e_x}$ et $\mathbf{e_y}$ sont constants on a :
+\begin{equation*}
+\begin{cases}
+     \mathbf{\dot e}_\rho= -\dot \theta \sin{\theta}\mathbf{ e_x} + \dot \theta \cos{\theta}\mathbf{ e_y} = \dot \theta \mathbf{ e_\theta} \\
+     \mathbf{\dot e}_\theta = -\dot \theta\cos{\theta}\mathbf{ e_x}  -\dot\theta\sin{\theta}\mathbf{ e_y} = -\dot\theta\mathbf{ e_\rho}
+\end{cases}    
+\end{equation*}
+Ici il ne fallait pas oublier que $\theta$ est aussi une fonction du temps et remarquer que les relations obtenues pouvaient s'identifier à $\mathbf{ e_\theta}$ et $\mathbf{ e_\rho}$ !\\
+
+\noindent -\textit{Donnez l'expression du vecteur vitesse et accélération dans la base cylindrique: } \\
+Grâce aux questions précédentes, vous aviez tous les outils pour répondre à cette question. On commence par obtenir le vecteur vitesse : 
+\begin{gather*}  
+    \vec v= \dot {\vec r} = (\rho\mathbf{ e_\rho} + z\mathbf{ e_z})' \\
+    = \dot\rho\mathbf{ e_\rho} + \rho\mathbf{ \dot{e}_\rho}+ \dot z \mathbf{ e_z} =  \dot\rho\mathbf{ e_\rho} + \rho\dot\theta\mathbf{e_\theta}+ \dot z \mathbf{e_z} \\
+    \iff  = \begin{cases}
+     v_\rho = \dot\rho\\
+     v_\theta = \rho \dot \theta\\
+     v_z = \dot z \\
+\end{cases}  
+\end{gather*}
+De la même manière on dérive le vecteur accélération :
+\begin{gather*}  
+    \vec a= \dot {\vec v} =(  \dot\rho\mathbf{ e_\rho} + \rho\dot\theta\mathbf{e_\theta}+ \dot z \mathbf{e_z})' \\
+    = \ddot\rho\mathbf{ e_\rho} + \dot\rho\mathbf{ \dot{e}_\rho}+ \dot\rho\dot\theta\mathbf{e_\theta}+\rho\ddot\theta\mathbf{e_\theta}+ \rho\dot\theta\mathbf{ \dot{e}_\theta}+\ddot z \mathbf{ e_z} =  \ddot\rho\mathbf{ e_\rho} + 2\dot\rho\dot\theta\mathbf{ {e}_\theta}+ \rho\ddot\theta\mathbf{e_\theta} -\rho\dot\theta^2\mathbf{ {e}_\rho}+\ddot z \mathbf{ e_z}\\
+    \iff   \begin{cases}
+     a_\rho = \ddot\rho-\rho\dot\theta^2\\
+     a_\theta = \rho\ddot\theta+2\dot\rho\dot\theta\\
+     a_z = \ddot z \\
+\end{cases}  
+\end{gather*}
+\noindent\textbf{Coordonnées sphériques : }\\
+Dans la base sphérique, le vecteur position est donné par : \begin{equation*}
+    \vec r = r\mathbf{ e_r}
+\end{equation*}
+En projetant les vecteurs unitaires dans la base sphérique on trouve  :
+\begin{equation*}
+    \begin{cases}
+         \mathbf{ e_r} = \cos{\phi}\sin{\theta} \mathbf{ e_x}+\sin{\phi}\sin{\theta} \mathbf{ e_y}+\cos{\theta} \mathbf{ e_z} \\
+         \mathbf{ e_\phi}=-\sin{\phi} \mathbf{ e_x}+\cos{\phi} \mathbf{ e_y} \\
+         \mathbf{ e_\theta}= \cos{\phi}\cos{\theta} \mathbf{ e_x}+\sin{\phi}\cos{\theta} \mathbf{ e_y}-\sin{\theta} \mathbf{ e_z}
+    \end{cases}
+\end{equation*}
+\begin{equation*}
+\Rightarrow
+    \begin{cases}
+         \mathbf{ \dot{e}_r} = (\dot \theta\cos{\phi}\cos{\theta}-\dot \phi\sin{\phi}\sin{\theta} )  \mathbf{ e_x}+
+         (\dot\theta\sin{\phi}\cos{\theta}+\dot \phi\cos{\phi}\sin{\theta})\mathbf{ e_y}
+         -\dot\theta\sin{\theta} \mathbf{ e_z} \\ \;\quad= \dot\theta\mathbf{ e_\theta}+\dot \phi \sin{\theta}\mathbf{ e_\phi}   \\
+         \mathbf{ \dot{e}_\phi}=-\dot\phi\cos{\phi} \mathbf{ e_x}-\dot\phi\sin{\phi} \mathbf{ e_y}=-\dot\phi\sin{\theta}\mathbf{ e_r}  -\dot\phi\cos{\theta}\mathbf{e_\theta} \\
+         \mathbf{ \dot{e}_\theta}= -(\dot\phi\sin{\phi}\cos{\theta}+\dot\theta\cos{\phi}\sin{\theta}) \mathbf{ e_x}+(\dot\phi\cos{\phi}\cos{\theta}-\dot\theta\sin{\phi}\sin{\theta}) \mathbf{ e_y}-\dot\theta\cos{\theta} \mathbf{ e_z}
+         \\ \;\quad=\dot\phi\cos{\theta}\mathbf{ e_\phi}-\dot\theta\mathbf{ e_r}
+    \end{cases}
+\end{equation*}
+On obtient alors : 
+\begin{gather*}
+    \vec v = \dot {\vec r} = \dot r \mathbf{ e_r}+r\mathbf{ \dot{e}_r}=\dot r \mathbf{ e_r}+r\dot\theta\mathbf{ e_\theta}+r\dot \phi \sin{\theta}\mathbf{ e_\phi} \\
+    \iff \begin{cases}
+         v_r = \dot r \\
+         v_\phi = r\dot\phi\sin{\theta} \\
+         v_\theta = r\dot\theta
+    \end{cases}       
+\end{gather*}
+Ainsi que : 
+\begin{gather*}
+    \vec a = \dot {\vec v} = (\dot r \mathbf{ e_r}+r\dot\theta\mathbf{ e_\theta}+r\dot \phi \sin{\theta}\mathbf{ e_\phi})'\\=  \ddot r \mathbf{ e_r}+\dot r \mathbf{\dot{e}_r}+\dot r\dot\theta\mathbf{ e_\theta}+ r\ddot\theta\mathbf{ e_\theta}+r\dot\theta\mathbf{ \dot{e}_\theta}+\dot r\dot \phi \sin{\theta}\mathbf{ e_\phi}+r\ddot \phi \sin{\theta}\mathbf{ e_\phi}+r\dot \phi\dot\theta \cos{\theta}\mathbf{ e_\phi}+r\dot \phi \sin{\theta}\mathbf{ \dot{e}_\phi}\\
+    =  \ddot r \mathbf{ e_r}+\dot r\dot\theta\mathbf{ e_\theta}+\dot r\dot\phi\sin{\theta}\mathbf{ e_\phi} + \dot r\dot\theta\mathbf{ e_\theta}+ r\ddot\theta\mathbf{ e_\theta}+r\dot\theta
+   \dot\phi\cos{\theta}\mathbf{ e_\phi}-r\dot{\theta}^2\mathbf{ e_r}+\dot r\dot \phi\sin{\theta}\mathbf{ e_\phi}+r\ddot \phi \sin{\theta}\mathbf{ e_\phi}\\+r\dot \phi\dot\theta \cos{\theta}\mathbf{ e_\phi}-r\dot \phi^2\sin^2{\theta}\mathbf{ e_r} -r\dot \phi^2 \sin{\theta}\cos{\theta}\mathbf{e_\theta}\\
+   =   (\ddot r-r\dot{\theta}^2-r\dot \phi^2\sin^2{\theta}) \mathbf{ e_r}+(r\ddot\theta+2\dot r\dot\theta-r\dot \phi^2 \sin{\theta}\cos{\theta})\mathbf{ e_\theta}+(r\ddot \phi \sin{\theta}+2\dot r\dot \phi \sin{\theta}+2r\dot \phi\dot\theta \cos{\theta})\mathbf{ e_\phi}\\
+    \iff \begin{cases}
+         a_r = \ddot r-r\dot{\theta}^2-r\dot \phi^2\sin^2{\theta} \\
+         a_\phi = r\ddot \phi \sin{\theta}+2\dot r\dot \phi \sin{\theta}+2r\dot \phi\dot\theta \cos{\theta} \\
+         a_\theta = r\ddot\theta+2\dot r\dot\theta-r\dot \phi^2 \sin{\theta}\cos{\theta}
+    \end{cases}       
+\end{gather*}
+
+
+
+
+\end{document}

@@ -1,0 +1,165 @@
+\documentclass[a4paper,10pt,twoside]{article}
+\usepackage{pgfplots}
+\usepackage{tcolorbox}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+
+
+\usepackage{tikz}
+\usepackage{pstricks-add}
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+
+\newtheorem{teo}{Théoreme}
+\newtheorem{lemma}[teo]{Lemme}
+\newtheorem{prop}[teo]{Proposition}
+\newtheorem{cor}[teo]{Corollaire}
+\usepackage{tcolorbox}
+\usepackage{wrapfig}
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlin ks,
+    citecolor=black,
+    filecolZor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\newcommand{\notimplies}{%
+    \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+
+
+\DeclareMathAlphabet\mathzapf{T1}{pzc}{mb}{it}
+\usepackage{amsmath,wasysym}
+\usepackage{latexsym}
+
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{fancybox}
+\bibliographystyle{amsplain}
+\usepackage{systeme}
+\usepackage{pdfpages}
+
+
+\usepackage{yfonts}
+\usepackage[french]{babel}
+
+\newtheorem{lemme}{Lemme}[subsection]
+
+\newtheorem{assertion}{Assertion}[subsection]
+\usetikzlibrary{decorations.pathmorphing}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollaire}{Corollaire}[section]
+\newtheorem{introduction}{Introduction}[section]
+\newtheorem{definition}{Définition}[section]
+\newtheorem{savoirf}{Savoir-faire}[section]
+\newtheorem{rem}{Remarque}[section]
+
+
+\usepackage[T2A]{fontenc}
+
+
+\newtheorem{Exercice}{Exercice}[section]
+\newtheorem{Corrige}{Corrigé}[section]
+\newtheorem{Methode}{Methode}[section]
+
+\newcommand{\Ressort}[4][]{
+\node [minimum size=#2,#1] (ressort) at (#4) {};
+\pgfmathparse{#2/#3}\let\pas\pgfmathresult
+\draw [decorate,decoration={zigzag,segment length=\pas,amplitude=0.3cm}]
+(ressort.east) -- (ressort.west);
+}
+
+
+\begin{document}
+\subsection*{Exercices}
+\subsubsection*{1. Le Lièvre et la Tortue}
+    Le Lièvre et la Tortue ont décidé de faire une course pour vérifier lequel d'entre eux est le plus rapide. Ils ont décidé d'un parcours d'une longueur $L$. \\
+    Pan ! Les voilà partis. La Tortue, fidèle à elle-même, décide de garder une vitesse $v_T$ constante pendant toute la course. Le Lièvre, sûr de gagner, part en marchant, avec une vitesse constante $v_L$<$v_T$. Néanmoins, lorsque la Tortue arrive à une distance $l_0$, le Lièvre se rend compte que la Tortue est très en avance. Il décide d'accélérer avec une accélération constante $a$. Déterminez la valeur de l'accélération pour que le lièvre gagne. 
+    \\ 
+    \\
+    \\
+    \textbf{Aide, ne lisez que si vous n'avez pas d'idées sur comment commencer cet exercice}\\
+    \begin{enumerate}
+    \item Commencez par faire un schéma distance en fonction du temps. Faites-y figurer le mouvement de la Tortue et du Lièvre, les distances $L$ et $l_0$ ainsi que le temps $t'$, lorsque le Lièvre décide d'accélérer.
+    \item Écrivez l'équation horaire de la Tortue, puis celle du Lièvre avant qu'il accélère. Puis trouver celle du Lièvre lorsqu'il accélère. 
+    \item Expliciter les variables $t', t_f$(temps où la Tortue arrive à la fin du parcours), et l'endroit où se trouve le Lièvre lorsqu'il accélère. 
+    \item Enfin, cherchez quelle doit être l'accélération pour que le Lièvre soit plus loin que la Tor tue lorsque celle-ci arrive à l'arrivée : cela voudra dire qu'il a franchi la ligne avant elle.
+\end{enumerate}
+
+\subsubsection*{2. Le corbeau et le renard}
+Maître Corbeau est perché sur son arbre d'une hauteur $H$ et tient dans son bec un fromage de masse $M$. \\
+Maître Renard salive à la vue du fromage. Il décide de se mettre à une distance $L$ de l'arbre et de tirer à l'arc dans la direction du fromage pour le faire tomber du bec de Maître Corbeau. \\
+Il vise donc le fromage avec une flèche de masse $m$ depuis une hauteur $h$ (la hauteur de son bras). Il vise avec un angle $\alpha$ avec l'horizontale et la tire avec une vitesse initiale $\vec v_0 $.  Il sait que lorsqu'il tirera, le bruit de la flèche effrayera Maître Corbeau qui lâchera son fromage.
+On négligera tout frottement et considérerons la flèche et le fromage comme deux points matériels.
+\begin{enumerate}
+    \item Placer un repère qui vous semble adapté, avec ses vecteurs unitaires. Placer $\vec v_0$ et l'angle $\alpha$. \\
+    Tracer les trajectoires potentielles des objets.
+    \item Lister les forces que subissent la flèche et le fromage. Écrire la relation de Newton pour chacun.
+    \item Écrire les équations horaires pour le fromage et la flèche. 
+    \item Montrer que la flèche atteindra forcément le fromage en plein vol (on admet que le sol n'existe pas).
+    \item Quelle doit être la vitesse minimale de la flèche pour que la rencontre se fasse au-dessus du sol ? \\ Exprimer vos résultats en fonction de g, $H$, $h$, $L$, puis vérifier l'homogénéité de votre solution. Enfin évaluer le résultat à la limite lorsque $ H \longrightarrow 0$ et expliquer le sens physique de cette limite.
+\end{enumerate}
+
+\subsubsection*{3. Ressort simple}
+
+\begin{tikzpicture}[decoration=zigzag,]
+\draw (0,0) -- (4,0);
+\coordinate (A) at (2,-1.5);
+\Ressort[rotate=90]{3cm}{10}{A}
+\fill (2,-3.2) circle (0.2) ;
+\draw (2.1,-3.2) node[right]{$M$};
+\draw [->] (1,-1) -- (1,-2.2);
+\draw (1,-1.6) node[left]{$\vec g$};
+\end{tikzpicture}
+ 
+Dans cet exercice nous allons déterminer l'équation horaire de l'oscillateur harmonique présenté dans le cours, autour de sa position d'équilibre. Celui-ci est simplement composé d'un poids $M$ de masse $m$ suspendu à un ressort de longueur à vide $l_0$ et de constante de raideur $k$. On suppose que l'oscillateur s'est mis à osciller après que la masse ait été écartée dans l'axe d'une distance $z_0$ de sa position d'équilibre, puis lancée à une vitesse initiale $\dot z_0$.
+\begin{enumerate}
+    \item Faites l'inventaire des forces extérieures auxquelles est soumise la masse.
+    \item Déterminez la position d'équilibre de l'oscillateur, autrement dit la position à laquelle les forces s'annulent
+    \item Déterminez l'équation horaire de la masse autour de cette position d'équilibre. (Indice : vous pouvez poser $z = \bar z + z_e$ ou $\bar z$ est la déviation par rapport à la position d'équilibre $z_e$ )
+\end{enumerate}
+
+\subsubsection*{4. Chute sur sphère}
+Un point matériel de masse $m$ est posé au sommet d'une demi-sphère de rayon $R$. Il commence à glisser sans frottement.
+\begin{enumerate}
+    \item Ecrire les équations du mouvement sans les résoudre
+    \item Trouver le point de décollement $D$
+\end{enumerate}
+
+ \par\leavevmode\par
+ \textbf{Aide :} 
+ \begin{itemize}
+     
+ \item Question 1)  Le repère sphérique est le plus judicieux ici. Faites un schéma et projeter vos forces selon les vecteurs de base du repère sphérique.
+ 
+ \item Question 2) Que se passe-t-il lorsque la bille décolle? Que peux-t-on dire des forces? 
+ \item Pouvez vous intégrer des expressions pour les simplifier ou les remplacer avec ce que vous avez comme relations en 1. 
+ \item Rappel Mathématique: $\int \dot \theta \Ddot{\theta} dt = \frac{1}{2} \Dot{\theta}^2 + C$
+ \end{itemize}
+ 
+ 
+ 
+ 
+\subsubsection*{5. Coordonnées cylindriques et sphériques (facultatif)}
+
+\noindent L'objectif de cet exercice est de déterminer les composantes du vecteur accélération en coordonnées sphériques et cylindriques. \\
+\textbf{Coordonnées cylindriques : }
+\begin{itemize}
+    \item Exprimez le vecteur position $\vec r$ en coordonnées cylindriques.
+    \item Exprimez les  vecteurs $\mathbf{ e_\rho}$ et  $\mathbf{ e_\theta}$ dans la base cartésienne ($\mathbf{ e_x}$, $\mathbf{ e_y}$, $\mathbf{ e_z}$) .
+    \item Donnez les dérivés des vecteurs $\mathbf{ e_\rho}$ et  $\mathbf{ e_\theta}$ dans la base cylindrique ($\mathbf{ e_\rho}$, $\mathbf{ e_\theta}$, $ \mathbf{e_z}$).
+    \item Donnez l'expression du vecteur vitesse et accélération dans la base cylindrique.
+\end{itemize} 
+\textbf{Coordonnées sphériques :} Vous pouvez essayer de refaire cela mais en coordonnées sphériques. Néanmoins, c'est très fastidieux avec des calculs longs, donc nous vous recommandons de ne pas le faire tant que vous n'avez rien de mieux à faire étant donné que ça n'apporte rien de plus conceptuellement. Une correction est tout de même donnée pour ceux qui ont le coeur vaillant. 
+
+\end{document}
+
+

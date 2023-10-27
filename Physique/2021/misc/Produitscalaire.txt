@@ -1,0 +1,29 @@
+\documentclass[10pt]{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{dtsfsf}{rgb}{0.8274509803921568,0.1843137254901961,0.1843137254901961}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\definecolor{rvwvcq}{rgb}{0.08235294117647059,0.396078431372549,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
+\clip(-3.928172640324329,-6.599244284882337) rectangle (16.03505709409745,8.278295745333132);
+\draw [->,line width=2pt] (0,0) -- (6,4);
+\draw [->,line width=2pt,color=cqcqcq] (0,0) -- (9.545392084448688,0);
+\draw [line width=2pt,dash pattern=on 1pt off 1pt] (6,4)-- (6.000726301752925,0);
+\draw [line width=2pt,color=dtsfsf] (6.000726301752925,0)-- (0,0);
+\begin{scriptsize}
+\draw [fill=rvwvcq] (0,0) circle (2.5pt);
+\draw[color=rvwvcq] (0.15176499551282197,0.4125555125215093) node {$A$};
+\draw [fill=rvwvcq] (6,4) circle (2.5pt);
+\draw[color=rvwvcq] (6.148324497487425,4.4165873318779685) node {$B$};
+\draw[color=black] (3.0551624758992597,2.5568948281010346) node {$u$};
+\draw [fill=rvwvcq] (9.545392084448688,0) circle (2.5pt);
+\draw[color=rvwvcq] (9.696921417959738,0.4125555125215093) node {$C$};
+\draw[color=cqcqcq] (6.262183222208462,-0.19469101932402005) node {$v$};
+\draw[color=dtsfsf] (4.13682036074911,0.526414237242546) node {u.v.cos($\theta$)};
+\end{scriptsize}
+\end{tikzpicture}
+\end{document}
